@@ -1,0 +1,32 @@
+{% extends 'baseFront2.html.twig' %}
+<form name="reservation"  method="post" role="form" >
+    <div class="row">
+
+
+        <div class="span4 form-group">
+            <input type="text" id="reservation_name" name="reservation[userFirstName]" class="input-block-level" value="{{ app.user.firstname }}" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+            <div class="validation"></div>
+        </div>
+        <div class="span4 form-group">
+            <input type="text" id="reservation_surname" name="reservation[userLastName]" class="input-block-level" value="{{ app.user.lastname }}"  placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+            <div class="validation"></div>
+        </div>
+
+        <div class="span4 form-group">
+            <input type="email" class="input-block-level" id="reservation_email" name="reservation[userEmail]" value="{{ app.user.email }}" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+            <div class="validation"></div>
+        </div>
+        <div class="span4 form-group">
+            <input type="text" class="input-block-level" id="reservation_phone" name="reservation[userPhone]" maxlength="75" placeholder="Phone Number" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+            <div class="validation"></div>
+        </div>
+        <div class="span4 form-group">
+            <div class="validation"></div>
+            <div class="text-center">
+                <input type="hidden" id="DateReservation" name="DateReservation" value="{{'now'|date('Y-m-d h:m') : ''  }}">
+                <input type="hidden" name="token" value="{{ csrf_token('form-reservation') }}" />
+                <button class="btn btn-theme" type="submit">Send a Reservation</button>
+            </div>
+        </div>
+    </div>
+</form>

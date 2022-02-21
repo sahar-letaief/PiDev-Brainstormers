@@ -1,0 +1,50 @@
+{% extends 'baseBack2.html.twig' %}
+
+{% block title %}Evenement{% endblock %}
+
+{% block body %}
+    <h1>Reservation</h1>
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="page-header">
+                <h3 class="page-title"> Show reservations </h3>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">reservations management</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Show reservations</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="row">
+                <div class="col-md-6 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Show reservation</h4>
+                            <table class="table">
+                                <tbody>
+
+                                <tr>
+                                    <th>NameEvent</th>
+                                    <td>{{ reservation.evenement.NameEvent }}</td>
+                                </tr>
+
+                                <tr>
+                                    <th>DateReservation</th>
+                                    <td>{{ reservation.DateReservation ? reservation.DateReservation|date('Y-m-d') : '' }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div>    <a href="{{ path('reservation_index') }}">back to list</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <a href="{{ path('reservation_edit', {'id': reservation.id}) }}">edit</a>
+
+    {{ include('Back/reservation/_delete_form.html.twig') }}
+{% endblock %}
