@@ -23,9 +23,11 @@
                                               {{ form_errors(form.NameEvent) }}
 
                                               {{ form_widget(form.PlaceEvent , {'attr' : {'class' : ' form-control' , 'placeholder' : 'Place event'}}) }}
-  {{ form_label(form.DateEvent,'Date event') }}
-{{ form_widget(form.DateEvent ) }}
- {{ form_errors(form.DateEvent) }}
+                                              {{ form_errors(form.PlaceEvent) }}
+  {{ form_label(form.DateDebut,'Event begins at') }}
+{{ form_widget(form.DateDebut) }}
+                                              {{ form_label(form.DateFin,'Event ends at') }}
+                                              {{ form_widget(form.DateFin) }}
                                               {{ form_widget(form.PriceEvent,{'attr' : {'class' : ' form-control' , 'placeholder' : 'price event'}}) }}
                                               {{ form_errors(form.PriceEvent) }}
 

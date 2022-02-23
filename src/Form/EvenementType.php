@@ -17,7 +17,8 @@ class EvenementType extends AbstractType
         $builder
             ->add('NameEvent')
             ->add('PlaceEvent')
-            ->add('DateEvent', DateTimeType::class)
+            ->add('DateDebut', DateTimeType::class)
+            ->add('DateFin', DateTimeType::class)
             ->add('PriceEvent')
             ->add('NbParticipants')
             /*->add('ImageEvent', FileType::class, [

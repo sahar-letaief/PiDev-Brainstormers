@@ -32,8 +32,12 @@
                 <td>{{ evenement.PlaceEvent }}</td>
             </tr>
             <tr>
-                <th>Date event</th>
-                <td>{{ evenement.DateEvent ? evenement.DateEvent|date('Y-m-d , h:m') : '' }}</td>
+                <th>Event begins at</th>
+                <td>{{ evenement.DateDebut ? evenement.DateDebut|date('Y-m-d , h:m') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Event ends at</th>
+                <td>{{ evenement.DateFin ? evenement.DateFin|date('Y-m-d , h:m') : '' }}</td>
             </tr>
             <tr>
                 <th>Price event</th>

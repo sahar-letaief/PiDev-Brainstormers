@@ -31,8 +31,7 @@
                                     <div class="col-lg-6 col-md-6">
                                         <ul>
                                             {{form_start(form,{'attr':{'novalidate':'novalidate'}})  }}
-                                            <li><span>Event name:</span>
-                                                {{ form_widget(form.evenement ) }}</li>
+                                            <li><span>Event name:</span>{{ ev.NameEvent }}</li>
                                             <li> <span>Player first name:</span>{{ user.firstname  }}</li>
                                             <li><span>Player last name:</span> {{ user.lastname  }}</li>
                                             <li><span>Player email:</span>{{ user.email  }}</li>

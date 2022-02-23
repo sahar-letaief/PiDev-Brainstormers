@@ -38,7 +38,8 @@
                 <th>IdEvent</th>
                 <th>Event name</th>
                 <th>Event place</th>
-                <th>Event date</th>
+                <th>Event begins at</th>
+                <th>Event ends at</th>
                 <th>Event price</th>
                 <th>Participants</th>
                 <th>actions</th>
@@ -50,7 +51,8 @@
                 <td>{{ evenement.id }}</td>
                 <td>{{ evenement.NameEvent }}</td>
                 <td>{{ evenement.PlaceEvent }}</td>
-                <td>{{ evenement.DateEvent ? evenement.DateEvent|date('Y-m-d , h:m') : '' }}</td>
+                <td>{{ evenement.DateDebut ? evenement.DateDebut|date('Y-m-d , h:m') : '' }}</td>
+                <td>{{ evenement.DateFin ? evenement.DateFin|date('Y-m-d , h:m') : '' }}</td>
                 <td>{{ evenement.PriceEvent }} DT</td>
                 <td>{{ evenement.NbParticipants }}</td>
                 <td><div class="badge badge-outline-success"><a  href="{{ path('evenement_show', {'id': evenement.id}) }}">show</a></div></td>

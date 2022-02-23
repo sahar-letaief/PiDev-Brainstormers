@@ -44,7 +44,8 @@
                                 <div class="col-lg-6 col-md-6">
                                     <ul>
                                         <li><span>Place event:</span>{{ evenement.PlaceEvent}}</li>
-                                        <li><span>Event date:</span> {{ evenement.DateEvent ? evenement.DateEvent|date('Y-m-d , h:m') : '' }}</li>
+                                        <li><span>Event begins at:</span> {{ evenement.DateDebut ? evenement.DateDebut|date('Y-m-d , h:m') : '' }}</li>
+                                        <li><span>Event ends at:</span> {{ evenement.DateFin ? evenement.DateFin|date('Y-m-d , h:m') : '' }}</li>
                                         <li><span>Participants :</span>{{ evenement.NbParticipants}}</li>
                                         <li><span>Event Price:</span>{{ evenement.PriceEvent }} DT</li>
                                     </ul>

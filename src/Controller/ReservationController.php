@@ -75,6 +75,10 @@ class ReservationController extends AbstractController
         }
         $reservation = new Reservation();
         $reservation->setDateReservation(new \DateTime('now'));
+        $ev=$evenement->setNameEvent($NameEvent);
+        $reservation->setEvenement($ev);
+
+        //dd($reservation);
         $DateReservation=$reservation->getDateReservation();
         //dd($DateReservation);
         $reservation->setUser($user);
@@ -92,6 +96,7 @@ class ReservationController extends AbstractController
             'reservation' => $reservation,
             'user' => $user,
             'evenement' =>$evenement,
+            'ev'=> $ev,
             'NameEvent'=>$NameEvent,
             'DateReservation'=>$DateReservation,
             'form' => $form->createView(),

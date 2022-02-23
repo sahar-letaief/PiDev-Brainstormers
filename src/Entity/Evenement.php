@@ -28,8 +28,8 @@ class Evenement
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank (message="Event name field cannot be empty")
-     *  @Assert\Regex("/^[A-Z][a-z]*$/" ,
-     *          message="Event name should start with a capital"
+     *  @Assert\Regex("/^[A-Z][a-z]*\s[a-z]*|[0-9]$/" ,
+     *          message="Event name should be like this format XXX XXX"
      * )
      */
     private $NameEvent;
@@ -40,11 +40,6 @@ class Evenement
      */
     private $PlaceEvent;
 
-    /**
-     * @ORM\Column(type="date")
-     * @Assert\GreaterThan("today")
-     */
-    private $DateEvent;
 
     /**
      * @ORM\Column(type="integer")
@@ -72,12 +67,20 @@ class Evenement
     private $reservations;
 
 
+
     /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="Add jpg image")
-     * @Assert\File(mimeTypes={ "image/jpeg", "image/png" })
+     * @Assert\GreaterThan("today")
+     * @ORM\Column(type="date")
      */
-    private $ImageEvent;
+    private $DateDebut;
+
+    /**
+     * @ORM\Column(type="date")
+     * @Assert\GreaterThanOrEqual(propertyPath="DateDebut",
+                         message="End event date should be greater than begin event date")
+     * @Assert\GreaterThan("today")
+     */
+    private $DateFin;
 
 
 
@@ -131,17 +134,7 @@ class Evenement
         return $this;
     }
 
-    public function getDateEvent(): ?\DateTimeInterface
-    {
-        return $this->DateEvent;
-    }
 
-    public function setDateEvent(\DateTimeInterface $DateEvent): self
-    {
-        $this->DateEvent = $DateEvent;
-
-        return $this;
-    }
 
     public function getNbParticipants(): ?int
     {
@@ -209,14 +202,28 @@ class Evenement
         return $this;
     }
 
-    public function getImageEvent(): ?string
+
+
+    public function getDateDebut(): ?\DateTimeInterface
     {
-        return $this->ImageEvent;
+        return $this->DateDebut;
     }
 
-    public function setImageEvent(string $ImageEvent): self
+    public function setDateDebut(\DateTimeInterface $DateDebut): self
     {
-        $this->ImageEvent = $ImageEvent;
+        $this->DateDebut = $DateDebut;
+
+        return $this;
+    }
+
+    public function getDateFin(): ?\DateTimeInterface
+    {
+        return $this->DateFin;
+    }
+
+    public function setDateFin(\DateTimeInterface $DateFin): self
+    {
+        $this->DateFin = $DateFin;
 
         return $this;
     }
