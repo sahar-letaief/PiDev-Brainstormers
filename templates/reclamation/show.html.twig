@@ -1,0 +1,110 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}reclamation index{% endblock %}
+
+{% block body %}
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Striped Table</h4>
+                <p class="card-description">
+                </p>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Nom de client</th>
+                            <th>reference</th>
+                            <th>Titre</th>
+                            <th>Date de resolution </th>
+                            <th>Date de création </th>
+                            <th>Description</th>
+                            <th>Status</th>
+                            <th>Contact</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for reclamation in reclamations %}
+                            <tr>
+                                <td></td>
+                                <td>{{reclamation.reference }}</td>
+                                <td>{{reclamation.Title }}</td>
+                                <td>
+                                {% if reclamation.createResolution|date('Y') !='2000'  %}
+                                {{ reclamation.createResolution|date('Y-m-d')}}
+                                {% else %}
+                                    null
+                                {% endif %}
+                                </td>
+
+                                <td>{{ reclamation.createDate|date('Y-m-d') }}</td>
+                                <td>{{ reclamation.Description }}</td>
+                                <td>
+                                    {% if reclamation.status!='refus' and reclamation.status!='accept'  %}
+                                    <div style="display: flex">
+                                    <form action="{{ path('refus_status', {'id': reclamation.id}) }}">
+                                        <button type="submit" style="background: transparent;border: none" >
+                                    <a class="mdi mdi-window-close"  ></a>
+                                        </button>
+                                    </form>
+                                    <form action="{{ path('accept_status', {'id': reclamation.id}) }}">
+                                        <button style="background: transparent;border: none" type="submit" ><a  class="mdi mdi-check-circle" ></a></button>
+                                    </form>
+                                    </div>
+                                    {% else %}
+                                        {{ reclamation.status }}
+                                    {% endif %}
+
+                                </td>
+                                <td> <a class="mdi mdi-comment-multiple-outline" href="#" ></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="{{ path('reclamation_new') }}">Create new</a>"#}
+{% endblock %}
+
+{#  <!DOCTYPE html>
+
+<title>Reclamation</title>
+
+{% block body %}
+    <h1>Reclamation</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ reclamation.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ reclamation.Title }}</td>
+            </tr>
+            <tr>
+                <th>Create_date</th>
+                <td>{{ reclamation.createDate ? reclamation.createDate|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Create_resolution</th>
+                <td>{{ reclamation.createResolution ? reclamation.createResolution|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ reclamation.Description }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('reclamation_index') }}">back to list</a>
+
+    <a href="{{ path('reclamation_edit', {'id': reclamation.id}) }}">edit</a>
+
+    {{ include('reclamation/_delete_form.html.twig') }}
+{% endblock %}#}

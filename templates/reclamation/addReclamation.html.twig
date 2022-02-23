@@ -1,0 +1,54 @@
+{% extends 'baseFront.html.twig' %}
+
+{% block title %}New Product{% endblock %}
+{% block content %}
+
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="page-header">
+                <h3 class="page-title"> Form elements </h3>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Forms</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Form elements</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="row">
+                <div class="col-12 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Ajout</h4>
+                            <p class="card-description"> form</p>
+                            {{ form_start(form,{'attr': {'novalidate': 'novalidate'}})}}
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">référence</label>
+                            </div>
+                            <div>
+                            {{ form_widget(form.reference,{'attr' : {'class' : 'form-control' }} ) }}
+                                {{ form_errors(form.reference) }}
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Titre</label>
+                                {{ form_widget(form.Title , {'attr' : {'class' : 'form-control'  }}  ) }}
+                                {{ form_errors(form.Title) }}
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleTextarea1">Description</label>
+                                {{ form_widget(form.Description, {'attr' : {'class' : 'form-control' }}  ) }}
+                                {{ form_errors(form.Description) }}
+                            </div>
+                            <button class="btn btn-primary mr-2">{{ button_label|default('Save') }}</button>
+
+                            <button type="reset" class="btn  btn-danger"><i class="fa fa-ban"></i> Cancel</button>
+                            {{ form_end(form) }}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+
