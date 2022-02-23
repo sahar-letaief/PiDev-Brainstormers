@@ -60,17 +60,25 @@ class ReservationController extends AbstractController
     */
     public function new_front(Request $request, EntityManagerInterface $entityManager,$id): Response
     {
+        $DateReservation = date('d-m-y , h:m');
+
 
         $user=$this->getUser();
         //dd($user);
         $evenement=$this->getDoctrine()->getRepository(Evenement::class)->findOneBy(['id'=>$id]);
+        $NameEvent=$evenement->getNameEvent();
+        //dd($NameEvent);
         //dd($event);
         if ( !$evenement){
             $this->addFlash("Event does not exist");
             return $this->redirectToRoute('evenement_index2', [], Response::HTTP_SEE_OTHER);
         }
         $reservation = new Reservation();
+        $reservation->setDateReservation(new \DateTime('now'));
+        $DateReservation=$reservation->getDateReservation();
+        //dd($DateReservation);
         $reservation->setUser($user);
+        //dd($reservation);
         $form = $this->createForm(ReservationType::class, $reservation);
         $form->handleRequest($request);
         if ($form->isSubmitted() ) {
@@ -84,49 +92,14 @@ class ReservationController extends AbstractController
             'reservation' => $reservation,
             'user' => $user,
             'evenement' =>$evenement,
+            'NameEvent'=>$NameEvent,
+            'DateReservation'=>$DateReservation,
             'form' => $form->createView(),
         ]);
     }
 
-    /**
-     * @Route("/delete/{id}", name="reservation_delete_front")
-     */
-    public function delete_front(ReservationRepository $repo,$id)
-    {
-        $user=$this->getUser();
 
-        $res=$repo->find($id);
-        $em=$this->getDoctrine()->getManager();
-        $em->remove($res);
-        $em->flush();
 
-        return $this->redirectToRoute('reservation_index2', [
-
-        ], Response::HTTP_SEE_OTHER);
-
-    }
-
-    /**
-     * @Route("/new", name="reservation_new", methods={"GET", "POST"})
-
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
-    {
-        $reservation = new Reservation();
-        $form = $this->createForm(ReservationType::class, $reservation);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($reservation);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('reservation_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->render('Back/reservation/new.html.twig', [
-            'reservation' => $reservation,
-            'form' => $form->createView(),
-        ]);
-    }*/
 
     /**
      * @Route("/{id}", name="reservation_show", methods={"GET"})
@@ -175,18 +148,15 @@ class ReservationController extends AbstractController
         return $this->redirectToRoute('reservation_index', [], Response::HTTP_SEE_OTHER);
     }
     /**
-     * @Route("/delete/{id}", name="reservation_delete_front")
+     * @Route("/font/delete/{idR}", name="reservation_delete_front")
      */
-    public function deletefront(ReservationRepository $repo,$id)
+    public function deletefront(ReservationRepository $repo,$idR)
     {
-        $res=$repo->find($id);
+        $res=$repo->find($idR);
         $em=$this->getDoctrine()->getManager();
         $em->remove($res);
         $em->flush();
 
         return $this->redirectToRoute('reservation_index2', [], Response::HTTP_SEE_OTHER);
     }
-
-
-
 }

@@ -21,9 +21,10 @@
                                         {{form_start(form,{'attr':{'novalidate':'novalidate'}})  }}
 {{ form_widget(form.NameEvent , {'attr' : {'class' : ' form-control' , 'placeholder' : 'Event name'}}) }}
                                               {{ form_errors(form.NameEvent) }}
- {{ form_widget(form.PlaceEvent , {'attr' : {'class' : ' form-control' , 'placeholder' : 'Place event'}}) }}
+
+                                              {{ form_widget(form.PlaceEvent , {'attr' : {'class' : ' form-control' , 'placeholder' : 'Place event'}}) }}
   {{ form_label(form.DateEvent,'Date event') }}
-{{ form_widget(form.DateEvent , {'attr' : {'class' : ' date' , 'placeholder' : 'Date event'}}) }}
+{{ form_widget(form.DateEvent ) }}
  {{ form_errors(form.DateEvent) }}
                                               {{ form_widget(form.PriceEvent,{'attr' : {'class' : ' form-control' , 'placeholder' : 'price event'}}) }}
                                               {{ form_errors(form.PriceEvent) }}

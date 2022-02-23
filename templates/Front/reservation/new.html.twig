@@ -14,71 +14,53 @@
         </div>
     </div>
     <section class="anime-details spad">
-    <div class="container">
-    <div class="anime__details__content">
-    <div class="row">
-    <div class="col-lg-3">
-        <div class="anime__details__pic set-bg" >
-        </div>
-    </div>
-    <div class="col-lg-9">
-    <div class="anime__details__text">
-        <div class="anime__details__title">
-            <h3>Add reservation</h3>
-        </div>
-        <div class="anime__details__widget">
-            <div class="row">
-                <div class="col-lg-6 col-md-6">
-                    <ul>
-                        {{form_start(form,{'attr':{'novalidate':'novalidate'}})  }}
-                        <li><span>{{ form_label(form.evenement,'Name event') }}</span>
-                            {{ form_widget(form.evenement , {'attr' : { 'placeholder' : 'Event name', 'value' : 'form.evenement'}}) }}</li>
-                        <li> <span>Player first name:</span>{{ user.firstname  }}</li>
-                        <li><span>Player last name:</span> {{ user.lastname  }}</li>
-                        <li><span>Player email:</span>{{ user.email  }}</li>
-                        <li><span>Player phone number:</span>{{ user.phonenumber  }}</li>
-                        <li><span>{{ form_label(form.DateReservation ,'Reservation date' )}}</span>
-                            {{ form_widget(form.DateReservation , {'attr' : {'class' : ' date' , 'placeholder' : 'Date reservation'}}) }}</li>
+        <div class="container">
+            <div class="anime__details__content">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="anime__details__pic set-bg" >
+                        </div>
+                    </div>
+                    <div class="col-lg-9">
+                        <div class="anime__details__text">
+                            <div class="anime__details__title">
+                                <h3>Add reservation</h3>
+                            </div>
+                            <div class="anime__details__widget">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6">
+                                        <ul>
+                                            {{form_start(form,{'attr':{'novalidate':'novalidate'}})  }}
+                                            <li><span>Event name:</span>
+                                                {{ form_widget(form.evenement ) }}</li>
+                                            <li> <span>Player first name:</span>{{ user.firstname  }}</li>
+                                            <li><span>Player last name:</span> {{ user.lastname  }}</li>
+                                            <li><span>Player email:</span>{{ user.email  }}</li>
+                                            <li><span>Player phone number:</span>{{ user.phonenumber  }}</li>
+                                            <li><span>{{ form_label(form.DateReservation ,'Reservation date' )}}</span>
+                                                {{ form_widget(form.DateReservation , {'attr' : {'class' : ' date' , 'placeholder' : 'Date reservation'}}) }}</li>
 
 
-                    </ul>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="anime__details__btn">
+                                <a href="{{ path('evenement_index2') }}"  class="follow-btn">Back to list</a>
+                                <a  class="watch-btn"><span>{{ form_widget(form.submit ) }}</span> <i
+                                            class="fa fa-angle-right"></i></a>
+
+                            </div>
+                            {{ form_end(form) }}
+                        </div>
+                    </div>
                 </div>
-
             </div>
-        </div>
-        <div class="anime__details__btn">
-            <a href="{{ path('evenement_index2') }}"  class="follow-btn">Back to list</a>
-            <a  class="watch-btn"><span>{{ form_widget(form.submit ) }}</span> <i
-                        class="fa fa-angle-right"></i></a>
 
         </div>
-        {{ form_end(form) }}
-    </div>
-    </div>
-    </div>
-    </div>
-
-    </div>
     </section>
-    <div class="row">
-        <div class="col-md-6 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">Confirm reservation</h4>
-                    {{form_start(form,{'attr':{'novalidate':'novalidate'}})  }}
-                    {{ form_widget(form.evenement, {'attr' : {'class' : ' form-control' , 'placeholder' : 'Event name'}}) }}
-                     {{ user.firstname  }}
-                    {{ user.lastname }}
-                    {{ user.email  }}
-                    {{ user.phonenumber}}
-                   {{ form_widget(form.submit , {'attr' : {'class' : ' btn btn-lg btn-primary my-4' , 'placeholder' : 'submit'}}) }}
-                        {{ form_end(form) }}
-                </div>
-                <div class="badge badge-outline-warning"><a href="{{ path('evenement_index2') }}">back to list</a></div>
-            </div>
-        </div>
-    </div>
-    </div>
+
 
 
 {% endblock %}

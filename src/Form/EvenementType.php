@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Evenement;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -19,6 +20,12 @@ class EvenementType extends AbstractType
             ->add('DateEvent', DateTimeType::class)
             ->add('PriceEvent')
             ->add('NbParticipants')
+            /*->add('ImageEvent', FileType::class, [
+                'label' => true,
+                'multiple' => false,
+                'mapped'=> false,
+                'required' =>true
+            ])*/
             ->add('Submit', submitType::class)
 
     ;

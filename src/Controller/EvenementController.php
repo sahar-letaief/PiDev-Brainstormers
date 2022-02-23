@@ -14,6 +14,7 @@ use Dompdf\Dompdf;
 use Dompdf\Options;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -73,6 +74,11 @@ class EvenementController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            //$file=$form->get('ImageEvent')->getData();
+           /// $upload_directory=$this->getParameter('upload_directory');
+           // $filename=md5(uniqid().'.'.$file->guessExtension());
+          //  $file->move($upload_directory,$filename);
+           // $evenement->setImageEvent($filename);
             $entityManager->persist($evenement);
             $entityManager->flush();
 
@@ -122,7 +128,7 @@ class EvenementController extends AbstractController
         ]);
     }
     /**
-     * @Route("/{id}", name="evenement_show_front", methods={"GET"})
+     * @Route("/front/{id}", name="evenement_show_front", methods={"GET"})
      */
     public function showfront(Evenement $evenement): Response
     {

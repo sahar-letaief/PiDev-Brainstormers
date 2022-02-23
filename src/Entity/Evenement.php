@@ -72,6 +72,14 @@ class Evenement
     private $reservations;
 
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Add jpg image")
+     * @Assert\File(mimeTypes={ "image/jpeg", "image/png" })
+     */
+    private $ImageEvent;
+
+
 
 
 
@@ -197,6 +205,18 @@ class Evenement
                 $reservation->setEvenement(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getImageEvent(): ?string
+    {
+        return $this->ImageEvent;
+    }
+
+    public function setImageEvent(string $ImageEvent): self
+    {
+        $this->ImageEvent = $ImageEvent;
 
         return $this;
     }
