@@ -16,7 +16,7 @@ class EvenementType extends AbstractType
         $builder
             ->add('NameEvent')
             ->add('PlaceEvent')
-            ->add('DateEvent', DateTimeType::class,['date_widget' => 'single_text'])
+            ->add('DateEvent', DateTimeType::class)
             ->add('PriceEvent')
             ->add('NbParticipants')
             ->add('Submit', submitType::class)

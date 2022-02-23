@@ -1,5 +1,5 @@
 
-{% extends 'baseBack2.html.twig' %}
+{% extends 'baseBack.html.twig' %}
 {% block title %}Reservation index{% endblock %}
 
 
@@ -42,13 +42,12 @@
                                 <tr>
                                     <td>{{ reservation.id }}</td>
                                     <td>{{ reservation.evenement.NameEvent }}</td>
-                                    <td>{{ reservation.user.firstname }}</td>
-                                    <td>{{ reservation.user.lastname }}</td>
-                                    <td>{{ reservation.user.email }}</td>
-                                    <td>{{ reservation.user.phone }}</td>
-                                    <td>{{ reservation.DateReservation ? reservation.DateReservation|date('Y-m-d') : '' }}</td>
+                                    <td>{{ user.firstname}}</td>
+                                    <td>{{ user.lastname }}</td>
+                                    <td>{{ user.email}}</td>
+                                    <td>{{ user.phonenumber }}</td>
+                                    <td>{{ reservation.DateReservation ? reservation.DateReservation|date('Y-m-d , h:m') : '' }}</td>
                                     <td><div class="badge badge-outline-success"><a href="{{ path('reservation_show', {'id': reservation.id}) }}" >show</a></div></td></td>
-                                    <td><div class="badge badge-outline-warning"><a href="{{ path('reservation_edit', {'id': reservation.id}) }}" >edit</a></div></td>
                                     <td><div class="badge badge-outline-danger" ><a href="{{ path('reservation_delete', {'id': reservation.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">delete</a></div></td>
 
                                 </tr>
@@ -61,7 +60,6 @@
                         </table>
 
                         <div>
-                            <div align="left" class="badge badge-outline-warning"> <a href="{{ path('reservation_new') }}">Create new</a></div>
                         </div>
                         {{ knp_pagination_render(reservations) }}
 

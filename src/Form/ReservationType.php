@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Evenement;
 use App\Entity\Reservation;
+use App\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -16,12 +17,9 @@ class ReservationType extends AbstractType
     {
         $builder
             ->add('evenement',EntityType::class,['class'=>Evenement::class, 'choice_label' => 'NameEvent'])
-            ->add('userFirstName',EntityType::class,['class' =>User::class])
-            ->add('userLastName',EntityType::class,['class' =>User::class])
-            ->add('userEmail',EntityType::class,['class' =>User::class])
-            ->add('userPhone',EntityType::class,['class' =>User::class])
             ->add('DateReservation')
-            ->add('Submit',submitType::class )
+            ->add('submit',SubmitType::class)
+
         ;
     }
 
