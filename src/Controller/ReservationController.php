@@ -46,7 +46,10 @@ class ReservationController extends AbstractController
        // $reservations=$this->getDoctrine()->getRepository(Reservation::class)->findOneBy(['id'=>$user->getId()]);
         //dd($user);
 //dd($reservations);
+        $reservation = new Reservation();
+
         $reservations=$this->getDoctrine()->getRepository(Reservation::class)->findAll();
+        $reservation->setDateReservation(new \DateTime('now'));
 
         return $this->render('Front/reservation/indexfront.html.twig', [
             'reservations' => $reservations,

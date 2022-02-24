@@ -6,7 +6,7 @@
                 <div class="col-lg-12">
                     <div class="breadcrumb__links">
                         <a href="./index.html"><i class="fa fa-home"></i> Home</a>
-                        <a href="./categories.html">Reservations</a>
+                        <a href="{{ path('reservation_index2')}}">Reservation list</a>
                         <span>Add reservation</span>
                     </div>
                 </div>
@@ -31,13 +31,13 @@
                                     <div class="col-lg-6 col-md-6">
                                         <ul>
                                             {{form_start(form,{'attr':{'novalidate':'novalidate'}})  }}
-                                            <div> <li><span>Event name:</span>{{ form_widget(form.evenement ) }}</li></div>
+                                                    <div> <li><span>Event name:</span>{{ ev.NameEvent }}</li></div>
                                             <li> <span>Player first name:</span>{{ user.firstname  }}</li>
                                             <li><span>Player last name:</span> {{ user.lastname  }}</li>
                                             <li><span>Player email:</span>{{ user.email  }}</li>
                                             <li><span>Player phone number:</span>{{ user.phonenumber  }}</li>
-                                            <li><span>{{ form_label(form.DateReservation ,'Reservation date' )}}</span>
-                                                {{ form_widget(form.DateReservation , {'attr' : {'class' : ' date' , 'placeholder' : 'Date reservation'}}) }}</li>
+                                            <li><span> Reservation date:</span>
+                                                {{DateReservation ? DateReservation|date('Y-m-d ') : ''  }}</li>
 
 
                                         </ul>
