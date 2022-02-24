@@ -1,0 +1,43 @@
+{% extends 'baseFront.html.twig' %}
+
+
+{% block title %}Product{% endblock %}
+
+{% block content %}
+<div class="bg-light p-3">
+    <h3>la liste des produits</h3>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <a href="{{ path('product_new') }}" >Create new</a>
+        <tbody>
+        {% for product in products %}
+            <tr>
+                <td>{{ product.id }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.price }}</td>
+                <td>
+                    <a href="{{ path('product_show', {'id': product.id}) }}">show</a>
+                    <a href="{{ path('product_edit', {'id': product.id}) }}">edit</a>
+                </td>
+                <td> <a href="{{ path('cart_add', {'id': product.id}) }}" class="btn btn-success float-right">
+                    <i class="fas fa-shopping-cart mr-1"></i>
+                    Ajouter au pannier 
+                </a></td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table> 
+</div>  
+{% endblock %}
