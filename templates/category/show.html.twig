@@ -1,0 +1,45 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}Category{% endblock %}
+
+{% block body %}
+   <div class="col-lg-12 stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Table with contextual classes</h4>
+                    <p class="card-description"></code>
+                    </p>
+                    <div class="table-responsive">
+                      
+                          <h1>categorie</h1>
+
+                    <table class="table">
+                      <tbody>
+                          <tr class="table-secondary">
+                              <th>Id</th>
+                              <td>{{ category.id }}</td>
+                          </tr>
+                          <tr class="table-secondary">
+                             <th>Name</th>
+                            <td>{{ category.Name }}</td>
+                          </tr>
+                          <tr class="table-secondary">
+                             <th>Desciprtion</th>
+                            <td>{{ category.description }}</td>
+                          </tr>
+                     </tbody>
+                  </table>
+                  <div class="card-footer">
+                  <div class="row">
+                    
+                    
+                   <a class="nav-link btn btn-warning create-new-button" id="createbuttonDropdown" data-toggle="dropdown" aria-expanded="false" href="{{ path('category_edit', {'id': category.id}) }}">Edit</a>
+                   <a class="nav-link btn btn-primary create-new-button" id="createbuttonDropdown" data-toggle="dropdown" aria-expanded="false" href="{{ path('category_index') }}">Retour</a>
+                   <a class="nav-link btn btn-danger create-new-button" id="createbuttonDropdown" data-toggle="dropdown" aria-expanded="false" href="{{ path('category_delete', {'id': category.id}) }}">delete</a>
+
+                  </div>
+                  </div>
+                        
+                      
+  
+{% endblock %}

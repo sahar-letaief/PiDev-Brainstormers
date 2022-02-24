@@ -1,0 +1,36 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}Edit Product{% endblock %}
+
+{% block body %}
+<div class="col-12 grid-margin stretch-card">
+<div class="card">
+    <div class="card-header">
+      <strong>Modifier produit</strong>
+    </div>
+    
+    <div class="card-body">
+    <h1>Modifier produit</h1>
+
+    {{ include('product/_form.html.twig', {'button_label': 'Update'}) }}
+    
+
+   <div class="card-footer">
+    <div class="row">
+    
+      
+        <a class="nav-link btn btn-warning create-new-button" id="createbuttonDropdown" data-toggle="dropdown" aria-expanded="false" href="{{ path('product_edit', {'id': product.id}) }}">Edit</a>
+     
+   
+      
+        <a class="nav-link btn btn-primary create-new-button" id="createbuttonDropdown" data-toggle="dropdown" aria-expanded="false" href="{{ path('product_index') }}">Retour</a>
+
+        <a class="nav-link btn btn-danger create-new-button" id="createbuttonDropdown" data-toggle="dropdown" aria-expanded="false" href="{{ path('product_delete', {'id': product.id}) }}">delete</a>
+      
+    
+
+    </div>
+     
+    </div>
+    </di>
+{% endblock %}

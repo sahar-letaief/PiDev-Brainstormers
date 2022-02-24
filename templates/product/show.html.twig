@@ -1,0 +1,71 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}Product{% endblock %}
+
+{% block body %}
+
+   <div class="col-lg-12 stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Table with contextual classes</h4>
+                    <p class="card-description"> Add class <code>.table-{color}</code>
+                    </p>
+                    <div class="table-responsive">
+                      
+                         <h1>Produit</h1>
+
+                <table class="table">
+                  <tbody>
+                  <tr class="table-secondary">
+                         <th>Reference</th>
+                         <td>{{ product.Reference }}</td>
+                    </tr>
+                    
+                    <tr class="table-secondary">
+                         <th>Nom</th>
+                         <td>{{ product.ProductName }}</td>
+                    </tr>
+                <tr class="table-secondary">
+                <th>Prix</th>
+                <td>{{ product.Price }}</td>
+            </tr>
+            <tr class="table-secondary">
+                <th>Stock</th>
+                <td>{{ product.Stock }}</td>
+            </tr>
+            <tr class="table-secondary">
+                <th>Description</th>
+                <td>{{ product.Description }}</td>
+            </tr>
+            <tr class="table-secondary">
+                <th>Image</th>
+                <td><img src="{{ asset('uploads/') ~product.image}}" alt="" class="img-fluid"></td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    <div class="card-footer">
+    <div class="row">
+    
+      
+        <a class="nav-link btn btn-warning create-new-button" id="createbuttonDropdown" data-toggle="dropdown" aria-expanded="false" href="{{ path('product_edit', {'id': product.id}) }}">Edit</a>
+     
+   
+      
+        <a class="nav-link btn btn-primary create-new-button" id="createbuttonDropdown" data-toggle="dropdown" aria-expanded="false" href="{{ path('product_index') }}">Retour</a>
+
+        <a class="nav-link btn btn-danger create-new-button" id="createbuttonDropdown" data-toggle="dropdown" aria-expanded="false" href="{{ path('product_delete', {'id': product.id}) }}">delete</a>
+      
+    
+
+    </div>
+     
+    </div>
+   
+    
+{% endblock %}
+
+    
+    
+    
+

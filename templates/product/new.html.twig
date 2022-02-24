@@ -1,0 +1,95 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}New Product{% endblock %}
+{% block body %}
+
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="page-header">
+            <h3 class="page-title"> Form elements </h3>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Forms</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Form elements</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="row">
+            <div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Ajout Produit</h4>
+                        <p class="card-description"> Basic form layout </p>
+
+                            {{ form_start(form,{'attr': {'novalidate': 'novalidate'}})}}
+
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Reference</label>
+                                {{ form_widget(form.Reference , {'attr' : {'class' : 'form-control'  }}  ) }}
+                                
+                                {{ form_errors(form.Reference) }}
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Nom</label>
+                                {{ form_widget(form.ProductName , {'attr' : {'class' : 'form-control'  }}  ) }}
+                                
+                                {{ form_errors(form.ProductName) }}
+
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleTextarea1">Desciprtion</label>
+                                {{ form_widget(form.Description , {'attr' : {'class' : 'form-control' }}  ) }}
+                                
+                                {{ form_errors(form.Description) }}
+                            </div>
+                            
+                        
+                        
+                      
+                            
+                            <div class="form-group">
+                            <label for="exampleSelectCategory">Catégorie</label>
+                            {{ form_widget(form.Category, {'attr' : {'class' : 'form-control' }}  ) }}
+
+                            {{ form_errors(form.Category) }}
+                            
+                           </div>
+                           
+                          <div class="form-group">
+                                <label for="exampleTextarea1">Prix</label>
+                                {{ form_widget(form.Price , {'attr' : {'class' : 'form-control' }}  ) }}
+                                
+                                {{ form_errors(form.Price) }}
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Stock</label>
+                                {{ form_widget(form.Stock , {'attr' : {'class' : 'form-control' }}  ) }}
+                                
+                                {{ form_errors(form.Stock) }}
+                            </div>
+                           <div class="form-group">
+                                 <label for="exampleSelectCategory">Image</label>
+                                 {{ form_widget(form.image,{'attr' : {'class' : 'form-control' }}  ) }}
+                            </div>
+                         
+                        <button class="btn btn-primary mr-2">{{ button_label|default('Save') }}</button>
+                        
+                        <button type="reset" class="btn  btn-danger"><i class="fa fa-ban"></i> Cancel</button>               
+                            {{ form_end(form) }}
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+                      
+                         
+
+{% endblock %}
+

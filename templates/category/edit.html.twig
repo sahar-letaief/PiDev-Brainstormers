@@ -1,0 +1,31 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}Edit Category{% endblock %}
+
+{% block body %}
+<div class="col-12 grid-margin stretch-card">
+<div class="card">
+    <div class="card-header">
+      <strong>Modifier category</strong>
+    </div>
+    
+    <div class="card-body">
+    <h1>Modifier Catégorie</h1>
+
+    {{ include('category/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <div class="card-footer">
+                  <div class="row">
+                    
+                    
+                   <a class="nav-link btn btn-warning create-new-button" id="createbuttonDropdown" data-toggle="dropdown" aria-expanded="false" href="{{ path('category_edit', {'id': category.id}) }}">Edit</a>
+                   <a class="nav-link btn btn-primary create-new-button" id="createbuttonDropdown" data-toggle="dropdown" aria-expanded="false" href="{{ path('category_index') }}">Retour</a>
+                   <a class="nav-link btn btn-danger create-new-button" id="createbuttonDropdown" data-toggle="dropdown" aria-expanded="false" href="{{ path('category_delete', {'id': category.id}) }}">delete</a>
+
+                  </div>
+      </div>
+                        
+    </di>
+    </div>
+    </div>
+{% endblock %}
