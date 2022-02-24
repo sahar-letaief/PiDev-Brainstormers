@@ -1,10 +1,9 @@
-{% extends 'base.html.twig' %}
-
+{% extends 'index.html.twig' %}
 {% block title %}Commentaire index{% endblock %}
 
 {% block body %}
     <h1>Commentaire index</h1>
-
+<center>
     <table class="table">
         <thead>
             <tr>
@@ -36,6 +35,7 @@
         {% endfor %}
         </tbody>
     </table>
+    </center>
 
     <a href="{{ path('commentaire_new') }}">Create new</a>
 {% endblock %}
