@@ -15,6 +15,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+
 
 /**
  * @Route("/reservation")
@@ -23,6 +25,7 @@ class ReservationController extends AbstractController
 {
 
     /**
+     * @IsGranted("ROLE_EVENT")
      * @Route("/", name="reservation_index", methods={"GET"})
      */
     public function index(ReservationRepository $reservationRepository,Request $request,PaginatorInterface $paginator): Response
@@ -38,17 +41,21 @@ class ReservationController extends AbstractController
         ]);
     }
     /**
+     * @IsGranted("ROLE_PLAYER")
      * @Route("/front", name="reservation_index2", methods={"GET"})
      */
     public function indexfront(ReservationRepository $reservationRepository,Request $request)
     {
         $user=$this->getUser();
+        $IdUser=$user->getId();
+        //dd($IdUser);
        // $reservations=$this->getDoctrine()->getRepository(Reservation::class)->findOneBy(['id'=>$user->getId()]);
         //dd($user);
-//dd($reservations);
+        //dd($reservations);
         $reservation = new Reservation();
 
-        $reservations=$this->getDoctrine()->getRepository(Reservation::class)->findAll();
+        $reservations=$this->getDoctrine()->getRepository(Reservation::class)->findBy(['user'=>$IdUser]);
+        //dd($reservations);
         $reservation->setDateReservation(new \DateTime('now'));
 
         return $this->render('Front/reservation/indexfront.html.twig', [
@@ -59,6 +66,7 @@ class ReservationController extends AbstractController
 
 
     /**
+     * @IsGranted("ROLE_PLAYER")
      * @Route("/new/{id}", name="reservation_new_front", methods={"GET", "POST"})
     */
     public function new_front(Request $request, EntityManagerInterface $entityManager,$id): Response
@@ -110,6 +118,7 @@ class ReservationController extends AbstractController
 
 
     /**
+     * @IsGranted("ROLE_PLAYER")
      * @Route("/{id}", name="reservation_show", methods={"GET"})
      */
     public function show(Reservation $reservation): Response
@@ -144,6 +153,7 @@ class ReservationController extends AbstractController
     }*/
 
     /**
+     * @IsGranted("ROLE_PLAYER")
      * @Route("/delete/{id}", name="reservation_delete")
      */
     public function delete(ReservationRepository $repo,$id)
@@ -156,6 +166,7 @@ class ReservationController extends AbstractController
         return $this->redirectToRoute('reservation_index', [], Response::HTTP_SEE_OTHER);
     }
     /**
+     * @IsGranted("ROLE_PLAYER")
      * @Route("/font/delete/{idR}", name="reservation_delete_front")
      */
     public function deletefront(ReservationRepository $repo,$idR)

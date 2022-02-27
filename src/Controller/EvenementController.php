@@ -18,6 +18,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/evenement")
@@ -26,6 +27,7 @@ class EvenementController extends AbstractController
 {
 
     /**
+     * @IsGranted("ROLE_EVENT")
      * @Route("/", name="evenement_index", methods={"GET","POST"})
      */
     public function index(Request $request,PaginatorInterface $paginator){
@@ -43,6 +45,7 @@ class EvenementController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_EVENT")
      * @Route("/pdf", name="evenement_pdf", methods={"GET"})
      */
     public function index_pdf(EvenementRepository $evenementRepository, Request $request)
@@ -65,6 +68,7 @@ class EvenementController extends AbstractController
 
 
         /**
+         * @IsGranted("ROLE_EVENT")
          * @Route("/new", name="evenement_new", methods={"GET", "POST"})
          */
         public function new(Request $request, EntityManagerInterface $entityManager): Response
@@ -91,6 +95,7 @@ class EvenementController extends AbstractController
         ]);
     }
     /**
+     * @IsGranted("ROLE_EVENT")
      * @Route("/sort", name="sort")
      */
     public function TrierParPrix(Request $request,PaginatorInterface $paginator): Response
@@ -106,6 +111,7 @@ class EvenementController extends AbstractController
 
 
     /**
+     * @IsGranted("ROLE_PLAYER")
      * @Route("/front", name="evenement_index2", methods={"GET"})
      */
     public function front(PaginatorInterface $paginator,Request $request)
@@ -119,6 +125,7 @@ class EvenementController extends AbstractController
 
 
     /**
+     * @IsGranted("ROLE_EVENT")
      * @Route("/{id}", name="evenement_show", methods={"GET"})
      */
     public function show(Evenement $evenement): Response
@@ -128,6 +135,7 @@ class EvenementController extends AbstractController
         ]);
     }
     /**
+     * @IsGranted("ROLE_PLAYER")
      * @Route("/front/{id}", name="evenement_show_front", methods={"GET"})
      */
     public function showfront(Evenement $evenement): Response
@@ -138,6 +146,7 @@ class EvenementController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_EVENT")
      * @Route("/{id}/edit", name="evenement_edit", methods={"GET", "POST"})
      */
     public function edit(Request $request, Evenement $evenement, EntityManagerInterface $entityManager): Response
@@ -158,6 +167,7 @@ class EvenementController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_EVENT")
      * @Route("/{id}/delete", name="evenement_delete")
      */
     public function delete(EvenementRepository $repo, $id)
