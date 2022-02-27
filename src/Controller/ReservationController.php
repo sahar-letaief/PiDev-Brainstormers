@@ -77,6 +77,8 @@ class ReservationController extends AbstractController
         $user=$this->getUser();
         //dd($user);
         $evenement=$this->getDoctrine()->getRepository(Evenement::class)->findOneBy(['id'=>$id]);
+        $evenement->setNbParticipants($evenement->getNbParticipants()-1);
+        //dd($evenement->getNbParticipants());
         $NameEvent=$evenement->getNameEvent();
         //dd($NameEvent);
         //dd($event);
