@@ -37,7 +37,8 @@
             <tr class="table-dark">
                 <th>Ref_cmde</th>
                 <th>Etat_cmde</th>
-                <th>Produit</th>
+                <th>nom de produit</th>
+                <th>prix de produit</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -47,13 +48,18 @@
                 <td>{{ commande.refCmde }}</td>
                 <td>{{ commande.etatCmde ? 'en cours' : 'annulé' }}</td>
                 <td>{% for pr in products %}
-                     {{ pr.name }} // {{ pr.price }} <br> <br>           
-                {% endfor %}
-                </td>   
+                     {{ pr.name }}<br> <br>
+                     {% endfor %}
+                </td>
+                <td>{% for pr in products %}
+                     {{ pr.price }} TND <br> <br>
+                     {% endfor %}
+                </td> 
                 <td>  
                     <div class="blog__details__comment__item__text">
                         <a href="{{ path('commande_show', {'id': commande.id}) }}">show</a>
                         <a href="{{ path('commande_edit', {'id': commande.id}) }}">edit</a>
+                        <a href="{{ path('commande_liste', {'id': commande.id}) }}">Imprimer</a>
                     </div>                   
                 </td>
             </tr>
