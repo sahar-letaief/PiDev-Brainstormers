@@ -15,6 +15,7 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
+            #access_denied_handler: App\Security\AccessDeniedHandler
             anonymous: lazy
             provider: app_user_provider
             guard:
@@ -35,6 +36,15 @@ security:
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
-    access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+    #access_control:
+     #    - { path: ^/user, roles: ROLE_ADMIN }
+    #   - { path: ^/profile, roles: ROLE_USER }
+
+
+    role_hierarchy:
+        ROLE_ADMIN: ROLE_PLAYER, ROLE_PRODUCT, ROLE_PURCHASE, ROLE_RECLAMATION, ROLE_EVENT
+        ROLE_PRODUCT: ROLE_USER
+        ROLE_PURCHASE: ROLE_USER
+        ROLE_RECLAMATION: ROLE_USER
+        ROLE_EVENT: ROLE_USER
+        ROLE_PLAYER: ROLE_USER

@@ -20,6 +20,10 @@ return [
         '/denied_access' => [[['_route' => 'denied_access', '_controller' => 'App\\Controller\\SecurityController::index'], null, null, null, false, false, null]],
         '/forgotten-password' => [[['_route' => 'app_forgotten_password', '_controller' => 'App\\Controller\\SecurityController::forgottenPass'], null, null, null, false, false, null]],
         '/choice' => [[['_route' => 'choice', '_controller' => 'App\\Controller\\SecurityController::choice'], null, null, null, false, false, null]],
+        '/profile/delete' => [[['_route' => 'delete_profile', '_controller' => 'App\\Controller\\UserController::delete_profile'], null, ['POST' => 0], null, false, false, null]],
+        '/profile/editPassword' => [[['_route' => 'edit_profile_password', '_controller' => 'App\\Controller\\UserController::edituserpassword'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/profile/edit' => [[['_route' => 'edit_profile', '_controller' => 'App\\Controller\\UserController::edit_profile'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/profile' => [[['_route' => 'profile', '_controller' => 'App\\Controller\\UserController::profile'], null, ['GET' => 0], null, false, false, null]],
         '/user' => [[['_route' => 'user_index', '_controller' => 'App\\Controller\\UserController::index'], null, ['GET' => 0], null, true, false, null]],
         '/user/new' => [[['_route' => 'user_new', '_controller' => 'App\\Controller\\UserController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
     ],
@@ -41,10 +45,12 @@ return [
                     .')'
                 .')'
                 .'|/resetPassword/([^/]++)(*:192)'
-                .'|/user/([^/]++)(?'
-                    .'|(*:217)'
-                    .'|/edit(*:230)'
-                    .'|(*:238)'
+                .'|/user/(?'
+                    .'|([^/]++)(?'
+                        .'|(*:220)'
+                        .'|/editusernp(*:239)'
+                    .')'
+                    .'|delete/([^/]++)(*:263)'
                 .')'
             .')/?$}sD',
     ],
@@ -57,9 +63,9 @@ return [
         149 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
         159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
         192 => [[['_route' => 'app_reset_password', '_controller' => 'App\\Controller\\SecurityController::verifyUserEmail'], ['token'], null, null, false, true, null]],
-        217 => [[['_route' => 'user_show', '_controller' => 'App\\Controller\\UserController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        230 => [[['_route' => 'user_edit', '_controller' => 'App\\Controller\\UserController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        238 => [
+        220 => [[['_route' => 'user_show', '_controller' => 'App\\Controller\\UserController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        239 => [[['_route' => 'user_edit', '_controller' => 'App\\Controller\\UserController::editusernp'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        263 => [
             [['_route' => 'user_delete', '_controller' => 'App\\Controller\\UserController::delete'], ['id'], ['POST' => 0], null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

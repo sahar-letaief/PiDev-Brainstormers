@@ -25,8 +25,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
-     *     @Assert\Length(min="20" , minMessage="the email must contain at least 20 characters.")
-
+     * @Assert\Length(min="20" , minMessage="the email must contain at least 20 characters.")
      */
     private $email;
 
@@ -38,9 +37,6 @@ class User implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
-     *     @Assert\Regex("/\d/" , match = true,  message="password must contain at least a number")
-     *     @Assert\Length(min="8" , minMessage="password must contain at least 8 characters.")
-     *     @Assert\Length(max="65" , maxMessage="password must contain at most 65 characters.")
      */
     private $password;
 
@@ -160,7 +156,7 @@ class User implements UserInterface
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
+        //$roles[] = 'ROLE_USER';
 
         return array_unique($roles);
     }

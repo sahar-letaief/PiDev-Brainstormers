@@ -83,30 +83,31 @@ class __TwigTemplate_ef7ffb3080b04c8b6c50b667e93ff650ee70b75bde9e9048d5a24872d30
                     <div class=\"card col-lg-4 mx-auto\">
                         <div class=\"card-body px-5 py-5\">
                             <h3 class=\"card-title text-left mb-3\">Login</h3>
+
                             ";
-        // line 47
-        if ((isset($context["error"]) || array_key_exists("error", $context) ? $context["error"] : (function () { throw new RuntimeError('Variable "error" does not exist.', 47, $this->source); })())) {
-            // line 48
+        // line 48
+        if ((isset($context["error"]) || array_key_exists("error", $context) ? $context["error"] : (function () { throw new RuntimeError('Variable "error" does not exist.', 48, $this->source); })())) {
+            // line 49
             echo "                                <div class=\"alert alert-danger\">";
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans(twig_get_attribute($this->env, $this->source, (isset($context["error"]) || array_key_exists("error", $context) ? $context["error"] : (function () { throw new RuntimeError('Variable "error" does not exist.', 48, $this->source); })()), "messageKey", [], "any", false, false, false, 48), twig_get_attribute($this->env, $this->source, (isset($context["error"]) || array_key_exists("error", $context) ? $context["error"] : (function () { throw new RuntimeError('Variable "error" does not exist.', 48, $this->source); })()), "messageData", [], "any", false, false, false, 48), "security"), "html", null, true);
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\TranslationExtension']->trans(twig_get_attribute($this->env, $this->source, (isset($context["error"]) || array_key_exists("error", $context) ? $context["error"] : (function () { throw new RuntimeError('Variable "error" does not exist.', 49, $this->source); })()), "messageKey", [], "any", false, false, false, 49), twig_get_attribute($this->env, $this->source, (isset($context["error"]) || array_key_exists("error", $context) ? $context["error"] : (function () { throw new RuntimeError('Variable "error" does not exist.', 49, $this->source); })()), "messageData", [], "any", false, false, false, 49), "security"), "html", null, true);
             echo "</div>
                             ";
         }
-        // line 50
+        // line 51
         echo "
                             <form method=\"post\">
                                 <div class=\"form-group\">
                                     <label>Username or email *</label>
                                     <input placeholder=\"Email\" type=\"email\" value=\"";
-        // line 54
-        echo twig_escape_filter($this->env, (isset($context["last_username"]) || array_key_exists("last_username", $context) ? $context["last_username"] : (function () { throw new RuntimeError('Variable "last_username" does not exist.', 54, $this->source); })()), "html", null, true);
+        // line 55
+        echo twig_escape_filter($this->env, (isset($context["last_username"]) || array_key_exists("last_username", $context) ? $context["last_username"] : (function () { throw new RuntimeError('Variable "last_username" does not exist.', 55, $this->source); })()), "html", null, true);
         echo "\" name=\"email\" id=\"inputEmail\" class=\"form-control p_input\" autocomplete=\"email\" required autofocus>
                                 </div>
                                 <div class=\"form-group\">
                                     <label>Password *</label>
                                     <input placeholder=\"Password\" type=\"password\" name=\"password\" id=\"inputPassword\" class=\"form-control p_input\" autocomplete=\"current-password\" required>
                                     <input type=\"hidden\" name=\"_csrf_token\" value=\"";
-        // line 59
+        // line 60
         echo twig_escape_filter($this->env, $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderCsrfToken("authenticate"), "html", null, true);
         echo "\">
                                 </div>
@@ -115,7 +116,7 @@ class __TwigTemplate_ef7ffb3080b04c8b6c50b667e93ff650ee70b75bde9e9048d5a24872d30
 
                                     </div>
                                     <a href=\"";
-        // line 65
+        // line 66
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_forgotten_password");
         echo "\" class=\"forgot-pass\"><small>Forgot password?</small></a>
                                 </div>
@@ -123,7 +124,7 @@ class __TwigTemplate_ef7ffb3080b04c8b6c50b667e93ff650ee70b75bde9e9048d5a24872d30
                                     <button type=\"submit\" class=\"btn btn-primary btn-block enter-btn\">Login</button>
                                 </div>
                                 <p class=\"sign-up\">Don't have an Account?<a href=\"";
-        // line 70
+        // line 71
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_register");
         echo "\"> Sign Up</a></p>
                             </form>
@@ -139,7 +140,7 @@ class __TwigTemplate_ef7ffb3080b04c8b6c50b667e93ff650ee70b75bde9e9048d5a24872d30
     <!-- container-scroller -->
     <!-- plugins:js -->
     <script src=\"";
-        // line 83
+        // line 84
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/vendors/js/vendor.bundle.base.js"), "html", null, true);
         echo "\"></script>
     <!-- endinject -->
@@ -147,23 +148,23 @@ class __TwigTemplate_ef7ffb3080b04c8b6c50b667e93ff650ee70b75bde9e9048d5a24872d30
     <!-- End plugin js for this page -->
     <!-- inject:js -->
     <script src=\"";
-        // line 88
+        // line 89
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/js/off-canvas.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 89
+        // line 90
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/js/hoverable-collapse.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 90
+        // line 91
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/js/misc.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 91
+        // line 92
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/js/settings.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 92
+        // line 93
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/js/todolist.js"), "html", null, true);
         echo "\"></script>
     <!-- endinject -->
@@ -190,7 +191,7 @@ class __TwigTemplate_ef7ffb3080b04c8b6c50b667e93ff650ee70b75bde9e9048d5a24872d30
 
     public function getDebugInfo()
     {
-        return array (  167 => 92,  163 => 91,  159 => 90,  155 => 89,  151 => 88,  143 => 83,  127 => 70,  119 => 65,  110 => 59,  102 => 54,  96 => 50,  90 => 48,  88 => 47,  75 => 37,  70 => 35,  60 => 28,  56 => 27,  46 => 19,  43 => 1,);
+        return array (  168 => 93,  164 => 92,  160 => 91,  156 => 90,  152 => 89,  144 => 84,  128 => 71,  120 => 66,  111 => 60,  103 => 55,  97 => 51,  91 => 49,  89 => 48,  75 => 37,  70 => 35,  60 => 28,  56 => 27,  46 => 19,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -241,6 +242,7 @@ class __TwigTemplate_ef7ffb3080b04c8b6c50b667e93ff650ee70b75bde9e9048d5a24872d30
                     <div class=\"card col-lg-4 mx-auto\">
                         <div class=\"card-body px-5 py-5\">
                             <h3 class=\"card-title text-left mb-3\">Login</h3>
+
                             {% if error %}
                                 <div class=\"alert alert-danger\">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
                             {% endif %}

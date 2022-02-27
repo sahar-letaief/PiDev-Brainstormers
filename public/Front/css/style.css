@@ -165,6 +165,9 @@ ol {
 /* buttons */
 
 .primary-btn {
+	border-radius: 5px;
+	width: 45%;
+	margin-top: 19px;
 	display: inline-block;
 	font-size: 13px;
 	font-weight: 700;
@@ -1723,15 +1726,14 @@ ol {
 
 .login__form {
 	position: relative;
-	padding-left: 145px;
 }
 
 .login__form:after {
 	position: absolute;
 	right: -14px;
 	top: -40px;
-	height: 330px;
-	width: 1px;
+	height: 550px;
+	width: 2px;
 	background: rgba(255, 255, 255, 0.2);
 	content: "";
 }
@@ -1745,8 +1747,9 @@ ol {
 
 .login__form form .input__item {
 	position: relative;
-	width: 370px;
-	margin-bottom: 20px;
+	width: 90%;
+	margin-bottom: 20px!important;
+	margin: auto;
 }
 
 .login__form form .input__item:before {

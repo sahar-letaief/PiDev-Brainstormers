@@ -96,7 +96,7 @@ class __TwigTemplate_a26b712c4fca8ef066bb01cf34c8d05dff6ec3edbe05982bc9a53775d80
         echo "\"><i class=\"mdi mdi-account-box\"></i> Admin Panel </a>
                                 <a class=\"btn btn-primary mr-2 col\" href=\"";
         // line 37
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("user_index");
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("profile");
         echo "\"><i class=\"mdi mdi-arrow-right-bold-hexagon-outline\"></i> Front panel </a>
                             </div>
                             <div class=\"text-center\">
@@ -213,7 +213,7 @@ class __TwigTemplate_a26b712c4fca8ef066bb01cf34c8d05dff6ec3edbe05982bc9a53775d80
 
                             <div class=\"d-flex\" style=\"margin-bottom: 20px;\">
                                 <a class=\"btn btn-primary mr-2 col \" href=\"{{ path('user_index') }}\"><i class=\"mdi mdi-account-box\"></i> Admin Panel </a>
-                                <a class=\"btn btn-primary mr-2 col\" href=\"{{ path('user_index') }}\"><i class=\"mdi mdi-arrow-right-bold-hexagon-outline\"></i> Front panel </a>
+                                <a class=\"btn btn-primary mr-2 col\" href=\"{{ path('profile') }}\"><i class=\"mdi mdi-arrow-right-bold-hexagon-outline\"></i> Front panel </a>
                             </div>
                             <div class=\"text-center\">
                                 <a class=\"btn btn-danger btn-block enter-btn\" href=\"{{ path('app_logout') }}\"><i class=\"mdi mdi-arrow-right-bold-hexagon-outline\"></i> Log out </a>

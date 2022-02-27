@@ -80,7 +80,7 @@ class __TwigTemplate_2a44874b6d61b0859b23f73c521834e9b8a1e37973b826c35819d638264
 ";
         // line 121
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 133
+        // line 132
         echo "
 
 </html>
@@ -339,7 +339,6 @@ class __TwigTemplate_2a44874b6d61b0859b23f73c521834e9b8a1e37973b826c35819d638264
         // line 130
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Front/js/main.js"), "html", null, true);
         echo "\"></script>
-
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -356,7 +355,7 @@ class __TwigTemplate_2a44874b6d61b0859b23f73c521834e9b8a1e37973b826c35819d638264
 
     public function getDebugInfo()
     {
-        return array (  340 => 130,  336 => 129,  332 => 128,  328 => 127,  324 => 126,  320 => 125,  316 => 124,  312 => 123,  307 => 122,  297 => 121,  255 => 85,  245 => 84,  235 => 82,  225 => 81,  172 => 36,  162 => 35,  150 => 26,  146 => 25,  142 => 24,  138 => 23,  134 => 22,  130 => 21,  126 => 20,  122 => 19,  107 => 6,  97 => 5,  84 => 133,  82 => 121,  77 => 118,  75 => 84,  72 => 83,  70 => 81,  67 => 80,  65 => 35,  56 => 28,  54 => 5,  48 => 1,);
+        return array (  340 => 130,  336 => 129,  332 => 128,  328 => 127,  324 => 126,  320 => 125,  316 => 124,  312 => 123,  307 => 122,  297 => 121,  255 => 85,  245 => 84,  235 => 82,  225 => 81,  172 => 36,  162 => 35,  150 => 26,  146 => 25,  142 => 24,  138 => 23,  134 => 22,  130 => 21,  126 => 20,  122 => 19,  107 => 6,  97 => 5,  84 => 132,  82 => 121,  77 => 118,  75 => 84,  72 => 83,  70 => 81,  67 => 80,  65 => 35,  56 => 28,  54 => 5,  48 => 1,);
     }
 
     public function getSourceContext()
@@ -491,7 +490,6 @@ class __TwigTemplate_2a44874b6d61b0859b23f73c521834e9b8a1e37973b826c35819d638264
         <script src=\"{{ asset('Front/js/jquery.slicknav.js') }}\"></script>
         <script src=\"{{ asset('Front/js/owl.carousel.min.js') }}\"></script>
         <script src=\"{{ asset('Front/js/main.js') }}\"></script>
-
 {% endblock %}
 
 

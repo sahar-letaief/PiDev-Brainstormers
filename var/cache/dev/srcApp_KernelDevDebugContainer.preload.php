@@ -10,7 +10,7 @@ if (in_array(PHP_SAPI, ['cli', 'phpdbg'], true)) {
 }
 
 require dirname(__DIR__, 3).''.\DIRECTORY_SEPARATOR.'vendor/autoload.php';
-require __DIR__.'/ContainerIOQx33K/srcApp_KernelDevDebugContainer.php';
+require __DIR__.'/ContainerWupveNY/srcApp_KernelDevDebugContainer.php';
 
 $classes = [];
 $classes[] = 'Symfony\Bundle\FrameworkBundle\FrameworkBundle';
@@ -42,7 +42,10 @@ $classes[] = 'SymfonyCasts\Bundle\VerifyEmail\Util\VerifyEmailQueryUtility';
 $classes[] = 'SymfonyCasts\Bundle\VerifyEmail\Generator\VerifyEmailTokenGenerator';
 $classes[] = 'App\Controller\SecurityController';
 $classes[] = 'App\Controller\UserController';
+$classes[] = 'App\EventListener\AccessDeniedListener';
 $classes[] = 'App\Form\EditUserType';
+$classes[] = 'App\Form\PasswordProfileType';
+$classes[] = 'App\Form\ProfileType';
 $classes[] = 'App\Form\RegistrationFormType';
 $classes[] = 'App\Form\ResetPassType';
 $classes[] = 'App\Form\UserType';
@@ -141,7 +144,7 @@ $classes[] = 'Symfony\Component\Security\Core\Authorization\Voter\TraceableVoter
 $classes[] = 'Symfony\Component\Security\Core\Authorization\Voter\AuthenticatedVoter';
 $classes[] = 'Symfony\Component\Security\Core\Authorization\Voter\ExpressionVoter';
 $classes[] = 'Symfony\Component\Security\Core\Authorization\ExpressionLanguage';
-$classes[] = 'Symfony\Component\Security\Core\Authorization\Voter\RoleVoter';
+$classes[] = 'Symfony\Component\Security\Core\Authorization\Voter\RoleHierarchyVoter';
 $classes[] = 'Symfony\Bundle\SecurityBundle\EventListener\VoteListener';
 $classes[] = 'Symfony\Component\Stopwatch\Stopwatch';
 $classes[] = 'Symfony\Component\DependencyInjection\Config\ContainerParametersResourceChecker';

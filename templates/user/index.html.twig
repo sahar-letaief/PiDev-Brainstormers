@@ -39,9 +39,9 @@
                                                 {% for role in user.roles %}
                                                     {% if role == 'ROLE_ADMIN' %}
                                                         <label class="badge badge-success">ADMIN</label>
-                                                    {% elseif role == 'ROLE_EDITOR'%}
-                                                        <label class="badge badge-info">EDITOR</label>
-                                                    {% else %}
+                                                    {% elseif role == 'ROLE_PLAYER'%}
+                                                        <label class="badge badge-info">PLAYER</label>
+                                                    {% elseif role == 'ROLE_USER' %}
                                                         <label class="badge badge-warning">USER</label>
                                                     {% endif %}
                                                 {% endfor %}

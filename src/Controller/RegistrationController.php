@@ -37,6 +37,7 @@ class RegistrationController extends AbstractController
 
             $current_date = new \DateTime('@'.strtotime('+01:00'));
             $user->setLastLoginDate($current_date);
+            $user->setRoles(["ROLE_USER"]);
             // encode the plain password
             $user->setPassword(
             $userPasswordEncoder->encodePassword(

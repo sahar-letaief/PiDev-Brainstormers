@@ -153,18 +153,8 @@ class __TwigTemplate_639bc3f91677945c67c5531d41cf117b0660a8e3ffc3d02dbac9f31e024
                                                     </div>
                                                 </div>
                                             ";
-            } elseif ((0 === twig_compare(            // line 60
-$context["role"], "ROLE_EDITOR"))) {
-                // line 61
-                echo "                                                <div class=\"col-sm-2\">
-                                                    <div class=\"form-check\">
-                                                        <label class=\"form-check-label\">
-                                                            <input readonly type=\"checkbox\" class=\"form-check-input\" name=\"membershipRadios\" id=\"membershipRadios2\" value=\"option2\" checked> MOD </label>
-                                                    </div>
-                                                </div>
-                                            ";
             } else {
-                // line 68
+                // line 61
                 echo "                                                <div class=\"col-sm-2\">
                                                     <div class=\"form-check\">
                                                         <label class=\"form-check-label\">
@@ -173,20 +163,20 @@ $context["role"], "ROLE_EDITOR"))) {
                                                 </div>
                                             ";
             }
-            // line 75
+            // line 68
             echo "                                        ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['role'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 76
+        // line 69
         echo "
 
                                     </div>
                                 </div>
                                 <a class=\"btn btn-outline-primary btn-fw\" href=\"";
-        // line 80
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("user_edit", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 80, $this->source); })()), "id", [], "any", false, false, false, 80)]), "html", null, true);
+        // line 73
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("user_edit", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["user"]) || array_key_exists("user", $context) ? $context["user"] : (function () { throw new RuntimeError('Variable "user" does not exist.', 73, $this->source); })()), "id", [], "any", false, false, false, 73)]), "html", null, true);
         echo "\">edit</a>
 
                             </form>
@@ -219,7 +209,7 @@ $context["role"], "ROLE_EDITOR"))) {
 
     public function getDebugInfo()
     {
-        return array (  189 => 80,  183 => 76,  177 => 75,  168 => 68,  159 => 61,  157 => 60,  149 => 54,  146 => 53,  142 => 52,  132 => 45,  125 => 41,  118 => 37,  111 => 33,  104 => 29,  93 => 21,  89 => 20,  85 => 19,  68 => 4,  58 => 3,  35 => 1,);
+        return array (  179 => 73,  173 => 69,  167 => 68,  158 => 61,  149 => 54,  146 => 53,  142 => 52,  132 => 45,  125 => 41,  118 => 37,  111 => 33,  104 => 29,  93 => 21,  89 => 20,  85 => 19,  68 => 4,  58 => 3,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -281,13 +271,6 @@ $context["role"], "ROLE_EDITOR"))) {
                                                     <div class=\"form-check\">
                                                         <label class=\"form-check-label\">
                                                             <input type=\"checkbox\" class=\"form-check-input\" name=\"membershipRadios\" id=\"membershipRadios1\" value=\"\" checked> ADMIN </label>
-                                                    </div>
-                                                </div>
-                                            {% elseif role == \"ROLE_EDITOR\"%}
-                                                <div class=\"col-sm-2\">
-                                                    <div class=\"form-check\">
-                                                        <label class=\"form-check-label\">
-                                                            <input readonly type=\"checkbox\" class=\"form-check-input\" name=\"membershipRadios\" id=\"membershipRadios2\" value=\"option2\" checked> MOD </label>
                                                     </div>
                                                 </div>
                                             {% else %}

@@ -125,11 +125,12 @@ class __TwigTemplate_8ac201547cb498a4e521ee68b1ecee60a9dee89aa5afb7dfbbb110af095
                     echo "                                                        <label class=\"badge badge-success\">ADMIN</label>
                                                     ";
                 } elseif ((0 === twig_compare(                // line 42
-$context["role"], "ROLE_EDITOR"))) {
+$context["role"], "ROLE_PLAYER"))) {
                     // line 43
-                    echo "                                                        <label class=\"badge badge-info\">EDITOR</label>
+                    echo "                                                        <label class=\"badge badge-info\">PLAYER</label>
                                                     ";
-                } else {
+                } elseif ((0 === twig_compare(                // line 44
+$context["role"], "ROLE_USER"))) {
                     // line 45
                     echo "                                                        <label class=\"badge badge-warning\">USER</label>
                                                     ";
@@ -199,7 +200,7 @@ $context["role"], "ROLE_EDITOR"))) {
 
     public function getDebugInfo()
     {
-        return array (  172 => 62,  159 => 55,  155 => 54,  149 => 51,  144 => 48,  138 => 47,  134 => 45,  130 => 43,  128 => 42,  125 => 41,  122 => 40,  118 => 39,  112 => 36,  108 => 35,  104 => 34,  101 => 33,  97 => 32,  68 => 5,  58 => 4,  35 => 1,);
+        return array (  173 => 62,  160 => 55,  156 => 54,  150 => 51,  145 => 48,  139 => 47,  135 => 45,  133 => 44,  130 => 43,  128 => 42,  125 => 41,  122 => 40,  118 => 39,  112 => 36,  108 => 35,  104 => 34,  101 => 33,  97 => 32,  68 => 5,  58 => 4,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -245,9 +246,9 @@ $context["role"], "ROLE_EDITOR"))) {
                                                 {% for role in user.roles %}
                                                     {% if role == 'ROLE_ADMIN' %}
                                                         <label class=\"badge badge-success\">ADMIN</label>
-                                                    {% elseif role == 'ROLE_EDITOR'%}
-                                                        <label class=\"badge badge-info\">EDITOR</label>
-                                                    {% else %}
+                                                    {% elseif role == 'ROLE_PLAYER'%}
+                                                        <label class=\"badge badge-info\">PLAYER</label>
+                                                    {% elseif role == 'ROLE_USER' %}
                                                         <label class=\"badge badge-warning\">USER</label>
                                                     {% endif %}
                                                 {% endfor %}
