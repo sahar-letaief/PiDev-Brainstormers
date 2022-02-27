@@ -27,7 +27,7 @@ class CartController extends AbstractController
         }
         //get full cart  total 
         //dd('total', $pannierxithData);
-         $total =0;
+        $total =0;
         foreach($pannierxithData as $item) {
             $totalItem = $item['product']->getPrice() * $item['quantity'];
             $total += $totalItem;
