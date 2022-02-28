@@ -101,7 +101,7 @@ class ReservationController extends AbstractController
         if ($form->isSubmitted() ) {
             $entityManager->persist($reservation);
             $entityManager->flush();
-
+            $this->get('session')->getFlashBag()->add('notice','Reservation added successfully');
             return $this->redirectToRoute('evenement_index2', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -173,11 +173,14 @@ class ReservationController extends AbstractController
      */
     public function deletefront(ReservationRepository $repo,$idR)
     {
-        $res=$repo->find($idR);
-        $em=$this->getDoctrine()->getManager();
+        $res = $repo->find($idR);
+        //dd($res->getEvenement()->getId());
+        //$IdEvent=$res->getEvenement()->getId();
+        $em = $this->getDoctrine()->getManager();
         $em->remove($res);
         $em->flush();
 
         return $this->redirectToRoute('reservation_index2', [], Response::HTTP_SEE_OTHER);
     }
+
 }

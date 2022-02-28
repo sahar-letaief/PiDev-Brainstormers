@@ -143,6 +143,13 @@ ol {
 	background-size: cover;
 	background-position: top center;
 }
+.msg {
+	background-color: #100c2c;
+	color: white;
+	padding: 1em 0;
+	font: italic bold 12px/30 px Georgia,serif;
+
+}
 
 .spad {
 	padding-top: 100px;
