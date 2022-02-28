@@ -26,6 +26,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 class EvenementController extends AbstractController
 {
 
+
     /**
      * @IsGranted("ROLE_EVENT")
      * @Route("/", name="evenement_index", methods={"GET","POST"})
@@ -64,7 +65,30 @@ class EvenementController extends AbstractController
        $dompdf->stream('mypdf.pdf',["Attachement" => true]);
 
     }
+    /**
+     * @IsGranted("ROLE_EVENT")
+     * @Route("/calendar", name="calendar", methods={"GET","POST"})
+     */
+    public function calendar(EvenementRepository $evenementRepository){
 
+        $events=$evenementRepository->findAll();
+        $rdvs= [];
+        foreach ($events as $event){
+            $rdvs[]=[
+
+                'NameEvent'=>$event->getNameEvent(),
+                'PlaceEvent'=> $event->getPlaceEvent(),
+                'DateDebut'=>$event->getDateDebut()->format('Y-m-d ,h:m'),
+                'DateFin'=>$event->getDateFin()->format('Y-m-d ,h:m'),
+            ];
+
+        }
+        //dd($rdvs);
+        $data=json_encode($rdvs);
+        //dd($data);
+        return $this->render('Back/evenement/calendar.html.twig',compact('data'));
+
+    }
 
 
         /**
