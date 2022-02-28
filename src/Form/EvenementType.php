@@ -21,12 +21,7 @@ class EvenementType extends AbstractType
             ->add('DateFin', DateTimeType::class)
             ->add('PriceEvent')
             ->add('NbParticipants')
-            /*->add('ImageEvent', FileType::class, [
-                'label' => true,
-                'multiple' => false,
-                'mapped'=> false,
-                'required' =>true
-            ])*/
+            ->add('ImageEvent', FileType::class)
             ->add('Submit', submitType::class)
 
     ;

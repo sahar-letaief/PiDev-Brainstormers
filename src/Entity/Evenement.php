@@ -82,6 +82,13 @@ class Evenement
      */
     private $DateFin;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank (message="Please upload an image")
+     * @Assert\File(mimeTypes={"image/jpeg"})
+     */
+    private $ImageEvent;
+
 
 
 
@@ -224,6 +231,18 @@ class Evenement
     public function setDateFin(\DateTimeInterface $DateFin): self
     {
         $this->DateFin = $DateFin;
+
+        return $this;
+    }
+
+    public function getImageEvent()
+    {
+        return $this->ImageEvent;
+    }
+
+    public function setImageEvent( $ImageEvent)
+    {
+        $this->ImageEvent = $ImageEvent;
 
         return $this;
     }
