@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Commande;
+use App\Entity\CommandeSearch;
 use App\Form\CommandeType;
+use App\Form\CommandeSearchType;
 use App\Repository\CommandeRepository;
 use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -14,6 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Dompdf\Dompdf;
 use Dompdf\Options;
+use Knp\Component\Pager\PaginatorInterface;
 
 
 /**
@@ -24,12 +27,18 @@ class CommandeController extends AbstractController
     /**
      * @Route("/", name="commande_index", methods={"GET"})
      */
-    public function index(CommandeRepository $commandeRepository, ProductRepository $productRepository): Response
-    {
-        return $this->render('commande/index.html.twig', [
-            'commandes' => $commandeRepository->findAll(),
+    public function index(Request $request, CommandeRepository $commandeRepository, ProductRepository $productRepository , PaginatorInterface $paginator): Response
+    {   
+
+        $donnee = $this->getDoctrine()->getRepository(Commande::class)->findAll();
+
+        $commandes=$paginator->paginate($donnee,$request->query->getInt('page',1),2);
+
+
+        return $this->render('commande/index.html.twig',[
+            'commandes' => $commandes,
             'products' => $productRepository->findAll(),
-        ]);    
+            ]);    
     }
 
      /**
@@ -66,8 +75,6 @@ class CommandeController extends AbstractController
         ]);
     }
         
-        
-    
 
 /**
      * @Route("/commandeBack", name="commande_Back", methods={"GET"})

@@ -59,7 +59,7 @@
                     <div class="blog__details__comment__item__text">
                         <a href="{{ path('commande_show', {'id': commande.id}) }}">show</a>
                         <a href="{{ path('commande_edit', {'id': commande.id}) }}">edit</a>
-                        <a href="{{ path('commande_liste', {'id': commande.id}) }}">Imprimer</a>
+                        <a href="{{ path('commande_liste', {'id': commande.id}) }}">Imprimer en pdf</a>
                     </div>                   
                 </td>
             </tr>
@@ -70,6 +70,9 @@
         {% endfor %}
         </tbody>
     </table>
+    <div class="navigation">
+            {{ knp_pagination_render(commandes) }}
+        </div>
     </div>
 </section>
 
