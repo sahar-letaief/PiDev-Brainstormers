@@ -25,6 +25,7 @@ return [
         '/profile/editPassword' => [[['_route' => 'edit_profile_password', '_controller' => 'App\\Controller\\UserController::edituserpassword'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/profile/edit' => [[['_route' => 'edit_profile', '_controller' => 'App\\Controller\\UserController::edit_profile'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/profile' => [[['_route' => 'profile', '_controller' => 'App\\Controller\\UserController::profile'], null, ['GET' => 0], null, false, false, null]],
+        '/ActivateAccountWithCode' => [[['_route' => 'ActivateAccountWithCode', '_controller' => 'App\\Controller\\UserController::ActivateAccountWithCode'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/user' => [[['_route' => 'user_index', '_controller' => 'App\\Controller\\UserController::index'], null, ['GET' => 0, 'POST' => 1], null, true, false, null]],
         '/user/new' => [[['_route' => 'user_new', '_controller' => 'App\\Controller\\UserController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
     ],

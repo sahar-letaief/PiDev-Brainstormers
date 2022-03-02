@@ -28,6 +28,7 @@ return [
     'edit_profile_password' => [[], ['_controller' => 'App\\Controller\\UserController::edituserpassword'], [], [['text', '/profile/editPassword']], [], []],
     'edit_profile' => [[], ['_controller' => 'App\\Controller\\UserController::edit_profile'], [], [['text', '/profile/edit']], [], []],
     'profile' => [[], ['_controller' => 'App\\Controller\\UserController::profile'], [], [['text', '/profile']], [], []],
+    'ActivateAccountWithCode' => [[], ['_controller' => 'App\\Controller\\UserController::ActivateAccountWithCode'], [], [['text', '/ActivateAccountWithCode']], [], []],
     'user_index' => [[], ['_controller' => 'App\\Controller\\UserController::index'], [], [['text', '/user/']], [], []],
     'user_new' => [[], ['_controller' => 'App\\Controller\\UserController::new'], [], [['text', '/user/new']], [], []],
     'user_show' => [['id'], ['_controller' => 'App\\Controller\\UserController::show'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/user']], [], []],

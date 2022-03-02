@@ -53,7 +53,7 @@ class __TwigTemplate_3683f52ea72ac96ca2f3c4e10a20cea74e96aa5a745bb7e787b87426ed8
 
     <style>
         .left-content a:hover {
-            color: #a7d139!important;
+            font-size: 17px;
         }
     </style>
 
@@ -151,7 +151,7 @@ class __TwigTemplate_3683f52ea72ac96ca2f3c4e10a20cea74e96aa5a745bb7e787b87426ed8
 
     <style>
         .left-content a:hover {
-            color: #a7d139!important;
+            font-size: 17px;
         }
     </style>
 

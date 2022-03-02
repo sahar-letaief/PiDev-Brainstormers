@@ -52,14 +52,19 @@ class RegistrationController extends AbstractController
                 )
             );
 
+            $bytes = random_bytes(3);
+            $verificationCode = bin2hex($bytes);
+            $user->SetVerificationCode($verificationCode);
+            $entityManager->persist($user);
+            $entityManager->flush();
+
 
             $this->twilio->messages->create("+216". $user->getPhoneNumber(), [
                 'from' => $this->fromNumber,
-                'body' => "Hi Your report has begun processing"
+                'body' => "To Activate Your account please use this code upon logging in \n Code :$verificationCode"
             ]);
 
-            $entityManager->persist($user);
-            $entityManager->flush();
+
 
             // generate a signed url and email it to the user
             $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,

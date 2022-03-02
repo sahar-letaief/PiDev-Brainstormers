@@ -113,10 +113,14 @@ class __TwigTemplate_f2ad5304b73f280867e707f5d822f09a273552a6ea4731727dcc9887418
                                 </div>
                                 <div class=\"form-group d-flex align-items-center justify-content-between\">
                                     <div class=\"form-check\">
-
+                                        <div class=\"checkbox mb-3\">
+                                            <label>
+                                                <input type=\"checkbox\" name=\"_remember_me\"> Remember me
+                                            </label>
+                                        </div>
                                     </div>
                                     <a href=\"";
-        // line 66
+        // line 70
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_forgotten_password");
         echo "\" class=\"forgot-pass\"><small>Forgot password?</small></a>
                                 </div>
@@ -124,7 +128,7 @@ class __TwigTemplate_f2ad5304b73f280867e707f5d822f09a273552a6ea4731727dcc9887418
                                     <button type=\"submit\" class=\"btn btn-primary btn-block enter-btn\">Login</button>
                                 </div>
                                 <p class=\"sign-up\">Don't have an Account?<a href=\"";
-        // line 71
+        // line 75
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_register");
         echo "\"> Sign Up</a></p>
                             </form>
@@ -140,7 +144,7 @@ class __TwigTemplate_f2ad5304b73f280867e707f5d822f09a273552a6ea4731727dcc9887418
     <!-- container-scroller -->
     <!-- plugins:js -->
     <script src=\"";
-        // line 84
+        // line 88
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/vendors/js/vendor.bundle.base.js"), "html", null, true);
         echo "\"></script>
     <!-- endinject -->
@@ -148,23 +152,23 @@ class __TwigTemplate_f2ad5304b73f280867e707f5d822f09a273552a6ea4731727dcc9887418
     <!-- End plugin js for this page -->
     <!-- inject:js -->
     <script src=\"";
-        // line 89
+        // line 93
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/js/off-canvas.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 90
+        // line 94
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/js/hoverable-collapse.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 91
+        // line 95
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/js/misc.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 92
+        // line 96
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/js/settings.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 93
+        // line 97
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/js/todolist.js"), "html", null, true);
         echo "\"></script>
     <!-- endinject -->
@@ -191,7 +195,7 @@ class __TwigTemplate_f2ad5304b73f280867e707f5d822f09a273552a6ea4731727dcc9887418
 
     public function getDebugInfo()
     {
-        return array (  168 => 93,  164 => 92,  160 => 91,  156 => 90,  152 => 89,  144 => 84,  128 => 71,  120 => 66,  111 => 60,  103 => 55,  97 => 51,  91 => 49,  89 => 48,  75 => 37,  70 => 35,  60 => 28,  56 => 27,  46 => 19,  43 => 1,);
+        return array (  172 => 97,  168 => 96,  164 => 95,  160 => 94,  156 => 93,  148 => 88,  132 => 75,  124 => 70,  111 => 60,  103 => 55,  97 => 51,  91 => 49,  89 => 48,  75 => 37,  70 => 35,  60 => 28,  56 => 27,  46 => 19,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -259,7 +263,11 @@ class __TwigTemplate_f2ad5304b73f280867e707f5d822f09a273552a6ea4731727dcc9887418
                                 </div>
                                 <div class=\"form-group d-flex align-items-center justify-content-between\">
                                     <div class=\"form-check\">
-
+                                        <div class=\"checkbox mb-3\">
+                                            <label>
+                                                <input type=\"checkbox\" name=\"_remember_me\"> Remember me
+                                            </label>
+                                        </div>
                                     </div>
                                     <a href=\"{{ path('app_forgotten_password') }}\" class=\"forgot-pass\"><small>Forgot password?</small></a>
                                 </div>

@@ -15,6 +15,9 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
+            remember_me:
+                secret: '%kernel.secret%' # required
+                lifetime: 604800
             #access_denied_handler: App\Security\AccessDeniedHandler
             anonymous: lazy
             provider: app_user_provider

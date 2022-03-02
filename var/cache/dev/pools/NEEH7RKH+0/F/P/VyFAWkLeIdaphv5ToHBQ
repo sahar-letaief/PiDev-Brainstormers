@@ -2,8 +2,7 @@
 
 return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
     $o = [
-        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Symfony\\Component\\Validator\\Constraints\\NotBlank'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Validator\\Constraints\\NotBlank')),
-        clone ($p['Symfony\\Component\\Validator\\Constraints\\Regex'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Validator\\Constraints\\Regex')),
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Symfony\\Component\\Validator\\Constraints\\Regex'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Validator\\Constraints\\Regex')),
         clone $p['Symfony\\Component\\Validator\\Constraints\\Regex'],
         clone ($p['Symfony\\Component\\Validator\\Constraints\\Length'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Validator\\Constraints\\Length')),
         clone $p['Symfony\\Component\\Validator\\Constraints\\Length'],
@@ -11,6 +10,14 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
     null,
     [
         'stdClass' => [
+            'message' => [
+                'password must contain at least a number',
+                'password must start with a letter',
+            ],
+            'pattern' => [
+                '/\\d/',
+                '/^[A-Za-z]/',
+            ],
             'groups' => [
                 [
                     'Default',
@@ -24,29 +31,18 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
                 [
                     'Default',
                 ],
-                [
-                    'Default',
-                ],
-            ],
-            'message' => [
-                1 => 'password must contain at least a number',
-                'password must start with a letter',
-            ],
-            'pattern' => [
-                1 => '/\\d/',
-                '/^[A-Za-z]/',
             ],
             'minMessage' => [
-                3 => 'password must contain at least 8 characters.',
+                2 => 'password must contain at least 8 characters.',
             ],
             'min' => [
-                3 => '8',
+                2 => '8',
             ],
             'maxMessage' => [
-                4 => 'password must contain at most 18 characters.',
+                3 => 'password must contain at most 18 characters.',
             ],
             'max' => [
-                4 => '18',
+                3 => '18',
             ],
         ],
     ],
@@ -55,7 +51,6 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
         $o[1],
         $o[2],
         $o[3],
-        $o[4],
     ],
     []
 ); }];

@@ -10,17 +10,22 @@ use App\Form\UserType;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
+use phpDocumentor\Reflection\Types\Nullable;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Csrf\TokenStorage\TokenStorageInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 
 class UserController extends AbstractController
 {
+
     /**
      * @Route("/all/users", name="users_mobile", methods={"GET"})
      */
@@ -80,7 +85,6 @@ class UserController extends AbstractController
         $user = $this->getUser();
         $form = $this->createForm(ProfileType::class, $user);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid() ) {
             $entityManager->persist($user);
             $entityManager->flush();
@@ -103,6 +107,38 @@ class UserController extends AbstractController
 
         return $this->render('user/profile.html.twig', [
             'user' => $userRepository->findOneBy(['id' => $this->getUser()->getId()]),
+        ]);
+    }
+
+
+    /**
+     * @IsGranted("ROLE_USER")
+     * @Route("/ActivateAccountWithCode", name="ActivateAccountWithCode", methods={"GET","POST"})
+     */
+    public function ActivateAccountWithCode(UserRepository $userRepository, Request $request,PaginatorInterface $paginator): Response
+    {
+        $error = null;
+        if ( $request->isMethod('POST')) {
+            $code = $request->request->get('verificationcode');
+            $codeUser = $this->getUser()->getVerificationCode();
+            if ( $code == $codeUser){
+                $user = new User();
+                $user = $this->getUser();
+                $user->setVerificationCode(null);
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($user);
+                $entityManager->flush();
+                return $this->redirectToRoute("app_login");
+            }
+            else{
+                $error = "Please Verify your Code";
+                return $this->render('security/ActivateAccountWithCode.html.twig',[
+                    'error' => $error,
+                ]);
+            }
+        }
+        return $this->render('security/ActivateAccountWithCode.html.twig',[
+            'error' => $error,
         ]);
     }
 
@@ -258,4 +294,6 @@ class UserController extends AbstractController
         }
         return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);
     }
+
+
 }

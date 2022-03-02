@@ -89,15 +89,25 @@ class UserAuthenticator extends AbstractFormLoginAuthenticator implements Passwo
         return $credentials['password'];
     }
 
-    public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
+    public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey): RedirectResponse
     {
         if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey)) {
             return new RedirectResponse($targetPath);
         }
         $activated = $token->getUser()->isVerified();
+        $hasAccess = in_array('ROLE_ADMIN', $token->getUser()->getRoles());
+        $verificationCode = $token->getUser()->getVerificationCode();
 
         if ( $activated == 1){
-            return new RedirectResponse($this->urlGenerator->generate('choice'));
+            if ( $hasAccess){
+                return new RedirectResponse($this->urlGenerator->generate('choice'));
+            }else{
+                if ( $verificationCode){
+                    return new RedirectResponse($this->urlGenerator->generate('ActivateAccountWithCode'));
+                }else{
+                    return new RedirectResponse($this->urlGenerator->generate('profile'));
+                }
+            }
         }else{
             return new RedirectResponse($this->urlGenerator->generate('denied_access'));
         }

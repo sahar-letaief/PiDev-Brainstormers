@@ -60,7 +60,6 @@ class User implements UserInterface
 
     /**
      * @var string
-     *     @Assert\NotBlank
      *     @Assert\Regex("/\d/" , match = true,  message="password must contain at least a number")
      *     @Assert\Regex("/^[A-Za-z]/" , message="password must start with a letter")
      *     @Assert\Length(min="8" , minMessage="password must contain at least 8 characters.")
@@ -325,6 +324,18 @@ class User implements UserInterface
     public function setIsVerified(bool $isVerified): self
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+    public function getVerificationCode(): ?string
+    {
+        return $this->verificationCode;
+    }
+
+    public function setVerificationCode(?string $verificationCode): self
+    {
+        $this->verificationCode = $verificationCode;
 
         return $this;
     }
