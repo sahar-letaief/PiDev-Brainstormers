@@ -3,8 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Evenement;
-use App\Entity\NameEventSearch;
-use App\Form\NameEventSearchType;
+
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -50,20 +49,61 @@ class EvenementRepository extends ServiceEntityRepository
     }
     */
 
-   public function SearchEvent(NameEventSearch $NameEvent):array
-   {
-       return $this-> createQueryBuilder('event')
-           ->andWhere('event.NameEvent LIKE :NameEvent')
-           ->setParameter('searchTerm','%' .$NameEvent. '%')
-           ->getQuery()
-            ->execute();
-      }
-    public function findByPrice()
+
+
+    public function SortByNameEvent(){
+        return $this->createQueryBuilder('e')
+            ->orderBy('e.NameEvent','ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function SortByPriceEvent()
     {
         return $this->createQueryBuilder('e')
             ->orderBy('e.PriceEvent','ASC')
             ->getQuery()
             ->getResult()
             ;
+    }
+    public function SortByParticipants(){
+        return $this->createQueryBuilder('e')
+            ->orderBy('e.NbParticipants','ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+    public function findByNameEvent( $NameEvent)
+    {
+        return $this-> createQueryBuilder('e')
+            ->andWhere('e.NameEvent LIKE :NameEvent')
+            ->setParameter('NameEvent','%' .$NameEvent. '%')
+            ->getQuery()
+            ->execute();
+    }
+    public function findByPlaceEvent( $PlaceEvent)
+    {
+        return $this-> createQueryBuilder('e')
+            ->andWhere('e.PlaceEvent LIKE :PlaceEvent')
+            ->setParameter('PlaceEvent','%' .$PlaceEvent. '%')
+            ->getQuery()
+            ->execute();
+    }
+    public function findByDateDebut( $DateDebut)
+    {
+        return $this-> createQueryBuilder('e')
+            ->andWhere('e.DateDebut LIKE :DateDebut')
+            ->setParameter('DateDebut','%' .$DateDebut. '%')
+            ->getQuery()
+            ->execute();
+    }
+    public function findByDateFin( $DateFin)
+    {
+        return $this-> createQueryBuilder('e')
+            ->andWhere('e.DateFin LIKE :DateFin')
+            ->setParameter('DateFin','%' .$DateFin. '%')
+            ->getQuery()
+            ->execute();
     }
 }

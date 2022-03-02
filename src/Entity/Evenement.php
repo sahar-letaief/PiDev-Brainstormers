@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 
 /**
@@ -20,6 +21,7 @@ class Evenement
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("post:read")
      */
     private $id;
 
@@ -27,6 +29,7 @@ class Evenement
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("post:read")
      * @Assert\NotBlank (message="Event name field cannot be empty")
      *  @Assert\Regex("/^[A-Z][a-z]*\s[a-z]*|[0-9]$/" ,
      *          message="Event name should be like this format XXX XXX"
@@ -36,6 +39,7 @@ class Evenement
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("post:read")
      * @Assert\NotBlank (message="Event place field cannot be empty")
      */
     private $PlaceEvent;
@@ -43,14 +47,18 @@ class Evenement
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups("post:read")
      * @Assert\NotEqualTo(
      *     value=0,
      *     message="Number of participants can not be equal to {{ value }} ")
      * @Assert\NotBlank(message="Number of participants field cannot be empty")
      */
     private $NbParticipants;
+
+
     /**
      * @ORM\Column(type="float")
+     * @Groups("post:read")
      * @Assert\NotEqualTo(
      *     value=0,
      *     message="Ticket price can not be equal to {{ value }} DT")
@@ -63,6 +71,7 @@ class Evenement
 
     /**
      * @ORM\OneToMany(targetEntity=Reservation::class, mappedBy="evenement")
+     * @Groups("post:read")
      */
     private $reservations;
 
@@ -71,11 +80,13 @@ class Evenement
     /**
      * @Assert\GreaterThan("today")
      * @ORM\Column(type="date")
+     * @Groups("post:read")
      */
     private $DateDebut;
 
     /**
      * @ORM\Column(type="date")
+     * @Groups("post:read")
      * @Assert\GreaterThanOrEqual(propertyPath="DateDebut",
                          message="End event date should be greater than begin event date")
      * @Assert\GreaterThan("today")
@@ -84,10 +95,26 @@ class Evenement
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("post:read")
      * @Assert\NotBlank (message="Please upload an image")
      * @Assert\File(mimeTypes={"image/jpeg"})
      */
     private $ImageEvent;
+
+    /**
+     * @ORM\Column(type="string", length=8)
+     */
+    private $BackgroundColor;
+
+    /**
+     * @ORM\Column(type="string", length=8)
+     */
+    private $BorderColor;
+
+    /**
+     * @ORM\Column(type="string", length=8)
+     */
+    private $TextColor;
 
 
 
@@ -243,6 +270,42 @@ class Evenement
     public function setImageEvent( $ImageEvent)
     {
         $this->ImageEvent = $ImageEvent;
+
+        return $this;
+    }
+
+    public function getBackgroundColor(): ?string
+    {
+        return $this->BackgroundColor;
+    }
+
+    public function setBackgroundColor(string $BackgroundColor)
+    {
+        $this->BackgroundColor = $BackgroundColor;
+
+        return $this;
+    }
+
+    public function getBorderColor(): ?string
+    {
+        return $this->BorderColor;
+    }
+
+    public function setBorderColor(string $BorderColor)
+    {
+        $this->BorderColor = $BorderColor;
+
+        return $this;
+    }
+
+    public function getTextColor(): ?string
+    {
+        return $this->TextColor;
+    }
+
+    public function setTextColor(string $TextColor)
+    {
+        $this->TextColor = $TextColor;
 
         return $this;
     }

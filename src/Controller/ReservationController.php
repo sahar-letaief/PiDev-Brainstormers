@@ -174,6 +174,8 @@ class ReservationController extends AbstractController
     public function deletefront(ReservationRepository $repo,$idR)
     {
         $res = $repo->find($idR);
+        $res->getEvenement()->setNbParticipants($res->getEvenement()->getNbParticipants()+1);
+
         //dd($res->getEvenement()->getId());
         //$IdEvent=$res->getEvenement()->getId();
         $em = $this->getDoctrine()->getManager();

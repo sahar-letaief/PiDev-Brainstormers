@@ -19,6 +19,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 /**
  * @Route("/evenement")
@@ -31,19 +32,79 @@ class EvenementController extends AbstractController
      * @IsGranted("ROLE_EVENT")
      * @Route("/", name="evenement_index", methods={"GET","POST"})
      */
-    public function index(Request $request,PaginatorInterface $paginator){
+    public function index(Request $request,PaginatorInterface $paginator,EvenementRepository $evenementRepository){
         $em=$this->getDoctrine()->getManager();
         $data=$em->getRepository(Evenement::class)->findAll();
         $evenements=$paginator->paginate($data,$request->query->getInt('page',1),3);
-
+        $back = null;
         if($request->isMethod("POST")){
-            $name=$request->get('NameEvent');
-            $data=$em->getRepository( Evenement::class)->findBy(array('NameEvent'=>$name));
-            $evenements=$paginator->paginate($data,$request->query->getInt('page',1),3);
+            if ( $request->request->get('optionsRadios')){
+                $SortKey = $request->request->get('optionsRadios');
+                switch ($SortKey){
+                    case 'NameEvent':
+                        $events = $evenementRepository->SortByNameEvent();
+                        break;
+
+                    case 'PriceEvent':
+                        $events = $evenementRepository->SortByPriceEvent();
+                        break;
+
+                    case 'NbParticipants':
+                        $events = $evenementRepository->SortByParticipants();
+                        break;
+
+                }
+            }
+            else
+            {
+                $type = $request->request->get('optionsearch');
+                $value = $request->request->get('Search');
+                switch ($type){
+                    case 'NameEvent':
+                        $events = $evenementRepository->findByNameEvent($value);
+                        break;
+
+                    case 'PlaceEvent':
+                        $events = $evenementRepository->findByPlaceEvent($value);
+                        break;
+
+                    case 'DateDebut':
+                        $events = $evenementRepository->findByDateDebut($value);
+                        break;
+
+                    case 'DateFin':
+                        $events = $evenementRepository->findByDateFin($value);
+                        break;
+
+
+                }
+            }
+            if ( $events){
+                $back = "success";
+            }else{
+                $back = "failure";
+            }
+            //dd($request->request->get('optionsRadios'));
+            $evenements=$paginator->paginate(
+                $events,
+                $request->query->getInt('page',1),
+                3);
+
+            return $this->render('Back/evenement/index.html.twig',array('evenements'=>$evenements, 'back'=>$back));
 
         }
-        return $this->render('Back/evenement/index.html.twig',array('evenements'=>$evenements));
+        return $this->render('Back/evenement/index.html.twig',array('evenements'=>$evenements, 'back'=>$back));
     }
+    /**
+     * @Route("/api", name="evenement_index_api")
+     */
+    public function indexjson(NormalizerInterface $Normalizer){
+
+        $evenements=$this->getDoctrine()->getRepository(Evenement::class)->findAll();
+        $jsonContent=$Normalizer->normalize($evenements,'json',['groups'=>'post:read']);
+        return new Response(json_encode($jsonContent));
+    }
+
 
     /**
      * @IsGranted("ROLE_EVENT")
@@ -67,7 +128,7 @@ class EvenementController extends AbstractController
     }
     /**
      * @IsGranted("ROLE_EVENT")
-     * @Route("/calendar", name="calendar", methods={"GET","POST"})
+     * @Route("/calendar", name="calendar", methods={"GET"})
      */
     public function calendar(EvenementRepository $evenementRepository){
 
@@ -75,11 +136,13 @@ class EvenementController extends AbstractController
         $rdvs= [];
         foreach ($events as $event){
             $rdvs[]=[
-
                 'NameEvent'=>$event->getNameEvent(),
                 'PlaceEvent'=> $event->getPlaceEvent(),
                 'DateDebut'=>$event->getDateDebut()->format('Y-m-d ,h:m'),
                 'DateFin'=>$event->getDateFin()->format('Y-m-d ,h:m'),
+                'BackgroundColor'=>$event->getBackgroundColor(),
+                'TextColor'=>$event->getTextColor(),
+                'BorderColor'=>$event->getBorderColor(),
             ];
 
         }
@@ -98,15 +161,13 @@ class EvenementController extends AbstractController
         public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $evenement = new Evenement();
+        $evenement->setBackgroundColor('#FA8D75');
+        $evenement->setTextColor('#000000');
+        $evenement->setBorderColor('#000000');
         $form = $this->createForm(EvenementType::class, $evenement);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            //$file=$form->get('ImageEvent')->getData();
-           /// $upload_directory=$this->getParameter('upload_directory');
-           // $filename=md5(uniqid().'.'.$file->guessExtension());
-          //  $file->move($upload_directory,$filename);
-           // $evenement->setImageEvent($filename);
             $entityManager->persist($evenement);
             $entityManager->flush();
 
@@ -118,6 +179,25 @@ class EvenementController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+    /**
+     * @IsGranted("ROLE_EVENT")
+     * @Route("/new/api", name="evenement_new_api")
+     */
+    public function newapi(Request $request, NormalizerInterface $Normalizer): Response
+    {
+        $entityManager=$this->getDoctrine()->getManager();
+        $evenement = new Evenement();
+        $evenement->setNameEvent($request->get("NameEvent"));
+        $evenement->setPlaceEvent($request->get("PlaceEvent"));
+        $evenement->setPriceEvent($request->get("PriceEvent"));
+        $evenement->setDateFin($request->get("DateFin")->format('Y-m-d ,h:m'));
+        $evenement->setDateDebut($request->get("DateDebut")->format('Y-m-d ,h:m'));
+            $entityManager->persist($evenement);
+            $entityManager->flush();
+        $jsonContent=$Normalizer->normalize($evenement,'json',['groups'=>'post:read']);
+        return new Response(json_encode($jsonContent));
+    }
+
     /**
      * @IsGranted("ROLE_EVENT")
      * @Route("/sort", name="sort")
@@ -168,6 +248,22 @@ class EvenementController extends AbstractController
             'evenement' => $evenement,
         ]);
     }
+    /**
+     * @Route("/{id}/editapi", name="evenement_edit_api")
+     */
+    public function editapi(Request $request,NormalizerInterface $Normalizer,$id)
+    {
+        $em=$this->getDoctrine()->getManager();
+        $evenement=$em->getRepository(Evenement::class)->find($id);
+        $evenement->setNameEvent($request->get("NameEvent"));
+        $evenement->setPlaceEvent($request->get("PlaceEvent"));
+        $evenement->setPriceEvent($request->get("PriceEvent"));
+        $evenement->setDateFin($request->get("DateFin")->format('Y-m-d ,h:m'));
+        $evenement->setDateDebut($request->get("DateDebut")->format('Y-m-d ,h:m'));
+        $em->flush();
+        $jsonContent=$Normalizer->normalize($evenement,'json',['groups'=>'post:read']);
+        return new Response("information updated successfully".json_encode($jsonContent));
+    }
 
     /**
      * @IsGranted("ROLE_EVENT")
@@ -189,6 +285,22 @@ class EvenementController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+
+    /**
+     * @Route("/{id}/delete/api", name="evenement_delete_api")
+     */
+    public function deleteapi(NormalizerInterface $Normalizer,$id)
+    {
+        $em=$this->getDoctrine()->getManager();
+        $evenement = $em->getRepository(Evenement::class)->find($id);
+        $em->remove($evenement);
+        $em->flush();
+
+        $jsonContent=$Normalizer->normalize($evenement,'json',['groups'=>'post:read']);
+        return new Response("Event deleted successfully".json_encode($jsonContent));
+    }
+
 
     /**
      * @IsGranted("ROLE_EVENT")

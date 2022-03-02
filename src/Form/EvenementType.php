@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Evenement;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ColorType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -22,6 +23,10 @@ class EvenementType extends AbstractType
             ->add('PriceEvent')
             ->add('NbParticipants')
             ->add('ImageEvent', FileType::class)
+            //->add('BackgroundColor',ColorType::class)
+            //->add('BorderColor',ColorType::class)
+            //->add('TextColor',ColorType::class)
+
             ->add('Submit', submitType::class)
 
     ;

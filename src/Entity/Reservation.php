@@ -6,6 +6,7 @@ use App\Repository\ReservationRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=ReservationRepository::class)
@@ -16,22 +17,26 @@ class Reservation
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("post:read")
      */
     private $id;
 
     /**
      * @ORM\Column(type="date",nullable=true)
+     * @Groups("post:read")
      */
     private $DateReservation;
 
     /**
      * @ORM\ManyToOne(targetEntity=Evenement::class, inversedBy="reservations")
      * @ORM\JoinColumn(onDelete="CASCADE")
+     * @Groups("post:read")
      */
     private $evenement;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="reservations")
+     * @Groups("post:read")
      */
     private $user;
 

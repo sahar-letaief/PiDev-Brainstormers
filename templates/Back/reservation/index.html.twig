@@ -6,6 +6,54 @@
 
 
 {% block body %}
+<style>
+
+    .pagination{
+        justify-content: center;
+    }
+    .current{
+        margin: 0px 5px 0px 5px;
+        border-radius: 50%;
+        width: 1.6%;
+        height: 1%;
+        text-align: center;
+        background-color: #0090e7;
+    }
+
+    .page{
+        margin: 0px 5px 0px 5px;
+        border-radius: 50%;
+        width: 1.6%;
+        height: 1%;
+        text-align: center;
+        background-color: #0090e7;
+    }
+
+    .page a{
+        color: white;
+    }
+
+    .previous a{
+        color: white;
+        margin-left: 5px;
+        border-bottom: 1px solid #00d25b;
+    }
+    .next a{
+        color: white;
+        margin-right: 5px;
+        border-bottom: 1px solid #00d25b;
+    }
+
+    .first a{
+        color: #00d25b;
+        margin-left: 5px;
+        border-bottom: 1px solid #00d25b;
+    }
+    .last a{
+        color: #00d25b;
+        border-bottom: 1px solid #00d25b;
+    }
+</style>
  <div class="main-panel">
     <div class="content-wrapper">
         <div class="page-header">
@@ -21,6 +69,7 @@
         <div class="col-12 grid-margin">
             <div class="card">
                 <div class="card-body">
+
                     <h4 class="card-title">Reservation list</h4>
                     <div class="table-responsive">
                         <table class="table">
