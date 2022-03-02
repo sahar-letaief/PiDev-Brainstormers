@@ -6,6 +6,7 @@ use App\Entity\Commande;
 use App\Entity\CommandeSearch;
 use App\Form\CommandeType;
 use App\Form\CommandeSearchType;
+use Symfony\Component\Form\Extension\Core\Type\SearchType;
 use App\Repository\CommandeRepository;
 use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -25,21 +26,66 @@ use Knp\Component\Pager\PaginatorInterface;
 class CommandeController extends AbstractController
 {
     /**
-     * @Route("/", name="commande_index", methods={"GET"})
+     * @Route("/", name="commande_index", methods={"GET","POST"})
      */
     public function index(Request $request, CommandeRepository $commandeRepository, ProductRepository $productRepository , PaginatorInterface $paginator): Response
     {   
 
-        $donnee = $this->getDoctrine()->getRepository(Commande::class)->findAll();
-
-        $commandes=$paginator->paginate($donnee,$request->query->getInt('page',1),2);
-
-
+       // $commande = new Commande();
+        $form = $this->createForm(CommandeSearchType::class);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid())
+           {
+                $term = $form['ref_cmde']->getData();
+                
+                $allcommande= $commandeRepository->search($term);
+            }
+            else
+            {
+               $allcommande= $commandeRepository->findAll(); 
+            }
+        $commandes=$paginator->paginate($allcommande,$request->query->getInt('page',1),2);
         return $this->render('commande/index.html.twig',[
             'commandes' => $commandes,
             'products' => $productRepository->findAll(),
+            'form' => $form->createView()
             ]);    
     }
+
+        /**
+         * Search action.
+         * @Route("/search/", name="search")
+         * @param  Request               $request Request instance
+         * @param  string                $search  Search term
+         * @return Response|JsonResponse          Response instance
+         */
+        //public function searchAction(Request $request)
+        //{
+            //if (!$request->isXmlHttpRequest()) {
+                //return $this->render("search.html.twig");
+            //}
+
+            //if (!$searchTerm = trim($request->query->get("search", $search))) {
+                //return new JsonResponse(["error" => "Search term not specified."], Response::HTTP_BAD_REQUEST);
+            //}
+
+            //$em = $this->getDoctrine()->getManager();
+            //if (!($results = $em->getRepository(User::class)->findOneByEmail($searchTerm))) {
+                //return new JsonResponse(["error" => "No results found."], Response::HTTP_NOT_FOUND);
+            //}
+
+            //return new JsonResponse([
+              //  "html" => $this->renderView("search.ajax.twig", ["results" => $results]),
+            //]);
+        //}
+
+
+
+
+
+
+
+
 
      /**
      * @Route("/{id}/list", name="commande_liste", methods={"GET"})
