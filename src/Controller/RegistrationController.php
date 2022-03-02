@@ -14,14 +14,20 @@ use Symfony\Component\Mime\Address;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
+use Twilio\Rest\Client;
 
 class RegistrationController extends AbstractController
 {
     private EmailVerifier $emailVerifier;
+    private $twilio;
+    private $fromNumber;
 
-    public function __construct(EmailVerifier $emailVerifier)
+    public function __construct(Client $twilio,EmailVerifier $emailVerifier)
     {
         $this->emailVerifier = $emailVerifier;
+        $this->twilio = $twilio;
+        $this->fromNumber = "+17853776886";
+
     }
 
     /**
@@ -45,6 +51,12 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
+
+
+            $this->twilio->messages->create("+216". $user->getPhoneNumber(), [
+                'from' => $this->fromNumber,
+                'body' => "Hi Your report has begun processing"
+            ]);
 
             $entityManager->persist($user);
             $entityManager->flush();

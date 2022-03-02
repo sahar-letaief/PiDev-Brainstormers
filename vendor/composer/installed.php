@@ -899,6 +899,15 @@
             'reference' => '411863a63c495c68852215518bb5665965c61a2d',
             'dev_requirement' => true,
         ),
+        'symfony/messenger' => array(
+            'pretty_version' => 'v4.4.38',
+            'version' => '4.4.38.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/messenger',
+            'aliases' => array(),
+            'reference' => 'a670e108da8d0da4ae098e618a576683c9fda71b',
+            'dev_requirement' => false,
+        ),
         'symfony/mime' => array(
             'pretty_version' => 'v4.4.37',
             'version' => '4.4.37.0',
@@ -1308,6 +1317,15 @@
             'install_path' => __DIR__ . '/../twig/twig',
             'aliases' => array(),
             'reference' => '972d8604a92b7054828b539f2febb0211dd5945c',
+            'dev_requirement' => false,
+        ),
+        'twilio/sdk' => array(
+            'pretty_version' => '6.35.0',
+            'version' => '6.35.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../twilio/sdk',
+            'aliases' => array(),
+            'reference' => '9cfb888bdb2555365ef0b48a81c140394e53ab83',
             'dev_requirement' => false,
         ),
         'webmozart/assert' => array(
