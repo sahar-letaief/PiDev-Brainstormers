@@ -20,11 +20,12 @@ return [
         '/denied_access' => [[['_route' => 'denied_access', '_controller' => 'App\\Controller\\SecurityController::index'], null, null, null, false, false, null]],
         '/forgotten-password' => [[['_route' => 'app_forgotten_password', '_controller' => 'App\\Controller\\SecurityController::forgottenPass'], null, null, null, false, false, null]],
         '/choice' => [[['_route' => 'choice', '_controller' => 'App\\Controller\\SecurityController::choice'], null, null, null, false, false, null]],
+        '/all/users' => [[['_route' => 'users_mobile', '_controller' => 'App\\Controller\\UserController::mobile_all_users'], null, ['GET' => 0], null, false, false, null]],
         '/profile/delete' => [[['_route' => 'delete_profile', '_controller' => 'App\\Controller\\UserController::delete_profile'], null, ['POST' => 0], null, false, false, null]],
         '/profile/editPassword' => [[['_route' => 'edit_profile_password', '_controller' => 'App\\Controller\\UserController::edituserpassword'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/profile/edit' => [[['_route' => 'edit_profile', '_controller' => 'App\\Controller\\UserController::edit_profile'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/profile' => [[['_route' => 'profile', '_controller' => 'App\\Controller\\UserController::profile'], null, ['GET' => 0], null, false, false, null]],
-        '/user' => [[['_route' => 'user_index', '_controller' => 'App\\Controller\\UserController::index'], null, ['GET' => 0], null, true, false, null]],
+        '/user' => [[['_route' => 'user_index', '_controller' => 'App\\Controller\\UserController::index'], null, ['GET' => 0, 'POST' => 1], null, true, false, null]],
         '/user/new' => [[['_route' => 'user_new', '_controller' => 'App\\Controller\\UserController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
     ],
     [ // $regexpList

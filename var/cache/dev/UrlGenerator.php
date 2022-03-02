@@ -23,6 +23,7 @@ return [
     'app_forgotten_password' => [[], ['_controller' => 'App\\Controller\\SecurityController::forgottenPass'], [], [['text', '/forgotten-password']], [], []],
     'app_reset_password' => [['token'], ['_controller' => 'App\\Controller\\SecurityController::verifyUserEmail'], [], [['variable', '/', '[^/]++', 'token'], ['text', '/resetPassword']], [], []],
     'choice' => [[], ['_controller' => 'App\\Controller\\SecurityController::choice'], [], [['text', '/choice']], [], []],
+    'users_mobile' => [[], ['_controller' => 'App\\Controller\\UserController::mobile_all_users'], [], [['text', '/all/users']], [], []],
     'delete_profile' => [[], ['_controller' => 'App\\Controller\\UserController::delete_profile'], [], [['text', '/profile/delete']], [], []],
     'edit_profile_password' => [[], ['_controller' => 'App\\Controller\\UserController::edituserpassword'], [], [['text', '/profile/editPassword']], [], []],
     'edit_profile' => [[], ['_controller' => 'App\\Controller\\UserController::edit_profile'], [], [['text', '/profile/edit']], [], []],

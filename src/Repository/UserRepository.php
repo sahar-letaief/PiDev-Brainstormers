@@ -36,22 +36,98 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->_em->flush();
     }
 
-    // /**
-    //  * @return User[] Returns an array of User objects
-    //  */
-    /*
-    public function findByExampleField($value)
+     /**
+      * @return User[] Returns an array of User objects
+      */
+
+    public function findByFirstName($value)
     {
         return $this->createQueryBuilder('u')
-            ->andWhere('u.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('u.id', 'ASC')
-            ->setMaxResults(10)
+            ->andWhere('u.firstname LIKE :val')
+            ->setParameter('val', '%'.$value.'%')
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+
+    public function findByLastName($value)
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.lastname LIKE :val')
+            ->setParameter('val', '%'.$value.'%')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function findByEmail($value)
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.email LIKE :val')
+            ->setParameter('val', '%'.$value.'%')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+    public function findByUserTag($value)
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.usertag LIKE :val')
+            ->setParameter('val', '%'.$value.'%')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function findByPhoneNumber($value)
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.phone_number LIKE :val')
+            ->setParameter('val', '%'.$value.'%')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+
+
+    public function SortByFirstName()
+    {
+        return $this->createQueryBuilder('u')
+            ->orderBy('u.firstname', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function SortByEmail()
+    {
+        return $this->createQueryBuilder('u')
+            ->orderBy('u.email', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+    public function SortByUserTag()
+    {
+        return $this->createQueryBuilder('u')
+            ->orderBy('u.usertag', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function SortByPhoneNumber()
+    {
+        return $this->createQueryBuilder('u')
+            ->orderBy('u.phone_number', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+
+
 
     /*
     public function findOneBySomeField($value): ?User

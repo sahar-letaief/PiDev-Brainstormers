@@ -9,6 +9,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups;
+
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -26,6 +28,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      * @Assert\Length(min="20" , minMessage="the email must contain at least 20 characters.")
+     * @Groups("read:users")
      */
     private $email;
 
@@ -43,7 +46,8 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\Length(min="4" , minMessage="first name must contain at least 4 characters.")
-     * @Assert\Length(max="30" , maxMessage="first name must contain at most 15 characters.")
+     * @Assert\Length(max="20" , maxMessage="first name must contain at most 20
+     * characters.")
      */
     private $firstname;
 
@@ -55,8 +59,10 @@ class User implements UserInterface
     private $lastname;
 
     /**
+     * @var string
+     *     @Assert\NotBlank
      *     @Assert\Regex("/\d/" , match = true,  message="password must contain at least a number")
-     *     @Assert\Regex("/^\w+/" , message="password must start with a letter")
+     *     @Assert\Regex("/^[A-Za-z]/" , message="password must start with a letter")
      *     @Assert\Length(min="8" , minMessage="password must contain at least 8 characters.")
      *     @Assert\Length(max="18" , maxMessage="password must contain at most 18 characters.")
      */

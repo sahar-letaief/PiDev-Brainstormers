@@ -9,16 +9,28 @@ use App\Form\ProfileType;
 use App\Form\UserType;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 
 class UserController extends AbstractController
 {
+    /**
+     * @Route("/all/users", name="users_mobile", methods={"GET"})
+     */
+    public function mobile_all_users(NormalizerInterface $normalizable,UserRepository $userRepository)
+    {
+        $users = $userRepository->findAll();
+        $jsonContent = $normalizable->normalize($users, 'json' , [ 'groups'=> 'read:users' ]);
+        return new Response(json_encode($jsonContent));
+    }
+
     /**
      * @Route("/profile/delete", name="delete_profile", methods={"POST"})
      */
@@ -96,12 +108,89 @@ class UserController extends AbstractController
 
     /**
      * @IsGranted("ROLE_ADMIN")
-     * @Route("/user/", name="user_index", methods={"GET"})
+     * @Route("/user/", name="user_index", methods={"GET", "POST"})
      */
-    public function index(UserRepository $userRepository): Response
+    public function index(UserRepository $userRepository, Request $request,PaginatorInterface $paginator): Response
     {
+        $back = null;
+        if ( $request->isMethod('POST')) {
+
+            if ( $request->request->get('optionsRadios')){
+                $SortKey = $request->request->get('optionsRadios');
+                switch ($SortKey){
+                    case 'email':
+                        $users = $userRepository->SortByEmail();
+                        break;
+
+                    case 'firstname':
+                        $users = $userRepository->SortByFirstName();
+                        break;
+
+                    case 'usertag':
+                        $users = $userRepository->SortByUserTag();
+                        break;
+
+                    case 'phonenumber':
+                        $users = $userRepository->SortByPhoneNumber();
+                        break;
+                }
+            }
+            else
+            {
+                $type = $request->request->get('optionsearch');
+                $value = $request->request->get('Search');
+                switch ($type){
+                    case 'email':
+                        $users = $userRepository->findByEmail($value);
+                        break;
+
+                    case 'firstname':
+                        $users = $userRepository->findByFirstName($value);
+                        break;
+
+                    case 'lastname':
+                        $users = $userRepository->findByLastName($value);
+                        break;
+
+                    case 'usertag':
+                        $users = $userRepository->findByUserTag($value);
+                        break;
+
+                    case 'phonenumber':
+                        $users = $userRepository->findByPhoneNumber($value);
+                        break;
+                }
+            }
+
+
+            if ( $users){
+                $back = "success";
+            }else{
+                $back = "failure";
+            }
+
+            $usersPaginator = $paginator->paginate(
+                $users, // Requête contenant les données à paginer (ici nos articles)
+                $request->query->getInt('page', 1), // Numéro de la page en cours, passé dans l'URL, 1 si aucune page
+                5 // Nombre de résultats par page
+            );
+
+            return $this->render('user/index.html.twig', [
+                'users' => $usersPaginator,
+                'back' => $back,
+            ]);
+        }
+
+        $users = $userRepository->findAll();
+        $usersPaginator = $paginator->paginate(
+            $users, // Requête contenant les données à paginer (ici nos articles)
+            $request->query->getInt('page', 1), // Numéro de la page en cours, passé dans l'URL, 1 si aucune page
+            5 // Nombre de résultats par page
+        );
+
         return $this->render('user/index.html.twig', [
-            'users' => $userRepository->findAll(),
+            'users' => $usersPaginator,
+            'back' => $back,
         ]);
     }
 
