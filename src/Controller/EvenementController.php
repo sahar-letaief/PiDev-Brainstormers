@@ -117,7 +117,7 @@ class EvenementController extends AbstractController
         $form = $this->createForm(EvenementType::class, $evenement);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() ) {
+        if ($form->isSubmitted() && $form->isValid()) {
 
             $entityManager->persist($evenement);
             $entityManager->flush();
@@ -175,17 +175,15 @@ class EvenementController extends AbstractController
      */
     public function calendar(EvenementRepository $evenementRepository){
 
-        $events=$evenementRepository->findAll();
+        $evs=$evenementRepository->findAll();
         $rdvs= [];
-        foreach ($events as $event){
+        foreach ($evs as $ev){
             $rdvs[]=[
-                'NameEvent'=>$event->getNameEvent(),
-                'PlaceEvent'=> $event->getPlaceEvent(),
-                'DateDebut'=>$event->getDateDebut()->format('Y-m-d ,h:m'),
-                'DateFin'=>$event->getDateFin()->format('Y-m-d ,h:m'),
-                'BackgroundColor'=>$event->getBackgroundColor(),
-                'TextColor'=>$event->getTextColor(),
-                'BorderColor'=>$event->getBorderColor(),
+                'NameEvent'=>$ev->getNameEvent(),
+                'PlaceEvent'=> $ev->getPlaceEvent(),
+                'DateDebut'=>$ev->getDateDebut()->format('Y-m-d ,h:m'),
+                'DateFin'=>$ev->getDateFin()->format('Y-m-d ,h:m'),
+
             ];
 
         }
