@@ -78,6 +78,14 @@
         .form-check .form-check-label input[type="radio"]:checked + .input-helper:before {
             background-color: #00d25b;
         }
+
+        .table thead th, .jsgrid .jsgrid-table thead th {
+            color: #0090e7;
+        }
+
+        .table, .jsgrid .jsgrid-table {
+            color: #ffffff;
+        }
     </style>
 {% endblock %}
 
@@ -100,19 +108,19 @@
                                     <div class="form-group col-md-4" style="display: flex; width: 100%!important; margin: 0px!important;">
 
                                         <div class="form-check">
-                                            <label class="form-check-label" style="width: 55px;margin-left: -2px;margin-right: 10px;">
+                                            <label class="form-check-label" style="width: 55px;margin-left: -2px;margin-right: 10px;color: white;">
                                                 <input style="border: solid #00d25b;" type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="email"> Email </label>
                                         </div>
                                         <div class="form-check">
-                                            <label class="form-check-label" style="width: 78px;margin-left: -2px;margin-right: 10px;">
+                                            <label class="form-check-label" style="width: 78px;margin-left: -2px;margin-right: 10px;color: white;">
                                                 <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="firstname" > Full name </label>
                                         </div>
                                         <div class="form-check">
-                                            <label class="form-check-label" style="width: 79px;margin-left: -2px;margin-right: 10px;">
+                                            <label class="form-check-label" style="width: 79px;margin-left: -2px;margin-right: 10px;color: white;">
                                                 <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="usertag" > Username </label>
                                         </div>
                                         <div class="form-check">
-                                            <label class="form-check-label" style="width: 118px;margin-left: -2px;margin-right: 10px;">
+                                            <label class="form-check-label" style="width: 118px;margin-left: -2px;margin-right: 10px;color: white;">
                                                 <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios4" value="phonenumber"  > Phone Number </label>
                                         </div>
                                         <button type="Submit" class="btn btn-success btn-fw">Sort</button>
@@ -179,6 +187,14 @@
                                                         <label class="badge badge-info">PLAYER</label>
                                                     {% elseif role == 'ROLE_USER' %}
                                                         <label class="badge badge-warning">USER</label>
+                                                    {% elseif role == 'ROLE_PRODUCT' %}
+                                                        <label class="badge badge-primary">Product Manager</label>
+                                                    {% elseif role == 'ROLE_PURCHASE' %}
+                                                        <label class="badge badge-primary">Purchase Manager</label>
+                                                    {% elseif role == 'ROLE_RECLAMATION' %}
+                                                        <label class="badge badge-primary">Reclamation Manager</label>
+                                                    {% elseif role == 'ROLE_EVENT' %}
+                                                        <label class="badge badge-primary">Event Manager</label>
                                                     {% endif %}
                                                 {% endfor %}
                                             </td>

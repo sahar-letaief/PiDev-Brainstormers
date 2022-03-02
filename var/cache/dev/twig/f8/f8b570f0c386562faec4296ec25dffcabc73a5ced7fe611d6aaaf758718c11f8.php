@@ -73,6 +73,11 @@ class __TwigTemplate_3d561ab4c9e92d6c877944565a6e850ea094dbc385620b56bc28493af96
         // line 21
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/images/favicon.png"), "html", null, true);
         echo "\" />
+    <style>
+        .card{
+            border: 2px solid white;
+        }
+    </style>
 </head>
 <body>
 <div class=\"container-scroller\">
@@ -83,15 +88,15 @@ class __TwigTemplate_3d561ab4c9e92d6c877944565a6e850ea094dbc385620b56bc28493af96
                     <div class=\"card-body px-5 py-5\">
                         <h3 class=\"card-title text-left mb-3\">Login</h3>
                         ";
-        // line 31
-        if ((isset($context["error"]) || array_key_exists("error", $context) ? $context["error"] : (function () { throw new RuntimeError('Variable "error" does not exist.', 31, $this->source); })())) {
-            // line 32
+        // line 36
+        if ((isset($context["error"]) || array_key_exists("error", $context) ? $context["error"] : (function () { throw new RuntimeError('Variable "error" does not exist.', 36, $this->source); })())) {
+            // line 37
             echo "                            <div class=\"alert alert-danger\">";
-            echo twig_escape_filter($this->env, (isset($context["error"]) || array_key_exists("error", $context) ? $context["error"] : (function () { throw new RuntimeError('Variable "error" does not exist.', 32, $this->source); })()), "html", null, true);
+            echo twig_escape_filter($this->env, (isset($context["error"]) || array_key_exists("error", $context) ? $context["error"] : (function () { throw new RuntimeError('Variable "error" does not exist.', 37, $this->source); })()), "html", null, true);
             echo "</div>
                         ";
         }
-        // line 34
+        // line 39
         echo "
                         <form method=\"post\">
                             <div class=\"form-group\">
@@ -103,8 +108,8 @@ class __TwigTemplate_3d561ab4c9e92d6c877944565a6e850ea094dbc385620b56bc28493af96
                                 <input class=\"form-control p_input\" type=\"password\" name=\"password2\" id=\"pass\">
                             </div>
                             <input type=\"hidden\" name=\"token\" value=\"";
-        // line 44
-        echo twig_escape_filter($this->env, (isset($context["token"]) || array_key_exists("token", $context) ? $context["token"] : (function () { throw new RuntimeError('Variable "token" does not exist.', 44, $this->source); })()), "html", null, true);
+        // line 49
+        echo twig_escape_filter($this->env, (isset($context["token"]) || array_key_exists("token", $context) ? $context["token"] : (function () { throw new RuntimeError('Variable "token" does not exist.', 49, $this->source); })()), "html", null, true);
         echo "\">
 
                             <div class=\"text-center\">
@@ -123,7 +128,7 @@ class __TwigTemplate_3d561ab4c9e92d6c877944565a6e850ea094dbc385620b56bc28493af96
 <!-- container-scroller -->
 <!-- plugins:js -->
 <script src=\"";
-        // line 61
+        // line 66
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/vendors/js/vendor.bundle.base.js"), "html", null, true);
         echo "\"></script>
 <!-- endinject -->
@@ -131,23 +136,23 @@ class __TwigTemplate_3d561ab4c9e92d6c877944565a6e850ea094dbc385620b56bc28493af96
 <!-- End plugin js for this page -->
 <!-- inject:js -->
 <script src=\"";
-        // line 66
+        // line 71
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/js/off-canvas.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 67
+        // line 72
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/js/hoverable-collapse.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 68
+        // line 73
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/js/misc.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 69
+        // line 74
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/js/settings.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 70
+        // line 75
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/js/todolist.js"), "html", null, true);
         echo "\"></script>
 <!-- endinject -->
@@ -175,7 +180,7 @@ class __TwigTemplate_3d561ab4c9e92d6c877944565a6e850ea094dbc385620b56bc28493af96
 
     public function getDebugInfo()
     {
-        return array (  151 => 70,  147 => 69,  143 => 68,  139 => 67,  135 => 66,  127 => 61,  107 => 44,  95 => 34,  89 => 32,  87 => 31,  74 => 21,  69 => 19,  59 => 12,  55 => 11,  43 => 1,);
+        return array (  156 => 75,  152 => 74,  148 => 73,  144 => 72,  140 => 71,  132 => 66,  112 => 49,  100 => 39,  94 => 37,  92 => 36,  74 => 21,  69 => 19,  59 => 12,  55 => 11,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -201,6 +206,11 @@ class __TwigTemplate_3d561ab4c9e92d6c877944565a6e850ea094dbc385620b56bc28493af96
     <link rel=\"stylesheet\" href=\"{{ asset('Back/assets/css/style.css') }}\">
     <!-- End layout styles -->
     <link rel=\"shortcut icon\" href=\"{{ asset('Back/assets/images/favicon.png') }}\" />
+    <style>
+        .card{
+            border: 2px solid white;
+        }
+    </style>
 </head>
 <body>
 <div class=\"container-scroller\">

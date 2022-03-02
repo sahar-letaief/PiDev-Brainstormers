@@ -22,12 +22,12 @@ class EditUserType extends AbstractType
             ->add('roles' , ChoiceType::class , [
                 'choices' => [
                     'Admin' => 'ROLE_ADMIN',
-                    'User' => 'ROLE_USER',
-                    'Player' => 'ROLE_PLAYER',
                     'Product Manager' => 'ROLE_PRODUCT',
                     'Purchases Manager' => 'ROLE_PURCHASE',
                     'Reclamation Manager' => 'ROLE_RECLAMATION',
-                    'Event Manager' => 'ROLE_EVENT'
+                    'Event Manager' => 'ROLE_EVENT',
+                    'Player' => 'ROLE_PLAYER',
+                    'User' => 'ROLE_USER'
                 ],
                 'expanded' => true,
                 'multiple' => false,

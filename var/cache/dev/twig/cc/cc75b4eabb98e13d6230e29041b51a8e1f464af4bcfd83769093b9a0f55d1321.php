@@ -167,6 +167,14 @@ class __TwigTemplate_abee4f93f5983c7b554e06c3545d7ecff68411ba43743479e11b9d04681
         .form-check .form-check-label input[type=\"radio\"]:checked + .input-helper:before {
             background-color: #00d25b;
         }
+
+        .table thead th, .jsgrid .jsgrid-table thead th {
+            color: #0090e7;
+        }
+        
+        .table, .jsgrid .jsgrid-table {
+            color: #ffffff;
+        }
     </style>
 ";
         
@@ -177,7 +185,7 @@ class __TwigTemplate_abee4f93f5983c7b554e06c3545d7ecff68411ba43743479e11b9d04681
 
     }
 
-    // line 84
+    // line 92
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -187,7 +195,7 @@ class __TwigTemplate_abee4f93f5983c7b554e06c3545d7ecff68411ba43743479e11b9d04681
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 85
+        // line 93
         echo "    <div class=\"main-panel\">
         <div class=\"content-wrapper\">
             <div class=\"page-header\">
@@ -206,19 +214,19 @@ class __TwigTemplate_abee4f93f5983c7b554e06c3545d7ecff68411ba43743479e11b9d04681
                                     <div class=\"form-group col-md-4\" style=\"display: flex; width: 100%!important; margin: 0px!important;\">
 
                                         <div class=\"form-check\">
-                                            <label class=\"form-check-label\" style=\"width: 55px;margin-left: -2px;margin-right: 10px;\">
+                                            <label class=\"form-check-label\" style=\"width: 55px;margin-left: -2px;margin-right: 10px;color: white;\">
                                                 <input style=\"border: solid #00d25b;\" type=\"radio\" class=\"form-check-input\" name=\"optionsRadios\" id=\"optionsRadios1\" value=\"email\"> Email </label>
                                         </div>
                                         <div class=\"form-check\">
-                                            <label class=\"form-check-label\" style=\"width: 78px;margin-left: -2px;margin-right: 10px;\">
+                                            <label class=\"form-check-label\" style=\"width: 78px;margin-left: -2px;margin-right: 10px;color: white;\">
                                                 <input type=\"radio\" class=\"form-check-input\" name=\"optionsRadios\" id=\"optionsRadios2\" value=\"firstname\" > Full name </label>
                                         </div>
                                         <div class=\"form-check\">
-                                            <label class=\"form-check-label\" style=\"width: 79px;margin-left: -2px;margin-right: 10px;\">
+                                            <label class=\"form-check-label\" style=\"width: 79px;margin-left: -2px;margin-right: 10px;color: white;\">
                                                 <input type=\"radio\" class=\"form-check-input\" name=\"optionsRadios\" id=\"optionsRadios3\" value=\"usertag\" > Username </label>
                                         </div>
                                         <div class=\"form-check\">
-                                            <label class=\"form-check-label\" style=\"width: 118px;margin-left: -2px;margin-right: 10px;\">
+                                            <label class=\"form-check-label\" style=\"width: 118px;margin-left: -2px;margin-right: 10px;color: white;\">
                                                 <input type=\"radio\" class=\"form-check-input\" name=\"optionsRadios\" id=\"optionsRadios4\" value=\"phonenumber\"  > Phone Number </label>
                                         </div>
                                         <button type=\"Submit\" class=\"btn btn-success btn-fw\">Sort</button>
@@ -253,15 +261,15 @@ class __TwigTemplate_abee4f93f5983c7b554e06c3545d7ecff68411ba43743479e11b9d04681
                                 </li>
                             </ul>
                             ";
-        // line 149
-        if ( !twig_get_attribute($this->env, $this->source, (isset($context["users"]) || array_key_exists("users", $context) ? $context["users"] : (function () { throw new RuntimeError('Variable "users" does not exist.', 149, $this->source); })()), "items", [], "any", false, false, false, 149)) {
-            // line 150
+        // line 157
+        if ( !twig_get_attribute($this->env, $this->source, (isset($context["users"]) || array_key_exists("users", $context) ? $context["users"] : (function () { throw new RuntimeError('Variable "users" does not exist.', 157, $this->source); })()), "items", [], "any", false, false, false, 157)) {
+            // line 158
             echo "                            <div style=\"display: grid;\">
                                 <label style=\"width: 22%;margin: auto;margin-bottom: 13px;margin-top: 10px;border: 2px solid #0090e7;padding: 10px;border-radius: 20px;border-left: 2px solid red;border-right: 2px solid red;text-align: center; font-style: oblique;color: chartreuse;\"> NO USERS FOUND WITH SUCH CRITERIA</label>
                             </div>
                             ";
         } else {
-            // line 154
+            // line 162
             echo "                            <div class=\"table-responsive\">
                                 <table class=\"table\">
                                     <thead>
@@ -277,71 +285,91 @@ class __TwigTemplate_abee4f93f5983c7b554e06c3545d7ecff68411ba43743479e11b9d04681
                                     </thead>
                                     <tbody>
                                     ";
-            // line 168
+            // line 176
             $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable((isset($context["users"]) || array_key_exists("users", $context) ? $context["users"] : (function () { throw new RuntimeError('Variable "users" does not exist.', 168, $this->source); })()));
+            $context['_seq'] = twig_ensure_traversable((isset($context["users"]) || array_key_exists("users", $context) ? $context["users"] : (function () { throw new RuntimeError('Variable "users" does not exist.', 176, $this->source); })()));
             foreach ($context['_seq'] as $context["_key"] => $context["user"]) {
-                // line 169
+                // line 177
                 echo "                                        <tr>
                                             <td>";
-                // line 170
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "usertag", [], "any", false, false, false, 170), "html", null, true);
+                // line 178
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "usertag", [], "any", false, false, false, 178), "html", null, true);
                 echo "</td>
                                             <td>";
-                // line 171
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "username", [], "any", false, false, false, 171), "html", null, true);
+                // line 179
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "username", [], "any", false, false, false, 179), "html", null, true);
                 echo "</td>
                                             <td>";
-                // line 172
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "phonenumber", [], "any", false, false, false, 172), "html", null, true);
+                // line 180
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "phonenumber", [], "any", false, false, false, 180), "html", null, true);
                 echo "</td>
 
                                             <td>
                                                 ";
-                // line 175
+                // line 183
                 $context['_parent'] = $context;
-                $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, $context["user"], "roles", [], "any", false, false, false, 175));
+                $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, $context["user"], "roles", [], "any", false, false, false, 183));
                 foreach ($context['_seq'] as $context["_key"] => $context["role"]) {
-                    // line 176
+                    // line 184
                     echo "                                                    ";
                     if ((0 === twig_compare($context["role"], "ROLE_ADMIN"))) {
-                        // line 177
+                        // line 185
                         echo "                                                        <label class=\"badge badge-success\">ADMIN</label>
                                                     ";
-                    } elseif ((0 === twig_compare(                    // line 178
+                    } elseif ((0 === twig_compare(                    // line 186
 $context["role"], "ROLE_PLAYER"))) {
-                        // line 179
+                        // line 187
                         echo "                                                        <label class=\"badge badge-info\">PLAYER</label>
                                                     ";
-                    } elseif ((0 === twig_compare(                    // line 180
+                    } elseif ((0 === twig_compare(                    // line 188
 $context["role"], "ROLE_USER"))) {
-                        // line 181
+                        // line 189
                         echo "                                                        <label class=\"badge badge-warning\">USER</label>
                                                     ";
+                    } elseif ((0 === twig_compare(                    // line 190
+$context["role"], "ROLE_PRODUCT"))) {
+                        // line 191
+                        echo "                                                        <label class=\"badge badge-primary\">Product Manager</label>
+                                                    ";
+                    } elseif ((0 === twig_compare(                    // line 192
+$context["role"], "ROLE_PURCHASE"))) {
+                        // line 193
+                        echo "                                                        <label class=\"badge badge-primary\">Purchase Manager</label>
+                                                    ";
+                    } elseif ((0 === twig_compare(                    // line 194
+$context["role"], "ROLE_RECLAMATION"))) {
+                        // line 195
+                        echo "                                                        <label class=\"badge badge-primary\">Reclamation Manager</label>
+                                                    ";
+                    } elseif ((0 === twig_compare(                    // line 196
+$context["role"], "ROLE_EVENT"))) {
+                        // line 197
+                        echo "                                                        <label class=\"badge badge-primary\">Event Manager</label>
+                                                    ";
                     }
-                    // line 183
+                    // line 199
                     echo "                                                ";
                 }
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['role'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 184
+                // line 200
                 echo "                                            </td>
 
                                             <td>Crypted</td>
                                             <td>";
-                // line 187
-                echo twig_escape_filter($this->env, ((twig_get_attribute($this->env, $this->source, $context["user"], "firstname", [], "any", false, false, false, 187) . " ") . twig_get_attribute($this->env, $this->source, $context["user"], "lastname", [], "any", false, false, false, 187)), "html", null, true);
+                // line 203
+                echo twig_escape_filter($this->env, ((twig_get_attribute($this->env, $this->source, $context["user"], "firstname", [], "any", false, false, false, 203) . " ") . twig_get_attribute($this->env, $this->source, $context["user"], "lastname", [], "any", false, false, false, 203)), "html", null, true);
                 echo "</td>
 
                                             <td>
                                                 <a class=\"btn btn-outline-primary btn-fw\" href=\"";
-                // line 190
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("user_show", ["id" => twig_get_attribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 190)]), "html", null, true);
+                // line 206
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("user_show", ["id" => twig_get_attribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 206)]), "html", null, true);
                 echo "\">show</a>
                                                 <a class=\"btn btn-outline-primary btn-fw\" href=\"";
-                // line 191
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("user_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 191)]), "html", null, true);
+                // line 207
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("user_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 207)]), "html", null, true);
                 echo "\">edit</a>
                                             </td>
                                         </tr>
@@ -353,33 +381,33 @@ $context["role"], "ROLE_USER"))) {
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['user'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 198
+            // line 214
             echo "
                                     ";
         }
-        // line 200
+        // line 216
         echo "
                                     </tbody>
                                 </table>
 
                                 ";
-        // line 204
-        echo $this->extensions['Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationExtension']->render($this->env, (isset($context["users"]) || array_key_exists("users", $context) ? $context["users"] : (function () { throw new RuntimeError('Variable "users" does not exist.', 204, $this->source); })()));
+        // line 220
+        echo $this->extensions['Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationExtension']->render($this->env, (isset($context["users"]) || array_key_exists("users", $context) ? $context["users"] : (function () { throw new RuntimeError('Variable "users" does not exist.', 220, $this->source); })()));
         echo "
 
                                 ";
-        // line 206
-        if ((isset($context["back"]) || array_key_exists("back", $context) ? $context["back"] : (function () { throw new RuntimeError('Variable "back" does not exist.', 206, $this->source); })())) {
-            // line 207
+        // line 222
+        if ((isset($context["back"]) || array_key_exists("back", $context) ? $context["back"] : (function () { throw new RuntimeError('Variable "back" does not exist.', 222, $this->source); })())) {
+            // line 223
             echo "                                    <div style=\"display: grid; margin-top: 20px;\">
                                         <a class=\"btn btn-outline-primary btn-fw\" href=\"";
-            // line 208
+            // line 224
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("user_index");
             echo "\">Back</a>
                                     </div>
                                 ";
         }
-        // line 211
+        // line 227
         echo "                            </div>
                         </div>
                     </div>
@@ -408,7 +436,7 @@ $context["role"], "ROLE_USER"))) {
 
     public function getDebugInfo()
     {
-        return array (  383 => 211,  377 => 208,  374 => 207,  372 => 206,  367 => 204,  361 => 200,  357 => 198,  344 => 191,  340 => 190,  334 => 187,  329 => 184,  323 => 183,  319 => 181,  317 => 180,  314 => 179,  312 => 178,  309 => 177,  306 => 176,  302 => 175,  296 => 172,  292 => 171,  288 => 170,  285 => 169,  281 => 168,  265 => 154,  259 => 150,  257 => 149,  191 => 85,  181 => 84,  111 => 23,  106 => 21,  98 => 16,  94 => 15,  90 => 14,  86 => 13,  80 => 10,  76 => 9,  69 => 4,  59 => 3,  36 => 1,);
+        return array (  411 => 227,  405 => 224,  402 => 223,  400 => 222,  395 => 220,  389 => 216,  385 => 214,  372 => 207,  368 => 206,  362 => 203,  357 => 200,  351 => 199,  347 => 197,  345 => 196,  342 => 195,  340 => 194,  337 => 193,  335 => 192,  332 => 191,  330 => 190,  327 => 189,  325 => 188,  322 => 187,  320 => 186,  317 => 185,  314 => 184,  310 => 183,  304 => 180,  300 => 179,  296 => 178,  293 => 177,  289 => 176,  273 => 162,  267 => 158,  265 => 157,  199 => 93,  189 => 92,  111 => 23,  106 => 21,  98 => 16,  94 => 15,  90 => 14,  86 => 13,  80 => 10,  76 => 9,  69 => 4,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -493,6 +521,14 @@ $context["role"], "ROLE_USER"))) {
         .form-check .form-check-label input[type=\"radio\"]:checked + .input-helper:before {
             background-color: #00d25b;
         }
+
+        .table thead th, .jsgrid .jsgrid-table thead th {
+            color: #0090e7;
+        }
+        
+        .table, .jsgrid .jsgrid-table {
+            color: #ffffff;
+        }
     </style>
 {% endblock %}
 
@@ -515,19 +551,19 @@ $context["role"], "ROLE_USER"))) {
                                     <div class=\"form-group col-md-4\" style=\"display: flex; width: 100%!important; margin: 0px!important;\">
 
                                         <div class=\"form-check\">
-                                            <label class=\"form-check-label\" style=\"width: 55px;margin-left: -2px;margin-right: 10px;\">
+                                            <label class=\"form-check-label\" style=\"width: 55px;margin-left: -2px;margin-right: 10px;color: white;\">
                                                 <input style=\"border: solid #00d25b;\" type=\"radio\" class=\"form-check-input\" name=\"optionsRadios\" id=\"optionsRadios1\" value=\"email\"> Email </label>
                                         </div>
                                         <div class=\"form-check\">
-                                            <label class=\"form-check-label\" style=\"width: 78px;margin-left: -2px;margin-right: 10px;\">
+                                            <label class=\"form-check-label\" style=\"width: 78px;margin-left: -2px;margin-right: 10px;color: white;\">
                                                 <input type=\"radio\" class=\"form-check-input\" name=\"optionsRadios\" id=\"optionsRadios2\" value=\"firstname\" > Full name </label>
                                         </div>
                                         <div class=\"form-check\">
-                                            <label class=\"form-check-label\" style=\"width: 79px;margin-left: -2px;margin-right: 10px;\">
+                                            <label class=\"form-check-label\" style=\"width: 79px;margin-left: -2px;margin-right: 10px;color: white;\">
                                                 <input type=\"radio\" class=\"form-check-input\" name=\"optionsRadios\" id=\"optionsRadios3\" value=\"usertag\" > Username </label>
                                         </div>
                                         <div class=\"form-check\">
-                                            <label class=\"form-check-label\" style=\"width: 118px;margin-left: -2px;margin-right: 10px;\">
+                                            <label class=\"form-check-label\" style=\"width: 118px;margin-left: -2px;margin-right: 10px;color: white;\">
                                                 <input type=\"radio\" class=\"form-check-input\" name=\"optionsRadios\" id=\"optionsRadios4\" value=\"phonenumber\"  > Phone Number </label>
                                         </div>
                                         <button type=\"Submit\" class=\"btn btn-success btn-fw\">Sort</button>
@@ -594,6 +630,14 @@ $context["role"], "ROLE_USER"))) {
                                                         <label class=\"badge badge-info\">PLAYER</label>
                                                     {% elseif role == 'ROLE_USER' %}
                                                         <label class=\"badge badge-warning\">USER</label>
+                                                    {% elseif role == 'ROLE_PRODUCT' %}
+                                                        <label class=\"badge badge-primary\">Product Manager</label>
+                                                    {% elseif role == 'ROLE_PURCHASE' %}
+                                                        <label class=\"badge badge-primary\">Purchase Manager</label>
+                                                    {% elseif role == 'ROLE_RECLAMATION' %}
+                                                        <label class=\"badge badge-primary\">Reclamation Manager</label>
+                                                    {% elseif role == 'ROLE_EVENT' %}
+                                                        <label class=\"badge badge-primary\">Event Manager</label>
                                                     {% endif %}
                                                 {% endfor %}
                                             </td>

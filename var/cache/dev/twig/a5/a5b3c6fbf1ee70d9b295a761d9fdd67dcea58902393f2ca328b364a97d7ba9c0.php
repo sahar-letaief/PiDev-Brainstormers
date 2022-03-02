@@ -74,6 +74,11 @@ class __TwigTemplate_55f744265e721585443780b94ef70b66fd7e7ebcd2d09d2340a7f030ece
         // line 22
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/images/favicon.png"), "html", null, true);
         echo "\" />
+    <style>
+        .card{
+            border: 2px solid white;
+        }
+    </style>
 </head>
 <body>
 <div class=\"container-scroller\">
@@ -83,15 +88,15 @@ class __TwigTemplate_55f744265e721585443780b94ef70b66fd7e7ebcd2d09d2340a7f030ece
                 <div class=\"card col-lg-4 mx-auto\">
                     <div class=\"card-body px-5 py-5\">
                         <h3 style=\"color: chartreuse;\"class=\"card-title text-center mb-3\">";
-        // line 31
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 31, $this->source); })()), "user", [], "any", false, false, false, 31), "username", [], "any", false, false, false, 31), "html", null, true);
+        // line 36
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 36, $this->source); })()), "user", [], "any", false, false, false, 36), "username", [], "any", false, false, false, 36), "html", null, true);
         echo "</h3>
 
                         <form method=\"post\">
                             ";
-        // line 34
-        if (twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 34, $this->source); })()), "user", [], "any", false, false, false, 34)) {
-            // line 35
+        // line 39
+        if (twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 39, $this->source); })()), "user", [], "any", false, false, false, 39)) {
+            // line 40
             echo "                                <div class=\"form-group\">
                                     <p class=\"sign-up\">
                                     You are seeing this message as your account needs to be activated.<br>
@@ -99,10 +104,10 @@ class __TwigTemplate_55f744265e721585443780b94ef70b66fd7e7ebcd2d09d2340a7f030ece
                                 </div>
                             ";
         }
-        // line 41
+        // line 46
         echo "                            <div class=\"text-center\">
                                 <a class=\"btn btn-danger btn-block enter-btn\" href=\"";
-        // line 42
+        // line 47
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_logout");
         echo "\"><i class=\"mdi mdi-arrow-right-bold-hexagon-outline\"></i> Log out </a>
                             </div>
@@ -119,7 +124,7 @@ class __TwigTemplate_55f744265e721585443780b94ef70b66fd7e7ebcd2d09d2340a7f030ece
 <!-- container-scroller -->
 <!-- plugins:js -->
 <script src=\"";
-        // line 56
+        // line 61
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/vendors/js/vendor.bundle.base.js"), "html", null, true);
         echo "\"></script>
 <!-- endinject -->
@@ -127,23 +132,23 @@ class __TwigTemplate_55f744265e721585443780b94ef70b66fd7e7ebcd2d09d2340a7f030ece
 <!-- End plugin js for this page -->
 <!-- inject:js -->
 <script src=\"";
-        // line 61
+        // line 66
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/js/off-canvas.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 62
+        // line 67
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/js/hoverable-collapse.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 63
+        // line 68
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/js/misc.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 64
+        // line 69
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/js/settings.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 65
+        // line 70
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/js/todolist.js"), "html", null, true);
         echo "\"></script>
 <!-- endinject -->
@@ -170,7 +175,7 @@ class __TwigTemplate_55f744265e721585443780b94ef70b66fd7e7ebcd2d09d2340a7f030ece
 
     public function getDebugInfo()
     {
-        return array (  147 => 65,  143 => 64,  139 => 63,  135 => 62,  131 => 61,  123 => 56,  106 => 42,  103 => 41,  95 => 35,  93 => 34,  87 => 31,  75 => 22,  70 => 20,  60 => 13,  56 => 12,  43 => 1,);
+        return array (  152 => 70,  148 => 69,  144 => 68,  140 => 67,  136 => 66,  128 => 61,  111 => 47,  108 => 46,  100 => 40,  98 => 39,  92 => 36,  75 => 22,  70 => 20,  60 => 13,  56 => 12,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -197,6 +202,11 @@ class __TwigTemplate_55f744265e721585443780b94ef70b66fd7e7ebcd2d09d2340a7f030ece
     <link rel=\"stylesheet\" href=\"{{ asset('Back/assets/css/style.css') }}\">
     <!-- End layout styles -->
     <link rel=\"shortcut icon\" href=\"{{ asset('Back/assets/images/favicon.png') }}\" />
+    <style>
+        .card{
+            border: 2px solid white;
+        }
+    </style>
 </head>
 <body>
 <div class=\"container-scroller\">

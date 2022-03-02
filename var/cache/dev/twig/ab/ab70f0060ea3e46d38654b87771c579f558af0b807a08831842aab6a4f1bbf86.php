@@ -71,6 +71,11 @@ class __TwigTemplate_a73f1a35923d65460ceda1e8c9d9c56541343d31de9a69144f6e10b9f68
         // line 19
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/images/favicon.png"), "html", null, true);
         echo "\" />
+    <style>
+        .card{
+            border: 2px solid white;
+        }
+    </style>
 </head>
 <body>
 <div class=\"container-scroller\">
@@ -80,8 +85,8 @@ class __TwigTemplate_a73f1a35923d65460ceda1e8c9d9c56541343d31de9a69144f6e10b9f68
                 <div class=\"card col-lg-4 mx-auto\">
                     <div class=\"card-body px-5 py-5\">
                         <h3 class=\"card-title text-center mb-3\">Welcome ";
-        // line 28
-        echo twig_escape_filter($this->env, (isset($context["name"]) || array_key_exists("name", $context) ? $context["name"] : (function () { throw new RuntimeError('Variable "name" does not exist.', 28, $this->source); })()), "html", null, true);
+        // line 33
+        echo twig_escape_filter($this->env, (isset($context["name"]) || array_key_exists("name", $context) ? $context["name"] : (function () { throw new RuntimeError('Variable "name" does not exist.', 33, $this->source); })()), "html", null, true);
         echo "</h3>
 
                         <form method=\"post\">
@@ -91,17 +96,17 @@ class __TwigTemplate_a73f1a35923d65460ceda1e8c9d9c56541343d31de9a69144f6e10b9f68
 
                             <div class=\"d-flex\" style=\"margin-bottom: 20px;\">
                                 <a class=\"btn btn-primary mr-2 col \" href=\"";
-        // line 36
+        // line 41
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("user_index");
         echo "\"><i class=\"mdi mdi-account-box\"></i> Admin Panel </a>
                                 <a class=\"btn btn-primary mr-2 col\" href=\"";
-        // line 37
+        // line 42
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("profile");
         echo "\"><i class=\"mdi mdi-arrow-right-bold-hexagon-outline\"></i> Front panel </a>
                             </div>
                             <div class=\"text-center\">
                                 <a class=\"btn btn-danger btn-block enter-btn\" href=\"";
-        // line 40
+        // line 45
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_logout");
         echo "\"><i class=\"mdi mdi-arrow-right-bold-hexagon-outline\"></i> Log out </a>
                             </div>
@@ -118,7 +123,7 @@ class __TwigTemplate_a73f1a35923d65460ceda1e8c9d9c56541343d31de9a69144f6e10b9f68
 <!-- container-scroller -->
 <!-- plugins:js -->
 <script src=\"";
-        // line 54
+        // line 59
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/vendors/js/vendor.bundle.base.js"), "html", null, true);
         echo "\"></script>
 <!-- endinject -->
@@ -126,23 +131,23 @@ class __TwigTemplate_a73f1a35923d65460ceda1e8c9d9c56541343d31de9a69144f6e10b9f68
 <!-- End plugin js for this page -->
 <!-- inject:js -->
 <script src=\"";
-        // line 59
+        // line 64
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/js/off-canvas.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 60
+        // line 65
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/js/hoverable-collapse.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 61
+        // line 66
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/js/misc.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 62
+        // line 67
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/js/settings.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 63
+        // line 68
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/js/todolist.js"), "html", null, true);
         echo "\"></script>
 <!-- endinject -->
@@ -172,7 +177,7 @@ class __TwigTemplate_a73f1a35923d65460ceda1e8c9d9c56541343d31de9a69144f6e10b9f68
 
     public function getDebugInfo()
     {
-        return array (  146 => 63,  142 => 62,  138 => 61,  134 => 60,  130 => 59,  122 => 54,  105 => 40,  99 => 37,  95 => 36,  84 => 28,  72 => 19,  67 => 17,  57 => 10,  53 => 9,  43 => 1,);
+        return array (  151 => 68,  147 => 67,  143 => 66,  139 => 65,  135 => 64,  127 => 59,  110 => 45,  104 => 42,  100 => 41,  89 => 33,  72 => 19,  67 => 17,  57 => 10,  53 => 9,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -196,6 +201,11 @@ class __TwigTemplate_a73f1a35923d65460ceda1e8c9d9c56541343d31de9a69144f6e10b9f68
     <link rel=\"stylesheet\" href=\"{{ asset('Back/assets/css/style.css') }}\">
     <!-- End layout styles -->
     <link rel=\"shortcut icon\" href=\"{{ asset('Back/assets/images/favicon.png') }}\" />
+    <style>
+        .card{
+            border: 2px solid white;
+        }
+    </style>
 </head>
 <body>
 <div class=\"container-scroller\">

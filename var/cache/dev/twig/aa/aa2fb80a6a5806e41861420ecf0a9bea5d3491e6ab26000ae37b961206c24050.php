@@ -147,8 +147,19 @@ class __TwigTemplate_46324552ce353c866181a066a4f09f4f6b7ccb3b6e30c4d83e439d28897
                                             <button style=\"width: 200px;background: #e53637;border-radius: 4px;color: #ffffff; display: block;font-size: 13px;font-weight: 700;letter-spacing: 2px;text-transform: uppercase;padding: 14px 0;position: relative;margin: 0 auto; \" class=\"btn btn-danger btn-fw\"><i
                                                         class=\"fa fa-angle-right\"></i> Delete Account</button>
                                         </form>
+
                                     </div>
+                                    <div class=\"anime__details__btn\" style=\"display: flex; margin-top: 14px;\">
+                                    <a class=\"follow-btn\" href=\"";
+        // line 62
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_logout");
+        echo "\"><span> Logout </span><i
+                                                class=\"fa fa-angle-right\"></i></a>
+                                    </div>
+
                                 </div>
+
+
                             </div>
                         </div>
 
@@ -179,7 +190,7 @@ class __TwigTemplate_46324552ce353c866181a066a4f09f4f6b7ccb3b6e30c4d83e439d28897
 
     public function getDebugInfo()
     {
-        return array (  145 => 55,  141 => 54,  136 => 52,  128 => 47,  124 => 46,  120 => 45,  116 => 44,  112 => 43,  103 => 37,  68 => 4,  58 => 3,  35 => 1,);
+        return array (  155 => 62,  145 => 55,  141 => 54,  136 => 52,  128 => 47,  124 => 46,  120 => 45,  116 => 44,  112 => 43,  103 => 37,  68 => 4,  58 => 3,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -242,8 +253,16 @@ class __TwigTemplate_46324552ce353c866181a066a4f09f4f6b7ccb3b6e30c4d83e439d28897
                                             <button style=\"width: 200px;background: #e53637;border-radius: 4px;color: #ffffff; display: block;font-size: 13px;font-weight: 700;letter-spacing: 2px;text-transform: uppercase;padding: 14px 0;position: relative;margin: 0 auto; \" class=\"btn btn-danger btn-fw\"><i
                                                         class=\"fa fa-angle-right\"></i> Delete Account</button>
                                         </form>
+
                                     </div>
+                                    <div class=\"anime__details__btn\" style=\"display: flex; margin-top: 14px;\">
+                                    <a class=\"follow-btn\" href=\"{{ path('app_logout') }}\"><span> Logout </span><i
+                                                class=\"fa fa-angle-right\"></i></a>
+                                    </div>
+
                                 </div>
+
+
                             </div>
                         </div>
 

@@ -71,6 +71,11 @@ class __TwigTemplate_f333138bc62490ac1d594ce81274346fbe585a42672c4953319e5bae7a8
         // line 19
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/images/favicon.png"), "html", null, true);
         echo "\" />
+    <style>
+        .card{
+            border: 2px solid white;
+        }
+    </style>
 </head>
 <body>
 <div class=\"container-scroller\">
@@ -83,33 +88,33 @@ class __TwigTemplate_f333138bc62490ac1d594ce81274346fbe585a42672c4953319e5bae7a8
 
 
                         ";
-        // line 31
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["emailForm"]) || array_key_exists("emailForm", $context) ? $context["emailForm"] : (function () { throw new RuntimeError('Variable "emailForm" does not exist.', 31, $this->source); })()), 'form_start');
+        // line 36
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["emailForm"]) || array_key_exists("emailForm", $context) ? $context["emailForm"] : (function () { throw new RuntimeError('Variable "emailForm" does not exist.', 36, $this->source); })()), 'form_start');
         echo "
                         <div class=\"form-group\">
                             ";
-        // line 33
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["emailForm"]) || array_key_exists("emailForm", $context) ? $context["emailForm"] : (function () { throw new RuntimeError('Variable "emailForm" does not exist.', 33, $this->source); })()), "email", [], "any", false, false, false, 33), 'widget', ["attr" => ["class" => "form-control p_input", "placeholder" => "Email"]]);
+        // line 38
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["emailForm"]) || array_key_exists("emailForm", $context) ? $context["emailForm"] : (function () { throw new RuntimeError('Variable "emailForm" does not exist.', 38, $this->source); })()), "email", [], "any", false, false, false, 38), 'widget', ["attr" => ["class" => "form-control p_input", "placeholder" => "Email"]]);
         echo "
                         </div>
                         <div class=\"text-center\"> ";
-        // line 35
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["emailForm"]) || array_key_exists("emailForm", $context) ? $context["emailForm"] : (function () { throw new RuntimeError('Variable "emailForm" does not exist.', 35, $this->source); })()), "submit", [], "any", false, false, false, 35), 'widget', ["attr" => ["class" => " btn btn-lg btn-primary my-4", "placeholder" => "Send Email"]]);
+        // line 40
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["emailForm"]) || array_key_exists("emailForm", $context) ? $context["emailForm"] : (function () { throw new RuntimeError('Variable "emailForm" does not exist.', 40, $this->source); })()), "submit", [], "any", false, false, false, 40), 'widget', ["attr" => ["class" => " btn btn-lg btn-primary my-4", "placeholder" => "Send Email"]]);
         echo "
                         </div>
 
                         <p class=\"sign-up\">Don't have an Account?<a href=\"";
-        // line 38
+        // line 43
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_register");
         echo "\"> Sign Up</a></p>
                         <p class=\"sign-up\">Or Log in !<a href=\"";
-        // line 39
+        // line 44
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
         echo "\"> Login</a></p>
 
                         ";
-        // line 41
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["emailForm"]) || array_key_exists("emailForm", $context) ? $context["emailForm"] : (function () { throw new RuntimeError('Variable "emailForm" does not exist.', 41, $this->source); })()), 'form_end');
+        // line 46
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["emailForm"]) || array_key_exists("emailForm", $context) ? $context["emailForm"] : (function () { throw new RuntimeError('Variable "emailForm" does not exist.', 46, $this->source); })()), 'form_end');
         echo "
 
                     </div>
@@ -127,7 +132,7 @@ class __TwigTemplate_f333138bc62490ac1d594ce81274346fbe585a42672c4953319e5bae7a8
 <!-- container-scroller -->
 <!-- plugins:js -->
 <script src=\"";
-        // line 57
+        // line 62
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/vendors/js/vendor.bundle.base.js"), "html", null, true);
         echo "\"></script>
 <!-- endinject -->
@@ -135,23 +140,23 @@ class __TwigTemplate_f333138bc62490ac1d594ce81274346fbe585a42672c4953319e5bae7a8
 <!-- End plugin js for this page -->
 <!-- inject:js -->
 <script src=\"";
-        // line 62
+        // line 67
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/js/off-canvas.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 63
+        // line 68
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/js/hoverable-collapse.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 64
+        // line 69
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/js/misc.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 65
+        // line 70
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/js/settings.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 66
+        // line 71
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Back/assets/js/todolist.js"), "html", null, true);
         echo "\"></script>
 <!-- endinject -->
@@ -181,7 +186,7 @@ class __TwigTemplate_f333138bc62490ac1d594ce81274346fbe585a42672c4953319e5bae7a8
 
     public function getDebugInfo()
     {
-        return array (  155 => 66,  151 => 65,  147 => 64,  143 => 63,  139 => 62,  131 => 57,  112 => 41,  107 => 39,  103 => 38,  97 => 35,  92 => 33,  87 => 31,  72 => 19,  67 => 17,  57 => 10,  53 => 9,  43 => 1,);
+        return array (  160 => 71,  156 => 70,  152 => 69,  148 => 68,  144 => 67,  136 => 62,  117 => 46,  112 => 44,  108 => 43,  102 => 40,  97 => 38,  92 => 36,  72 => 19,  67 => 17,  57 => 10,  53 => 9,  43 => 1,);
     }
 
     public function getSourceContext()
@@ -205,6 +210,11 @@ class __TwigTemplate_f333138bc62490ac1d594ce81274346fbe585a42672c4953319e5bae7a8
     <link rel=\"stylesheet\" href=\"{{ asset('Back/assets/css/style.css') }}\">
     <!-- End layout styles -->
     <link rel=\"shortcut icon\" href=\"{{ asset('Back/assets/images/favicon.png') }}\" />
+    <style>
+        .card{
+            border: 2px solid white;
+        }
+    </style>
 </head>
 <body>
 <div class=\"container-scroller\">

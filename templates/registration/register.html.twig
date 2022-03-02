@@ -30,6 +30,9 @@
                 background-color: #ff2828;
                 border-radius: 9px;
             }
+            .card{
+                border: 2px solid white;
+            }
         </style>
     </head>
     <body>
@@ -99,7 +102,7 @@
                             {{ form_end(registrationForm) }}
                             <div class="form-group d-flex align-items-center justify-content-between">
                                 <a href="{{ path('app_login') }}" class="forgot-pass"><small>Login</small></a>
-                                <a href="app_forgotten_password" class="forgot-pass"><small>Forgot password?</small></a>
+                                <a href="{{ path('app_forgotten_password') }}" class="forgot-pass"><small>Forgot password?</small></a>
                             </div>
                         </div>
                     </div>
