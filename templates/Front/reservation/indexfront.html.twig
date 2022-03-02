@@ -33,8 +33,8 @@
                         <tbody>
                         <tr>
                             <td>{{ reservation.evenement.NameEvent }}</td>
-                            <td>{{ reservation.evenement.DateDebut ?reservation.evenement.DateDebut|date('Y-m-d , h:m') : '' }}</td>
-                            <td>{{ reservation.evenement.DateFin ?reservation.evenement.DateFin|date('Y-m-d , h:m') : '' }}</td>
+                            <td>{{ reservation.evenement.DateDebut ?reservation.evenement.DateDebut|date('Y-m-d ') : '' }}</td>
+                            <td>{{ reservation.evenement.DateFin ?reservation.evenement.DateFin|date('Y-m-d ') : '' }}</td>
                             <td>{{ reservation.DateReservation ? reservation.DateReservation|date('Y-m-d ') : '' }}</td>
                             <td><div class="badge badge-outline-danger" ><a href="{{ path('reservation_delete_front', {'idR': reservation.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">delete</a></div></td>
                         </tr>

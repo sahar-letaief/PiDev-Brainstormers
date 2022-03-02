@@ -22,10 +22,8 @@ class EvenementType extends AbstractType
             ->add('DateFin')
             ->add('PriceEvent')
             ->add('NbParticipants')
-            //->add('ImageEvent', FileType::class)
-            //->add('BackgroundColor',ColorType::class)
-            //->add('BorderColor',ColorType::class)
-            //->add('TextColor',ColorType::class)
+            ->add('ImageEvent', FileType::class)
+
 
             ->add('Submit', submitType::class)
 

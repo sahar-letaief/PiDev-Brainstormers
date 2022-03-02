@@ -117,7 +117,7 @@ class EvenementController extends AbstractController
         $form = $this->createForm(EvenementType::class, $evenement);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() ) {
 
             $entityManager->persist($evenement);
             $entityManager->flush();
@@ -129,6 +129,26 @@ class EvenementController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+    /**
+     * @IsGranted("ROLE_EVENT")
+     * @Route("/{id}/edit", name="evenement_edit", methods={"GET", "POST"})
+     */
+    public function edit(Request $request, Evenement $evenement, EntityManagerInterface $entityManager): Response
+    {
+        $form = $this->createForm(EvenementType::class, $evenement);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() ) {
+            $entityManager->flush();
+
+            return $this->redirectToRoute('evenement_index');
+        }
+        return $this->render('Back/evenement/edit.html.twig', [
+            'evenement' => $evenement,
+            'form' => $form->createView(),
+        ]);
+    }
+
     /**
      * @IsGranted("ROLE_EVENT")
      * @Route("/pdf", name="evenement_pdf", methods={"GET"})
@@ -175,22 +195,14 @@ class EvenementController extends AbstractController
         return $this->render('Back/evenement/calendar.html.twig',compact('data'));
 
     }
-
-
-
-
     /**
-     * @IsGranted("ROLE_EVENT")
-     * @Route("/sort", name="sort")
+     * @IsGranted("ROLE_PLAYER")
+     * @Route("/front/{id}", name="evenement_show_front", methods={"GET"})
      */
-    public function TrierParPrix(Request $request,PaginatorInterface $paginator): Response
+    public function showfront(Evenement $evenement): Response
     {
-        $repository = $this->getDoctrine()->getRepository(Evenement::class);
-        $event = $repository->findByPrice();
-        //$event=$em->getRepository(Evenement::class)->findAll();
-        $evenements=$paginator->paginate($event,$request->query->getInt('page',1),3);
-        return $this->render('Back/evenement/index.html.twig', [
-            'evenements' => $evenements,
+        return $this->render('Front/evenement/show.html.twig', [
+            'evenement' => $evenement,
         ]);
     }
 
@@ -219,16 +231,7 @@ class EvenementController extends AbstractController
             'evenement' => $evenement,
         ]);
     }
-    /**
-     * @IsGranted("ROLE_PLAYER")
-     * @Route("/front/{id}", name="evenement_show_front", methods={"GET"})
-     */
-    public function showfront(Evenement $evenement): Response
-    {
-        return $this->render('Front/evenement/show.html.twig', [
-            'evenement' => $evenement,
-        ]);
-    }
+
     /**
      * @Route("/{id}/editapi", name="evenement_edit_api")
      */
@@ -246,26 +249,6 @@ class EvenementController extends AbstractController
         return new Response("information updated successfully".json_encode($jsonContent));
     }
 
-    /**
-     * @IsGranted("ROLE_EVENT")
-     * @Route("/{id}/edit", name="evenement_edit", methods={"GET", "POST"})
-     */
-    public function edit(Request $request, Evenement $evenement, EntityManagerInterface $entityManager): Response
-    {
-        $form = $this->createForm(EvenementType::class, $evenement);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
-
-            return $this->redirectToRoute('evenement_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->render('Back/evenement/edit.html.twig', [
-            'evenement' => $evenement,
-            'form' => $form->createView(),
-        ]);
-    }
 
 
     /**
