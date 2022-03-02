@@ -145,8 +145,8 @@
                 <td>{{ evenement.id }}</td>
                 <td>{{ evenement.NameEvent }}</td>
                 <td>{{ evenement.PlaceEvent }}</td>
-                <td>{{ evenement.DateDebut ? evenement.DateDebut|date('Y-m-d , h:m') : '' }}</td>
-                <td>{{ evenement.DateFin ? evenement.DateFin|date('Y-m-d , h:m') : '' }}</td>
+                <td>{{ evenement.DateDebut ? evenement.DateDebut|date('Y-m-d ') : '' }}</td>
+                <td>{{ evenement.DateFin ? evenement.DateFin|date('Y-m-d ') : '' }}</td>
                 <td>{{ evenement.PriceEvent }} DT</td>
                 <td>{{ evenement.NbParticipants }}</td>
                 <td><div class="badge badge-outline-success"><a  href="{{ path('evenement_show', {'id': evenement.id}) }}">show</a></div></td>

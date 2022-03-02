@@ -97,15 +97,38 @@ class EvenementController extends AbstractController
     }
     /**
      * @Route("/api", name="evenement_index_api")
-     */
+
     public function indexjson(NormalizerInterface $Normalizer){
 
         $evenements=$this->getDoctrine()->getRepository(Evenement::class)->findAll();
         $jsonContent=$Normalizer->normalize($evenements,'json',['groups'=>'post:read']);
         return new Response(json_encode($jsonContent));
+    }*/
+
+
+    /**
+     * @IsGranted("ROLE_EVENT")
+     * @Route("/new", name="evenement_new", methods={"GET", "POST"})
+     */
+    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $evenement = new Evenement();
+
+        $form = $this->createForm(EvenementType::class, $evenement);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $entityManager->persist($evenement);
+            $entityManager->flush();
+            return $this->redirectToRoute('evenement_index');
+        }
+
+        return $this->render('Back/evenement/new.html.twig', [
+            'evenement' => $evenement,
+            'form' => $form->createView(),
+        ]);
     }
-
-
     /**
      * @IsGranted("ROLE_EVENT")
      * @Route("/pdf", name="evenement_pdf", methods={"GET"})
@@ -154,49 +177,7 @@ class EvenementController extends AbstractController
     }
 
 
-        /**
-         * @IsGranted("ROLE_EVENT")
-         * @Route("/new", name="evenement_new", methods={"GET", "POST"})
-         */
-        public function new(Request $request, EntityManagerInterface $entityManager): Response
-    {
-        $evenement = new Evenement();
-        $evenement->setBackgroundColor('#FA8D75');
-        $evenement->setTextColor('#000000');
-        $evenement->setBorderColor('#000000');
-        $form = $this->createForm(EvenementType::class, $evenement);
-        $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($evenement);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('evenement_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->render('Back/evenement/new.html.twig', [
-            'evenement' => $evenement,
-            'form' => $form->createView(),
-        ]);
-    }
-    /**
-     * @IsGranted("ROLE_EVENT")
-     * @Route("/new/api", name="evenement_new_api")
-     */
-    public function newapi(Request $request, NormalizerInterface $Normalizer): Response
-    {
-        $entityManager=$this->getDoctrine()->getManager();
-        $evenement = new Evenement();
-        $evenement->setNameEvent($request->get("NameEvent"));
-        $evenement->setPlaceEvent($request->get("PlaceEvent"));
-        $evenement->setPriceEvent($request->get("PriceEvent"));
-        $evenement->setDateFin($request->get("DateFin")->format('Y-m-d ,h:m'));
-        $evenement->setDateDebut($request->get("DateDebut")->format('Y-m-d ,h:m'));
-            $entityManager->persist($evenement);
-            $entityManager->flush();
-        $jsonContent=$Normalizer->normalize($evenement,'json',['groups'=>'post:read']);
-        return new Response(json_encode($jsonContent));
-    }
 
     /**
      * @IsGranted("ROLE_EVENT")

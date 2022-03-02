@@ -21,8 +21,7 @@
                                         {{form_start(form,{'attr':{'novalidate':'novalidate'}})  }}
 {{ form_widget(form.NameEvent , {'attr' : {'class' : ' form-control' , 'placeholder' : 'Event name'}}) }}
                                               {{ form_errors(form.NameEvent) }}
-                                              {{ form_label(form.ImageEvent,'Image Event') }}
-{{ form_widget(form.ImageEvent) }}
+
                                               {{ form_widget(form.PlaceEvent , {'attr' : {'class' : ' form-control' , 'placeholder' : 'Place event'}}) }}
                                               {{ form_errors(form.PlaceEvent) }}
   {{ form_label(form.DateDebut,'Event begins at') }}

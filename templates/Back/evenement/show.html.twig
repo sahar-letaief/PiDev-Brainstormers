@@ -15,7 +15,7 @@
                 </ol>
             </nav>
         </div>
-        <div class="row">
+        <div class="row" style="margin-right: -23.75rem;">
             <div class="col-md-6 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
@@ -37,11 +37,11 @@
             </tr>
             <tr>
                 <th>Event begins at</th>
-                <td>{{ evenement.DateDebut ? evenement.DateDebut|date('Y-m-d , h:m') : '' }}</td>
+                <td>{{ evenement.DateDebut ? evenement.DateDebut|date('Y-m-d ') : '' }}</td>
             </tr>
             <tr>
                 <th>Event ends at</th>
-                <td>{{ evenement.DateFin ? evenement.DateFin|date('Y-m-d , h:m') : '' }}</td>
+                <td>{{ evenement.DateFin ? evenement.DateFin|date('Y-m-d ') : '' }}</td>
             </tr>
             <tr>
                 <th>Price event</th>

@@ -32,7 +32,7 @@ class Evenement
      * @Groups("post:read")
      * @Assert\NotBlank (message="Event name field cannot be empty")
      *  @Assert\Regex("/^[A-Z][a-z]*\s[a-z]*|[0-9]$/" ,
-     *          message="Event name should be like this format XXX XXX"
+     *          message="Event name should be like this format Xxx xxx"
      * )
      */
     private $NameEvent;
@@ -101,20 +101,8 @@ class Evenement
      */
     private $ImageEvent;
 
-    /**
-     * @ORM\Column(type="string", length=8)
-     */
-    private $BackgroundColor;
 
-    /**
-     * @ORM\Column(type="string", length=8)
-     */
-    private $BorderColor;
 
-    /**
-     * @ORM\Column(type="string", length=8)
-     */
-    private $TextColor;
 
 
 
@@ -270,42 +258,6 @@ class Evenement
     public function setImageEvent( $ImageEvent)
     {
         $this->ImageEvent = $ImageEvent;
-
-        return $this;
-    }
-
-    public function getBackgroundColor(): ?string
-    {
-        return $this->BackgroundColor;
-    }
-
-    public function setBackgroundColor(string $BackgroundColor)
-    {
-        $this->BackgroundColor = $BackgroundColor;
-
-        return $this;
-    }
-
-    public function getBorderColor(): ?string
-    {
-        return $this->BorderColor;
-    }
-
-    public function setBorderColor(string $BorderColor)
-    {
-        $this->BorderColor = $BorderColor;
-
-        return $this;
-    }
-
-    public function getTextColor(): ?string
-    {
-        return $this->TextColor;
-    }
-
-    public function setTextColor(string $TextColor)
-    {
-        $this->TextColor = $TextColor;
 
         return $this;
     }
