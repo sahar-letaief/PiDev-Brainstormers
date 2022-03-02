@@ -3,6 +3,8 @@
 namespace App\Repository;
 
 use App\Entity\Reservation;
+use App\Entity\Evenement;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -47,4 +49,33 @@ class ReservationRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function findByNameEvent($NameEvent){
+        $entityManager=$this->getEntityManager();
+       return $query=$entityManager
+            ->createQuery("SELECT (r.evenement) as NameEvent FROM APP\Entity\Evenement e JOIN e.NameEvent n WHERE n=:NameEvent ")
+            ->setParameters(array('NameEvent',$NameEvent))
+           ->getResult();
+    }
+    public function findByFirstName($firstname){
+        return $this-> createQueryBuilder('r')
+            ->andWhere('r.firstname LIKE :firstname')
+            ->setParameter('r.firstname','%' .$firstname. '%')
+            ->getQuery()
+            ->execute();
+    }
+
+    public function findByLastName($lastname){
+        return $this-> createQueryBuilder('r')
+            ->andWhere('app.user.lastname LIKE :lastname')
+            ->setParameter('app.user.lastname','%' .$lastname. '%')
+            ->getQuery()
+            ->execute();
+    }
+    public function findByEmail($email){
+        return $this-> createQueryBuilder('r')
+            ->andWhere('r.user.email LIKE :email')
+            ->setParameter('r.user.email','%' .$email. '%')
+            ->getQuery()
+            ->execute();
+    }
 }

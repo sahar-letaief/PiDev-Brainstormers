@@ -163,13 +163,14 @@
         <div style="display: flex">
             <div style="max-width: 215px!important;margin: auto;" align="left" class="col-md-6 badge badge-outline-warning"> <a href="{{ path('evenement_new') }}">Create new</a></div>
             <div style="max-width: 215px!important;margin: auto;" align="left" class="col-md-6 badge badge-outline-success"> <a href="{{ path('evenement_pdf') }}">Generate PDF</a></div>
-            {% if (back) %}
-                <div style="display: grid; margin-top: 20px;">
-                    <a class="btn btn-outline-primary btn-fw" href="{{ path('evenement_index') }}">Back</a>
-                </div>
-            {% endif %}
+
 
         </div>
+        {% if (back) %}
+            <div style="display: grid; margin-top: 20px;">
+                <a class="btn btn-outline-primary btn-fw" href="{{ path('evenement_index') }}">Back</a>
+            </div>
+        {% endif %}
         <div> {{ knp_pagination_render(evenements) }}</div>
 
     </div>

@@ -26,7 +26,7 @@ class ReservationController extends AbstractController
 
     /**
      * @IsGranted("ROLE_EVENT")
-     * @Route("/", name="reservation_index", methods={"GET"})
+     * @Route("/", name="reservation_index",methods={"GET","POST"})
      */
     public function index(ReservationRepository $reservationRepository,Request $request,PaginatorInterface $paginator): Response
     {
@@ -34,11 +34,39 @@ class ReservationController extends AbstractController
         $user=$this->getUser();
        // $reservations=$reservationRepository->findAll();
         $reservations=$paginator->paginate($data,$request->query->getInt('page',1),3);
+        $back = null;
+        if($request->isMethod("POST")) {
+            $type = $request->request->get('optionsearch');
+            $value = $request->request->get('Search');
+            switch ($type) {
+                case 'NameEvent':
+                    $res = $reservationRepository->findByNameEvent($value);
+                    break;
 
-        return $this->render('Back/reservation/index.html.twig', [
-            'reservations' => $reservations,
-            'user'=>$user,
-        ]);
+                case 'firstname':
+                    $res = $reservationRepository->findByFirstName($value);
+                    break;
+
+                case 'lastname':
+                    $res = $reservationRepository->findByLastName($value);
+                    break;
+
+                case 'email':
+                    $res = $reservationRepository->findByEmail($value);
+                    break;
+            }
+
+            if ($res) {
+                $back = "success";
+            } else {
+                $back = "failure";
+            }
+            $reservations = $paginator->paginate($data, $request->query->getInt('page', 1), 3);
+            return $this->render('Back/reservation/index.html.twig', array('reservations'=>$reservations,'user'=>$user,'back' => $back));
+        }
+
+        return $this->render('Back/reservation/index.html.twig', array('reservations'=>$reservations,'user'=>$user,'back' => $back));
+
     }
     /**
      * @IsGranted("ROLE_PLAYER")
