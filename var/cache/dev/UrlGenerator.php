@@ -34,4 +34,7 @@ return [
     'user_show' => [['id'], ['_controller' => 'App\\Controller\\UserController::show'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/user']], [], []],
     'user_edit' => [['id'], ['_controller' => 'App\\Controller\\UserController::editusernp'], [], [['text', '/editusernp'], ['variable', '/', '[^/]++', 'id'], ['text', '/user']], [], []],
     'user_delete' => [['id'], ['_controller' => 'App\\Controller\\UserController::delete'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/user/delete']], [], []],
+    'disable_user' => [['id'], ['_controller' => 'App\\Controller\\UserController::disable_user'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/disable_user']], [], []],
+    'enable_user' => [['id'], ['_controller' => 'App\\Controller\\UserController::enable_user'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/enable_user']], [], []],
+    'DisabledAccount' => [[], ['_controller' => 'App\\Controller\\UserController::DisabledAccount'], [], [['text', '/DisabledAccount']], [], []],
 ];

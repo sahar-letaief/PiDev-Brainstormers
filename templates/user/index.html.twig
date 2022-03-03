@@ -26,13 +26,16 @@
 
         .pagination{
             justify-content: center;
+            padding-top: 20px;
+            border-top: 2px dotted #3c3a3e;
+            margin-top: 11px;
         }
         .current{
             margin: 0px 5px 0px 5px;
             border-radius: 50%;
             width: 2%;
             text-align: center;
-            border: solid #0090e7;
+            border: solid #3c3c3c;
         }
 
         .page{
@@ -40,7 +43,7 @@
             border-radius: 50%;
             width: 2%;
             text-align: center;
-            border: solid #0090e7;
+            border: solid #3c3c3c;
         }
 
         .page a{
@@ -80,7 +83,7 @@
         }
 
         .table thead th, .jsgrid .jsgrid-table thead th {
-            color: #0090e7;
+            color: #6e7178;
         }
 
         .table, .jsgrid .jsgrid-table {
@@ -202,9 +205,19 @@
                                             <td>Crypted</td>
                                             <td>{{ user.firstname ~ " " ~ user.lastname}}</td>
 
-                                            <td>
+                                            <td style="width: 30%;">
                                                 <a class="btn btn-outline-primary btn-fw" href="{{ path('user_show', {'id': user.id}) }}">show</a>
                                                 <a class="btn btn-outline-primary btn-fw" href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
+                                                {% if (app.user.id == user.id) %}
+                                                    <a class="btn btn-outline-dark btn-fw" href="{{ path('disable_user', {'id': user.id}) }}" style="pointer-events: none">disable</a>
+                                                {% else %}
+                                                    {% if ( user.disabletoken) %}
+                                                        <a class="btn btn-outline-success btn-fw" href="{{ path('enable_user', {'id': user.id}) }}">enable</a>
+                                                    {% else %}
+                                                        <a class="btn btn-outline-danger btn-fw" href="{{ path('disable_user', {'id': user.id}) }}">disable</a>
+                                                    {% endif %}
+                                                {% endif %}
+
                                             </td>
                                         </tr>
 

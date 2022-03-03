@@ -115,13 +115,16 @@ class __TwigTemplate_abee4f93f5983c7b554e06c3545d7ecff68411ba43743479e11b9d04681
 
         .pagination{
             justify-content: center;
+            padding-top: 20px;
+            border-top: 2px dotted #3c3a3e;
+            margin-top: 11px;
         }
         .current{
             margin: 0px 5px 0px 5px;
             border-radius: 50%;
             width: 2%;
             text-align: center;
-            border: solid #0090e7;
+            border: solid #3c3c3c;
         }
 
         .page{
@@ -129,7 +132,7 @@ class __TwigTemplate_abee4f93f5983c7b554e06c3545d7ecff68411ba43743479e11b9d04681
             border-radius: 50%;
             width: 2%;
             text-align: center;
-            border: solid #0090e7;
+            border: solid #3c3c3c;
         }
 
         .page a{
@@ -169,9 +172,9 @@ class __TwigTemplate_abee4f93f5983c7b554e06c3545d7ecff68411ba43743479e11b9d04681
         }
 
         .table thead th, .jsgrid .jsgrid-table thead th {
-            color: #0090e7;
+            color: #6e7178;
         }
-        
+
         .table, .jsgrid .jsgrid-table {
             color: #ffffff;
         }
@@ -185,7 +188,7 @@ class __TwigTemplate_abee4f93f5983c7b554e06c3545d7ecff68411ba43743479e11b9d04681
 
     }
 
-    // line 92
+    // line 95
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -195,7 +198,7 @@ class __TwigTemplate_abee4f93f5983c7b554e06c3545d7ecff68411ba43743479e11b9d04681
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 93
+        // line 96
         echo "    <div class=\"main-panel\">
         <div class=\"content-wrapper\">
             <div class=\"page-header\">
@@ -261,15 +264,15 @@ class __TwigTemplate_abee4f93f5983c7b554e06c3545d7ecff68411ba43743479e11b9d04681
                                 </li>
                             </ul>
                             ";
-        // line 157
-        if ( !twig_get_attribute($this->env, $this->source, (isset($context["users"]) || array_key_exists("users", $context) ? $context["users"] : (function () { throw new RuntimeError('Variable "users" does not exist.', 157, $this->source); })()), "items", [], "any", false, false, false, 157)) {
-            // line 158
+        // line 160
+        if ( !twig_get_attribute($this->env, $this->source, (isset($context["users"]) || array_key_exists("users", $context) ? $context["users"] : (function () { throw new RuntimeError('Variable "users" does not exist.', 160, $this->source); })()), "items", [], "any", false, false, false, 160)) {
+            // line 161
             echo "                            <div style=\"display: grid;\">
                                 <label style=\"width: 22%;margin: auto;margin-bottom: 13px;margin-top: 10px;border: 2px solid #0090e7;padding: 10px;border-radius: 20px;border-left: 2px solid red;border-right: 2px solid red;text-align: center; font-style: oblique;color: chartreuse;\"> NO USERS FOUND WITH SUCH CRITERIA</label>
                             </div>
                             ";
         } else {
-            // line 162
+            // line 165
             echo "                            <div class=\"table-responsive\">
                                 <table class=\"table\">
                                     <thead>
@@ -285,92 +288,121 @@ class __TwigTemplate_abee4f93f5983c7b554e06c3545d7ecff68411ba43743479e11b9d04681
                                     </thead>
                                     <tbody>
                                     ";
-            // line 176
+            // line 179
             $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable((isset($context["users"]) || array_key_exists("users", $context) ? $context["users"] : (function () { throw new RuntimeError('Variable "users" does not exist.', 176, $this->source); })()));
+            $context['_seq'] = twig_ensure_traversable((isset($context["users"]) || array_key_exists("users", $context) ? $context["users"] : (function () { throw new RuntimeError('Variable "users" does not exist.', 179, $this->source); })()));
             foreach ($context['_seq'] as $context["_key"] => $context["user"]) {
-                // line 177
+                // line 180
                 echo "                                        <tr>
                                             <td>";
-                // line 178
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "usertag", [], "any", false, false, false, 178), "html", null, true);
+                // line 181
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "usertag", [], "any", false, false, false, 181), "html", null, true);
                 echo "</td>
                                             <td>";
-                // line 179
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "username", [], "any", false, false, false, 179), "html", null, true);
+                // line 182
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "username", [], "any", false, false, false, 182), "html", null, true);
                 echo "</td>
                                             <td>";
-                // line 180
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "phonenumber", [], "any", false, false, false, 180), "html", null, true);
+                // line 183
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["user"], "phonenumber", [], "any", false, false, false, 183), "html", null, true);
                 echo "</td>
 
                                             <td>
                                                 ";
-                // line 183
+                // line 186
                 $context['_parent'] = $context;
-                $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, $context["user"], "roles", [], "any", false, false, false, 183));
+                $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, $context["user"], "roles", [], "any", false, false, false, 186));
                 foreach ($context['_seq'] as $context["_key"] => $context["role"]) {
-                    // line 184
+                    // line 187
                     echo "                                                    ";
                     if ((0 === twig_compare($context["role"], "ROLE_ADMIN"))) {
-                        // line 185
+                        // line 188
                         echo "                                                        <label class=\"badge badge-success\">ADMIN</label>
                                                     ";
-                    } elseif ((0 === twig_compare(                    // line 186
+                    } elseif ((0 === twig_compare(                    // line 189
 $context["role"], "ROLE_PLAYER"))) {
-                        // line 187
+                        // line 190
                         echo "                                                        <label class=\"badge badge-info\">PLAYER</label>
                                                     ";
-                    } elseif ((0 === twig_compare(                    // line 188
+                    } elseif ((0 === twig_compare(                    // line 191
 $context["role"], "ROLE_USER"))) {
-                        // line 189
+                        // line 192
                         echo "                                                        <label class=\"badge badge-warning\">USER</label>
                                                     ";
-                    } elseif ((0 === twig_compare(                    // line 190
+                    } elseif ((0 === twig_compare(                    // line 193
 $context["role"], "ROLE_PRODUCT"))) {
-                        // line 191
+                        // line 194
                         echo "                                                        <label class=\"badge badge-primary\">Product Manager</label>
                                                     ";
-                    } elseif ((0 === twig_compare(                    // line 192
+                    } elseif ((0 === twig_compare(                    // line 195
 $context["role"], "ROLE_PURCHASE"))) {
-                        // line 193
+                        // line 196
                         echo "                                                        <label class=\"badge badge-primary\">Purchase Manager</label>
                                                     ";
-                    } elseif ((0 === twig_compare(                    // line 194
+                    } elseif ((0 === twig_compare(                    // line 197
 $context["role"], "ROLE_RECLAMATION"))) {
-                        // line 195
+                        // line 198
                         echo "                                                        <label class=\"badge badge-primary\">Reclamation Manager</label>
                                                     ";
-                    } elseif ((0 === twig_compare(                    // line 196
+                    } elseif ((0 === twig_compare(                    // line 199
 $context["role"], "ROLE_EVENT"))) {
-                        // line 197
+                        // line 200
                         echo "                                                        <label class=\"badge badge-primary\">Event Manager</label>
                                                     ";
                     }
-                    // line 199
+                    // line 202
                     echo "                                                ";
                 }
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['role'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 200
+                // line 203
                 echo "                                            </td>
 
                                             <td>Crypted</td>
                                             <td>";
-                // line 203
-                echo twig_escape_filter($this->env, ((twig_get_attribute($this->env, $this->source, $context["user"], "firstname", [], "any", false, false, false, 203) . " ") . twig_get_attribute($this->env, $this->source, $context["user"], "lastname", [], "any", false, false, false, 203)), "html", null, true);
+                // line 206
+                echo twig_escape_filter($this->env, ((twig_get_attribute($this->env, $this->source, $context["user"], "firstname", [], "any", false, false, false, 206) . " ") . twig_get_attribute($this->env, $this->source, $context["user"], "lastname", [], "any", false, false, false, 206)), "html", null, true);
                 echo "</td>
 
-                                            <td>
+                                            <td style=\"width: 30%;\">
                                                 <a class=\"btn btn-outline-primary btn-fw\" href=\"";
-                // line 206
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("user_show", ["id" => twig_get_attribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 206)]), "html", null, true);
+                // line 209
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("user_show", ["id" => twig_get_attribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 209)]), "html", null, true);
                 echo "\">show</a>
                                                 <a class=\"btn btn-outline-primary btn-fw\" href=\"";
-                // line 207
-                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("user_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 207)]), "html", null, true);
+                // line 210
+                echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("user_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 210)]), "html", null, true);
                 echo "\">edit</a>
+                                                ";
+                // line 211
+                if ((0 === twig_compare(twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 211, $this->source); })()), "user", [], "any", false, false, false, 211), "id", [], "any", false, false, false, 211), twig_get_attribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 211)))) {
+                    // line 212
+                    echo "                                                    <a class=\"btn btn-outline-dark btn-fw\" href=\"";
+                    echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("disable_user", ["id" => twig_get_attribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 212)]), "html", null, true);
+                    echo "\" style=\"pointer-events: none\">disable</a>
+                                                ";
+                } else {
+                    // line 214
+                    echo "                                                    ";
+                    if (twig_get_attribute($this->env, $this->source, $context["user"], "disabletoken", [], "any", false, false, false, 214)) {
+                        // line 215
+                        echo "                                                        <a class=\"btn btn-outline-success btn-fw\" href=\"";
+                        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("enable_user", ["id" => twig_get_attribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 215)]), "html", null, true);
+                        echo "\">enable</a>
+                                                    ";
+                    } else {
+                        // line 217
+                        echo "                                                        <a class=\"btn btn-outline-danger btn-fw\" href=\"";
+                        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("disable_user", ["id" => twig_get_attribute($this->env, $this->source, $context["user"], "id", [], "any", false, false, false, 217)]), "html", null, true);
+                        echo "\">disable</a>
+                                                    ";
+                    }
+                    // line 219
+                    echo "                                                ";
+                }
+                // line 220
+                echo "
                                             </td>
                                         </tr>
 
@@ -381,33 +413,33 @@ $context["role"], "ROLE_EVENT"))) {
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['user'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 214
+            // line 227
             echo "
                                     ";
         }
-        // line 216
+        // line 229
         echo "
                                     </tbody>
                                 </table>
 
                                 ";
-        // line 220
-        echo $this->extensions['Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationExtension']->render($this->env, (isset($context["users"]) || array_key_exists("users", $context) ? $context["users"] : (function () { throw new RuntimeError('Variable "users" does not exist.', 220, $this->source); })()));
+        // line 233
+        echo $this->extensions['Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationExtension']->render($this->env, (isset($context["users"]) || array_key_exists("users", $context) ? $context["users"] : (function () { throw new RuntimeError('Variable "users" does not exist.', 233, $this->source); })()));
         echo "
 
                                 ";
-        // line 222
-        if ((isset($context["back"]) || array_key_exists("back", $context) ? $context["back"] : (function () { throw new RuntimeError('Variable "back" does not exist.', 222, $this->source); })())) {
-            // line 223
+        // line 235
+        if ((isset($context["back"]) || array_key_exists("back", $context) ? $context["back"] : (function () { throw new RuntimeError('Variable "back" does not exist.', 235, $this->source); })())) {
+            // line 236
             echo "                                    <div style=\"display: grid; margin-top: 20px;\">
                                         <a class=\"btn btn-outline-primary btn-fw\" href=\"";
-            // line 224
+            // line 237
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("user_index");
             echo "\">Back</a>
                                     </div>
                                 ";
         }
-        // line 227
+        // line 240
         echo "                            </div>
                         </div>
                     </div>
@@ -436,7 +468,7 @@ $context["role"], "ROLE_EVENT"))) {
 
     public function getDebugInfo()
     {
-        return array (  411 => 227,  405 => 224,  402 => 223,  400 => 222,  395 => 220,  389 => 216,  385 => 214,  372 => 207,  368 => 206,  362 => 203,  357 => 200,  351 => 199,  347 => 197,  345 => 196,  342 => 195,  340 => 194,  337 => 193,  335 => 192,  332 => 191,  330 => 190,  327 => 189,  325 => 188,  322 => 187,  320 => 186,  317 => 185,  314 => 184,  310 => 183,  304 => 180,  300 => 179,  296 => 178,  293 => 177,  289 => 176,  273 => 162,  267 => 158,  265 => 157,  199 => 93,  189 => 92,  111 => 23,  106 => 21,  98 => 16,  94 => 15,  90 => 14,  86 => 13,  80 => 10,  76 => 9,  69 => 4,  59 => 3,  36 => 1,);
+        return array (  443 => 240,  437 => 237,  434 => 236,  432 => 235,  427 => 233,  421 => 229,  417 => 227,  405 => 220,  402 => 219,  396 => 217,  390 => 215,  387 => 214,  381 => 212,  379 => 211,  375 => 210,  371 => 209,  365 => 206,  360 => 203,  354 => 202,  350 => 200,  348 => 199,  345 => 198,  343 => 197,  340 => 196,  338 => 195,  335 => 194,  333 => 193,  330 => 192,  328 => 191,  325 => 190,  323 => 189,  320 => 188,  317 => 187,  313 => 186,  307 => 183,  303 => 182,  299 => 181,  296 => 180,  292 => 179,  276 => 165,  270 => 161,  268 => 160,  202 => 96,  192 => 95,  111 => 23,  106 => 21,  98 => 16,  94 => 15,  90 => 14,  86 => 13,  80 => 10,  76 => 9,  69 => 4,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -469,13 +501,16 @@ $context["role"], "ROLE_EVENT"))) {
 
         .pagination{
             justify-content: center;
+            padding-top: 20px;
+            border-top: 2px dotted #3c3a3e;
+            margin-top: 11px;
         }
         .current{
             margin: 0px 5px 0px 5px;
             border-radius: 50%;
             width: 2%;
             text-align: center;
-            border: solid #0090e7;
+            border: solid #3c3c3c;
         }
 
         .page{
@@ -483,7 +518,7 @@ $context["role"], "ROLE_EVENT"))) {
             border-radius: 50%;
             width: 2%;
             text-align: center;
-            border: solid #0090e7;
+            border: solid #3c3c3c;
         }
 
         .page a{
@@ -523,9 +558,9 @@ $context["role"], "ROLE_EVENT"))) {
         }
 
         .table thead th, .jsgrid .jsgrid-table thead th {
-            color: #0090e7;
+            color: #6e7178;
         }
-        
+
         .table, .jsgrid .jsgrid-table {
             color: #ffffff;
         }
@@ -645,9 +680,19 @@ $context["role"], "ROLE_EVENT"))) {
                                             <td>Crypted</td>
                                             <td>{{ user.firstname ~ \" \" ~ user.lastname}}</td>
 
-                                            <td>
+                                            <td style=\"width: 30%;\">
                                                 <a class=\"btn btn-outline-primary btn-fw\" href=\"{{ path('user_show', {'id': user.id}) }}\">show</a>
                                                 <a class=\"btn btn-outline-primary btn-fw\" href=\"{{ path('user_edit', {'id': user.id}) }}\">edit</a>
+                                                {% if (app.user.id == user.id) %}
+                                                    <a class=\"btn btn-outline-dark btn-fw\" href=\"{{ path('disable_user', {'id': user.id}) }}\" style=\"pointer-events: none\">disable</a>
+                                                {% else %}
+                                                    {% if ( user.disabletoken) %}
+                                                        <a class=\"btn btn-outline-success btn-fw\" href=\"{{ path('enable_user', {'id': user.id}) }}\">enable</a>
+                                                    {% else %}
+                                                        <a class=\"btn btn-outline-danger btn-fw\" href=\"{{ path('disable_user', {'id': user.id}) }}\">disable</a>
+                                                    {% endif %}
+                                                {% endif %}
+
                                             </td>
                                         </tr>
 

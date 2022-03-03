@@ -28,6 +28,7 @@ return [
         '/ActivateAccountWithCode' => [[['_route' => 'ActivateAccountWithCode', '_controller' => 'App\\Controller\\UserController::ActivateAccountWithCode'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/user' => [[['_route' => 'user_index', '_controller' => 'App\\Controller\\UserController::index'], null, ['GET' => 0, 'POST' => 1], null, true, false, null]],
         '/user/new' => [[['_route' => 'user_new', '_controller' => 'App\\Controller\\UserController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/DisabledAccount' => [[['_route' => 'DisabledAccount', '_controller' => 'App\\Controller\\UserController::DisabledAccount'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'
@@ -54,6 +55,8 @@ return [
                     .')'
                     .'|delete/([^/]++)(*:263)'
                 .')'
+                .'|/disable_user/([^/]++)(*:294)'
+                .'|/enable_user/([^/]++)(*:323)'
             .')/?$}sD',
     ],
     [ // $dynamicRoutes
@@ -67,8 +70,10 @@ return [
         192 => [[['_route' => 'app_reset_password', '_controller' => 'App\\Controller\\SecurityController::verifyUserEmail'], ['token'], null, null, false, true, null]],
         220 => [[['_route' => 'user_show', '_controller' => 'App\\Controller\\UserController::show'], ['id'], ['GET' => 0], null, false, true, null]],
         239 => [[['_route' => 'user_edit', '_controller' => 'App\\Controller\\UserController::editusernp'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        263 => [
-            [['_route' => 'user_delete', '_controller' => 'App\\Controller\\UserController::delete'], ['id'], ['POST' => 0], null, false, true, null],
+        263 => [[['_route' => 'user_delete', '_controller' => 'App\\Controller\\UserController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
+        294 => [[['_route' => 'disable_user', '_controller' => 'App\\Controller\\UserController::disable_user'], ['id'], ['GET' => 0, 'POST' => 1], null, false, true, null]],
+        323 => [
+            [['_route' => 'enable_user', '_controller' => 'App\\Controller\\UserController::enable_user'], ['id'], ['GET' => 0, 'POST' => 1], null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

@@ -296,4 +296,38 @@ class UserController extends AbstractController
     }
 
 
+
+    /**
+     * @Route("/disable_user/{id}", name="disable_user", methods={"GET", "POST"})
+     */
+    public function disable_user(Request $request, User $user, EntityManagerInterface $entityManager): Response
+    {
+        $user->setDisableToken("1");
+        $entityManager->persist($user);
+        $entityManager->flush();
+        return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);
+
+    }
+
+    /**
+     * @Route("/enable_user/{id}", name="enable_user", methods={"GET", "POST"})
+     */
+    public function enable_user(Request $request, User $user, EntityManagerInterface $entityManager): Response
+    {
+        $user->setDisableToken(null);
+        $entityManager->persist($user);
+        $entityManager->flush();
+        //$link = $request->headers->get("referer");
+        return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);
+
+    }
+
+
+    /**
+     * @Route("/DisabledAccount", name="DisabledAccount")
+     */
+    public function DisabledAccount(): Response
+    {
+        return $this->render('user/DisabledAccount.html.twig');
+    }
 }

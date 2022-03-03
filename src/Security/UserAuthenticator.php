@@ -97,6 +97,7 @@ class UserAuthenticator extends AbstractFormLoginAuthenticator implements Passwo
         $activated = $token->getUser()->isVerified();
         $hasAccess = in_array('ROLE_ADMIN', $token->getUser()->getRoles());
         $verificationCode = $token->getUser()->getVerificationCode();
+        $disabled = $token->getUser()->getDisabletoken();
 
         if ( $activated == 1){
             if ( $hasAccess){
@@ -105,7 +106,13 @@ class UserAuthenticator extends AbstractFormLoginAuthenticator implements Passwo
                 if ( $verificationCode){
                     return new RedirectResponse($this->urlGenerator->generate('ActivateAccountWithCode'));
                 }else{
-                    return new RedirectResponse($this->urlGenerator->generate('profile'));
+                    if ( $disabled){
+                        return new RedirectResponse($this->urlGenerator->generate('DisabledAccount'));
+
+                    }else{
+                        return new RedirectResponse($this->urlGenerator->generate('profile'));
+
+                    }
                 }
             }
         }else{
