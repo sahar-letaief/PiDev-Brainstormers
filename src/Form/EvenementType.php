@@ -22,9 +22,6 @@ class EvenementType extends AbstractType
             ->add('DateFin')
             ->add('PriceEvent')
             ->add('NbParticipants')
-
-
-
             ->add('Submit', submitType::class)
 
     ;

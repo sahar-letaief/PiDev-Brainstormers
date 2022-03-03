@@ -179,10 +179,15 @@ class EvenementController extends AbstractController
         $rdvs= [];
         foreach ($evs as $ev){
             $rdvs[]=[
-                'NameEvent'=>$ev->getNameEvent(),
-                'PlaceEvent'=> $ev->getPlaceEvent(),
-                'DateDebut'=>$ev->getDateDebut()->format('Y-m-d ,h:m'),
-                'DateFin'=>$ev->getDateFin()->format('Y-m-d ,h:m'),
+                'id'=>$ev->getId(),
+                'title'=>$ev->getNameEvent(),
+                'description'=> $ev->getPlaceEvent(),
+                'start'=>$ev->getDateDebut()->format('Y-m-d H:i:s'),
+                'end'=>$ev->getDateFin()->format('Y-m-d H:i:s'),
+                'backgroundColor'=>'#FF7474',
+                'borderColor'=>'#000000',
+                'textColor'=>'#000000',
+                'editable'=>true,
 
             ];
 

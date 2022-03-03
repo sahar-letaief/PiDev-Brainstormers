@@ -1,5 +1,15 @@
 {% extends 'baseFront.html.twig' %}
 {% block body %}
+    <style>
+        #reservation_submit{
+            height: 20px;
+            padding-top: 0px;
+        }
+        .btn-primary {
+            background-color: transparent;
+            border-color: transparent;
+        }
+    </style>
     <div class="breadcrumb-option">
         <div class="container">
             <div class="row">
@@ -55,7 +65,7 @@
                             </div>
                             <div class="anime__details__btn">
                                 <a href="{{ path('evenement_index2') }}"  class="follow-btn">Back to list</a>
-                                <a  class="watch-btn"><span>{{ form_widget(form.submit ) }}</span> <i
+                                <a  class="follow-btn"><span>{{ form_widget(form.submit ) }}</span> <i
                                             class="fa fa-angle-right"></i></a>
 
                             </div>
