@@ -108,10 +108,8 @@ class UserAuthenticator extends AbstractFormLoginAuthenticator implements Passwo
                 }else{
                     if ( $disabled){
                         return new RedirectResponse($this->urlGenerator->generate('DisabledAccount'));
-
                     }else{
                         return new RedirectResponse($this->urlGenerator->generate('profile'));
-
                     }
                 }
             }
