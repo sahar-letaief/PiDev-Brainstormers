@@ -188,7 +188,6 @@ class EvenementController extends AbstractController
                 'borderColor'=>'#000000',
                 'textColor'=>'#000000',
                 'editable'=>true,
-
             ];
 
         }
@@ -196,8 +195,47 @@ class EvenementController extends AbstractController
         $data=json_encode($rdvs);
         //dd($data);
         return $this->render('Back/evenement/calendar.html.twig',compact('data'));
-
     }
+
+    /**
+     * @IsGranted("ROLE_EVENT")
+     * @Route("/api/{id}/edit", name="api_calendar_maj", methods={"PUT"})
+     */
+    public function majEvent(?Evenement $evenement,Request $request){
+        $donnees=json_encode($request->getContent());
+        if(
+            isset($donnees->title)&& !empty($donnees->title) &&
+            isset($donnees->description)&& !empty($donnees->description) &&
+            isset($donnees->start)&& !empty($donnees->start) &&
+            isset($donnees->end)&& !empty($donnees->end) &&
+            isset($donnees->backgroundColor)&& !empty($donnees->backgroundColor) &&
+            isset($donnees->borderColor)&& !empty($donnees->borderColor) &&
+            isset($donnees->textColor)&& !empty($donnees->textColor)
+        ){
+            $code=200;
+            if(!$evenement){
+                $evenement=new Evenement;
+                $code=201;
+            }
+            $evenement->setNameEvent($donnees->title);
+            $evenement->setPlaceEvent($donnees->description);
+            $evenement->setDateDebut(new \DateTime($donnees->start));
+            $evenement->setDateFin(new \DateTime($donnees->end));
+
+            $em=$this->getDoctrine()->getManager();
+            $em->persist($evenement);
+            $em->flush();
+
+            return new Response('ok',$code);
+
+        }
+        else{
+            return new Response('Missing information',404);
+        }
+    }
+
+
+
     /**
      * @IsGranted("ROLE_PLAYER")
      * @Route("/front/{id}", name="evenement_show_front", methods={"GET"})
@@ -235,38 +273,6 @@ class EvenementController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}/editapi", name="evenement_edit_api")
-     */
-    public function editapi(Request $request,NormalizerInterface $Normalizer,$id)
-    {
-        $em=$this->getDoctrine()->getManager();
-        $evenement=$em->getRepository(Evenement::class)->find($id);
-        $evenement->setNameEvent($request->get("NameEvent"));
-        $evenement->setPlaceEvent($request->get("PlaceEvent"));
-        $evenement->setPriceEvent($request->get("PriceEvent"));
-        $evenement->setDateFin($request->get("DateFin")->format('Y-m-d ,h:m'));
-        $evenement->setDateDebut($request->get("DateDebut")->format('Y-m-d ,h:m'));
-        $em->flush();
-        $jsonContent=$Normalizer->normalize($evenement,'json',['groups'=>'post:read']);
-        return new Response("information updated successfully".json_encode($jsonContent));
-    }
-
-
-
-    /**
-     * @Route("/{id}/delete/api", name="evenement_delete_api")
-     */
-    public function deleteapi(NormalizerInterface $Normalizer,$id)
-    {
-        $em=$this->getDoctrine()->getManager();
-        $evenement = $em->getRepository(Evenement::class)->find($id);
-        $em->remove($evenement);
-        $em->flush();
-
-        $jsonContent=$Normalizer->normalize($evenement,'json',['groups'=>'post:read']);
-        return new Response("Event deleted successfully".json_encode($jsonContent));
-    }
 
 
     /**
