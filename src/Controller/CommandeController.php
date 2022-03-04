@@ -18,6 +18,8 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 
 
 /**
@@ -78,13 +80,6 @@ class CommandeController extends AbstractController
               //  "html" => $this->renderView("search.ajax.twig", ["results" => $results]),
             //]);
         //}
-
-
-
-
-
-
-
 
 
      /**
@@ -261,4 +256,102 @@ class CommandeController extends AbstractController
 
         return $this->redirectToRoute('commande_index', [], Response::HTTP_SEE_OTHER);
     }
+
+
+
+    //json
+    /**
+     * @Route("/Commande/{id}", name="Commande/{id}")
+     */
+    public function Comandeid(Request $request,$id,NormalizerInterface $Normalizer )
+        {
+    //Nous utilisons la Repository pour récupérer les objets que nous avons dans la base de données
+    $em=$this->getDoctrine()->getManager();
+    $commandes =$em->getRepository(Commande::class)->find($id);
+    
+    //Nous utilisons la fonction normalize qui transforme en format JSON nos donnée qui sont
+    //en tableau d'objet Students
+    $jsonContent=$Normalizer->normalize($commandes,'json',['groups'=>'post:read']);
+    
+ 
+    return new Response(json_encode($jsonContent));
+
+    }
+    /**
+     * @Route("/AddCommande/new", name="AddCommande")
+     */
+
+    public function new_cmde(Request $request,ProductRepository $ProductRepository,SessionInterface $session, EntityManagerInterface $entityManager): Response
+    {   
+        // user id
+        //$userId = $user->getId();
+        $userId = 1;
+        //dd($userId); 
+        $pannier = $session->get('pannier', []);
+        $pannierxithData = [];  
+        $commande = new Commande();
+        $form = $this->createForm(CommandeType::class, $commande);
+        $form->handleRequest($request);
+        $a=array();
+        foreach ($pannier as $id => $quantity) {
+            $pannierxithData[] = [
+                'product' => $ProductRepository->find($id),
+                'quantity' => $quantity,
+            ];
+        }
+        for ($x = 0; $x<=count($pannierxithData)-1; $x++) {
+             $a[$x]['quantity'] = $pannierxithData[$x]['quantity'];           
+             $a[$x]['ProductName'] = $pannierxithData[$x]['product']->getName();
+             $a[$x]['quantity'] = $pannierxithData[$x]['quantity'];           
+             $a[$x]['ProductName'] = $pannierxithData[$x]['product']->getName();
+            }
+            //dd($a);
+        
+        if ($form->isSubmitted() && $form->isValid()) {
+            $commande->setProd($a);
+            // $commande->setUser($userId);
+              
+
+            $entityManager->persist($commande);            
+            $entityManager->flush();
+
+            return $this->redirectToRoute('commande_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->render('commande/new.html.twig', [
+            'commande' => $commande,
+            'form' => $form->createView(),
+        ]);
+         $jsonContent=$Normalizer->normalize($commandes,'json',['groups'=>'post:read']);
+    
+ 
+        return new Response(json_encode($jsonContent));
+    }
+
+/**
+     * @Route("/AllComande", name="AllComande")
+     */
+    public function AllComande(NormalizerInterface $Normalizer )
+    {
+    //Nous utilisons la Repository pour récupérer les objets que nous avons dans la base de données
+    $repository =$this->getDoctrine()->getRepository(Commande::class);
+    $comandes=$repository->FindAll();
+    //Nous utilisons la fonction normalize qui transforme en format JSON nos donnée qui sont
+    //en tableau d'objet Students
+    $jsonContent=$Normalizer->normalize($comandes,'json',['groups'=>'post:read']);
+    
+    
+    
+    return new Response(json_encode($jsonContent));
+    dump($jsonContent);
+    die;
+}
+    
+
+
+
+
+
+
+
 }
