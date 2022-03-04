@@ -34,10 +34,7 @@
                 <th>Event name</th>
                 <td>{{ evenement.NameEvent }}</td>
             </tr>
-            <tr>
-                <th>Event image</th>
-                <td>{{ evenement.ImageEvent }}</td>
-            </tr>
+
             <tr>
                 <th>Event place</th>
                 <td>{{ evenement.PlaceEvent }}</td>
@@ -62,7 +59,7 @@
         </tbody>
     </table>
 
-                        <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.6.0/maps/maps.css'/>
+                       {#  <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.6.0/maps/maps.css'/>
                         <script src='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.6.0/maps/maps-web.min.js'></script>
                         <div id='map' style="height: 50vh; width: 50vw;"></div>
                     <script>
@@ -96,6 +93,7 @@
                         marker.setPopup(popup).togglePopup();
 
                     </script>
+                    #}
                         <div class="badge badge-outline-warning"><a href="{{ path('evenement_index') }}">Back to list</a>
                         </div>
 

@@ -100,12 +100,11 @@
                             <tr>
                                 <th>Id</th>
                                 <th>Name event</th>
-                                <th>User firstName</th>
-                                <th>User lastName</th>
+                                <th>User first name</th>
+                                <th>User last name</th>
                                 <th>User email</th>
                                 <th>User phone number</th>
-                                <th>DateReservation</th>
-                                <th>actions</th>
+                                <th>Reservation date</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -119,8 +118,7 @@
                                     <td>{{ user.email}}</td>
                                     <td>{{ user.phonenumber }}</td>
                                     <td>{{ reservation.DateReservation ? reservation.DateReservation|date('Y-m-d , h:m') : '' }}</td>
-                                    <td><div class="badge badge-outline-success"><a href="{{ path('reservation_show', {'id': reservation.id}) }}" >show</a></div></td></td>
-                                    <td><div class="badge badge-outline-danger" ><a href="{{ path('reservation_delete', {'id': reservation.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">delete</a></div></td>
+
 
                                 </tr>
                             {% else %}
@@ -133,7 +131,7 @@
                         <div style="display: flex">
                             {% if (back) %}
                                 <div style="display: grid; margin-top: 20px;">
-                                    <a class="btn btn-outline-primary btn-fw" href="{{ path('evenement_index') }}">Back</a>
+                                    <a class="btn btn-outline-primary btn-fw" href="{{ path('reservation_index') }}">Back</a>
                                 </div>
                             {% endif %}
                         </div>
