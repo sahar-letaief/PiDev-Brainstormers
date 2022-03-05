@@ -1,0 +1,63 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}Evenement{% endblock %}
+
+{% block body %}
+    <h1>Reservation</h1>
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="page-header">
+                <h3 class="page-title"> Show reservations </h3>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">reservations management</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Show reservations</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="row">
+                <div class="col-md-6 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Show reservation</h4>
+                            <table class="table">
+                                <tbody>
+                                <tr>
+                                    <th>Name Event</th>
+                                    <td>{{ reservation.evenement.NameEvent }}</td>
+                                </tr>
+                                <tr>
+                                    <th>User first name</th>
+                                    <td>{{ user.firstname }}</td>
+                                </tr>
+                                <tr>
+                                    <th>User last name</th>
+                                    <td>{{ user.lastname }}</td>
+                                </tr>
+                                <tr>
+                                    <th>User email</th>
+                                    <td>{{ user.email }}</td>
+                                </tr>
+                                <tr>
+                                    <th>User phone number</th>
+                                    <td>{{ user.phonenumber }}</td>
+                                </tr>
+
+                                <tr>
+                                    <th>DateReservation</th>
+                                    <td>{{ reservation.DateReservation ? reservation.DateReservation|date('Y-m-d, h:m') : '' }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div>    <a href="{{ path('reservation_index') }}">back to list</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}

@@ -1,0 +1,149 @@
+
+{% extends 'baseBack.html.twig' %}
+{% block title %}Reservation index{% endblock %}
+
+
+
+
+{% block body %}
+<style>
+
+    .pagination{
+        justify-content: center;
+    }
+    .current{
+        margin: 0px 5px 0px 5px;
+        border-radius: 50%;
+        width: 2.6%;
+        height: 1%;
+        text-align: center;
+        background-color: #0090e7;
+    }
+
+    .page{
+        margin: 0px 5px 0px 5px;
+        border-radius: 50%;
+        width: 2.6%;
+        height: 1%;
+        text-align: center;
+        background-color: #0090e7;
+    }
+
+    .page a{
+        color: white;
+    }
+
+    .previous a{
+        color: white;
+        margin-left: 5px;
+        border-bottom: 1px solid #00d25b;
+    }
+    .next a{
+        color: white;
+        margin-right: 5px;
+        border-bottom: 1px solid #00d25b;
+    }
+
+    .first a{
+        color: #00d25b;
+        margin-left: 5px;
+        border-bottom: 1px solid #00d25b;
+    }
+    .last a{
+        color: #00d25b;
+        border-bottom: 1px solid #00d25b;
+    }
+</style>
+ <div class="main-panel">
+    <div class="content-wrapper">
+        <div class="page-header">
+            <h3 class="page-title"> Form reservations </h3>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Events management</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Form events</li>
+                </ol>
+            </nav>
+        </div>
+    <div class="row ">
+        <div class="col-12 grid-margin">
+            <div class="card">
+                <div class="card-body">
+
+                    <ul class="navbar-nav w-100" style="margin-top: 18px;">
+                        <li class="nav-item w-100">
+                            <form name="Search-method" id="Search-method"method="post" class="forms-sample" style="display: flex">
+                                <div class="form-group col-md-5">
+                                    <label style="margin-top: 11px;margin-left: 10px;margin-right: 14px;border-bottom: 6px solid #0090e7;padding-bottom: 7px;border-bottom-style: dotted;">Search Options</label>
+                                    <select name="optionsearch" class="js-example-basic-single" style="width: 200px;height: 38px; color: white; background-color: #191c24; border-radius: 4px;text-align: center;border: 2px solid #0090e7;margin-right: 15px;">
+                                        <option value="NameEvent">Event name</option>
+                                        <option value="firstname">User first name</option>
+                                        <option value="lastname">User last name</option>
+                                        <option value="email">User email</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-7">
+                                    <div class="input-group">
+                                        <input name="Search" type="text" class="form-control" placeholder="Search reservations" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-sm btn-primary" type="Submit">Search</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </li>
+                    </ul>
+                    <h4 class="card-title">Reservation list</h4>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Name event</th>
+                                <th>User first name</th>
+                                <th>User last name</th>
+                                <th>User email</th>
+                                <th>User phone number</th>
+                                <th>Reservation date</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            {% for reservation in reservations %}
+                                <tr>
+                                    <td>{{ reservation.id }}</td>
+                                    <td>{{ reservation.evenement.NameEvent }}</td>
+                                    <td>{{ user.firstname}}</td>
+                                    <td>{{ user.lastname }}</td>
+                                    <td>{{ user.email}}</td>
+                                    <td>{{ user.phonenumber }}</td>
+                                    <td>{{ reservation.DateReservation ? reservation.DateReservation|date('Y-m-d , h:m') : '' }}</td>
+
+
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="3">no records found</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                        <div style="display: flex">
+                            {% if (back) %}
+                                <div style="display: grid; margin-top: 20px;">
+                                    <a class="btn btn-outline-primary btn-fw" href="{{ path('reservation_index') }}">Back</a>
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div>
+                        </div>
+                        {{ knp_pagination_render(reservations) }}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

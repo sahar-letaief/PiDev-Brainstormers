@@ -1,0 +1,49 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block body %}
+
+                      <div class="main-panel">
+                          <div class="content-wrapper">
+                              <div class="page-header">
+                                  <h3 class="page-title"> Form events </h3>
+                                  <nav aria-label="breadcrumb">
+                                      <ol class="breadcrumb">
+                                          <li class="breadcrumb-item"><a href="#">Events management</a></li>
+                                          <li class="breadcrumb-item active" aria-current="page">Form events</li>
+                                      </ol>
+                                  </nav>
+                              </div>
+                              <div class="row">
+                                  <div class="col-md-6 grid-margin stretch-card">
+                                      <div class="card">
+                                          <div class="card-body">
+                                              <h4 class="card-title">New event</h4>
+                                        {{form_start(form,{'attr':{'novalidate':'novalidate'}})  }}
+{{ form_widget(form.NameEvent , {'attr' : {'class' : ' form-control' , 'placeholder' : 'Event name'}}) }}
+                                              {{ form_errors(form.NameEvent) }}
+
+                                              {{ form_widget(form.PlaceEvent , {'attr' : {'class' : ' form-control' , 'placeholder' : 'Place event'}}) }}
+                                              {{ form_errors(form.PlaceEvent) }}
+  {{ form_label(form.DateDebut,'Event begins at') }}
+{{ form_widget(form.DateDebut) }}
+                                              {{ form_label(form.DateFin,'Event ends at') }}
+                                              {{ form_widget(form.DateFin) }}
+                                              {{ form_widget(form.PriceEvent,{'attr' : {'class' : ' form-control' , 'placeholder' : 'price event'}}) }}
+                                              {{ form_errors(form.PriceEvent) }}
+
+ {{ form_widget(form.NbParticipants , {'attr' : {'class' : ' form-control' , 'placeholder' : 'Participants number'}}) }}
+                                              {{ form_errors(form.NbParticipants) }}
+{{ form_widget(form.Submit , {'attr' : {'class' : ' btn btn-lg btn-primary my-4' , 'placeholder' : 'submit'}}) }}
+                                            {{ form_end(form) }}
+                                          </div>
+                                          <div class="badge badge-outline-warning"><a href="{{ path('evenement_index') }}">back to list</a>
+
+                                          </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+
+                      </div>
+
+{% endblock %}
