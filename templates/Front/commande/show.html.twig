@@ -1,0 +1,68 @@
+{% extends 'baseFront.html.twig' %}
+
+{% block title %}Commande{% endblock %}
+
+{% block content %}
+
+<section class="anime-details spad">
+        <div class="container">
+        <div class="anime__details__content">
+          <div class="product__page__title">
+                            <div class="row">
+                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                    <div class="section-title">
+                                        <h4>Commande </h4>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-6">
+                                    <div class="anime__details__btn">
+                                        <a href="{{ path('commande_index') }}" class="watch-btn"><span>retour à la liste</span> <i
+                                    class="fa fa-angle-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+    <table class="table table-dark">
+        <tbody>
+            <tr class="table-dark">
+                <th>Reférence Commande</th>
+                <td>{{ commande.refCmde }}</td>
+            </tr>
+            <tr>
+                <th>Etat commande</th>
+                <td>{{ commande.etatCmde ? 'en cours ' : 'annulée' }}</td>
+            </tr>
+            <tr>
+                <th>Pays</th>
+                <td>{{ commande.pays }}</td>
+            </tr>
+            <tr>
+                <th>Région</th>
+                <td>{{ commande.region }}</td>
+            </tr>
+            <tr>
+                <th>Code postal</th>
+                <td>{{ commande.CodePostal }}</td>
+            </tr>
+            <tr>
+                <th>Numéro de téléphone</th>
+                <td>{{ commande.tel }}</td>
+            </tr>  
+             <tr>
+                <th>Produits</th>
+                <td>{% for pr in products %}
+                    nom de produit : {{ pr.name }} <br> prix : {{ pr.price }} TND <hr />     <br/>      
+                {% endfor %}</td>
+                
+                 
+            </tr>
+        </tbody>
+    </table>
+ <div class="blog__details__comment__item__text">
+    <a href="{{ path('commande_edit', {'id': commande.id}) }}">edit <i
+                                    class="fa fa-angle-right"></i></a>
+</div>  
+    
+    </div>
+{% endblock %}

@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=CommandeRepository::class)
@@ -17,16 +18,19 @@ class Commande
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("post:read")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("post:read")
      */
     private $ref_cmde;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Groups("post:read")
      * 
      */
     private $etat_cmde;
@@ -35,6 +39,7 @@ class Commande
      * 
      * @ORM\Column(type="date",nullable=false)
      * @Assert\NotBlank
+     * @Groups("post:read")
      */
     //private $date_cmde;
 
@@ -45,12 +50,14 @@ class Commande
 
     /**
      * @ORM\Column(type="array")
+     * @Groups("post:read")
      */
     private $prod = [];
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotNull
+     * @Groups("post:read")
      * 
      */
     private $Pays;
@@ -58,6 +65,7 @@ class Commande
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotNull
+     * @Groups("post:read")
      * 
      */
     private $Region;
@@ -66,6 +74,7 @@ class Commande
      * @ORM\Column(type="integer")
      * @Assert\NotNull
      * @Assert\Length(min="4" , minMessage="la code postal doit contenir au moins 4 caractères.")
+     * @Groups("post:read")
      */
     private $code_postal;
 
@@ -73,6 +82,7 @@ class Commande
      * @ORM\Column(type="integer")
      * @Assert\NotNull
      * @Assert\Length(min="8" , minMessage="Le numéro de téléphone doit contenir exactement 8 chiffres")
+     * @Groups("post:read")
      */
     private $tel;
 

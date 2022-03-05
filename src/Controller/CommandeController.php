@@ -47,7 +47,7 @@ class CommandeController extends AbstractController
                $allcommande= $commandeRepository->findAll(); 
             }
         $commandes=$paginator->paginate($allcommande,$request->query->getInt('page',1),2);
-        return $this->render('commande/index.html.twig',[
+        return $this->render('Front/commande/index.html.twig',[
             'commandes' => $commandes,
             'products' => $productRepository->findAll(),
             'form' => $form->createView()
@@ -99,7 +99,7 @@ class CommandeController extends AbstractController
         $pngbase643 = base64_encode($png2);
 
         // Retrieve the HTML generated in our twig file
-        $html = $this->renderView('commande/liste.html.twig', [
+        $html = $this->renderView('Front/commande/liste.html.twig', [
             'commande' => $commande,
             "img64"=>$pngbase64,
             "img643"=>$pngbase643,
@@ -128,7 +128,7 @@ class CommandeController extends AbstractController
     public function index_Back(CommandeRepository $commandeRepository, ProductRepository $productRepository): Response
     {
         
-        return $this->render('commande/indexback.html.twig', [
+        return $this->render('Back/commande/indexback.html.twig', [
             'commandes' => $commandeRepository->findAll(),
             'products' => $productRepository->findAll(),
         ]);
@@ -176,7 +176,7 @@ class CommandeController extends AbstractController
             return $this->redirectToRoute('commande_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('commande/new.html.twig', [
+        return $this->render('Front/commande/new.html.twig', [
             'commande' => $commande,
             'form' => $form->createView(),
         ]);
@@ -187,7 +187,7 @@ class CommandeController extends AbstractController
      */
     public function show(Commande $commande ,ProductRepository $ProductRepository): Response
     {
-        return $this->render('commande/show.html.twig', [
+        return $this->render('Front/commande/show.html.twig', [
             'commande' => $commande,
             'products' => $ProductRepository->findAll(),
         ]);
@@ -198,7 +198,7 @@ class CommandeController extends AbstractController
      */
     public function showback(Commande $commande ,ProductRepository $ProductRepository): Response
     {
-        return $this->render('commande/showback.html.twig', [
+        return $this->render('Back/commande/showback.html.twig', [
             'commande' => $commande,
             'products' => $ProductRepository->findAll(),
         ]);
@@ -219,7 +219,7 @@ class CommandeController extends AbstractController
             return $this->redirectToRoute('commande_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('commande/edit.html.twig', [
+        return $this->render('Front/commande/edit.html.twig', [
             'commande' => $commande,
             'form' => $form->createView(),
         ]);
@@ -241,25 +241,10 @@ class CommandeController extends AbstractController
             return $this->redirectToRoute('commande_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('commande/editback.html.twig', [
+        return $this->render('Back/commande/editback.html.twig', [
             'commande' => $commande,
             'form' => $form->createView(),
         ]);
-    }
-
-
-
-    /**
-     * @Route("/{id}", name="commande_delete", methods={"POST"})
-     */
-    public function delete(Request $request, Commande $commande, EntityManagerInterface $entityManager): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$commande->getId(), $request->request->get('_token'))) {
-            $entityManager->remove($commande);
-            $entityManager->flush();
-        }
-
-        return $this->redirectToRoute('commande_index', [], Response::HTTP_SEE_OTHER);
     }
 
 
