@@ -10,20 +10,46 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @Route("/category")
  */
 class CategoryController extends AbstractController
 {
+
+    /**
+     * @Route("/stat", name="stat_app")
+     */
+    public function stat(CategoryRepository $repo): Response
+    {
+    $categorys=$repo->findAll();
+       
+    $label=[];
+    $count=[];
+    foreach($categorys as $category ){
+    $label[]=$category->getName();
+    $count[]=count($category->getProducts());
+    }
+        return $this->render('category/stat.html.twig', [
+            'label'=>json_encode($label),
+            'count'=>json_encode($count),
+        ]);
+    }
     /**
      * @Route("/", name="category_index", methods={"GET"})
      */
-    public function index(CategoryRepository $categoryRepository): Response
+    public function index(Request $request, CategoryRepository $categoryRepository, PaginatorInterface $paginator): Response
     {
+        $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
+        $categories2 = $paginator->paginate($categories,$request->query->getInt('page', 1),3);
+
         return $this->render('category/index.html.twig', [
-            'categories' => $categoryRepository->findAll(),
+            'categories' => $categories2,
+            
         ]);
+        
+       
     }
 
     /**
@@ -38,6 +64,12 @@ class CategoryController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($category);
             $entityManager->flush();
+
+            $request->getSession()->getFlashBag();
+            $this->addFlash(
+                'success',
+                'Added Successfully!'
+            );
 
             return $this->redirectToRoute('category_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -89,4 +121,44 @@ class CategoryController extends AbstractController
         $em->flush();
         return $this-> redirectToRoute('category_index');
     }
+
+
+
+     
+
+    
+    
+    
+  /* public function indexChart(): Response
+    {
+        $pieChart = new PieChart();
+        $pieChart->getData()->setArrayToDataTable(
+        [['Accessoires', 'Number'],
+        ['PC Gamer',     11],
+        ['Jeux et consoles',      2]
+    ]
+    );
+        $data = [['Category','Nombre de produits']];
+        foreach($category as $categories)
+        {
+        $data[] = array(
+            $category->getName(), count($category->getProducts()),
+        );
+        }
+        $pieChart = new PieChart();
+        $pieChart->getData()->setArrayToDataTable(
+        $data
+        );
+        return $this->render('chart/index.html.twig', [
+            'chart' => $chart,
+        ]);
+
+
+    }
+    **/
+
+
+    
+
+
 }

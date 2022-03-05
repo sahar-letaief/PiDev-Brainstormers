@@ -34,6 +34,7 @@ class Product
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Positive
      * @Assert\NotBlank(message="Prix requise")
      */
     private $Price;
@@ -61,11 +62,13 @@ class Product
      * @var string
      *
      * @ORM\Column(name="image", type="string", length=255, nullable=false)
+     * 
      */
     private $image;
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)
+     * @Assert\NotBlank(message="Reference requise")
      * 
      */
     private $Reference;

@@ -47,14 +47,12 @@
                                                 <div class="header__nav">
                                                         <nav class="header__menu mobile-menu">
                                                                 <ul>
-                                                                        <li class="active"><a href="{{ path('productFront_index') }}">Homepage</a></li>
-                                                                        <li><a href="./categories.html">Categories <span class="arrow_carrot-down"></span></a>
-                                                                                <ul class="dropdown">
-                                                                                        <li><a href="">PC Gamer</a></li>
-                                                                                        <li><a href="./anime-details.html">Accessoires</a></li>
-                                                                                        <li><a href="./anime-watching.html">Jeux et consoles</a></li>
-                                                                                        
-                                                                                </ul>
+                                                                        <li class="active"><a href="#">Homepage</a></li>
+                                                                        <li><a href="{{ path('productFront_index') }}">Products</a>
+                                                                        <li class="nav-item">
+                                                                        <a href="{{ path('product_par_cat')}}" class="nav-link">search Categories</a>
+                                                                       </li> 
+                                                                        
                                                                         </li>
                                                                         <li><a href="./blog.html">Our Blog</a></li>
                                                                         <li><a href="#">Contacts</a></li>
@@ -77,6 +75,7 @@
 
         {% block body %}
         {% endblock %}
+        
 
 {% block footer %}
         <!-- Footer Section Begin -->

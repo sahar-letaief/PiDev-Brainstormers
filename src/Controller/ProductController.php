@@ -4,12 +4,21 @@ namespace App\Controller;
 
 use App\Entity\Product;
 use App\Form\ProductType;
+use App\Form\ProductSearchType;
 use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
+use App\Entity\Category;
+use App\Form\CategoryType;
+use App\Entity\CategorySearch;
+use App\Form\CategorySearchType;
+use App\Entity\PriceSearch;
+use App\Form\PriceSearchType;
+
 
 
 
@@ -18,13 +27,18 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class ProductController extends AbstractController
 {
+       
     /**
      * @Route("/FrontProduct", name="productFront_index", methods={"GET"})
      */
-    public function allProductFront(ProductRepository $productRepository): Response
+    public function allProductFront(Request $request, ProductRepository $productRepository, PaginatorInterface $paginator): Response
     {
+        $products=$productRepository->orderByPrix();
+        $prod = $paginator->paginate($products,$request->query->getInt('page', 1),9);
+
+        
         return $this->render('product/indexFront.html.twig', [
-            'products' => $productRepository->findAll(),
+            'products' => $prod,
         ]);
     }
     /**
@@ -37,15 +51,94 @@ class ProductController extends AbstractController
             'products' => $products,
         ]);
     }
+    //Recherche par catégorie
     /**
-     * @Route("/", name="product_index", methods={"GET"})
+     * @Route("/prod_cat/", name="product_par_cat", methods={"GET","POST"})
      */
-    public function index(ProductRepository $productRepository): Response
+
+    public function productParCategory(Request $request) {
+    $categorySearch = new CategorySearch();
+    $form = $this->createForm(CategorySearchType::class,$categorySearch);
+    $form->handleRequest($request);
+
+    $products= [];
+
+    if($form->isSubmitted() && $form->isValid()) {
+      $category = $categorySearch->getCategory();
+     
+      if ($category!="") 
+      {
+        
+        $products= $category->getProducts();
+       // ou bien 
+       //$products= $this->getDoctrine()->getRepository(Product::class)->findBy(['category' => $category] );
+      }
+      else   
+        $products= $this->getDoctrine()->getRepository(Product::class)->findAll();
+      }
+    
+    return $this->render('product/productParCat.html.twig',['form' => $form->createView(),'products' => $products]);
+    }
+    //Filtre par prix
+     /**
+     * @Route("/prod_prix/", name="product_par_prix", methods={"GET","POST"})
+     * 
+     */
+    public function productParPrice(Request $request, ProductRepository $productRepository)
     {
+     
+      $priceSearch = new PriceSearch();
+      $form = $this->createForm(PriceSearchType::class,$priceSearch);
+      $form->handleRequest($request);
+
+      $products= [];
+
+      if($form->isSubmitted() && $form->isValid()) {
+        $minPrice = $priceSearch->getMinPrice(); 
+        $maxPrice = $priceSearch->getMaxPrice();
+          
+        $products= $this->getDoctrine()->getRepository(Product::class)->findByPriceRange($minPrice,$maxPrice);
+      }
+      else {  
+        $products=$productRepository->orderByPrix();
+
+    }
+
+    return  $this->render('product/productParPrice.html.twig',[ 'form' =>$form->createView(), 'products' => $products]);
+
+
+    }
+
+
+
+    /**
+     * @Route("/", name="product_index", methods={"GET","POST"})
+     */
+    public function index(Request $request, PaginatorInterface $paginator, ProductRepository $ProductRepository): Response
+      {
+
+        $form = $this->createForm(ProductSearchType::class);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid())
+           {
+                $term = $form['ProductName']->getData();
+
+                $description = $form['Description']->getData();
+                $products= $ProductRepository->search($term,$description);
+            }
+        else
+            {
+                $products= $ProductRepository->findAll(); 
+            }
+        //$products = $this->getDoctrine()->getRepository(Product::class)->findAll();
+        $products2 = $paginator->paginate($products,$request->query->getInt('page', 1),3);
+
         return $this->render('product/index.html.twig', [
-            'products' => $productRepository->findAll(),
+            'products' => $products2,
+            'form'=> $form->createView()
         ]);
     }
+
 
     /**
      * @Route("/new", name="product_new", methods={"GET", "POST"})
@@ -73,6 +166,11 @@ class ProductController extends AbstractController
 
             $entityManager->persist($product);
             $entityManager->flush();
+            $request->getSession()->getFlashBag();
+            $this->addFlash(
+                'success',
+                'Added Successfully!'
+            );
 
             return $this->redirectToRoute('product_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -89,6 +187,15 @@ class ProductController extends AbstractController
     public function show(Product $product): Response
     {
         return $this->render('product/show.html.twig', [
+            'product' => $product,
+        ]);
+    }
+    /**
+     * @Route("/Front/{id}", name="product_show_front", methods={"GET"})
+     */
+    public function showFront(Product $product): Response
+    {
+        return $this->render('product/showFront.html.twig', [
             'product' => $product,
         ]);
     }
@@ -141,5 +248,7 @@ class ProductController extends AbstractController
         $em->flush();
         return $this-> redirectToRoute('product_index');
     }
-   
+
+    
+ 
 }

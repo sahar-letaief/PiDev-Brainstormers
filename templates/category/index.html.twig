@@ -12,6 +12,12 @@
                     <h4 class="card-title">Inverse table</h4>
                     <p class="card-description">Catégories<code>/Liste des Catégories </code>
                     </p>
+                    {%for message in app.flashes('success')%}
+                        <div class="alert alert-success">
+                           {{message}}
+                        </div>
+
+                    {%endfor%}
                     <div class="table-responsive">
                       <table class="table table-dark">
                         <thead>
@@ -41,6 +47,7 @@
         {% endfor %}
         </tbody>
     </table>
+    {{ knp_pagination_render(categories) }}
                       
                     </div>
                   </div>

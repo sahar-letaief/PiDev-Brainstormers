@@ -47,4 +47,23 @@ class CategoryRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function nbcat(){
+
+        $qb= $this->createQueryBuilder('s')
+        ->select('Count(s)');
+        return $qb->getQuery()->getSingleScalarResult();
+
+        /**
+         * Solution avec DQL
+         */
+        /*$entityManager = $this->getEntityManager();
+        $query = $entityManager
+            ->createQuery('SELECT Count(c) FROM App\Entity\Category s ')
+
+        return  $query->getResult();*/
+
+    }
+
+    
+
 }
