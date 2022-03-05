@@ -48,12 +48,35 @@ class CommandeRepository extends ServiceEntityRepository
     }
     */
 
-    public function search($term) {
+   public function search($term) {
        return $this->createQueryBuilder('Commande')
            ->andWhere('Commande.ref_cmde LIKE :ref')
            ->setParameter('ref', '%'.$term.'%')
            ->getQuery()
            ->execute();
-   }
+
+        }
+    //elseif ($term ==null && $description!==null){
+            //return $this->createQueryBuilder('Commande')
+                //->andWhere('Commande.Pays LIKE :Pays')
+                //->setParameter('Pays', '%'.$description.'%')
+                //->getQuery()
+                //->getResult();
+
+
+
+        //}
+    //else{
+            //return $this->createQueryBuilder('Commande')
+              //  ->andWhere('Commande.ref_cmde LIKE :ref')
+               // ->andWhere('Commande.Pays LIKE :Pays')
+               // ->setParameter('ref', '%'.$description.'%')
+                //->setParameter('Pays', '%'.$term.'%')
+                //->getQuery()
+                //->getResult();
+
+
+        //}
+    //}
 
 }

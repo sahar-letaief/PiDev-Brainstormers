@@ -39,8 +39,8 @@ class CommandeController extends AbstractController
         if ($form->isSubmitted() && $form->isValid())
            {
                 $term = $form['ref_cmde']->getData();
-                $description = $form['Pays']->getData();
-                $allcommande= $commandeRepository->search($term,$description);
+                //$description = $form['Pays']->getData();
+                $allcommande= $commandeRepository->search($term);
             }
         else
             {
@@ -123,14 +123,27 @@ class CommandeController extends AbstractController
         
 
 /**
-     * @Route("/commandeBack", name="commande_Back", methods={"GET"})
+     * @Route("/commandeBack", name="commande_Back", methods={"GET","POST"})
      */
-    public function index_Back(CommandeRepository $commandeRepository, ProductRepository $productRepository): Response
+    public function index_Back(Request $request,CommandeRepository $commandeRepository, ProductRepository $productRepository ,PaginatorInterface $paginator): Response
     {
-        
+        $form = $this->createForm(CommandeSearchType::class);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid())
+           {
+                $term = $form['ref_cmde']->getData();
+                //$description = $form['Pays']->getData();
+                $allcommande= $commandeRepository->search($term);
+            }
+        else
+            {
+               $allcommande= $commandeRepository->findAll(); 
+            }
+        $commandes=$paginator->paginate($allcommande,$request->query->getInt('page',1),2);
         return $this->render('Back/commande/indexback.html.twig', [
-            'commandes' => $commandeRepository->findAll(),
+            'commandes' => $commandes,
             'products' => $productRepository->findAll(),
+            'form' => $form->createView()
         ]);
         
     }

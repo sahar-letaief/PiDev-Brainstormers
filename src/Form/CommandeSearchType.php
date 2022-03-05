@@ -24,8 +24,8 @@ class CommandeSearchType extends AbstractType
     {
        
         $builder
-            ->add('ref_cmde', TextType::class)
-            //->add('etat_cmde', TextType::class)
+            ->add('ref_cmde', TextType::class, array('label' => false,'attr' => ['placeholder' => "ex:  Order Reference"]))
+            //->add('Pays', TextType::class, array('label' => false,'attr' => ['placeholder' => "ex:  Pays"]))
             ->add('Search', SubmitType::class);
     }
 }
