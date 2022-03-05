@@ -1,23 +1,61 @@
 
 <html>
+<head>
+<style>
+	#customers {
+		font-family: Arial, Helvetica, sans-serif;
+		border-collapse: collapse;
+		width: 100%;
+	}
+
+	#customers td,
+	#customers th {
+		border: 1px solid #ddd;
+		padding: 8px;
+	}
+
+	#customers tr:nth-child(even) {
+		background-color: #f2f2f2;
+	}
+
+	#customers tr:hover {
+		background-color: #ddd;
+	}
+
+	#customers th {
+		padding-top: 12px;
+		padding-bottom: 12px;
+		text-align: left;
+		background-color: #04AA6D;
+		color: white;
+	}
+        h4
+    {
+        color: red;
+    }
+    body{
+        font:normal 12px/20PX "Liberation sans", Arial, Helvetica, sans-serif;
+        color:#585858;
+    }
+    img{
+        width:150px;
+        margin:10px;
+        position: center;
+
+    }
+</style>
+</head>
 <body>
 
-<table width="100%" style="font-family: sans-serif;" cellpadding="10">
-
-    <tr>
-        <td width="100%" style="text-align: center; font-size: 30px; font-weight: bold; padding: 0px;">
-            GameX
-        </td>
-    </tr>
-    <tr>
-        <td height="10" style="font-size: 0px; line-height: 10px; height: 10px; padding: 0px;">&nbsp;</td>
-    </tr>
-</table>
+<img src='data:image;base64,<?= {{ img64 }};?>' />
 
 <table width="100%" style="font-family: sans-serif;" cellpadding="10">
-
     <tr>
-        <td width="49%" style="border: 0.1mm solid #eee;">GameX<br>GameX<br>El Ghazela<br>Ariana<br>2083<br>Tunisia</td>
+<td width="49%" style="border: 0.1mm solid #eee;">
+<strong>GameX</strong><br>El Ghazela<br>Ariana<br>2083<br>Tunisia</td>
+
+</td>
+
         <td width="2%">&nbsp;</td>
         <td width="49%" style="border: 0.1mm solid #eee; text-align: right;"><strong>GameX</strong><br>00-00 ABC Aare<br>Tunisia<br>123 456<br><br><strong>Telephone:</strong> +216 71 159 753<br><a href="#" target="_blank" style="color: #000; text-decoration: none;">GameX.st@gmail.com</a><br></td>
     </tr>
@@ -37,16 +75,17 @@
 </table>
 <br>
 {% block content %}
-    <table class="items" width="100%" style="font-size: 14px; border-collapse: collapse;" cellpadding="8">
+<table id="customers" width="100%" style="font-size: 14px; border-collapse: collapse;" cellpadding="8">
+
         <thead>
             <tr class="table-dark">
                 <th width="15%" style="text-align: left;"><strong>Reférence commande</strong</th>
-                <th width="15%" style="text-align: left;"><strong> pays </strong></th>
-                <th width="15%" style="text-align: left;"><strong>region</strong></th>
-                <th width="15%" style="text-align: left;"><strong>code_postal</strong></th>
-                <th width="15%" style="text-align: left;"><strong>tel</strong></th>
-                <th width="15%" style="text-align: left;"><strong>nom de produit</strong></th>
-                <th width="15%" style="text-align: left;"><strong>prix de produit</strong></th>
+                <th width="15%" style="text-align: left;"><strong> Pays </strong></th>
+                <th width="15%" style="text-align: left;"><strong>Région</strong></th>
+                <th width="15%" style="text-align: left;"><strong>Code_postal</strong></th>
+                <th width="15%" style="text-align: left;"><strong>Téléphone</strong></th>
+                <th width="15%" style="text-align: left;"><strong>Nom de produit</strong></th>
+                <th width="15%" style="text-align: left;"><strong>Prix de produit</strong></th>
             </tr>
         </thead>
         <tbody>
@@ -71,7 +110,9 @@
         </tbody>
     </table>
     <br>
-    <h4> NB : Paiement à la  livraison</h4>
+<h4 style="font-family: helvetica, arial, sans-serif"> NB : Paiement à la  livraison 7dt</h4>
+
+
 
 <table width="100%" style="font-family: sans-serif; font-size: 14px;" >
     <tr>
@@ -103,8 +144,10 @@
         </td>
     </tr>
 </table>
+
+
 {% endblock %}
-<br>
+<br><br>
 <table width="100%" style="font-family: sans-serif; font-size: 14px;" >
     <br>
     <tr>
@@ -124,6 +167,8 @@
                         VAT Registration No. 021021021 | ATOL No. 1234
                     </td>
                 </tr>
+<img src='data:image;base64,<?= {{ img643 }};?>'/>
+
             </table>
 
         </td>

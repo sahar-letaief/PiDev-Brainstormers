@@ -39,10 +39,10 @@ class CommandeController extends AbstractController
         if ($form->isSubmitted() && $form->isValid())
            {
                 $term = $form['ref_cmde']->getData();
-                
-                $allcommande= $commandeRepository->search($term);
+                $description = $form['Pays']->getData();
+                $allcommande= $commandeRepository->search($term,$description);
             }
-            else
+        else
             {
                $allcommande= $commandeRepository->findAll(); 
             }
@@ -93,11 +93,16 @@ class CommandeController extends AbstractController
         
         // Instantiate Dompdf with our options
         $dompdf = new Dompdf($pdfOptions);
-        
+        $png = file_get_contents("logo9.png");
+        $png2 = file_get_contents("GameX.png");
+        $pngbase64 = base64_encode($png);
+        $pngbase643 = base64_encode($png2);
 
         // Retrieve the HTML generated in our twig file
         $html = $this->renderView('commande/liste.html.twig', [
             'commande' => $commande,
+            "img64"=>$pngbase64,
+            "img643"=>$pngbase643,
             'products' => $productRepository->findAll(),
         ]);
         
