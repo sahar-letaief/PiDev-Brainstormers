@@ -170,15 +170,18 @@ class EvenementController extends AbstractController
         $pdfoptions=new Options();
         $pdfoptions->set('defaultFont','Arial');
         $dompdf=new dompdf();
+        $logo = file_get_contents("logo.png");
+        $logobase64 = base64_encode($logo);
         $evenements=$evenementRepository->findAll();
 
         $html=$this->renderView('evenement/printevent.html.twig', [
             'evenements' => $evenements,
+            'logobase64'=>$logobase64,
         ]);
        $dompdf->loadHtml($html);
        $dompdf->setPaper('A4','portrait');
        $dompdf->render();
-       $dompdf->stream('mypdf.pdf',["Attachement" => true]);
+       $dompdf->stream('Events list.pdf',["Attachement" => false]);
 
     }
     /**

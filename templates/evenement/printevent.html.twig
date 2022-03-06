@@ -1,7 +1,19 @@
 
 
 {% block body %}
-<h1>Events list</h1>
+<style>
+    body{
+        font:normal 12px/20PX "Liberation sans", Arial, Helvetica, sans-serif;
+        color:#585858;
+    }
+    img{
+        height: 100px;
+        width: 100px;
+        alignment: center;
+    }
+</style>
+<img src='data:image;base64,<?= {{ logobase64}};?>' />
+
 <div class="main-panel">
     <div class="content-wrapper">
 
@@ -9,7 +21,7 @@
             <div class="col-12 grid-margin">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Event list</h4>
+                        <h5 class="card-title">Event list</h5>
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-9"></div>
@@ -20,23 +32,23 @@
                         <table class="table">
                             <thead>
                             <tr>
-                                <th>IdEvent</th>
+
                                 <th>Event name</th>
-                                <th>Event place</th>
-                                <th>Event begins at</th>
-                                <th>Event ends at</th>
-                                <th>Event price</th>
+                                <th>Place</th>
+                                <th>Begins at</th>
+                                <th>Ends at</th>
+                                <th>Price</th>
                                 <th>Participants</th>
                             </tr>
                             </thead>
                             <tbody>
                             {% for evenement in evenements %}
                                 <tr>
-                                    <td>{{ evenement.id }}</td>
+
                                     <td>{{ evenement.NameEvent }}</td>
                                     <td>{{ evenement.PlaceEvent }}</td>
-                                    <td>{{ evenement.DateDebut ? evenement.DateDebut|date('Y-m-d , h:m') : '' }}</td>
-                                    <td>{{ evenement.DateFin ? evenement.DateFin|date('Y-m-d , h:m') : '' }}</td>                                    <td>{{ evenement.PriceEvent }} DT</td>
+                                    <td>{{ evenement.DateDebut ? evenement.DateDebut|date('Y-m-d ') : '' }}</td>
+                                    <td>{{ evenement.DateFin ? evenement.DateFin|date('Y-m-d ') : '' }}</td>                                    <td>{{ evenement.PriceEvent }} DT</td>
                                     <td>{{ evenement.NbParticipants }}</td>
                                 </tr>
                             {% else %}
@@ -53,5 +65,5 @@
             </div>
         </div>
     </div>
-
+</div>
     {% endblock %}
