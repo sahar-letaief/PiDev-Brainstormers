@@ -16,7 +16,8 @@ class CartController extends AbstractController
      * @Route("/cart", name="cart")
      */
     public function index(SessionInterface $session , ProductRepository $ProductRepository)
-    {
+    {   
+        //recupere le panier actuel
         $pannier = $session->get('pannier', []);
         $pannierxithData = [];
         foreach ($pannier as $id => $quantity) {
@@ -32,6 +33,7 @@ class CartController extends AbstractController
             $totalItem = $item['product']->getPrice() * $item['quantity'];
             $total += $totalItem;
         }
+        //$items=$paginator->paginate($pannierxithData,$request->query->getInt('page',1),2);
         return $this->render('Front/cart/index.html.twig', [
             'items' => $pannierxithData,
             'total' =>$total,
@@ -65,6 +67,19 @@ class CartController extends AbstractController
           unset($pannier[$id]);
       } 
       $session->set('pannier', $pannier);
+      return $this->redirectToRoute('cart');
+    }
+
+
+    /**
+     * @Route("/cart/remove/", name="cart_remove_all")
+     */
+    public function removeAll(SessionInterface $session)
+    {
+      $pannier = $session->get('pannier', []);
+          unset($pannier);
+       
+      $session->set('pannier', []);
       return $this->redirectToRoute('cart');
     }
 }
