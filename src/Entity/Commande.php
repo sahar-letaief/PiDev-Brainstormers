@@ -29,7 +29,7 @@ class Commande
     private $ref_cmde;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", options={"default" : null})
      * @Groups("post:read")
      * 
      */

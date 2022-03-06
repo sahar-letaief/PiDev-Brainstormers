@@ -23,7 +23,9 @@
                 <th>Order reference</th>
                 <th>order status</th>
                 <th>Product name</th>
+                <th>Quantity</th>
                 <th>Product price</th>
+                <th>Total</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -32,14 +34,22 @@
             <tr>
                 <td>{{ commande.refCmde }}</td>
                 <td>{{ commande.etatCmde ? 'confirmed' : 'canceled' }}</td>
-                <td>{% for pr in products %}
-                     {{ pr.name }}<br> <br>
-                     {% endfor %}
+                <td>{% for prod in commande.prod %}
+                    {{ prod['ProductName'] }}  <br> <br>
+                    {% endfor %}
                 </td>
-                <td>{% for pr in products %}
-                     {{ pr.price }} TND <br> <br>
-                     {% endfor %}
-                </td>    
+                <td>{% for prod in commande.prod %}
+                    {{ prod['quantity'] }} <br> <br>
+                    {% endfor %}
+                </td>
+                <td>{% for prod in commande.prod %}
+                    {{ prod['ProductPrice'] }} TND<br> <br>
+                    {% endfor %}
+                </td>
+                <td>{% for prod in commande.prod %}
+                    {{ prod['quantity'] * prod['ProductPrice'] }} TND <br> <br>
+                    {% endfor %}
+                </td>  
                 <td>  
                     <div class="blog__details__comment__item__text">
                         <a href="{{ path('commande_show_back', {'id': commande.id}) }}">show</a>

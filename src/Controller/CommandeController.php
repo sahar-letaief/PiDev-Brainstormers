@@ -173,9 +173,10 @@ class CommandeController extends AbstractController
         for ($x = 0; $x<=count($pannierxithData)-1; $x++) {
              $a[$x]['quantity'] = $pannierxithData[$x]['quantity'];           
              $a[$x]['ProductName'] = $pannierxithData[$x]['product']->getName();
-             $a[$x]['quantity'] = $pannierxithData[$x]['quantity'];           
-             $a[$x]['ProductName'] = $pannierxithData[$x]['product']->getName();
+             $a[$x]['ProductPrice'] = $pannierxithData[$x]['product']->getPrice();
+             
             }
+            // manich faham chbihom maawdin hadhom ! hhh hate ane wlh estghrabt wlh hhhhh trah jarab aaml commande naamilch f twig ? le le aaml commande 
             //dd($a);
         
         if ($form->isSubmitted() && $form->isValid()) {

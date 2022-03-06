@@ -43,26 +43,53 @@
             <tr class="table-dark">
                 <th>Order reference</th>
                 <th>order status</th>
-                <th>Country</th>
                 <th>Product name</th>
+                <th>Quantity</th>
                 <th>Product price</th>
+                <th>Total</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for commande in commandes %}
             <tr>
+                
+
+
+                {% for i in (commande.prod|length) - 1 %}
+                    * {{ commande.prod[0]['quantity'] }}
+                    * {{ commande.prod[0]['ProductName'] }}
+                {% endfor %}
+                
                 <td>{{ commande.refCmde }}</td>
-                <td>{{ commande.etatCmde ? 'In progress' : 'canceled' }}</td>
-                 <td>{{ commande.Pays }}</td>
-                <td>{% for pr in products %}
-                     {{ pr.name }}<br> <br>
-                     {% endfor %}
-                </td>
-                <td>{% for pr in products %}
-                     {{ pr.price }} TND <br> <br>
-                     {% endfor %}
+                <td>
+                    {% if commande.etatCmde is same as (null) %}
+                    In progress {{ commande.etatCmde }}
+                    {% endif %}
+                    {% if commande.etatCmde is same as(false) %}
+                         Canceled {{ commande.etatCmde }}
+                    {% endif %}
+                    {% if commande.etatCmde == 1 %}
+                         Confirmed
+                    {% endif %} 
                 </td> 
+                <td>{% for prod in commande.prod %}
+                    {{ prod['ProductName'] }}  <br> <br>
+                    {% endfor %}
+                </td>
+                <td>{% for prod in commande.prod %}
+                    {{ prod['quantity'] }} <br> <br>
+                    {% endfor %}
+                </td>
+                <td>{% for prod in commande.prod %}
+                    {{ prod['ProductPrice'] }} TND<br> <br>
+                    {% endfor %}
+                </td>
+                <td>{% for prod in commande.prod %}
+                    {{ prod['quantity'] * prod['ProductPrice'] }}  TND<br> <br>
+                    {% endfor %}
+                </td>
+                 
                 <td>  
                     <div class="blog__details__comment__item__text">
                         <a href="{{ path('commande_show', {'id': commande.id}) }}">show</a>
