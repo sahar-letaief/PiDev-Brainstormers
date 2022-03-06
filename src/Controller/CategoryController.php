@@ -11,6 +11,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
+
 
 /**
  * @Route("/category")
@@ -39,7 +41,7 @@ class CategoryController extends AbstractController
     /**
      * @Route("/", name="category_index", methods={"GET"})
      */
-    public function index(Request $request, CategoryRepository $categoryRepository, PaginatorInterface $paginator): Response
+    public function index(Request $request, CategoryRepository $categoryRepository, PaginatorInterface $paginator, TranslatorInterface $translator): Response
     {
         $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
         $categories2 = $paginator->paginate($categories,$request->query->getInt('page', 1),3);
@@ -55,7 +57,7 @@ class CategoryController extends AbstractController
     /**
      * @Route("/new", name="category_new", methods={"GET", "POST"})
      */
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, TranslatorInterface $translator): Response
     {
         $category = new Category();
         $form = $this->createForm(CategoryType::class, $category);
@@ -65,11 +67,8 @@ class CategoryController extends AbstractController
             $entityManager->persist($category);
             $entityManager->flush();
 
-            $request->getSession()->getFlashBag();
-            $this->addFlash(
-                'success',
-                'Added Successfully!'
-            );
+            $message = $translator->trans('Added Successfully!');
+            $this->addFlash('success', $message );
 
             return $this->redirectToRoute('category_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -83,7 +82,7 @@ class CategoryController extends AbstractController
     /**
      * @Route("/{id}", name="category_show", methods={"GET"})
      */
-    public function show(Category $category): Response
+    public function show(Category $category, TranslatorInterface $translator): Response
     {
         return $this->render('category/show.html.twig', [
             'category' => $category,
@@ -93,7 +92,7 @@ class CategoryController extends AbstractController
     /**
      * @Route("/{id}/edit", name="category_edit", methods={"GET", "POST"})
      */
-    public function edit(Request $request, Category $category, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, Category $category, EntityManagerInterface $entityManager, TranslatorInterface $translator): Response
     {
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);

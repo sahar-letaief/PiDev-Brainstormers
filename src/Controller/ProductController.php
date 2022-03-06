@@ -18,6 +18,8 @@ use App\Entity\CategorySearch;
 use App\Form\CategorySearchType;
 use App\Entity\PriceSearch;
 use App\Form\PriceSearchType;
+use Symfony\Contracts\Translation\TranslatorInterface;
+
 
 
 
@@ -103,7 +105,7 @@ class ProductController extends AbstractController
         $products=$productRepository->orderByPrix();
 
     }
-
+    
     return  $this->render('product/productParPrice.html.twig',[ 'form' =>$form->createView(), 'products' => $products]);
 
 
@@ -114,7 +116,7 @@ class ProductController extends AbstractController
     /**
      * @Route("/", name="product_index", methods={"GET","POST"})
      */
-    public function index(Request $request, PaginatorInterface $paginator, ProductRepository $ProductRepository): Response
+    public function index(Request $request, PaginatorInterface $paginator, ProductRepository $ProductRepository, TranslatorInterface $translator): Response
       {
 
         $form = $this->createForm(ProductSearchType::class);
@@ -143,7 +145,7 @@ class ProductController extends AbstractController
     /**
      * @Route("/new", name="product_new", methods={"GET", "POST"})
      */
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, TranslatorInterface $translator): Response
     {
         $product = new Product();
         $form = $this->createForm(ProductType::class, $product);
@@ -184,7 +186,7 @@ class ProductController extends AbstractController
     /**
      * @Route("/{id}", name="product_show", methods={"GET"})
      */
-    public function show(Product $product): Response
+    public function show(Product $product, TranslatorInterface $translator): Response
     {
         return $this->render('product/show.html.twig', [
             'product' => $product,
@@ -204,7 +206,7 @@ class ProductController extends AbstractController
     /**
      * @Route("/{id}/edit", name="product_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Product $product, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, Product $product, EntityManagerInterface $entityManager, TranslatorInterface $translator): Response
     {
         $form = $this->createForm(ProductType::class, $product);
         $form->handleRequest($request);

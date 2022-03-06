@@ -3,14 +3,25 @@
 {% block title %}Edit Product{% endblock %}
 
 {% block body %}
-<div class="col-12 grid-margin stretch-card">
-<div class="card">
-    <div class="card-header">
-      <strong>Modifier produit</strong>
-    </div>
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="page-header">
+
+            <h5 class="page-title">Admin<code>/{% trans %} Product {% endtrans %} </code></h5>
+            <nav aria-label="breadcrumb">
+            {% for locale in locales %}
+                {% if locale != app.request.locale %}
+                <ol class="breadcrumb">
+                    <a  href="{{ path('change_locale', {'locale': locale}) }}"><img src="{{ asset('back/assets/images/'~locale~'.png') }}" alt="{{locale}}" width="80px" height="50px" /></a>
+                {% endif %}
+            {% endfor %}
+                </ol>
+            </nav>
+        </div>
+      <strong>{% trans %}Edit product{% endtrans %}</strong>
     
     <div class="card-body">
-    <h1>Modifier produit</h1>
+    
 
     {{ include('product/_form.html.twig', {'button_label': 'Update'}) }}
     
@@ -19,18 +30,18 @@
     <div class="row">
     
       
-        <a class="nav-link btn btn-warning create-new-button" id="createbuttonDropdown" data-toggle="dropdown" aria-expanded="false" href="{{ path('product_edit', {'id': product.id}) }}">Edit</a>
+        <a class="nav-link btn btn-warning create-new-button" id="createbuttonDropdown" data-toggle="dropdown" aria-expanded="false" href="{{ path('product_edit', {'id': product.id}) }}">{% trans %}Edit{% endtrans %}</a>
      
    
       
-        <a class="nav-link btn btn-primary create-new-button" id="createbuttonDropdown" data-toggle="dropdown" aria-expanded="false" href="{{ path('product_index') }}">Retour</a>
+        <a class="nav-link btn btn-primary create-new-button" id="createbuttonDropdown" data-toggle="dropdown" aria-expanded="false" href="{{ path('product_index') }}">{% trans %}Back{% endtrans %}</a>
 
-        <a class="nav-link btn btn-danger create-new-button" id="createbuttonDropdown" data-toggle="dropdown" aria-expanded="false" href="{{ path('product_delete', {'id': product.id}) }}">delete</a>
+        <a class="nav-link btn btn-danger create-new-button" id="createbuttonDropdown" data-toggle="dropdown" aria-expanded="false" href="{{ path('product_delete', {'id': product.id}) }}">{% trans %}Delete{% endtrans %}</a>
       
     
 
     </div>
      
     </div>
-    </di>
+    
 {% endblock %}

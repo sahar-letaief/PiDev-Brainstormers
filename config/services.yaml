@@ -6,6 +6,8 @@
 parameters:
     uploads_directory: 'uploads'
     app.path.product_images: /uploads/images/products
+    app.locales: [en, fr]
+    locale: en
 
 services:
     # default configuration for services in *this* file
