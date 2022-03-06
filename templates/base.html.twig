@@ -9,16 +9,16 @@
     {% block stylesheets %}
         {#{{ encore_entry_link_tags('app') }}#}
     {% endblock %}
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous" defer></script>
     {% block javascripts %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous" defer></script>
+
         {#{{ encore_entry_script_tags('app') }}#}
     {% endblock %}
 </head>
 <body>
-{% for message in app.flashes("communication") %}
+{% for messages in app.flashes("communication") %}
     <div class="alert alert-success alert-dismissible fade show" role="alert">
-        {{message}}
+        {{messages}}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 {% endfor %}

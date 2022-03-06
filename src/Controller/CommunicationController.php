@@ -76,9 +76,9 @@ class CommunicationController extends AbstractController
     }
 
     /**
-     * @Route("/delete/{id}", name="delete")
+     * @Route("/drop/{id}", name="drop")
      */
-    public function delete(Communication $message): Response
+   public function dropCommunication (Communication $message): Response
     {
         $em = $this->getDoctrine()->getManager();
         $em->remove($message);

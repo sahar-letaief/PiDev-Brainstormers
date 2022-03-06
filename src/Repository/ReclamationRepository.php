@@ -47,4 +47,11 @@ class ReclamationRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function search($term) {
+        return $this->createQueryBuilder('r')
+            ->andWhere('r.Title LIKE :title')
+            ->setParameter('title', '%'.$term.'%')
+            ->getQuery()
+            ->execute();
+    }
 }

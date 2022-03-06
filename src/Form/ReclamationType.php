@@ -9,6 +9,8 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Captcha\Bundle\CaptchaBundle\Form\Type\CaptchaType;
+use Captcha\Bundle\CaptchaBundle\Validator\Constraints\ValidCaptcha;
 
 class ReclamationType extends AbstractType
 {
@@ -26,7 +28,15 @@ class ReclamationType extends AbstractType
            // ->add('create_date')
           //  ->add('create_resolution')
             ->add('Description')
-           //->add('Status')
+           //->add('Status'))
+           ->add('captchaCode', CaptchaType::class, array(
+               'captchaConfig' => 'ExampleCaptchaUserRegistration',
+               'constraints' => [
+                   new ValidCaptcha([
+                       'message' => 'Invalid captcha, please try again',
+                   ]),
+               ],
+           ))
         ;
     }
 

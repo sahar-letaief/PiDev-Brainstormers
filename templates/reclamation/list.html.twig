@@ -6,6 +6,7 @@
     <div class="col-lg-12 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
+
                 <h4 class="card-title">Striped Table</h4>
                 <p class="card-description">
                 </p>
@@ -29,18 +30,24 @@
                                 <td>{{rec.reference}}</td>
                                 <td>{{rec.Title}}</td>
                                 <td>{{ rec.Description}}</td>
-                                <td><a class="site-btn">
-                                    {% if rec.status!='refus' and rec.status!='accept'  %}
+                                <td><a class="site-btn" style="background: orange;border: none">
+                                        {% if rec.status!='refus' and rec.status!='accept'  %}
                                     En cours
                                     {% else %}
+
                                         {{ rec.status }}
+
                                     {% endif %}
                                 </a></td>
 
                                 <td> <a  class="site-btn"> Contact </a></td>
-                                <td>   <a class="btn btn-outline-primary btn-fw" href="{{path('reclamation_edit',{'id':rec.id})}}">edit</a>
+                                <td> {% if rec.status!='refus' and rec.status!='accept'  %}
+                                    <a class="btn btn-outline-primary btn-fw" href="{{path('reclamation_edit',{'id':rec.id})}}">edit</a>
                                     <a class="btn btn-outline-primary btn-fw" href="{{path('reclamation_delete',{'id':rec.id})}}"{#  ,class="mdi mdi-delete"#}>delete</a>
                                 </td>
+                                    {% else %}
+                                <td></td>
+                                {% endif %}
                             </tr>
                         {% endfor %}
                         </tbody>

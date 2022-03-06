@@ -5,31 +5,23 @@
 
     <div class="main-panel">
         <div class="content-wrapper">
-            <div class="page-header">
-                <h3 class="page-title"> Form elements </h3>
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Forms</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Form elements</li>
-                    </ol>
-                </nav>
-            </div>
             <div class="row">
                 <div class="col-12 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Ajout</h4>
-                            <p class="card-description"> form</p>
+                            <div>
+                            <h4 class="card-title" style="color:Tomato;">Add Reclamation</h4>
+
+                            <p class="card-description"></p>
+                            </div>
                             {{ form_start(form,{'attr': {'novalidate': 'novalidate'}})}}
                             <div class="form-group">
-                                <label for="exampleInputUsername1">référence</label>
-                            </div>
-                            <div>
-                            {{ form_widget(form.reference,{'attr' : {'class' : 'form-control' }} ) }}
+                                <label for="exampleInputUsername1">reference</label>
+                                {{ form_widget(form.reference,{'attr' : {'class' : 'form-control' }} ) }}
                                 {{ form_errors(form.reference) }}
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputUsername1">Titre</label>
+                                <label for="exampleInputUsername1">Title</label>
                                 {{ form_widget(form.Title , {'attr' : {'class' : 'form-control'  }}  ) }}
                                 {{ form_errors(form.Title) }}
                             </div>
@@ -37,6 +29,14 @@
                                 <label for="exampleTextarea1">Description</label>
                                 {{ form_widget(form.Description, {'attr' : {'class' : 'form-control' }}  ) }}
                                 {{ form_errors(form.Description) }}
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 offset-md-4">
+                                    <div class="form-group">
+                                        <label for="exampleFormControlInput">Are you a robot ?</label>
+                                        {{ form_widget(form.captchaCode, {'attr' : {'class' : 'form-control' }}) }}
+                                    </div>
+                                </div>
                             </div>
                             <button class="btn btn-primary mr-2">{{ button_label|default('Save') }}</button>
 

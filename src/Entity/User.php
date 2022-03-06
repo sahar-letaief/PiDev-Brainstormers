@@ -118,11 +118,17 @@ class User implements UserInterface
      */
     private $received;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Reclamation::class, mappedBy="clients")
+     */
+    private $reclamations;
+
     public function __construct()
     {
         $this->userLoginDates = new ArrayCollection();
         $this->sent = new ArrayCollection();
         $this->received = new ArrayCollection();
+        $this->reclamations = new ArrayCollection();
     }
 
     public function __toString()
@@ -393,6 +399,36 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($received->getRecipient() === $this) {
                 $received->setRecipient(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Reclamation>
+     */
+    public function getReclamations(): Collection
+    {
+        return $this->reclamations;
+    }
+
+    public function addReclamation(Reclamation $reclamation): self
+    {
+        if (!$this->reclamations->contains($reclamation)) {
+            $this->reclamations[] = $reclamation;
+            $reclamation->setClients($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReclamation(Reclamation $reclamation): self
+    {
+        if ($this->reclamations->removeElement($reclamation)) {
+            // set the owning side to null (unless already changed)
+            if ($reclamation->getClients() === $this) {
+                $reclamation->setClients(null);
             }
         }
 

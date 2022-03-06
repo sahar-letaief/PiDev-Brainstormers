@@ -52,6 +52,13 @@ class Reclamation
      */
     private $reference;
 
+    protected $captchaCode;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="reclamations")
+     */
+    private $clients;
+
 
     public function getId(): ?int
     {
@@ -126,6 +133,26 @@ class Reclamation
     public function setReference(?Commande $reference): self
     {
         $this->reference = $reference;
+
+        return $this;
+    }
+    public function getCaptchaCode()
+    {
+        return $this->captchaCode;
+    }
+    public function setCaptchaCode($captchaCode)
+    {
+        $this->captchaCode = $captchaCode;
+    }
+
+    public function getClients(): ?User
+    {
+        return $this->clients;
+    }
+
+    public function setClients(?User $clients): self
+    {
+        $this->clients = $clients;
 
         return $this;
     }
