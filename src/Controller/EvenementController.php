@@ -9,6 +9,7 @@ use App\Form\EvenementType;
 use App\Repository\EvenementRepository;
 use App\Repository\ReservationRepository;
 use App\Repository\UserRepository;
+use App\Services\QrcodeService;
 use Doctrine\ORM\EntityManagerInterface;
 use Dompdf\Dompdf;
 use Dompdf\Options;
@@ -156,6 +157,7 @@ class EvenementController extends AbstractController
     public function front(PaginatorInterface $paginator,Request $request)
     {
         $event=$this->getDoctrine()->getRepository(Evenement::class)->findAll();
+
         $evenements=$paginator->paginate($event,$request->query->getInt('page',1),3);
         return $this->render('evenement/indexfront.html.twig', [
             'evenements' => $evenements,
@@ -258,10 +260,15 @@ class EvenementController extends AbstractController
      * @IsGranted("ROLE_PLAYER")
      * @Route("/front/{id}", name="evenement_show_front", methods={"GET"})
      */
-    public function showfront(Evenement $evenement): Response
+    public function showfront(Evenement $evenement,$id,QrcodeService $qrcodeService): Response
     {
+        //data
+        $evenement=$this->getDoctrine()->getRepository(Evenement::class)->findOneBy(['id'=>$id]);
+        $qrCode=$qrcodeService->qrcode($evenement->getNameEvent());
+        //dd($qrCode);
         return $this->render('evenement/showfront.html.twig', [
             'evenement' => $evenement,
+            'qrcode' =>$qrCode,
         ]);
     }
 
