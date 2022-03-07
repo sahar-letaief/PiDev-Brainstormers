@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\Exception\InvalidCsrfTokenException;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\Security;
@@ -89,15 +90,30 @@ class UserAuthenticator extends AbstractFormLoginAuthenticator implements Passwo
         return $credentials['password'];
     }
 
-    public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
+    public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey): RedirectResponse
     {
         if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey)) {
             return new RedirectResponse($targetPath);
         }
         $activated = $token->getUser()->isVerified();
+        $hasAccess = in_array('ROLE_ADMIN', $token->getUser()->getRoles());
+        $verificationCode = $token->getUser()->getVerificationCode();
+        $disabled = $token->getUser()->getDisabletoken();
 
         if ( $activated == 1){
-            return new RedirectResponse($this->urlGenerator->generate('choice'));
+            if ( $hasAccess){
+                return new RedirectResponse($this->urlGenerator->generate('choice'));
+            }else{
+                if ( $verificationCode){
+                    return new RedirectResponse($this->urlGenerator->generate('ActivateAccountWithCode'));
+                }else{
+                    if ( $disabled){
+                        return new RedirectResponse($this->urlGenerator->generate('DisabledAccount'));
+                    }else{
+                        return new RedirectResponse($this->urlGenerator->generate('profile'));
+                    }
+                }
+            }
         }else{
             return new RedirectResponse($this->urlGenerator->generate('denied_access'));
         }

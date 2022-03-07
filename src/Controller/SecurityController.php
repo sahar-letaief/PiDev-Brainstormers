@@ -8,6 +8,7 @@ use App\Form\ResetPassType;
 use App\Repository\UserRepository;
 use App\Security\EmailVerifier;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
@@ -15,6 +16,7 @@ use Symfony\Component\Mime\Address;
 use Symfony\Component\Mime\Message;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Csrf\TokenGenerator\TokenGeneratorInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
@@ -29,9 +31,14 @@ class SecurityController extends AbstractController
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        // if ($this->getUser()) {
-        //     return $this->redirectToRoute('target_path');
-        // }
+        if ($this->getUser()) {
+            $hasAccess = in_array('ROLE_ADMIN', $this->getUser()->getRoles());
+            if ( $hasAccess){
+                return $this->redirectToRoute('choice');
+            }else{
+                return $this->redirectToRoute('profile');
+            }
+        }
 
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
@@ -122,7 +129,7 @@ class SecurityController extends AbstractController
     /**
      * @Route("/resetPassword/{token}", name="app_reset_password")
      */
-    public function verifyUserEmail($token,Request $request,UserPasswordEncoderInterface $passwordEncoder): Response
+    public function resetpasswordUser($token,Request $request,UserPasswordEncoderInterface $passwordEncoder): Response
     {
         // search for user with the token
         $user = new User();

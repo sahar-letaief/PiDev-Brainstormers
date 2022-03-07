@@ -17,6 +17,11 @@
     <link rel="stylesheet" href="{{ asset('Back/assets/css/style.css') }}">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{ asset('Back/assets/images/favicon.png') }}" />
+    <style>
+        .card{
+            border: 2px solid white;
+        }
+    </style>
 </head>
 <body>
 <div class="container-scroller">
@@ -33,7 +38,7 @@
                             </div>
 
                             <div class="d-flex" style="margin-bottom: 20px;">
-                                <a class="btn btn-primary mr-2 col " href="{{ path('evenement_index') }}"><i class="mdi mdi-account-box"></i> Admin Panel </a>
+                                <a class="btn btn-primary mr-2 col " href="{{ path('user_index') }}"><i class="mdi mdi-account-box"></i> Admin Panel </a>
                                 <a class="btn btn-primary mr-2 col" href="{{ path('evenement_index2') }}"><i class="mdi mdi-arrow-right-bold-hexagon-outline"></i> Front panel </a>
                             </div>
                             <div class="text-center">

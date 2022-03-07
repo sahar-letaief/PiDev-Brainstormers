@@ -62,10 +62,10 @@ class ReservationController extends AbstractController
                 $back = "failure";
             }
             $reservations = $paginator->paginate($data, $request->query->getInt('page', 1), 3);
-            return $this->render('Back/reservation/index.html.twig', array('reservations'=>$reservations,'user'=>$user,'back' => $back));
+            return $this->render('reservation/indexback.html.twig', array('reservations'=>$reservations,'user'=>$user,'back' => $back));
         }
 
-        return $this->render('Back/reservation/index.html.twig', array('reservations'=>$reservations,'user'=>$user,'back' => $back));
+        return $this->render('reservation/indexback.html.twig', array('reservations'=>$reservations,'user'=>$user,'back' => $back));
 
     }
     /**
@@ -86,7 +86,7 @@ class ReservationController extends AbstractController
         //dd($reservations);
         $reservation->setDateReservation(new \DateTime('now'));
 
-        return $this->render('Front/reservation/indexfront.html.twig', [
+        return $this->render('reservation/indexfront.html.twig', [
             'reservations' => $reservations,
             'user'=>$user,
         ]);
@@ -133,7 +133,7 @@ class ReservationController extends AbstractController
             return $this->redirectToRoute('evenement_index2', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->render('Front/reservation/new.html.twig', [
+        return $this->render('reservation/new.html.twig', [
             'reservation' => $reservation,
             'user' => $user,
             'evenement' =>$evenement,
@@ -155,7 +155,7 @@ class ReservationController extends AbstractController
     {
         $user=$this->getUser();
 
-        return $this->render('Back/reservation/show.html.twig', [
+        return $this->render('reservation/show.html.twig', [
             'reservation' => $reservation,
             'user'=>$user,
         ]);

@@ -9,6 +9,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups;
+
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -25,8 +27,8 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
-     *     @Assert\Length(min="20" , minMessage="the email must contain at least 20 characters.")
-
+     * @Assert\Length(min="20" , minMessage="the email must contain at least 20 characters.")
+     * @Groups("read:users")
      */
     private $email;
 
@@ -38,16 +40,14 @@ class User implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
-     *     @Assert\Regex("/\d/" , match = true,  message="password must contain at least a number")
-     *     @Assert\Length(min="8" , minMessage="password must contain at least 8 characters.")
-     *     @Assert\Length(max="65" , maxMessage="password must contain at most 65 characters.")
      */
     private $password;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\Length(min="4" , minMessage="first name must contain at least 4 characters.")
-     * @Assert\Length(max="30" , maxMessage="first name must contain at most 15 characters.")
+     * @Assert\Length(max="20" , maxMessage="first name must contain at most 20
+     * characters.")
      */
     private $firstname;
 
@@ -59,8 +59,9 @@ class User implements UserInterface
     private $lastname;
 
     /**
+     * @var string
      *     @Assert\Regex("/\d/" , match = true,  message="password must contain at least a number")
-     *     @Assert\Regex("/^\w+/" , message="password must start with a letter")
+     *     @Assert\Regex("/^[A-Za-z]/" , message="password must start with a letter")
      *     @Assert\Length(min="8" , minMessage="password must contain at least 8 characters.")
      *     @Assert\Length(max="18" , maxMessage="password must contain at most 18 characters.")
      */
@@ -108,17 +109,9 @@ class User implements UserInterface
      */
     private $isVerified = false;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Reservation::class, mappedBy="user")
-     */
-    private $reservations;
-
-
-
     public function __construct()
     {
         $this->userLoginDates = new ArrayCollection();
-        $this->reservations = new ArrayCollection();
     }
 
     public function __toString()
@@ -168,7 +161,7 @@ class User implements UserInterface
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
+        //$roles[] = 'ROLE_USER';
 
         return array_unique($roles);
     }
@@ -335,35 +328,15 @@ class User implements UserInterface
         return $this;
     }
 
-    /**
-     * @return Collection<int, Reservation>
-     */
-    public function getReservations(): Collection
+    public function getVerificationCode(): ?string
     {
-        return $this->reservations;
+        return $this->verificationCode;
     }
 
-    public function addReservation(Reservation $reservation): self
+    public function setVerificationCode(?string $verificationCode): self
     {
-        if (!$this->reservations->contains($reservation)) {
-            $this->reservations[] = $reservation;
-            $reservation->setUser($this);
-        }
+        $this->verificationCode = $verificationCode;
 
         return $this;
     }
-
-    public function removeReservation(Reservation $reservation): self
-    {
-        if ($this->reservations->removeElement($reservation)) {
-            // set the owning side to null (unless already changed)
-            if ($reservation->getUser() === $this) {
-                $reservation->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-
 }

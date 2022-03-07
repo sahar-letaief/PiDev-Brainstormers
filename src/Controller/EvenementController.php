@@ -9,6 +9,7 @@ use App\Form\EvenementType;
 use App\Repository\EvenementRepository;
 use App\Repository\ReservationRepository;
 use App\Repository\UserRepository;
+use App\Services\QrcodeService;
 use Doctrine\ORM\EntityManagerInterface;
 use Dompdf\Dompdf;
 use Dompdf\Options;
@@ -90,10 +91,10 @@ class EvenementController extends AbstractController
                 $request->query->getInt('page',1),
                 3);
 
-            return $this->render('Back/evenement/index.html.twig',array('evenements'=>$evenements, 'back'=>$back));
+            return $this->render('evenement/index.html.twig',array('evenements'=>$evenements, 'back'=>$back));
 
         }
-        return $this->render('Back/evenement/index.html.twig',array('evenements'=>$evenements, 'back'=>$back));
+        return $this->render('evenement/index.html.twig',array('evenements'=>$evenements, 'back'=>$back));
     }
     /**
      * @Route("/api", name="evenement_index_api")
@@ -124,7 +125,7 @@ class EvenementController extends AbstractController
             return $this->redirectToRoute('evenement_index');
         }
 
-        return $this->render('Back/evenement/new.html.twig', [
+        return $this->render('evenement/new.html.twig', [
             'evenement' => $evenement,
             'form' => $form->createView(),
         ]);
@@ -143,12 +144,25 @@ class EvenementController extends AbstractController
 
             return $this->redirectToRoute('evenement_index');
         }
-        return $this->render('Back/evenement/edit.html.twig', [
+        return $this->render('evenement/edit.html.twig', [
             'evenement' => $evenement,
             'form' => $form->createView(),
         ]);
     }
 
+    /**
+     * @IsGranted("ROLE_PLAYER")
+     * @Route("/front", name="evenement_index2", methods={"GET"})
+     */
+    public function front(PaginatorInterface $paginator,Request $request)
+    {
+        $event=$this->getDoctrine()->getRepository(Evenement::class)->findAll();
+
+        $evenements=$paginator->paginate($event,$request->query->getInt('page',1),3);
+        return $this->render('evenement/indexfront.html.twig', [
+            'evenements' => $evenements,
+        ]);
+    }
     /**
      * @IsGranted("ROLE_EVENT")
      * @Route("/pdf", name="evenement_pdf", methods={"GET"})
@@ -158,15 +172,18 @@ class EvenementController extends AbstractController
         $pdfoptions=new Options();
         $pdfoptions->set('defaultFont','Arial');
         $dompdf=new dompdf();
+        $logo = file_get_contents("logo.png");
+        $logobase64 = base64_encode($logo);
         $evenements=$evenementRepository->findAll();
 
-        $html=$this->renderView('Back/evenement/printevent.html.twig', [
+        $html=$this->renderView('evenement/printevent.html.twig', [
             'evenements' => $evenements,
+            'logobase64'=>$logobase64,
         ]);
        $dompdf->loadHtml($html);
        $dompdf->setPaper('A4','portrait');
        $dompdf->render();
-       $dompdf->stream('mypdf.pdf',["Attachement" => true]);
+       $dompdf->stream('Events list.pdf',["Attachement" => false]);
 
     }
     /**
@@ -194,7 +211,7 @@ class EvenementController extends AbstractController
         //dd($rdvs);
         $data=json_encode($rdvs);
         //dd($data);
-        return $this->render('Back/evenement/calendar.html.twig',compact('data'));
+        return $this->render('evenement/calendar.html.twig',compact('data'));
     }
 
     /**
@@ -207,18 +224,15 @@ class EvenementController extends AbstractController
             isset($donnees->title)&& !empty($donnees->title) &&
             isset($donnees->description)&& !empty($donnees->description) &&
             isset($donnees->start)&& !empty($donnees->start) &&
-            isset($donnees->end)&& !empty($donnees->end) &&
-            isset($donnees->backgroundColor)&& !empty($donnees->backgroundColor) &&
-            isset($donnees->borderColor)&& !empty($donnees->borderColor) &&
-            isset($donnees->textColor)&& !empty($donnees->textColor)
+            isset($donnees->end)&& !empty($donnees->end)
+
         ){
             $code=200;
             if(!$evenement){
                 $evenement=new Evenement;
                 $code=201;
             }
-            $evenement->setNameEvent($donnees->title);
-            $evenement->setPlaceEvent($donnees->description);
+
             $evenement->setDateDebut(new \DateTime($donnees->start));
             $evenement->setDateFin(new \DateTime($donnees->end));
 
@@ -233,33 +247,33 @@ class EvenementController extends AbstractController
             return new Response('Missing information',404);
         }
     }
-
+    /**
+     * @Route("/map",name="street")
+     */
+    public function mapAction(): Response
+    {
+        return $this->render('evenement/newMap.html.twig');
+    }
 
 
     /**
      * @IsGranted("ROLE_PLAYER")
      * @Route("/front/{id}", name="evenement_show_front", methods={"GET"})
      */
-    public function showfront(Evenement $evenement): Response
+    public function showfront(Evenement $evenement,$id,QrcodeService $qrcodeService): Response
     {
-        return $this->render('Front/evenement/show.html.twig', [
+        //data
+        $evenement=$this->getDoctrine()->getRepository(Evenement::class)->findOneBy(['id'=>$id]);
+        $qrCode=$qrcodeService->qrcode($evenement->getNameEvent());
+        //dd($qrCode);
+        return $this->render('evenement/showfront.html.twig', [
             'evenement' => $evenement,
+            'qrcode' =>$qrCode,
         ]);
     }
 
 
-    /**
-     * @IsGranted("ROLE_PLAYER")
-     * @Route("/front", name="evenement_index2", methods={"GET"})
-     */
-    public function front(PaginatorInterface $paginator,Request $request)
-    {
-        $event=$this->getDoctrine()->getRepository(Evenement::class)->findAll();
-        $evenements=$paginator->paginate($event,$request->query->getInt('page',1),3);
-        return $this->render('Front/evenement/indexfront.html.twig', [
-            'evenements' => $evenements,
-        ]);
-    }
+
 
 
     /**
@@ -268,7 +282,7 @@ class EvenementController extends AbstractController
      */
     public function show(Evenement $evenement): Response
     {
-        return $this->render('Back/evenement/show.html.twig', [
+        return $this->render('evenement/show.html.twig', [
             'evenement' => $evenement,
         ]);
     }

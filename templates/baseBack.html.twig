@@ -47,7 +47,7 @@
                         <div class="profile-name">
                             <h5 class="mb-0 font-weight-normal">{{ app.user.firstname ~ " " ~ app.user.lastname }}</h5>
                             {% if is_granted('ROLE_ADMIN') %}
-                            <span>ADMIN</span>
+                                <span>ADMIN</span>
                             {% endif %}
                         </div>
                     </div>
@@ -92,24 +92,6 @@
                 <span class="nav-link">Navigation</span>
 
             </li>
-            <li class="nav-item menu-items">
-                <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-              <span class="menu-icon">
-                <i class="mdi mdi-laptop"></i>
-              </span>
-                    <span class="menu-title">Event managment</span>
-                    <i class="menu-arrow"></i>
-                </a>
-                <div class="collapse" id="ui-basic">
-                    <ul class="nav flex-column sub-menu">
-                        <li class="nav-item"> <a class="nav-link" href="{{ path('evenement_index') }}">*Events managment</a></li>
-                        <li class="nav-item"> <a class="nav-link" href="{{ path('reservation_index') }}">*Reservations managment</a></li>
-                        <li class="nav-item"> <a class="nav-link" href="{{ path('calendar') }}">*Calendar</a></li>
-
-                    </ul>
-                </div>
-            </li>
-
             {% if is_granted('ROLE_ADMIN') %}
                 {% if path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params')) == '/user/' %}
                     <li class="nav-item menu-items active">
@@ -131,6 +113,26 @@
                     </li>
                 {% endif %}
             {% endif %}
+            <li class="nav-item menu-items">
+                <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+              <span class="menu-icon">
+                <i class="mdi mdi-laptop"></i>
+              </span>
+                    <span class="menu-title">Event managment</span>
+                    <i class="menu-arrow"></i>
+                </a>
+
+                <div class="collapse" id="ui-basic">
+                    <ul class="nav flex-column sub-menu">
+                        <li class="nav-item"> <a class="nav-link" href="{{ path('evenement_index') }}">*Events managment</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="{{ path('reservation_index') }}">*Reservations managment</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="{{ path('calendar') }}">*Calendar</a></li>
+
+                    </ul>
+                </div>
+            </li>
+
+
 
         </ul>
     </nav>
@@ -320,12 +322,12 @@
                 </button>
             </div>
         </nav>
-{% endblock %}
+        {% endblock %}
 
-{% block body %}
+        {% block body %}
 
-{% endblock %}
-</div>
+        {% endblock %}
+    </div>
 </div>
 
 <!-- container-scroller -->

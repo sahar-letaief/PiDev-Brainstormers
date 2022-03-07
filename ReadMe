@@ -1,0 +1,13 @@
+welcome to our Repository !! 
+
+We are brainstormers a group of young and motivated students who came together to create a cross-platform application consisting of a web, desktop and mobile 
+project.
+
+About our project: 
+
+Web-application : 
+-----------------------------------------TECHNOLOGIES-----------------------------------------
+- using the symfony 4.4 framework as it's most stable and has all our required bundles.
+- creating multiple apis and securing them with the jwt login api with a short life-span token.
+- using MySQL as our database.
+- using the integrated templates in symfony as our front-office 

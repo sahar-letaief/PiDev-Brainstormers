@@ -11,17 +11,24 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mime\Address;
+use Symfony\Component\Mime\Message;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
+use Twilio\Rest\Client;
 
 class RegistrationController extends AbstractController
 {
     private EmailVerifier $emailVerifier;
+    private $twilio;
+    private $fromNumber;
 
-    public function __construct(EmailVerifier $emailVerifier)
+    public function __construct(Client $twilio,EmailVerifier $emailVerifier)
     {
         $this->emailVerifier = $emailVerifier;
+        $this->twilio = $twilio;
+        $this->fromNumber = "+17853776886";
+
     }
 
     /**
@@ -37,16 +44,28 @@ class RegistrationController extends AbstractController
 
             $current_date = new \DateTime('@'.strtotime('+01:00'));
             $user->setLastLoginDate($current_date);
+            $user->setRoles(["ROLE_USER"]);
             // encode the plain password
             $user->setPassword(
-            $userPasswordEncoder->encodePassword(
+                $userPasswordEncoder->encodePassword(
                     $user,
                     $form->get('plainPassword')->getData()
                 )
             );
 
+            $bytes = random_bytes(3);
+            $verificationCode = bin2hex($bytes);
+            $user->SetVerificationCode($verificationCode);
             $entityManager->persist($user);
             $entityManager->flush();
+
+
+            $this->twilio->messages->create("+216". $user->getPhoneNumber(), [
+                'from' => $this->fromNumber,
+                'body' => "To Activate Your account please use this code upon logging in \n Code :$verificationCode"
+            ]);
+
+
 
             // generate a signed url and email it to the user
             $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
@@ -60,7 +79,6 @@ class RegistrationController extends AbstractController
 
             return $this->redirectToRoute('app_login');
         }
-
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
         ]);

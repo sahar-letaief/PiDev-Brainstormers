@@ -52,26 +52,26 @@ class ReservationRepository extends ServiceEntityRepository
     public function findByNameEvent($NameEvent){
         $entityManager=$this->getEntityManager();
        return $query=$entityManager
-            ->createQuery("SELECT r FROM APP\Entity\Reservation r JOIN r.evenement n WHERE n.NameEvent LIKE NameEvent ")
+            ->createQuery("SELECT r FROM APP\Entity\Reservation r JOIN r.evenement n WHERE n.NameEvent=:NameEvent ")
             ->setParameter('NameEvent',$NameEvent)
            ->getResult();
     }
     public function findByFirstName($firstname){
         $entityManager=$this->getEntityManager();
-        return $entityManager->createQuery("SELECT r from APP\Entity\Reservation r JOIN r.user u where u.firstname LIKE firstname")
-            ->setParameters(array('firstname',$firstname))
+        return $entityManager->createQuery("SELECT r from APP\Entity\Reservation r JOIN r.user u where u.firstname=:firstname")
+            ->setParameter('firstname',$firstname)
             ->getResult();
     }
 
     public function findByLastName($lastname){
         $entityManager=$this->getEntityManager();
-        return $entityManager->createQuery("SELECT r from APP\Entity\Reservation r JOIN r.user u where u.lastname LIKE lastname")
+        return $entityManager->createQuery("SELECT r from APP\Entity\Reservation r JOIN r.user u where u.lastname=:lastname")
             ->setParameter('lastname',$lastname)
             ->getResult();
     }
     public function findByEmail($email){
         $entityManager=$this->getEntityManager();
-        return $entityManager->createQuery("SELECT r from APP\Entity\Reservation r JOIN r.user u where u.email LIKE email")
+        return $entityManager->createQuery("SELECT r from APP\Entity\Reservation r JOIN r.user u where u.email=:email")
             ->setParameter('email',$email)
             ->getResult();
     }
