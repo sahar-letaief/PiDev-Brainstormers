@@ -28,14 +28,17 @@
                         <div class="anime__details__title">
                             <h3>{{ evenement.NameEvent }}</h3>
                         </div>
+                        <div class="anime__details__rating">
+
+                        </div>
 
                         <div class="anime__details__widget">
                             <div class="row">
                                 <div class="col-lg-6 col-md-6">
                                     <ul>
                                         <li><span>Place event:</span>{{ evenement.PlaceEvent}}</li>
-                                        <li><span>Event begins at:</span> {{ evenement.DateDebut ? evenement.DateDebut|date('Y-m-d , h:m') : '' }}</li>
-                                        <li><span>Event ends at:</span> {{ evenement.DateFin ? evenement.DateFin|date('Y-m-d , h:m') : '' }}</li>
+                                        <li><span>Event begins at:</span> {{ evenement.DateDebut ? evenement.DateDebut|date('Y-m-d ') : '' }}</li>
+                                        <li><span>Event ends at:</span> {{ evenement.DateFin ? evenement.DateFin|date('Y-m-d') : '' }}</li>
                                         <li><span>Participants :</span>{{ evenement.NbParticipants}}</li>
                                         <li><span>Event Price:</span>{{ evenement.PriceEvent }} DT</li>
                                     </ul>
@@ -43,6 +46,12 @@
 
                             </div>
                         </div>
+                        <div class="col-md-6">
+                            {% if qrcode %}
+                                <img src="{{ qrcode }}" alt="qr-code" style="position: center;">
+                            {% endif %}
+                        </div>
+                        <br>
                         <div class="anime__details__btn">
                             <a href="{{ path('evenement_index2') }}" class="follow-btn">Back to list</a>
                             <a href="{{ path('reservation_new_front',{'id': evenement.id}) }}" class="watch-btn"><span>Add reservation</span> </a>
@@ -51,12 +60,8 @@
 
                     </div>
                 </div>
-                <br>
-                <div class="col-md-6">
-                    {% if qrcode %}
-                        <img src="{{ qrcode }}" alt="qr-code">
-                    {% endif %}
-                </div>
+
+
             </div>
 
         </div>
