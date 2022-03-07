@@ -245,7 +245,13 @@ class EvenementController extends AbstractController
             return new Response('Missing information',404);
         }
     }
-
+    /**
+     * @Route("/map",name="street")
+     */
+    public function mapAction(): Response
+    {
+        return $this->render('evenement/newMap.html.twig');
+    }
 
 
     /**
