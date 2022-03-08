@@ -11,7 +11,7 @@
                 </p>
                 <div class="table-responsive">
                     <table class="table table-striped">
-                        <ul class="navbar-nav w-100">
+                       <ul class="navbar-nav w-100">
                             <li class="nav-item w-100">
                                     {{ form_start(form)}}
                                     {{ form_widget(form) }}
@@ -64,7 +64,10 @@
                                     {% endif %}
 
                                 </td>
-                                <td> <a class="mdi mdi-comment-multiple-outline" href="#" ></a>
+                                <td>
+                                <form href="{{ path('communication')}}">
+                                    <button style="background: transparent;border: none" type="submit" ><a  class="mdi mdi-comment-multiple-outline" ></a></button>
+                                </form>
                                 </td>
                             </tr>
                         {% endfor %}

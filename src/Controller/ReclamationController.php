@@ -35,6 +35,7 @@ class ReclamationController extends AbstractController
     }
 
     /**
+
      * @Route("/liste", name="reclamation_index", methods={"GET","POST"})
      */
     public function index(Request $request,ReclamationRepository $reclamationRepository, PaginatorInterface $paginator): Response
@@ -43,16 +44,20 @@ class ReclamationController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid())
         {
+           // $term = $form['Title']->getData();
+         //   $reclamation = $reclamationRepository->search($term);
+
             $term = $form['Title']->getData();
 
-            $reclamation = $reclamationRepository->search($term);
+            $description = $form['Description']->getData();
+            $reclamation= $reclamationRepository->search($term,$description);
         }
         else
         {
             $reclamation= $reclamationRepository->findAll();
         }
 
-        $reclamations = $paginator->paginate($reclamation,$request->query->getInt('page', 1),2);
+        $reclamations = $paginator->paginate($reclamation,$request->query->getInt('page', 1),5);
 
         return $this->render('reclamation/show.html.twig', [
             'reclamations' => $reclamations,
@@ -64,7 +69,7 @@ class ReclamationController extends AbstractController
     }
 // front
     /**
-
+     * @IsGranted("ROLE_USER")
      * @Route("/frontlist", name="frontlist", methods={"GET"})
      */
     public function listFrontReclamations (ReclamationRepository $reclamationRepository): Response
@@ -75,7 +80,7 @@ class ReclamationController extends AbstractController
         ]);
     }
     /**
-
+     * @IsGranted("ROLE_USER")
      * @Route("/new", name="reclamation_new", methods={"GET", "POST"})
      */
     public function addReclamation (Request $request, EntityManagerInterface $entityManager,MailerInterface  $mailer): Response
@@ -96,6 +101,8 @@ class ReclamationController extends AbstractController
                 ->subject('new reclamation added')
                 ->text($reclamation->getDescription())
                 ->htmlTemplate('reclamation/email/email.html.twig');
+
+
             $mailer->send($message);
             return $this->redirectToRoute('frontlist', [], Response::HTTP_SEE_OTHER);
         }
@@ -106,7 +113,7 @@ class ReclamationController extends AbstractController
         ]);
     }
     /**
-
+     * @IsGranted("ROLE_USER")
      * @Route("/{id}/edit", name="reclamation_edit", methods={"GET", "POST"})
      */
     public function updateReclamation(Request $request, Reclamation $reclamation, EntityManagerInterface $entityManager): Response
@@ -129,7 +136,7 @@ class ReclamationController extends AbstractController
 
     }
     /**
-
+     * @IsGranted("ROLE_USER")
      * @Route("/delete/{id}", name="reclamation_delete", methods={"GET","POST"})
      */
     public function delete(ReclamationRepository $set,$id): Response
@@ -172,10 +179,10 @@ class ReclamationController extends AbstractController
         return $this-> redirectToRoute('reclamation_index');
     }
 
-    public function adminMail(UserRepository $users)
-    {
+ //   public function adminMail(UserRepository $users)
+  //  {
       //  $ = $users->find($);
 
 
-    }
+   // }
 }

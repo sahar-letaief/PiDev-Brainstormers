@@ -25,6 +25,9 @@ class ReclamationSearchType extends AbstractType
 
         $builder
             ->add('Title', TextType::class)
+           // ->add('create_date', TextType::class)
+            ->add('Description', TextType::class)
+           // ->add('create_resolution', TextType::class)
             ->add('Search', SubmitType::class,[
                     "attr"=>[
                         "class"=>"btn btn-primary mr-2"

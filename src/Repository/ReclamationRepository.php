@@ -47,11 +47,104 @@ class ReclamationRepository extends ServiceEntityRepository
         ;
     }
     */
-    public function search($term) {
+  /*  public function search($term) {
         return $this->createQueryBuilder('r')
             ->andWhere('r.Title LIKE :title')
             ->setParameter('title', '%'.$term.'%')
             ->getQuery()
             ->execute();
+    }*/
+   /* public function search($title,$description,$create,$resolution) {
+
+            return $this->createQueryBuilder('p')
+                ->andWhere('p.Title LIKE :titre')
+                ->setParameter('titre', '%'.$title.'%')
+                ->andWhere('p.Description LIKE :descrip')
+                ->setParameter('descrip', '%'.$description.'%')
+                ->andWhere('p.create_date LIKE :create')
+                ->setParameter('create', '%'.$create.'%')
+                ->andWhere('p.create_resolution LIKE :resolu')
+                ->setParameter('resolu', '%'.$resolution.'%')
+                ->getQuery()
+                ->getResult();
+        }*/
+
+    /*public function search($term) {
+        if($term ==Title ){
+            return $this->createQueryBuilder('p')
+                ->andWhere('p.Title LIKE :titre')
+                ->setParameter('titre', '%'.$term.'%')
+                ->getQuery()
+                ->getResult();
+        }
+        elseif ($term ==Description){
+            return $this->createQueryBuilder('p')
+
+                ->andWhere('p.Description LIKE :des')
+                ->setParameter('des', '%'.$term.'%')
+                ->getQuery()
+                ->getResult();
+
+
+
+        }
+        elseif ($term == create_resolution) {
+            return $this->createQueryBuilder('p')
+                ->andWhere('p.create_resolution LIKE :res')
+                ->setParameter('res', '%'.$term.'%')
+                ->getQuery()
+                ->getResult();
+        }else{
+            return $this->createQueryBuilder('p')
+                ->andWhere('p.create_date LIKE :create')
+                ->setParameter('create', '%'.$term.'%')
+                ->getQuery()
+                ->getResult();
+        }
+
+        /*else{
+            return $this->createQueryBuilder('p')
+                ->andWhere('p.ProductName LIKE :prod')
+                ->andWhere('p.Description LIKE :description')
+                ->setParameter('description', '%'.$description.'%')
+                ->setParameter('prod', '%'.$term.'%')
+                ->getQuery()
+                ->getResult();
+
+
+        }*/
+    public function search($term,$description) {
+        if($term !==null && $description==null){
+            return $this->createQueryBuilder('p')
+                ->andWhere('p.Title LIKE :prod')
+                ->setParameter('prod', '%'.$term.'%')
+                ->getQuery()
+                ->getResult();
+        }
+        elseif ($term ==null && $description!==null){
+            return $this->createQueryBuilder('p')
+
+                ->andWhere('p.Description LIKE :description')
+                ->setParameter('description', '%'.$description.'%')
+                ->getQuery()
+                ->getResult();
+
+
+
+        }else{
+            return $this->createQueryBuilder('p')
+                ->andWhere('p.Title LIKE :prod')
+                ->andWhere('p.Description LIKE :description')
+                ->setParameter('description', '%'.$description.'%')
+                ->setParameter('prod', '%'.$term.'%')
+                ->getQuery()
+                ->getResult();
+
+
+        }
     }
-}
+
+
+    }
+
+

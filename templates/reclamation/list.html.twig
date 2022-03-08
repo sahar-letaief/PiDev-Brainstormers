@@ -7,7 +7,7 @@
         <div class="card">
             <div class="card-body">
 
-                <h4 class="card-title">Striped Table</h4>
+                <h4 class="card-title">Reclamation Lists </h4>
                 <p class="card-description">
                 </p>
                 <div class="table-responsive">
@@ -18,9 +18,8 @@
                             <th>Titre</th>
                             <th>Description</th>
                             <td>Status</td>
-                           {#  <th>référence</th>#}
+                            <th>Action</th>
                             <th>Contact</th>
-                            <th></th>
 
                         </tr>
                         </thead>
@@ -39,15 +38,17 @@
 
                                     {% endif %}
                                 </a></td>
-
-                                <td> <a  class="site-btn"> Contact </a></td>
                                 <td> {% if rec.status!='refus' and rec.status!='accept'  %}
                                     <a class="btn btn-outline-primary btn-fw" href="{{path('reclamation_edit',{'id':rec.id})}}">edit</a>
                                     <a class="btn btn-outline-primary btn-fw" href="{{path('reclamation_delete',{'id':rec.id})}}"{#  ,class="mdi mdi-delete"#}>delete</a>
-                                </td>
+
                                     {% else %}
-                                <td></td>
+
                                 {% endif %}
+                                </td>
+                                <td> <a class="btn btn-outline-primary btn-fw"  href="{{path('communication_front')}}">Contact</a>
+                                </td>
+
                             </tr>
                         {% endfor %}
                         </tbody>

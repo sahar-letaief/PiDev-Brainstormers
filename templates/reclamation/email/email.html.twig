@@ -13,7 +13,7 @@
             <table border="0" width="100%">
                 <tr>
                     <td>
-                        <link rel="shortcut icon" href="{{ asset('Back/assets/images/GameX.png') }}" />
+                        <h1>Logo</h1>
                     </td>
                     <td>
                         <p style="text-align: right;"><a href="https://nicesnippets.com/" target="_blank" style="text-decoration: none;">View In Website</a></p>
@@ -29,14 +29,22 @@
                     <td style="background-color:#FF7A5A;height:100px;font-size:50px;color:#fff;"><i class="fa fa-envelope-o" aria-hidden="true"></i></td>
                 </tr>
                 <tr>
-                    {%  for i in reclamation %}
                     <td>
-                        <h1 style="padding-top:25px;">{{ i.Title }}</h1>
+                        <h1 style="padding-top:25px;">New Reclamation Added</h1>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <p style="padding:0px 100px;">{{ i.Description }}</p>
+                        <p style="padding:0px 100px;">
+                            there is a new reclamation, I hope you will answer as soon as possible
+                            with love
+
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button style="margin:10px 0px 30px 0px;border-radius:4px;padding:10px 20px;border: 0;color:#fff;background-color:#FF7A5A; ">Verify Email address</button>
                     </td>
                 </tr>
             </table>
@@ -49,9 +57,16 @@
                     <td>
                         <h3 style="margin-top:10px;">Stay in touch</h3>
                     </td>
-                    {% endfor %}
                 </tr>
-
+                <tr>
+                    <td>
+                        <div style="margin-top:20px;">
+                            <a href="#" style="text-decoration: none;"><span class="twit" style="padding:10px 9px;background-color:#4099FF;color:#fff;border-radius:50%;"><i class="fa fa-twitter" aria-hidden="true" style="height:20px;width:20px;"></i></span></a>
+                            <a href="#" style="text-decoration: none;"><span class="fb" style="padding:10px 9px;background-color: #3B5998;color:#fff;border-radius:50%;"><i class="fa fa-facebook" aria-hidden="true" style="height:20px;width:20px;"></i></span></a>
+                            <a href="#" style="text-decoration: none;"><span class="msg" style="padding:10px 9px;background-color: #FFC400;color:#fff;border-radius:50%;""><i class="fa fa-envelope-o" aria-hidden="true" style="height:20px;width:20px;"></i></span></a>
+                        </div>
+                    </td>
+                </tr>
                 <tr>
                     <td>
                         <div style="margin-top: 20px;">
