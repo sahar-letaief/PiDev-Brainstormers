@@ -125,12 +125,12 @@ class Reclamation
         return $this;
     }
 
-    public function getRefCmde(): ?Commande
+    public function getReference(): ?Commande
     {
         return $this->reference;
     }
 
-    public function setRefCmde(?Commande $reference): self
+    public function setReference(?Commande $reference): self
     {
         $this->reference = $reference;
 

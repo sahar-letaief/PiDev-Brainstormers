@@ -18,7 +18,7 @@ class ReclamationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('ref_cmde',EntityType::class,[
+            ->add('reference',EntityType::class,[
                 "class"=>Commande::class,
                 "choice_label"=>"ref_cmde",
                 "attr"=>[
