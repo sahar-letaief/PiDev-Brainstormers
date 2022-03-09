@@ -33,7 +33,20 @@
         {% for commande in commandes %}
             <tr>
                 <td>{{ commande.refCmde }}</td>
-                <td>{{ commande.etatCmde ? 'confirmed' : 'canceled' }}</td>
+                {% if not (commande.etatCmde) %}
+                <td>in progress</td>
+
+                {% else%}
+
+                {% if commande.etatCmde == 1 %}
+                   <td> confirmed </td>
+                   {% else %}
+                   <td> canceled </td>
+                {% endif%}
+
+
+                {% endif %}
+
                 <td>{% for prod in commande.prod %}
                     {{ prod['ProductName'] }}  <br> <br>
                     {% endfor %}
@@ -54,6 +67,11 @@
                     <div class="blog__details__comment__item__text">
                         <a href="{{ path('commande_show_back', {'id': commande.id}) }}">show</a>
                         <a href="{{ path('commande_edit_back', {'id': commande.id}) }}">edit</a>
+                        {% if not (commande.etatCmde) %}
+                            <a href="{{ path('confirmer_commande', {'id': commande.id}) }}">enable</a>
+                            <a href="{{ path('annuler_commande', {'id': commande.id}) }}">disable</a>
+                        {% else%}
+                        {% endif %}
                     </div>                   
                 </td>
             </tr>

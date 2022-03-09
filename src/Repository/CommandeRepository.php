@@ -48,7 +48,7 @@ class CommandeRepository extends ServiceEntityRepository
     }
     */
 
-   public function search($term) {
+    public function search($term) {
        return $this->createQueryBuilder('Commande')
            ->andWhere('Commande.ref_cmde LIKE :ref')
            ->setParameter('ref', '%'.$term.'%')
@@ -78,5 +78,16 @@ class CommandeRepository extends ServiceEntityRepository
 
         //}
     //}
+
+    /**
+     * @return Commande[]
+     */
+    public function findPlanBySujet($sujet){
+        return $this->createQueryBuilder('Commande')
+            ->andWhere('Commande.ref_cmde LIKE :sujet ')
+            ->setParameter('sujet', '%'.$sujet.'%')
+            ->getQuery()
+            ->getResult();
+    }
 
 }

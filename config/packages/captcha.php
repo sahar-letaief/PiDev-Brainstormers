@@ -1,4 +1,4 @@
-<?php
+<?php 
 // app/config/packages/captcha.php
 if (!class_exists('CaptchaConfiguration')) { return; }
 

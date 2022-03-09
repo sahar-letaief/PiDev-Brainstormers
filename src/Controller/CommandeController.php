@@ -29,7 +29,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 class CommandeController extends AbstractController
 {
     /**
-     * @IsGranted("ROLE_PURCHASE")
+     * @IsGranted("ROLE_USER")
      * @Route("/", name="commande_index", methods={"GET","POST"})
      */
     public function index(Request $request, CommandeRepository $commandeRepository, ProductRepository $productRepository , PaginatorInterface $paginator): Response
@@ -57,35 +57,21 @@ class CommandeController extends AbstractController
     }
 
         /**
-         * Search action.
-         * @Route("/search/", name="search")
-         * @param  Request               $request Request instance
-         * @param  string                $search  Search term
-         * @return Response|JsonResponse          Response instance
-         */
-        //public function searchAction(Request $request)
-        //{
-            //if (!$request->isXmlHttpRequest()) {
-                //return $this->render("search.html.twig");
-            //}
-
-            //if (!$searchTerm = trim($request->query->get("search", $search))) {
-                //return new JsonResponse(["error" => "Search term not specified."], Response::HTTP_BAD_REQUEST);
-            //}
-
-            //$em = $this->getDoctrine()->getManager();
-            //if (!($results = $em->getRepository(User::class)->findOneByEmail($searchTerm))) {
-                //return new JsonResponse(["error" => "No results found."], Response::HTTP_NOT_FOUND);
-            //}
-
-            //return new JsonResponse([
-              //  "html" => $this->renderView("search.ajax.twig", ["results" => $results]),
-            //]);
-        //}
+     * @Route("/admin/utilisateur/search", name="utilsearch")
+     */
+    public function searchPlanajax(Request $request) 
+    {
+        $repository = $this->getDoctrine()->getRepository(Commande::class);
+        $requestString = $request->get('searchValue');
+        $plan = $repository->findPlanBySujet($requestString);
+        return $this->render('commande_Front/utilajax.html.twig', [
+            'commandes' => $plan,
+        ]);
+    }
 
 
      /**
-     * @IsGranted("ROLE_PURCHASE")
+      * @IsGranted("ROLE_USER")
      * @Route("/{id}/list", name="commande_liste", methods={"GET"})
      */
     public function list(Commande $commande,CommandeRepository $commandeRepository, ProductRepository $productRepository): Response
@@ -126,7 +112,7 @@ class CommandeController extends AbstractController
         
 
 /**
-     * @IsGranted("ROLE_ADMIN")
+ * @IsGranted("ROLE_ADMIN")
      * @Route("/commandeBack", name="commande_Back", methods={"GET","POST"})
      */
     public function index_Back(Request $request,CommandeRepository $commandeRepository, ProductRepository $productRepository ,PaginatorInterface $paginator): Response
@@ -144,6 +130,7 @@ class CommandeController extends AbstractController
                $allcommande= $commandeRepository->findAll(); 
             }
         $commandes=$paginator->paginate($allcommande,$request->query->getInt('page',1),2);
+        //dd($commandes);
         return $this->render('commande_Back/indexback.html.twig', [
             'commandes' => $commandes,
             'products' => $productRepository->findAll(),
@@ -153,7 +140,7 @@ class CommandeController extends AbstractController
     }
 
     /**
-     * @IsGranted("ROLE_PURCHASE")
+     * @IsGranted("ROLE_USER")
      * @Route("/new", name="commande_new", methods={"GET", "POST"})
      */
 
@@ -164,7 +151,7 @@ class CommandeController extends AbstractController
         $userId = 1;
         //dd($userId); 
         $pannier = $session->get('pannier', []);
-        $pannierxithData = [];  
+        $pannierxithData = []; 
         $commande = new Commande();
         $form = $this->createForm(CommandeType::class, $commande);
         $form->handleRequest($request);
@@ -179,16 +166,14 @@ class CommandeController extends AbstractController
              $a[$x]['quantity'] = $pannierxithData[$x]['quantity'];           
              $a[$x]['ProductName'] = $pannierxithData[$x]['product']->getProductName();
              $a[$x]['ProductPrice'] = $pannierxithData[$x]['product']->getPrice();
-             
             }
-            // manich faham chbihom maawdin hadhom ! hhh hate ane wlh estghrabt wlh hhhhh trah jarab aaml commande naamilch f twig ? le le aaml commande 
+           
             //dd($a);
         
         if ($form->isSubmitted() && $form->isValid()) {
             $commande->setProd($a);
-            // $commande->setUser($userId);
-              
-
+            $commande->setUser($this->getUser());
+        
             $entityManager->persist($commande);            
             $entityManager->flush();
 
@@ -202,7 +187,7 @@ class CommandeController extends AbstractController
     }
 
     /**
-     * @IsGranted("ROLE_PURCHASE")
+     * @IsGranted("ROLE_USER")
      * @Route("/{id}", name="commande_show", methods={"GET"})
      */
     public function show(Commande $commande ,ProductRepository $ProductRepository): Response
@@ -227,7 +212,7 @@ class CommandeController extends AbstractController
 
 
     /**
-     * @IsGranted("ROLE_PURCHASE")
+     * @IsGranted("ROLE_USER")
      * @Route("/{id}/edit", name="commande_edit", methods={"GET", "POST"})
      */
     public function edit(Request $request, Commande $commande, EntityManagerInterface $entityManager): Response
@@ -250,7 +235,7 @@ class CommandeController extends AbstractController
 
 
      /**
-     * @IsGranted("ROLE_ADMIN")
+      * @IsGranted("ROLE_ADMIN")
      * @Route("/{id}/edit", name="commande_edit_back", methods={"GET", "POST"})
      */
     public function editback(Request $request, Commande $commande, EntityManagerInterface $entityManager): Response
@@ -269,6 +254,55 @@ class CommandeController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+/**
+     * @Route("/confirmer_commande/{id}", name="confirmer_commande", methods={"GET", "POST"})
+     */
+    public function confirmer_commande(Request $request, Commande $commande, EntityManagerInterface $entityManager): Response
+    {
+        $commande->setEtatCmde(true);
+        $entityManager->persist($commande);
+        $entityManager->flush();
+        return $this->redirectToRoute('commande_Back', [], Response::HTTP_SEE_OTHER);
+
+    }
+
+    /**
+     * @Route("/annuler_commande/{id}", name="annuler_commande", methods={"GET", "POST"})
+     */
+    public function annuler_commande(Request $request,  Commande $commande,  EntityManagerInterface $entityManager): Response
+    {
+        $commande->setEtatCmde(false);
+        $entityManager->persist($commande);
+        $entityManager->flush();
+        return $this->redirectToRoute('commande_Back', [], Response::HTTP_SEE_OTHER);
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

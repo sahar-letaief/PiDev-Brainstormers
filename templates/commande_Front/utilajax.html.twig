@@ -1,0 +1,26 @@
+        {% for commande in commandes %}
+        <tr>
+           <tr>
+                <td>{{ commande.ref_cmde }}</td>
+                 <td>
+                    {{ commande.User.firstname  }} {{ commande.User.lastname  }}
+                </td>
+                 <td>
+                    {{ commande.User.email  }}
+
+                </td>
+                 
+                <td>  
+                    <div class="blog__details__comment__item__text">
+                        <a href="{{ path('commande_show', {'id': commande.id}) }}">show</a>
+                        <a href="{{ path('commande_edit', {'id': commande.id}) }}">edit</a>
+                        <a href="{{ path('commande_liste', {'id': commande.id}) }}">Print</a>
+                    </div>                   
+                </td>
+            </tr>
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="6">no records found</td>
+        </tr>
+    {% endfor %}

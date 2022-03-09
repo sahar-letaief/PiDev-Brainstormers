@@ -118,6 +118,10 @@ class User implements UserInterface
      * @ORM\OneToMany(targetEntity=Communication::class, mappedBy="recipient", orphanRemoval=true)
      */
     private $received;
+     /**
+     * @ORM\OneToMany(targetEntity=Commande::class, mappedBy="user")
+     */
+     private $command;
 
     public function __construct()
     {
@@ -437,4 +441,33 @@ class User implements UserInterface
 
         return $this;
     }
+       /**
+         * @return Collection<int, Commande>
+         */
+        public function getCommand(): Collection
+        {
+            return $this->command;
+        }
+
+        public function addCommand(Commande $command): self
+        {
+            if (!$this->command->contains($command)) {
+                $this->command[] = $command;
+                $command->setUser($this);
+            }
+
+            return $this;
+        }
+
+        public function removeCommand(Commande $command): self
+        {
+            if ($this->command->removeElement($command)) {
+                // set the owning side to null (unless already changed)
+                if ($command->getUser() === $this) {
+                    $command->setUser(null);
+                }
+            }
+
+            return $this;
+        }
 }

@@ -80,18 +80,22 @@
         <thead>
             <tr class="table-dark">
                 <th width="15%" style="text-align: left;"><strong>Order reference</strong</th>
+                <th width="15%" style="text-align: left;"><strong>Client</strong</th>
+                <th width="15%" style="text-align: left;"><strong>Email</strong</th>
                 <th width="15%" style="text-align: left;"><strong>Country</strong></th>
-                <th width="15%" style="text-align: left;"><strong>Region/Departement</strong></th>
+                <th width="15%" style="text-align: left;"><strong>Region</strong></th>
                 <th width="15%" style="text-align: left;"><strong>Postal code</strong></th>
                 <th width="15%" style="text-align: left;"><strong>Phone number</strong></th>
-                <th width="15%" style="text-align: left;"><strong>Product name</strong></th>
-                <th width="15%" style="text-align: left;"><strong>Product price</strong></th>
+                <th width="15%" style="text-align: left;"><strong>Product</strong></th>
+                <th width="15%" style="text-align: left;"><strong>Price</strong></th>
             </tr>
         </thead>
         <tbody>
         
             <tr>
                 <td style="padding: 0px 7px; line-height: 20px;" >{{ commande.refCmde }}</td>
+                <td style="padding: 0px 7px; line-height: 20px;" >{{ commande.User.firstname  }} {{ commande.User.lastname  }}</td>
+                <td style="padding: 0px 7px; line-height: 20px;" >{{ commande.User.email  }}</td>
                 <td style="padding: 0px 7px; line-height: 20px;">{{ commande.pays }}</td>
                 <td style="padding: 0px 7px; line-height: 20px;">{{ commande.region }}</td>
                 <td style="padding: 0px 7px; line-height: 20px;">{{ commande.CodePostal }}</td>

@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Commande;
+use App\Entity\User;
 use App\Entity\Product;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -34,16 +35,6 @@ class CommandeType extends AbstractType
                        'value' => $ref,
                        'data' => $ref,
                        ]])
-            //->add('ref_cmde', 'text', array('label' => false,))
-            //->add('date_cmde', DateTimeType::class,[
-                   // 'label' => 'Date de début',
-                    //'widget' => 'single_text',
-                    //'html5' => false,
-                    ////'attr' => ['class' => 'js-datepicker'],
-                    //'format' => 'dd/MM/yyyy',
-                    //'input' => 'string',
-                    //'input_format' => 'Y-m-d'
-                //])
             ->add('pays', TextType::class, [
                 'label' => false,
                 'attr' => [
@@ -63,18 +54,13 @@ class CommandeType extends AbstractType
                 'label' => false,
                 'attr' => [
                        'placeholder' => "ex: Phone number"]]) 
-            //->add('etat_cmde', CheckboxType::class, [
-               // 'label' => false,
-                //'required' => false,
-            //]) 
             ->add('etat_cmde', ChoiceType::class, array(
                 'label' => false,
                 'choices'  => [
                     'In progress' => null,
                     'Confirmed' => true,
                     'Canceled' => false,
-                ],
-                
+                ], 
             )) 
             ->add('Enregistrer', SubmitType::class);      
         ;
@@ -90,16 +76,6 @@ $length = 10;
                        'value' => $options['data']->getRefCmde(),
                        'data' => $options['data']->getRefCmde(),
                        ]])
-            //->add('ref_cmde', 'text', array('label' => false,))
-            //->add('date_cmde', DateTimeType::class,[
-                   // 'label' => 'Date de début',
-                    //'widget' => 'single_text',
-                    //'html5' => false,
-                    ////'attr' => ['class' => 'js-datepicker'],
-                    //'format' => 'dd/MM/yyyy',
-                    //'input' => 'string',
-                    //'input_format' => 'Y-m-d'
-                //])
             ->add('pays', TextType::class, [
                 'label' => false,
                 'attr' => [
@@ -119,10 +95,6 @@ $length = 10;
                 'label' => false,
                 'attr' => [
                        'placeholder' => "ex: Phone number"]]) 
-            //->add('etat_cmde', CheckboxType::class, [
-               // 'label' => false,
-                //'required' => false,
-            //]) 
             ->add('etat_cmde', ChoiceType::class, array(
                 'label' => false,
                 'choices'  => [
@@ -132,6 +104,7 @@ $length = 10;
                 ],
                 
             )) 
+            
             ->add('Enregistrer', SubmitType::class);      
         ;
         };

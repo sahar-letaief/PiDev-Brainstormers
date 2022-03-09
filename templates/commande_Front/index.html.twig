@@ -34,34 +34,43 @@
                                 </div>
                             </div>
                         </div>
-        
-    <table class="table table-dark">
-        {{ form_start(form)}}
-        {{ form_widget(form) }}
-        {{ form_end(form) }}
+  
+   
+ <form class="w_search">
+	       <div class="sidebar-search">
+		      <div class="input-group custom-search-form">
+			      <input type="text" id="search" name="search" class="form-control" placeholder="Search">
+		        </div>
+	       </div>
+        </form>
+   <table class="table table-dark">
+
         <thead>
             <tr class="table-dark">
-                <th>Order reference</th>
-                <th>order status</th>
-                <th>Product name</th>
+                <th>Reference</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th>Product</th>
                 <th>Quantity</th>
-                <th>Product price</th>
+                <th>Price</th>
                 <th>Total</th>
+                <th>Bill</th>
                 <th>actions</th>
             </tr>
         </thead>
-        <tbody>
+        
+        <tbody id="tableac" name="tableac">
         {% for commande in commandes %}
             <tr>
-                
-
-
-                {% for i in (commande.prod|length) - 1 %}
-                    * {{ commande.prod[0]['quantity'] }}
-                    * {{ commande.prod[0]['ProductName'] }}
-                {% endfor %}
-                
                 <td>{{ commande.refCmde }}</td>
+                  <td>
+                    {{ commande.User.firstname  }} {{ commande.User.lastname  }}
+                </td>
+                    <td>
+                    {{ commande.User.email  }}
+
+                </td>
                 <td>
                     {% if commande.etatCmde is same as (null) %}
                     In progress {{ commande.etatCmde }}
@@ -74,27 +83,30 @@
                     {% endif %} 
                 </td> 
                 <td>{% for prod in commande.prod %}
-                    {{ prod['ProductName'] }}  <br> <br>
+                    {{ prod['ProductName'] }}  <br>
                     {% endfor %}
                 </td>
                 <td>{% for prod in commande.prod %}
-                    {{ prod['quantity'] }} <br> <br>
+                    {{ prod['quantity'] }} <br>
                     {% endfor %}
                 </td>
                 <td>{% for prod in commande.prod %}
-                    {{ prod['ProductPrice'] }} TND<br> <br>
+                    {{ prod['ProductPrice'] }} TND<br>
                     {% endfor %}
                 </td>
                 <td>{% for prod in commande.prod %}
-                    {{ prod['quantity'] * prod['ProductPrice'] }}  TND<br> <br>
+                    {{ prod['quantity'] * prod['ProductPrice'] }}  TND<br>
                     {% endfor %}
                 </td>
-                 
+                 <td>  
+                    <div class="blog__details__comment__item__text">
+                        <a href="{{ path('commande_liste', {'id': commande.id}) }}">Print</a>
+                    </div>                   
+                </td><br>
                 <td>  
                     <div class="blog__details__comment__item__text">
-                        <a href="{{ path('commande_show', {'id': commande.id}) }}">show</a>
+                        <a href="{{ path('commande_show', {'id': commande.id}) }}">show</a><hr>
                         <a href="{{ path('commande_edit', {'id': commande.id}) }}">edit</a>
-                        <a href="{{ path('commande_liste', {'id': commande.id}) }}">Print to pdf</a>
                     </div>                   
                 </td>
             </tr>
@@ -104,6 +116,8 @@
             </tr>
         {% endfor %}
         </tbody>
+        
+
     </table>
     <div class="navigation">
             {{ knp_pagination_render(commandes) }}
@@ -111,5 +125,5 @@
     </div>
 </section>
 
-
 {% endblock %}
+

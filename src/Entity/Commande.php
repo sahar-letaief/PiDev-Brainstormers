@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Entity;
-
+use App\Entity\Reclamation;
 use App\Repository\CommandeRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -87,14 +87,19 @@ class Commande
     private $tel;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="commandes")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="command")
      */
     private $user;
+
+
+
 
     public function __construct()
     {
         $this->products = new ArrayCollection();
     }
+
+   
 
     public function getId(): ?int
     {
@@ -223,6 +228,7 @@ class Commande
 
         return $this;
     }
+
     public function getUser(): ?User
     {
         return $this->user;
@@ -233,5 +239,9 @@ class Commande
         $this->user = $user;
 
         return $this;
+    }
+ public function __toString()
+    {
+        return $this->ref_cmde;
     }
 }
