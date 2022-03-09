@@ -974,6 +974,8 @@ ol {
 	height: 440px;
 	border-radius: 5px;
 	position: relative;
+	
+	
 }
 
 .anime__details__pic .comment {
@@ -1941,7 +1943,7 @@ ol {
 .footer {
 	background: #070720;
 	padding-top: 60px;
-	padding-bottom: 40px;
+	padding-bottom: 120px;
 	position: relative;
 }
 

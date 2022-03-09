@@ -18,7 +18,7 @@ security:
             remember_me:
                 secret: '%kernel.secret%' # required
                 lifetime: 604800
-            #access_denied_handler: App\Security\AccessDeniedHandler
+            access_denied_handler: App\Security\AccessDeniedHandler
             anonymous: lazy
             provider: app_user_provider
             guard:
@@ -51,3 +51,4 @@ security:
         ROLE_RECLAMATION: ROLE_USER
         ROLE_EVENT: ROLE_USER
         ROLE_PLAYER: ROLE_USER
+        
