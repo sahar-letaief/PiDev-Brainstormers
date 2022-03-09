@@ -103,13 +103,10 @@ class ReservationController extends AbstractController
 
 
         $user=$this->getUser();
-        //dd($user);
         $evenement=$this->getDoctrine()->getRepository(Evenement::class)->findOneBy(['id'=>$id]);
         $evenement->setNbParticipants($evenement->getNbParticipants()-1);
-        //dd($evenement->getNbParticipants());
         $NameEvent=$evenement->getNameEvent();
-        //dd($NameEvent);
-        //dd($event);
+
         if ( !$evenement){
             $this->addFlash("Event does not exist");
             return $this->redirectToRoute('evenement_index2', [], Response::HTTP_SEE_OTHER);
@@ -127,10 +124,22 @@ class ReservationController extends AbstractController
         $form = $this->createForm(ReservationType::class, $reservation);
         $form->handleRequest($request);
         if ($form->isSubmitted() ) {
-            $entityManager->persist($reservation);
-            $entityManager->flush();
-            $this->get('session')->getFlashBag()->add('notice','Reservation added successfully');
-            return $this->redirectToRoute('evenement_index2', [], Response::HTTP_SEE_OTHER);
+
+            $resultat=$this->getDoctrine()->getRepository(Reservation::class)->findOneBy(['evenement'=>$evenement->getId(),'user'=>$this->getUser()->getId()]);
+           // dd($resultat);
+            if(empty($resultat)) {
+                $entityManager->persist($reservation);
+                $entityManager->flush();
+                $this->addFlash('notice','Reservation added successfully!');
+
+                return $this->redirectToRoute('evenement_index2', [], Response::HTTP_SEE_OTHER);
+            }
+            else{
+                //$this->get('session')->getFlashBag()->add();
+                $this->addFlash('Notice','Reservation already existing!');
+                return $this->redirectToRoute('reservation_index2', [], Response::HTTP_SEE_OTHER);
+            }
+
         }
 
         return $this->render('reservation/new.html.twig', [
