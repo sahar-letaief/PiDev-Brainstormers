@@ -1,0 +1,30 @@
+{% extends 'baseFront.html.twig' %}
+
+{% block title %}Edit Commande{% endblock %}
+
+{% block body %}
+
+
+    <section class="anime-details spad">
+        <div class="container">
+        <div class="anime__details__content">
+          <div class="product__page__title">
+                            <div class="row">
+                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                    <div class="section-title">
+                                        <h4>Edit Command </h4>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-6">
+                                    <div class="anime__details__btn">
+                                        <a href="{{ path('commande_index') }}" class="watch-btn"><span>Go to shopping</span> <i
+                                    class="fa fa-angle-right"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    {{ include('commande_Front/_form.html.twig', {'button_label': 'save'}) }}
+
+</div>
+</section>
+{% endblock %}

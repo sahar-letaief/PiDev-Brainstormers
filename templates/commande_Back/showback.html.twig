@@ -1,0 +1,62 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}Command{% endblock %}
+
+{% block body %}
+
+
+    <table class="table table-dark">
+        <tbody>
+            <tr class="table-dark">
+                <th>Order reference</th>
+                <td>{{ commande.refCmde }}</td>
+            </tr>
+            <tr>
+                <th>Country</th>
+                <td>{{ commande.pays }}</td>
+            </tr>
+            <tr>
+                <th>Region/Departement</th>
+                <td>{{ commande.region }}</td>
+            </tr>
+            <tr>
+                <th>Postal code</th>
+                <td>{{ commande.CodePostal }}</td>
+            </tr>
+            <tr>
+                <th>Phone number</th>
+                <td>{{ commande.tel }}</td>
+            </tr>  
+             <tr>
+                <th>Product name</th>
+                <td>{% for prod in commande.prod %}
+                    {{ prod['ProductName'] }} 
+                    {% endfor %}
+                </td>
+                </tr>
+                <tr>
+                <th>Quantity</th>
+                <td>{% for prod in commande.prod %}
+                    {{ prod['quantity'] }} 
+                    {% endfor %}
+                </td>
+                </tr>
+                <tr>
+                <th>Product price</th>
+                <td>{% for prod in commande.prod %}
+                    {{ prod['ProductPrice'] }} TND
+                    {% endfor %}
+                </td>
+                </tr>
+                <tr>
+                <th>Total</th>
+                <td>{% for prod in commande.prod %}
+                    {{ prod['quantity'] * prod['ProductPrice'] }}TND <br> <br>
+                    {% endfor %}
+                </td>
+                </tr>
+            
+        </tbody>
+    </table>
+
+{% endblock %}

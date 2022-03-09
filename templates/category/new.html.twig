@@ -1,0 +1,78 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}New Category{% endblock %}
+{% block body %}
+
+
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="page-header">
+
+            <h3 class="page-title">{% trans %} Add Category {% endtrans %} </h3>
+            <nav aria-label="breadcrumb">
+            {% for locale in locales %}
+                {% if locale != app.request.locale %}
+                <ol class="breadcrumb">
+                    <a  href="{{ path('change_locale', {'locale': locale}) }}"><img src="{{ asset('back/assets/images/'~locale~'.png') }}" alt="{{locale}}" width="80px" height="50px" /></a>
+                {% endif %}
+            {% endfor %}
+                </ol>
+            </nav>
+        </div>
+        <div class="row">
+            <div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">{% trans %}Category{% endtrans %}</h4>
+                        <p class="card-description">{% trans %} Please Add Category{% endtrans %} </p>
+
+                            {{ form_start(form,{'attr': {'novalidate': 'novalidate'}})}}
+
+                            
+
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">{% trans %}Name{% endtrans %}</label>
+                                {{ form_widget(form.Name , {'attr' : {'class' : 'form-control'  }}  ) }}
+                                {{ form_errors(form.Name) }}
+                                
+                            </div>
+
+                                <div class="form-group">
+                
+                                <label for="exampleTextarea1">{% trans %}Desciprtion{% endtrans %}</label>
+                                {{ form_widget(form.description , {'attr' : {'class' : 'form-control' }}  ) }}
+                                
+                                {{ form_errors(form.description) }}
+                            </div>
+
+                            
+                         
+                        
+                        
+                      
+                            
+                            
+                           
+                          
+                            
+                       
+                        <button class="btn btn-primary mr-2">{{ button_label|default('Save') }}</button>
+                        
+                        <button type="reset" class="btn  btn-danger"><i class="fa fa-ban"></i>{% trans %} Cancel{% endtrans %}</button>               
+                            {{ form_end(form) }}
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+                      
+                         
+
+{% endblock %}
+
+

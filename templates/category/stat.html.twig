@@ -1,0 +1,75 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}statistic{% endblock %}
+{% block body %}
+
+<div class="main-panel">
+          <div class="content-wrapper">
+            
+            
+            
+            <div class="row">
+              <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Statistic</h4>
+                    <div class="container">
+                     
+<canvas id="myChart" width="400" height="100"></canvas>
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js" ></script>
+<script>
+const ctx = document.getElementById('myChart').getContext("2d");
+const myChart = new Chart(ctx, {
+    type: "doughnut",//pie,bar,
+    data: {
+        labels: {{label |raw}},
+        datasets: [{
+            label: {{label |raw}},
+            data: {{count|raw}},
+            backgroundColor: [
+                'pink',
+                'red',
+                'blue',
+                'yellow',
+               
+            ],
+            
+            hoverBorderWidth: 1
+        }]
+    },
+    options: {
+      title: {
+            display:true,
+            text: "statistique",
+          
+             },
+    
+        
+    }
+});
+</script>
+ </div>
+</div>
+</div>
+              
+</div>
+</div>
+          
+</div>
+
+
+
+                   
+{% endblock %}
+
+
+
+
+
+
+
+
+
+

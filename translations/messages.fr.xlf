@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="uIALjhH" resname="Added Successfully!">
+        <source>Added Successfully!</source>
+        <target>Ajout avec succès</target>
+      </trans-unit>
+      <trans-unit id="pA4FV26" resname="Add Categorie">
+        <source>Add Categorie</source>
+        <target>Ajout Categorie</target>
+      </trans-unit>
+      <trans-unit id="KSwG8AR" resname="Category">
+        <source>Category</source>
+        <target>Catégorie</target>
+      </trans-unit>
+      <trans-unit id="kQQCEnR" resname="Please Add Category">
+        <source>Please Add Category</source>
+        <target>Veuillez ajouter une catégorie</target>
+      </trans-unit>
+      <trans-unit id="3NHVIj9" resname="Name">
+        <source>Name</source>
+        <target>Nom</target>
+      </trans-unit>
+      <trans-unit id="PnR0EPM" resname="Desciprtion">
+        <source>Desciprtion</source>
+        <target>Desciprtion</target>
+      </trans-unit>
+      <trans-unit id="GXZu1sy" resname="Cancel">
+        <source>Cancel</source>
+        <target>Annuler</target>
+      </trans-unit>
+      <trans-unit id="uLHYlMa" resname="Categories">
+        <source>Categories</source>
+        <target>Catégories</target>
+      </trans-unit>
+      <trans-unit id=".4BZ3Gd" resname="Actions">
+        <source>Actions</source>
+        <target>Actions</target>
+      </trans-unit>
+      <trans-unit id="bi6mN7M" resname="No records found">
+        <source>No records found</source>
+        <target>Aucun Enregistrement trouvé</target>
+      </trans-unit>
+      <trans-unit id="nz33U6Q" resname="Create new">
+        <source>Create new</source>
+        <target>Créer nouveau </target>
+      </trans-unit>
+      <trans-unit id="cb_Qk1." resname="Reference">
+        <source>Reference</source>
+        <target>Référence</target>
+      </trans-unit>
+      <trans-unit id="k8kchR5" resname="Price">
+        <source>Price</source>
+        <target>Prix</target>
+      </trans-unit>
+      <trans-unit id="1crefvM" resname="Stock">
+        <source>Stock</source>
+        <target>Stock</target>
+      </trans-unit>
+      <trans-unit id="Um4Ah8w" resname="Description">
+        <source>Description</source>
+        <target>Description</target>
+      </trans-unit>
+      <trans-unit id="GqTLC8y" resname="Image">
+        <source>Image</source>
+        <target>Image</target>
+      </trans-unit>
+      <trans-unit id="6ffveyg" resname="List of categories">
+        <source>List of categories</source>
+        <target>Liste des Catégories</target>
+      </trans-unit>
+      <trans-unit id="D80VToH" resname="Add Category">
+        <source>Add Category</source>
+        <target>Ajout Category</target>
+      </trans-unit>
+      <trans-unit id="yYzoNxh" resname="List of products">
+        <source>List of products</source>
+        <target>Liste des produits</target>
+      </trans-unit>
+      <trans-unit id="HverCac" resname="Add Product">
+        <source>Add Product</source>
+        <target>Ajout de produit</target>
+      </trans-unit>
+      <trans-unit id="ccGqXK_" resname="Please Add Product">
+        <source>Please Add Product</source>
+        <target>Veuillez Ajouter un produit</target>
+      </trans-unit>
+      <trans-unit id="_574lBd" resname="Product">
+        <source>Product</source>
+        <target>Produit</target>
+      </trans-unit>
+      <trans-unit id="QrNMCgy" resname="Edit product">
+        <source>Edit product</source>
+        <target>Modifier produit</target>
+      </trans-unit>
+      <trans-unit id="RkxP.QG" resname="Edit">
+        <source>Edit</source>
+        <target>Modifier</target>
+      </trans-unit>
+      <trans-unit id="dpAPG.0" resname="Back">
+        <source>Back</source>
+        <target>Retour</target>
+      </trans-unit>
+      <trans-unit id="4tClSWj" resname="Delete">
+        <source>Delete</source>
+        <target>Supprimer</target>
+      </trans-unit>
+      <trans-unit id="4bC.Rfb" resname="Catecory">
+        <source>Catecory</source>
+        <target>Catecory</target>
+      </trans-unit>
+      <trans-unit id="DZO3ehf" resname="Edit Category">
+        <source>Edit Category</source>
+        <target>Modifier Catégorie</target>
+      </trans-unit>
+      <trans-unit id="z0RiPJx" resname="Bach">
+        <source>Back</source>
+        <target>Retour</target>
+      </trans-unit>
+      <trans-unit id="3Mg5pAF" resname="View">
+        <source>View</source>
+        <target>Voir</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

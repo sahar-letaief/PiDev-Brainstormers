@@ -1,0 +1,104 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}Product index{% endblock %}
+
+{% block body %}
+
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="page-header">
+
+            <h5 class="page-title">Admin<code>/{% trans %} List of products {% endtrans %} </code></h5>
+            
+           
+            <nav aria-label="breadcrumb">
+                        
+
+            {% for locale in locales %}
+                {% if locale != app.request.locale %}
+                <ol class="breadcrumb">
+                    <a  href="{{ path('change_locale', {'locale': locale}) }}"><img src="{{ asset('back/assets/images/'~locale~'.png') }}" alt="{{locale}}" width="80px" height="50px" /></a>
+                {% endif %}
+            {% endfor %}
+                </ol>
+            <a class="nav-link btn btn-success create-new-button" href="{{ path('product_new') }}">+ New Product</a>
+
+            </nav>
+            
+        </div>
+        
+                    <div class="row">
+                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                    <div class="col">
+                                    <div class="form-row align-items-end" >
+                                    <div class="col">
+                     {{ form_start(form)}}
+                      {{ form_widget(form) }}
+                      {{ form_end(form) }}
+                      </div>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    {% for message in app.flashes('success') %}
+                        <div class="alert alert-success">
+                           {{message}}
+                        </div>
+
+                    {% endfor %}
+                    
+                    
+                    
+                    
+                    <div class="table-responsive">
+                      <table class="table table-dark">
+                        <thead>
+                         <tr>
+                             <th>{% trans %}Reference{% endtrans %}</th>
+                             <th>{% trans %}Name{% endtrans %}</th>
+                             <th>{% trans %}Category{% endtrans %}</th>
+                             <th>{% trans %}Price{% endtrans %}</th>
+                             <th>{% trans %}Stock{% endtrans %}</th>
+                             <th>{% trans %}Description{% endtrans %}</th>
+                             <th>{% trans %}Image{% endtrans %}</th>
+                             <th>{% trans %}Actions{% endtrans %}</th>
+                         </tr>
+                      </thead>
+                        <tbody>
+                        
+        {% for product in products %}
+            <tr>
+                <td>{{ product.Reference }}</td>
+                <td>{{ product.ProductName }}</td>
+                <td>{{ product.Category }}</td>
+                <td>{{ product.Price }}</td>
+                <td>{{ product.Stock }}</td>
+                <td>{{ product.Description }}</td>
+                <td><img src="{{ asset('uploads/') ~product.image}}" alt="" class="img-fluid"></td>
+                
+                <td>
+                    <a href="{{ path('product_show', {'id': product.id}) }}", class="mdi mdi-eye"></a>
+                    <a href="{{ path('product_edit', {'id': product.id}) }}" , class="mdi mdi-pencil"></a>
+                    <a href="{{ path('product_delete', {'id': product.id}) }}", class="mdi mdi-delete"></a>
+                    
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">{% trans %}No records found{% endtrans %}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+                      </table>
+                      
+                    </div>
+                    
+                    {{ knp_pagination_render(products) }}
+                  </div>
+                  
+                
+              
+              
+              <a href="{{ path('product_new') }}">{% trans %}Create new{% endtrans %}</a>
+{% endblock %}

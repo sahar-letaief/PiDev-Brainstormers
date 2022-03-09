@@ -1,0 +1,72 @@
+
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}Category index{% endblock %}
+
+{% block body %}
+    
+
+<div class="main-panel">
+    <div class="content-wrapper">
+    
+        <div class="page-header">
+
+            <h5 class="page-title">Admin<code>/{% trans %} List of categories {% endtrans %} </code></h5>
+            <nav aria-label="breadcrumb">
+            {% for locale in locales %}
+                {% if locale != app.request.locale %}
+                <ol class="breadcrumb">
+                    <a  href="{{ path('change_locale', {'locale': locale}) }}"><img src="{{ asset('back/assets/images/'~locale~'.png') }}" alt="{{locale}}" width="80px" height="50px" /></a>
+                {% endif %}
+            {% endfor %}
+                </ol>
+             <a class="nav-link btn btn-success create-new-button" href="{{ path('category_new') }}">+ New Category</a>
+
+            </nav>
+            
+        </div>
+                    
+                    {%for message in app.flashes('success')%}
+                        <div class="alert alert-success">
+                           {{message}}
+                        </div>
+
+                    {%endfor%}
+                    
+                    <div class="table-responsive">
+                      <table class="table table-dark">
+                        <thead>
+                         <tr>
+                      
+                          <th>{% trans %}Name{% endtrans %}</th>
+                          <th>{% trans %}Desciprtion{% endtrans %}</th>
+                          <th>{% trans %}Actions{% endtrans %}</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+        {% for category in categories %}
+           <tr>
+                
+                <td>{{ category.Name }}</td>
+                <td>{{ category.description }}</td>
+                <td>
+                    <a href="{{ path('category_show', {'id': category.id}) }}" class="mdi mdi-eye"></a>
+                    <a href="{{ path('category_edit', {'id': category.id}) }}" class="mdi mdi-pencil"></a>
+                    <a href="{{ path('category_delete', {'id': category.id}) }}" class="mdi mdi-delete"></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">{% trans %}No records found{% endtrans %}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {{ knp_pagination_render(categories) }}
+                      
+                    </div>
+                  </div>
+                
+              
+              <a href="{{ path('category_new') }}">{% trans %}Create new{% endtrans %}</a>
+{% endblock %}
