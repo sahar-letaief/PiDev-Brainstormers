@@ -32,7 +32,6 @@ class EvenementController extends AbstractController
      */
     public function indexjson(NormalizerInterface $Normalizer) : Response
     {
-
         $evenements=$this->getDoctrine()->getRepository(Evenement::class)->findAll();
         $jsonContent=$Normalizer->normalize($evenements,'json',['groups'=>'post:read']);
         return new Response(json_encode($jsonContent));

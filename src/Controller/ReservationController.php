@@ -72,7 +72,7 @@ class ReservationController extends AbstractController
 
     }
     /**
-     * @Route("/front/api", name="reservation_index2_api", methods={"GET"})
+     * @Route("/api", name="reservation_index2_api", methods={"GET"})
      */
     public function indexfrontjson(ReservationRepository $reservationRepository,Request $request,NormalizerInterface $Normalizer)
     {
@@ -149,13 +149,13 @@ class ReservationController extends AbstractController
         ]);
     }
     /**
-     * @Route("/new/api/{id}", name="reservation_new_front_api")
+     * @Route("/new/api/{NameEvent}", name="reservation_new_front_api")
      */
-    public function new_frontjson(Request $request, EntityManagerInterface $entityManager,$id,NormalizerInterface $Normalizer): Response
+    public function new_frontjson(Request $request, EntityManagerInterface $entityManager,$NameEvent,NormalizerInterface $Normalizer): Response
     {
         $DateReservation = date('d-m-y , h:m');
-        $user=$this->getUser();
-        $evenement=$this->getDoctrine()->getRepository(Evenement::class)->findOneBy(['id'=>$id]);
+        //$user=$this->getUser();
+        $evenement=$this->getDoctrine()->getRepository(Evenement::class)->findOneBy(['NameEvent'=>$NameEvent]);
         $evenement->setNbParticipants($evenement->getNbParticipants()-1);
         $NameEvent=$evenement->getNameEvent();
         $reservation = new Reservation();
@@ -163,7 +163,7 @@ class ReservationController extends AbstractController
         $ev=$evenement->setNameEvent($NameEvent);
         $reservation->setEvenement($ev);
         $DateReservation=$reservation->getDateReservation();
-        $reservation->setUser($user);
+        //$reservation->setUser($user);
         $entityManager->persist($reservation);
         $entityManager->flush();
         $jsonContent=$Normalizer->normalize($reservation,'json',['groups'=>'post:read']);
