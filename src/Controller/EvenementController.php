@@ -27,7 +27,16 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
  */
 class EvenementController extends AbstractController
 {
+    /**
+     * @Route("/api", name="evenement_index_api")
+     */
+    public function indexjson(NormalizerInterface $Normalizer) : Response
+    {
 
+        $evenements=$this->getDoctrine()->getRepository(Evenement::class)->findAll();
+        $jsonContent=$Normalizer->normalize($evenements,'json',['groups'=>'post:read']);
+        return new Response(json_encode($jsonContent));
+    }
 
     /**
      * @IsGranted("ROLE_EVENT")
@@ -96,15 +105,7 @@ class EvenementController extends AbstractController
         }
         return $this->render('evenement/index.html.twig',array('evenements'=>$evenements, 'back'=>$back));
     }
-    /**
-     * @Route("/api", name="evenement_index_api")
 
-    public function indexjson(NormalizerInterface $Normalizer){
-
-        $evenements=$this->getDoctrine()->getRepository(Evenement::class)->findAll();
-        $jsonContent=$Normalizer->normalize($evenements,'json',['groups'=>'post:read']);
-        return new Response(json_encode($jsonContent));
-    }*/
 
 
     /**
@@ -151,7 +152,6 @@ class EvenementController extends AbstractController
     }
 
     /**
-     * @IsGranted("ROLE_PLAYER")
      * @Route("/front", name="evenement_index2", methods={"GET"})
      */
     public function front(PaginatorInterface $paginator,Request $request)
@@ -213,6 +213,7 @@ class EvenementController extends AbstractController
         //dd($data);
         return $this->render('evenement/calendar.html.twig',compact('data'));
     }
+
 
     /**
      * @IsGranted("ROLE_EVENT")

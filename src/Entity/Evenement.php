@@ -9,6 +9,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 
 
 /**
@@ -29,40 +31,40 @@ class Evenement
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups("post:read")
      * @Assert\NotBlank (message="Event name field cannot be empty")
      *  @Assert\Regex("/^[A-Z][a-z]*\s[a-z]*|[0-9]$/" ,
      *          message="Event name should be like this format Xxx xxx"
      * )
+     *@Groups("post:read")
      */
     private $NameEvent;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups("post:read")
      * @Assert\NotBlank (message="Event place field cannot be empty")
+     * @Groups("post:read")
      */
     private $PlaceEvent;
 
 
     /**
      * @ORM\Column(type="integer")
-     * @Groups("post:read")
      * @Assert\NotEqualTo(
      *     value=0,
      *     message="Number of participants can not be equal to {{ value }} ")
      * @Assert\NotBlank(message="Number of participants field cannot be empty")
+     * @Groups("post:read")
      */
     private $NbParticipants;
 
 
     /**
      * @ORM\Column(type="float")
-     * @Groups("post:read")
      * @Assert\NotEqualTo(
      *     value=0,
      *     message="Ticket price can not be equal to {{ value }} DT")
      * @Assert\NotBlank(message="Ticket price field cannot be empty")
+     * @Groups("post:read")
      */
     private $PriceEvent;
 
@@ -71,7 +73,6 @@ class Evenement
 
     /**
      * @ORM\OneToMany(targetEntity=Reservation::class, mappedBy="evenement")
-     * @Groups("post:read")
      */
     private $reservations;
 
@@ -86,28 +87,12 @@ class Evenement
 
     /**
      * @ORM\Column(type="date")
-     * @Groups("post:read")
      * @Assert\GreaterThanOrEqual(propertyPath="DateDebut",
                          message="End event date should be greater than begin event date")
      * @Assert\GreaterThan("today")
+     * @Groups("post:read")
      */
     private $DateFin;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     public function __construct()
     {
@@ -241,6 +226,10 @@ class Evenement
         $this->DateFin = $DateFin;
 
         return $this;
+    }
+    public function __toString(): string
+    {
+        return ' ';
     }
 
 
