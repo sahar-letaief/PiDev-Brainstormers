@@ -86,12 +86,6 @@ class ReservationController extends AbstractController
         //dd($jsonContent);
        return new Response(json_encode($jsonContent));
 
-
-         /*return $this->render('reservation/indexfrontjson.html.twig', [
-             'reservations' => $reservations,
-             'user'=>$user,
-             'data' =>$jsonContent,
-         ]);*/
     }
     /**
      * @IsGranted("ROLE_PLAYER")
