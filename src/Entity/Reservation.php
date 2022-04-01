@@ -31,11 +31,13 @@ class Reservation
      * @ORM\ManyToOne(targetEntity=Evenement::class, inversedBy="reservations",cascade={"persist"})
      * @ORM\JoinColumn(onDelete="CASCADE")
      * @Groups("post:read")
+
      */
     private $evenement;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="reservations")
+     * @Groups("post:read")
      */
     private $user;
 

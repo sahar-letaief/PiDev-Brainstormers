@@ -22,3 +22,9 @@
 ###> symfony/web-server-bundle ###
 /.web-server-pid
 ###< symfony/web-server-bundle ###
+/mobile/GestionDesEvenements/nbproject/private/
+/mobile/GestionDesEvenements/build/
+/mobile/GestionDesEvenements/dist/
+/mobile/workshop/nbproject/private/
+/mobile/workshop/build/
+/mobile/workshop/dist/

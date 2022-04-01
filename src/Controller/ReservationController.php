@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Evenement;
 use App\Entity\Reservation;
+use App\Entity\User;
 use App\Form\ReservationType;
 use App\Repository\EvenementRepository;
 use App\Repository\ReservationRepository;
@@ -72,16 +73,28 @@ class ReservationController extends AbstractController
 
     }
     /**
-     * @Route("/api", name="reservation_index2_api", methods={"GET"})
+     * @Route("/apiDisplay/{idu}", name="reservation_index2_api2")
+     */
+    public function indexfrontjsonfront(ReservationRepository $reservationRepository,Request $request,NormalizerInterface $Normalizer,$idu)
+    {
+        $user=$this->getUser();
+        $user=$this->getDoctrine()->getRepository(User::class)->findOneBy(['id'=>$idu]);
+        $reservations=$this->getDoctrine()->getRepository(Reservation::class)->findby(['user'=>$user]);
+        //dd($reservations);
+        $jsonContent=$Normalizer->normalize($reservations,'json',['groups'=>'post:read']);
+       // dd($jsonContent);
+        return new Response(json_encode($jsonContent));
+
+    }
+    /**
+     * @Route("/apiDisplay", name="reservation_index2_api")
      */
     public function indexfrontjson(ReservationRepository $reservationRepository,Request $request,NormalizerInterface $Normalizer)
     {
+        $user=$this->getUser();
 
-        $reservation = new Reservation();
-        $reservation->setDateReservation(new \DateTime('now'));
         $reservations=$this->getDoctrine()->getRepository(Reservation::class)->findAll();
-        //dd($reservations);
-
+       //dd($reservations);
         $jsonContent=$Normalizer->normalize($reservations,'json',['groups'=>'post:read']);
         //dd($jsonContent);
        return new Response(json_encode($jsonContent));
@@ -149,13 +162,14 @@ class ReservationController extends AbstractController
         ]);
     }
     /**
-     * @Route("/new/api/{NameEvent}", name="reservation_new_front_api")
+     * @Route("/new/api/{id}/{idu}", name="reservation_new_front_api")
      */
-    public function new_frontjson(Request $request, EntityManagerInterface $entityManager,$NameEvent,NormalizerInterface $Normalizer): Response
+    public function new_frontjson(Request $request, EntityManagerInterface $entityManager,NormalizerInterface $Normalizer,$id,$idu): Response
     {
         $DateReservation = date('d-m-y , h:m');
-        //$user=$this->getUser();
-        $evenement=$this->getDoctrine()->getRepository(Evenement::class)->findOneBy(['NameEvent'=>$NameEvent]);
+       // $user=$this->getUser();
+        $user=$this->getDoctrine()->getRepository(User::class)->findOneBy(['id'=>$idu]);
+        $evenement=$this->getDoctrine()->getRepository(Evenement::class)->findOneBy(['id'=>$id]);
         $evenement->setNbParticipants($evenement->getNbParticipants()-1);
         $NameEvent=$evenement->getNameEvent();
         $reservation = new Reservation();
@@ -163,12 +177,13 @@ class ReservationController extends AbstractController
         $ev=$evenement->setNameEvent($NameEvent);
         $reservation->setEvenement($ev);
         $DateReservation=$reservation->getDateReservation();
-        //$reservation->setUser($user);
+        $reservation->setUser($user);
+        //dd($reservation);
         $entityManager->persist($reservation);
         $entityManager->flush();
         $jsonContent=$Normalizer->normalize($reservation,'json',['groups'=>'post:read']);
         //dd($jsonContent);
-        return new Response(json_encode($jsonContent));
+        return new Response("reservation added successfully".json_encode($jsonContent));
     }
 
 
@@ -206,7 +221,7 @@ class ReservationController extends AbstractController
     }
 
     /**
-     * @Route("/delete/api/{idR}", name="reservation_delete_api")
+     * @Route("/deleteApi/{idR}", name="reservation_delete_api")
      */
     public function deletejson(ReservationRepository $repo,$idR,NormalizerInterface $Normalizer)
     {
@@ -218,7 +233,7 @@ class ReservationController extends AbstractController
         $jsonContent=$Normalizer->normalize($em,'json',['groups'=>'post:read']);
         return new Response("reservation deleted successfully".json_encode($jsonContent));
 
-       // return $this->redirectToRoute('reservation_index2', [], Response::HTTP_SEE_OTHER);
+
     }
     /**
      * @IsGranted("ROLE_PLAYER")

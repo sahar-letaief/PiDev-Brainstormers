@@ -22,6 +22,8 @@ class User implements UserInterface
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("read:users")
+     * @Groups("post:read")
      */
     private $id;
 
@@ -29,25 +31,29 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=180, unique=true)
      * @Assert\Length(min="20" , minMessage="the email must contain at least 20 characters.")
      * @Groups("read:users")
+     * @Groups("post:read")
      */
     private $email;
 
     /**
      * @ORM\Column(type="json")
+     * @Groups("read:users")
      */
     private $roles = [];
 
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
+     * @Groups("read:users")
      */
     private $password;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\Length(min="4" , minMessage="first name must contain at least 4 characters.")
-     * @Assert\Length(max="20" , maxMessage="first name must contain at most 20
-     * characters.")
+     * @Assert\Length(max="20" , maxMessage="first name must contain at most 20 characters.")
+     * @Groups("read:users")
+     * @Groups("post:read")
      */
     private $firstname;
 
@@ -55,6 +61,8 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      * @Assert\Length(min="4" , minMessage="last name must contain at least 4 characters.")
      * @Assert\Length(max="15" , maxMessage="last name must contain at most 15 characters.")
+     * @Groups("read:users")
+     * @Groups("post:read")
      */
     private $lastname;
 
@@ -91,16 +99,20 @@ class User implements UserInterface
      * @ORM\Column(type="integer")
      * @Assert\Length(min="8" , minMessage="Phone number must contain exactly 8 numbers")
      * @Assert\Length(max="8" , maxMessage="Phone number must contain exactly 8 numbers")
+     * @Groups("read:users")
+     * @Groups("post:read")
      */
     private $phone_number;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups("read:users")
      */
     private $verificationCode;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("read:users")
      */
     private $usertag;
 

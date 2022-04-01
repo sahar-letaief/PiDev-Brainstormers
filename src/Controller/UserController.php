@@ -12,13 +12,16 @@ use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use phpDocumentor\Reflection\Types\Nullable;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 use Symfony\Component\Security\Csrf\TokenStorage\TokenStorageInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
@@ -27,17 +30,130 @@ class UserController extends AbstractController
 {
 
     /**
+     * @Route("/editProfile/mobile", name="api_editProfile", methods={"POST"})
+     */
+    public function api_EditProfile(UserRepository $userRepository,NormalizerInterface $normalizable, EntityManagerInterface $entityManager,Request $request)
+    {
+        $user = new User();
+        $user = $userRepository->findOneBy(['id' => $request->get('id')]);
+        if ( $user ){
+            $user->setFirstname($request->get('firstname'));
+            $user->setLastname($request->get('lastname'));
+            $user->setusertag($request->get('username'));
+            $user->setEmail($request->get('email'));
+            $user->setPhoneNumber($request->get('phonenumber'));
+            $user->setRoles(["ROLE_".$request->get('roles')]);
+            $entityManager->persist($user);
+            $entityManager->flush();
+            return new JsonResponse([
+                'success' => "user has been updated"
+            ]);
+        }else{
+            return new JsonResponse([
+                'error' => "error updating , please try again"
+            ]);
+        }
+
+
+    }
+
+    /**
+     * @Route("/PhoneNumberCode/mobile", name="api_PhoneNumberCode", methods={"POST"})
+     */
+    public function api_PhoneNumberCode(UserRepository $userRepository,NormalizerInterface $normalizable, EntityManagerInterface $entityManager,Request $request)
+    {
+        $code = $request->get('code');
+        $idUser = $request->get('UserId');
+        $user = $userRepository->findOneBy(['id' => $idUser , 'verificationCode' => $code ]);
+        if ($user){
+            $userData = new User();
+            $user->setVerificationCode(null);
+            $entityManager->persist($user);
+            $entityManager->flush();
+            return new JsonResponse([
+                'success' => "account has been activated"
+            ]);
+        }else{
+            return new JsonResponse([
+                'error' => "please insert a valid code for your account"
+            ]);
+        }
+
+
+    }
+
+
+
+    /**
+     * @Route("/signup/mobile", name="api_signup", methods={"POST"})
+     */
+    public function api_signup( UserPasswordEncoderInterface $userPasswordEncoder, NormalizerInterface $normalizable, EntityManagerInterface $entityManager,Request $request,UserPasswordEncoderInterface $passwordHasher )
+    {
+        //$users = $userRepository->findAll();
+        $user = new User();
+        $user->setFirstname($request->get('firstname'));
+        $user->setLastname($request->get('lastname'));
+        $user->setusertag($request->get('username'));
+        $user->setEmail($request->get('email'));
+        $user->setPhoneNumber($request->get('phonenumber'));
+        $user->setPassword(
+            $userPasswordEncoder->encodePassword(
+                $user,
+                $request->get('password')
+            )
+        );
+        $current_date = new \DateTime('@'.strtotime('+01:00'));
+        $user->setLastLoginDate($current_date);
+        $user->setRoles(["ROLE_".$request->get('roles')]);
+
+        $bytes = random_bytes(3);
+        $verificationCode = bin2hex($bytes);
+        $user->SetVerificationCode($verificationCode);
+        $user->setIsVerified(1);
+        $entityManager->persist($user);
+        $entityManager->flush();
+        return new JsonResponse([
+            'success' => "user has been added"
+        ]);
+    }
+
+
+    /**
+     * @Route("/login/mobile", name="api_login", methods={"POST"})
+     */
+    public function api_login(NormalizerInterface $normalizable,UserRepository $userRepository,Request $request,UserPasswordEncoderInterface $passwordHasher )
+    {
+        //$users = $userRepository->findAll();
+
+        $user = $userRepository->findOneBy(['email' => $request->get('username')]);
+        if ( $user ){
+            $result = $passwordHasher->isPasswordValid($user, $request->get('password'));
+            if ( $result ){
+                $jsonContent = $normalizable->normalize($user, 'json' , [ 'groups'=> 'read:users' ]);
+                return new Response(json_encode($jsonContent));
+            }
+        }
+        return new JsonResponse([
+            'error' => "invalid informations"
+        ]);
+
+    }
+
+    /**
      * @Route("/all/users", name="users_mobile", methods={"GET"})
      */
-    public function mobile_all_users(NormalizerInterface $normalizable,UserRepository $userRepository)
+    public function mobile_all_users(NormalizerInterface $normalizable,UserRepository $userRepository,Request $request)
     {
-        $users = $userRepository->findAll();
+        $users = $userRepository->findOneBy(['email' => "yassine.bensalha@esprit.tn"]);
         $jsonContent = $normalizable->normalize($users, 'json' , [ 'groups'=> 'read:users' ]);
         return new Response(json_encode($jsonContent));
     }
 
+
+
+
     /**
-     * @Route("/profile/delete", name="delete_profile", methods={"POST"})
+     * @Route("/profile/delete", name="delete_profile", methods={"GET,POST"})
      */
     public function delete_profile(Request $request, EntityManagerInterface $entityManager): Response
     {
