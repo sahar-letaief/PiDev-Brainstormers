@@ -17,6 +17,7 @@ import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.spinner.Picker;
+import com.codename1.ui.util.Resources;
 import com.mycompany.myapp.MyApplication;
 import com.mycompany.services.EvenementService;
 import com.mycompany.services.ReservationService;
@@ -34,6 +35,7 @@ public class ListEventsForm extends Form{
     
     ArrayList<Evenement> data = new ArrayList<>();
     Form current;
+    Resources res;
 
     public ListEventsForm(Form previous) {
     setTitle("List events");
@@ -116,7 +118,7 @@ public class ListEventsForm extends Form{
            addAll(yy);
            addAll(y);
 
-       getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ADD_TO_HOME_SCREEN, e->new HomeFormBack().show());
+       getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ADD_TO_HOME_SCREEN, e->new ProfileForm(res).show());
     }
     
    

@@ -15,6 +15,7 @@ import com.codename1.ui.Label;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
+import com.codename1.ui.util.Resources;
 import com.mycompany.services.ReservationService;
 import com.mycompany.entities.Evenement;
 import com.mycompany.entities.Reservation;
@@ -28,6 +29,7 @@ import java.util.ArrayList;
 public class ListReservationsFormFront extends Form {
     ArrayList<Reservation> data = new ArrayList<>();
     Form current;
+      Resources res;
      public ListReservationsFormFront(Form previous) {
         setTitle("List of reservations");
 
@@ -94,6 +96,6 @@ public class ListReservationsFormFront extends Form {
         }
          addAll(y);
         getToolbar().addMaterialCommandToRightBar("", FontImage.MATERIAL_ADD, e-> new ListEventsFormFront(current).show());
-       getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ADD_TO_HOME_SCREEN, e->new HomeFormBack().show());
+       getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ADD_TO_HOME_SCREEN, e->new ProfileForm(res).show());
     }
 }

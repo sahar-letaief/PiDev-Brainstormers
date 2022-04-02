@@ -6,6 +6,7 @@
 package com.mycompany.gui;
 
 import com.codename1.ui.Button;
+import com.codename1.ui.Container;
 import com.codename1.ui.Form;
 import com.codename1.ui.Label;
 import com.codename1.ui.TextField;
@@ -21,6 +22,8 @@ import com.mycompany.services.ServiceUser;
 public class ProfileForm extends Form{
     
     public ProfileForm(Resources res) {
+        Container y = new Container(new BoxLayout(BoxLayout.Y_AXIS));
+      Container x = new Container(new BoxLayout(BoxLayout.X_AXIS));
         Form previous = null;
         setTitle("Se Connecter");
         setLayout(BoxLayout.yCenter());
@@ -34,7 +37,9 @@ public class ProfileForm extends Form{
         if ( s.equals("ROLE_PLAYER") ){
             role = new Label("role : PLAYER");
               Button front = new Button("Visit us");
-            addAll(front);
+            //addAll(front);
+             getToolbar().addCommandToSideMenu("Show events" , null ,ev -> {new ListEventsFormFront(previous).show();} );
+                getToolbar().addCommandToSideMenu("Show my reservations" , null ,ev -> {new ListReservationsFormFront(previous).show();} );
               front.addActionListener(e -> 
         {   
             new HomeFormFront().show();
@@ -46,7 +51,10 @@ public class ProfileForm extends Form{
             role = new Label("role : ADMIN");
              Button front = new Button("Visit us");
              Button back = new Button("Visit dashboard");
-            addAll(front,back);
+           // addAll(front,back);
+           getToolbar().addCommandToSideMenu("Show all users" , null ,ev -> {new DisplayUsersBackForm(0, res).show();} );
+            getToolbar().addCommandToSideMenu("Show events" , null ,ev -> {new ListEventsForm(previous).show();} );
+            getToolbar().addCommandToSideMenu("Show reservations" , null ,ev -> {new ListReservationsForm(previous).show();} );
             
               front.addActionListener(e -> 
         {   
@@ -60,7 +68,9 @@ public class ProfileForm extends Form{
         else{
             role = new Label("role : CLIENT");
              Button front = new Button("Visit us");
-              addAll(front);
+              //addAll(front);
+               getToolbar().addCommandToSideMenu("Show events" , null ,ev -> {new ListEventsFormFront(previous).show();} );
+                getToolbar().addCommandToSideMenu("Show my reservations" , null ,ev -> {new ListReservationsFormFront(previous).show();} );
               front.addActionListener(e -> 
         {   
             new HomeFormFront().show();
@@ -69,15 +79,20 @@ public class ProfileForm extends Form{
 
         //mp oublié
         Button modifier = new Button("Edit Profile");
+        Button logout=new Button("logout");
         
         
-        
-        addAll(email,firstname, lastname, username,phonenumber,role, modifier);
+        addAll(email,firstname, lastname, username,phonenumber,role, modifier,logout);
         modifier.requestFocus();
+        
         
         modifier.addActionListener(e -> 
         {   
             new ModifierProfileForm(res,this).show();
+        });
+         logout.addActionListener(e -> 
+        {   
+            new SignInForm(res).show();
         });
         
     }

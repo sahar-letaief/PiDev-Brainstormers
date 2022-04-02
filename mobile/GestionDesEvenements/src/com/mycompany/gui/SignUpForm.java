@@ -49,11 +49,11 @@ public class SignUpForm extends Form{
         
         
         //mp oublié
-        Button  mp = new Button("oublier mot de passe?","CenterLabel");
+        Button  mp = new Button("Forgot password?","CenterLabel");
         
         
         signIn.addActionListener(e -> new SignInForm(res).show());
-        Label doneHaveAnAccount = new Label("Vous n'avez aucune compte?");
+        Label doneHaveAnAccount = new Label("You don't have an account?");
         
         addAll(username,firstname, lastname,phonenumber, email,password ,roles,signUp , signIn); 
         signUp.requestFocus();

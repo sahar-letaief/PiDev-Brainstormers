@@ -16,6 +16,7 @@ import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.spinner.Picker;
+import com.codename1.ui.util.Resources;
 import com.mycompany.services.EvenementService;
 import com.mycompany.services.ReservationService;
 import com.mycompany.entities.Evenement;
@@ -30,6 +31,7 @@ import java.util.ArrayList;
 public class ListEventsFormFront extends Form {
      ArrayList<Evenement> data = new ArrayList<>();
     Form current;
+     Resources res;
 
     public ListEventsFormFront(Form previous) {
     setTitle("List events");
@@ -138,7 +140,7 @@ public class ListEventsFormFront extends Form {
           
           
 
-       getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ADD_TO_HOME_SCREEN, e->new HomeFormFront().show());
+       getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ADD_TO_HOME_SCREEN, e->new ProfileForm(res).show());
     }
     
    

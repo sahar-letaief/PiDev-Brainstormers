@@ -28,7 +28,7 @@ public class SignInForm extends Form {
     
     public SignInForm(Resources res) {
     
-        setTitle("Se Connecter");
+        setTitle("Please connect");
         setLayout(BoxLayout.yCenter());
         TextField username = new TextField("", "Username", 20, TextField.ANY);
         TextField password = new TextField("", "Password", 20, TextField.PASSWORD);
@@ -38,18 +38,21 @@ public class SignInForm extends Form {
         Button signUp = new Button("Sign Up");
         
         //mp oublié
-        Button  mp = new Button("oublier mot de passe?","CenterLabel");
+        Button  mp = new Button("Reset Password");
         
         
         signUp.addActionListener(e -> new SignUpForm(res).show());
-        Label doneHaveAnAccount = new Label("Vous n'avez aucune compte?");
+        mp.addActionListener(e -> new ForgotPasswordForm(res).show());
+        Label doneHaveAnAccount = new Label("You don't have an account ?");
         
-        addAll(username, password, signIn,signUp); 
+        addAll(username, password, signIn,signUp,mp); 
         signIn.requestFocus();
         
         signIn.addActionListener(e -> 
         {
                ServiceUser.getInstance().signin(username, password, res);
         });
+        
+
     }
 }

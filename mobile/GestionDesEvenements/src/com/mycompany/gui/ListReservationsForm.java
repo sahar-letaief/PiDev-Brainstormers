@@ -16,6 +16,7 @@ import com.codename1.ui.Label;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
+import com.codename1.ui.util.Resources;
 import com.mycompany.services.EvenementService;
 import com.mycompany.services.ReservationService;
 import com.mycompany.entities.Evenement;
@@ -33,6 +34,7 @@ public class ListReservationsForm extends Form{
     
     ArrayList<Reservation> data = new ArrayList<>();
     Form current;
+      Resources res;
 
     public ListReservationsForm(Form previous) {
     setTitle("List of reservations");
@@ -86,6 +88,6 @@ public class ListReservationsForm extends Form{
         }
          addAll(y);
         
-       getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ADD_TO_HOME_SCREEN, e->new HomeFormBack().show());
+       getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ADD_TO_HOME_SCREEN, e->new  ProfileForm(res).show());
     }
 }
