@@ -545,4 +545,37 @@ public class ServiceUser {
         NetworkManager.getInstance().addToQueueAndWait(req);
         return sortname;
     }
+    public void updatepassword(TextField password,String email,Resources res){
+        
+        String url = Statics.BASE_URL + "/UpdatePassword/mobile?password=" + password.getText().toString() + "&UserEmail=" + email;
+        req = new ConnectionRequest(url, false); //false ya3ni url mazlt matba3thtich lel server
+        req.setUrl(url);
+        req.setPost(true);
+        req.addResponseListener((e) -> {
+            JSONParser j = new JSONParser();
+            String json = new String(req.getResponseData()) + "";
+            boolean error = false;
+            try {
+                Map<String, Object> user = j.parseJSON(new CharArrayReader(json.toCharArray()));
+                for (Map.Entry mapentry : user.entrySet()) {
+                    //system.out.println("clé: "+mapentry.getKey() + " | valeur: " + mapentry.getValue());
+                    if (mapentry.getKey().equals("error")) {
+                        error = true;
+                    }
+                }
+                if (error) {
+                    Dialog.show("Password Update Failed", "Try Again Later", "OK", null);
+                }else {
+                    Dialog.show("Password Updated", "Redirecing", "OK", null);
+                    new ProfileForm(res).show();
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+
+        });
+
+        //ba3d execution ta3 requete ely heya url nestanaw response ta3 server.
+        NetworkManager.getInstance().addToQueueAndWait(req);
+    }
 }

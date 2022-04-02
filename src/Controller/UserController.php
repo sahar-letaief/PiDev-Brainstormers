@@ -91,6 +91,35 @@ class UserController extends AbstractController
 
 
     }
+    /**
+     * @Route("/UpdatePassword/mobile", name="api_UpdatePasswordMobile")
+     */
+    public function UpdatePassword_Mobile(UserRepository $userRepository,NormalizerInterface $normalizable, EntityManagerInterface $entityManager,Request $request,UserPasswordEncoderInterface $userPasswordEncoder)
+    {
+        $password = $request->get('password');
+        $email = $request->get('UserEmail');
+        $user = $userRepository->findOneBy(['email' => $email]);
+
+        if ( $user){
+            $user->setPassword(
+                $userPasswordEncoder->encodePassword(
+                    $user,
+                    $password
+                )
+            );
+            $entityManager->persist($user);
+            $entityManager->flush();
+            return new JsonResponse([
+                'success' => "password has been updated"
+            ]);
+
+        }else{
+            return new JsonResponse([
+                'error' => "error updating user"
+            ]);
+        }
+
+    }
 
     /**
      * @Route("/resetPasswordUser/mobile", name="api_resetPasswordUser", methods={"POST"})

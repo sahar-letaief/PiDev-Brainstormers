@@ -79,10 +79,11 @@ public class ProfileForm extends Form{
 
         //mp oublié
         Button modifier = new Button("Edit Profile");
+        Button UpdatePassword = new Button("Update Password");
         Button logout=new Button("logout");
         
         
-        addAll(email,firstname, lastname, username,phonenumber,role, modifier,logout);
+        addAll(email,firstname, lastname, username,phonenumber,role, modifier,UpdatePassword,logout);
         modifier.requestFocus();
         
         
@@ -93,6 +94,10 @@ public class ProfileForm extends Form{
          logout.addActionListener(e -> 
         {   
             new SignInForm(res).show();
+        });
+         UpdatePassword.addActionListener(e -> 
+        {   
+            new UpdatePasswordForm(res,SessionManager.getEmail()).show();
         });
         
     }
