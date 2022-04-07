@@ -57,33 +57,33 @@ public class Main extends Application {
         ReservationService rs=new ReservationService();
         
         /**********affichage des evenements**********/
-       // System.out.println("la liste des evenements:"+es.FetchEvents());
+       // System.out.println("Events list :"+es.FetchEvents());
         
         /*********ajout d'un evenement***************/
-       // Evenement e = new Evenement("sahar test","kairouan",5,12,"2022-04-04","2002-04-05");
-        //es.AddEvent(e);
+       /* Evenement e = new Evenement("test1","kairouan",5,12,"2022-04-04","2002-04-07");
+        es.AddEvent(e);*/
        
         //suppression evenement
-        //es.DeleteEvent(37);
+       // es.DeleteEvent(40);
         
+             
+       /*****modification evenement*******/
+        /*Evenement e = new Evenement(41,"sahaaaar","esprit tunis",5,12,"2022-04-04","2002-04-07");
+        es.EditEvent(e);*/
+       
+       
         /****** affichage reservations****/
        // System.out.println("la liste des reservations"+rs.FetchReservations());
        
-       /*****modification evenement*******/
-        Evenement e = new Evenement(40,"sahar test","esprit kairouan",5,12,"2022-04-04","2002-04-05");
-        es.EditEvent(e);
-       
-       
-       
        /******** ajout reservation*****/
      
-     /* String date_reservation = DateTimeFormatter.ofPattern("yyyy/MM/dd").format(LocalDateTime.now());
+      /*String date_reservation = DateTimeFormatter.ofPattern("yyyy/MM/dd").format(LocalDateTime.now());
       System.out.println(date_reservation);
-      Reservation r=new Reservation(25,1,date_reservation);
+      Reservation r=new Reservation(24,1,date_reservation);
         rs.AddReservation(r);*/
         
         /***** suppression reservation *****/
-       // rs.DeleteReservation(57);
+        rs.DeleteReservation(90);
        
        
       

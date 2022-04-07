@@ -48,9 +48,9 @@ public class ReservationService {
            pst.setInt(2,r.getEvenement_id() );
            pst.setInt(3, r.getUser_id());
            pst.executeUpdate();
-            System.out.println("reservation added successfully");
+            System.out.println("reservation with id event ="+r.getEvenement_id()+" is added successfully");
         } catch (SQLException ex) {
-            System.out.println("reservation ba7");
+            System.out.println("error in adding reservation");
             Logger.getLogger(ReservationService.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -79,7 +79,7 @@ public class ReservationService {
            pst = (PreparedStatement) cnx.prepareStatement(requete);
             pst.setInt(1, id);
             pst.executeUpdate();
-            System.out.println("reservation deleted");
+            System.out.println("reservation with id="+id+" is deleted successfully");
         } catch (SQLException ex) {
             System.out.println("error in delete reservation " + ex.getMessage());
         }

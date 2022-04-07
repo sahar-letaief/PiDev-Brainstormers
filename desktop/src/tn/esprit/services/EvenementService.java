@@ -43,7 +43,7 @@ public class EvenementService {
             pst.setString(5, e.getDateDebut());
             pst.setString(6, e.getDateFin());
             pst.executeUpdate();
-            System.out.println("event added successfully");
+            System.out.println("event"+e.getNameEvent()+" added successfully");
         } catch (SQLException ex) {
             Logger.getLogger(EvenementService.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -75,7 +75,7 @@ public class EvenementService {
            pst = (PreparedStatement) cnx.prepareStatement(requete);
             pst.setInt(1, id);
             pst.executeUpdate();
-            System.out.println("event deleted");
+            System.out.println("event with id="+id+" is deleted successfully");
         } catch (SQLException ex) {
             System.out.println("error in delete event " + ex.getMessage());
         }
@@ -97,7 +97,7 @@ public class EvenementService {
             pst.setString(6, e.getDateFin());
             pst.setInt(7, e.getId());
             pst.executeUpdate();    
-            System.out.println("event updated");
+            System.out.println("event "+e.getNameEvent()+" is updated successfully");
 
         } catch (SQLException ex) {
             ex.printStackTrace();
