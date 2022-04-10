@@ -116,7 +116,6 @@ public class ReservationService {
          
          Reservation r=rs.FetchOneRes(id);
          
-        // System.out.println(r);
         String requete = "delete from reservation where id="+id;
         try {
              Evenement tempEvent = es.FetchOneEvent(r.getEvenement_id());

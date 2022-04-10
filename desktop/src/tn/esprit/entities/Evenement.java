@@ -19,7 +19,7 @@ public class Evenement {
     public float PriceEvent;
     public String  DateDebut;
     public String DateFin;
-    public Reservation reservation;
+  
     
 
      public Evenement() {
@@ -75,9 +75,7 @@ public class Evenement {
         return DateFin;
     }
 
-    public Reservation getReservation() {
-        return reservation;
-    }
+  
     
 
     public void setId(int id) {
@@ -108,9 +106,7 @@ public class Evenement {
         this.DateFin = DateFin;
     }
 
-    public void setReservation(Reservation reservation) {
-        this.reservation = reservation;
-    }
+    
     
 
     @Override
