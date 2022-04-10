@@ -17,12 +17,14 @@ import tn.esprit.entities.Evenement;
 import tn.esprit.utils.Datasource;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import tn.esprit.entities.Reservation;
+import tn.esprit.entities.User;
 
 /**
  *
  * @author WIKI
  */
-public class EvenementService {
+public class EvenementService  {
      public Connection cnx;
     public Statement ste;
     public  PreparedStatement pst;
@@ -30,6 +32,7 @@ public class EvenementService {
     public EvenementService() {
         cnx = (Connection) Datasource.getInstance().getCnx();
     }
+  
      public void AddEvent(Evenement e) {
         String requete = "INSERT INTO `evenement` (`name_event`,`place_event`,`nb_participants`,`price_event`,`date_debut`,`date_fin`) "
                 + "VALUES (?,?,?,?,?,?);";
@@ -48,7 +51,7 @@ public class EvenementService {
             Logger.getLogger(EvenementService.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-        
+    
     public List<Evenement> FetchEvents(){
         List<Evenement> events = new ArrayList<>();
         String requete = "SELECT * FROM `evenement`";
@@ -69,6 +72,70 @@ public class EvenementService {
         
         return events;
     }
+    public Evenement FetchOneEvent(int id){
+        Evenement event = new Evenement();
+        String requete = "SELECT * FROM `evenement` where id="+id;
+        
+        try {
+            ste = (Statement) cnx.createStatement();
+            ResultSet rs =  ste.executeQuery(requete);
+            
+            while(rs.next()){           
+                 
+                event = new Evenement(rs.getInt("id"), rs.getString("name_event"), rs.getString("place_event"),rs.getInt("nb_participants"),rs.getFloat("price_event"),rs.getString("date_debut"),rs.getString("date_fin"));
+
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(EvenementService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return event;
+    }
+    public void updatePar(Evenement e){
+              String requete = "update `evenement` set name_event=?,place_event=?,nb_participants=?,price_event=?,date_debut=?,date_fin=? where id=?" ;
+        try {
+            
+            pst = (PreparedStatement) cnx.prepareStatement(requete);
+            
+            pst.setString(1, e.getNameEvent());
+            pst.setString(2, e.getPlaceEvent());
+            pst.setInt(3, e.getNbParticipants());
+            pst.setFloat(4, e.getPriceEvent());
+            pst.setString(5, e.getDateDebut());
+            pst.setString(6, e.getDateFin());
+            pst.setInt(7, e.getId());
+            pst.executeUpdate();    
+            System.out.println("participants number of event "+e.getNameEvent()+" is updated successfully");
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    
+    public User FetchOneUser(int id){
+        User user=new User();
+        String requete = "SELECT * FROM `user` where id="+id;
+        
+        try {
+            ste = (Statement) cnx.createStatement();
+            ResultSet rs =  ste.executeQuery(requete);
+            
+            while(rs.next()){           
+                 
+                user = new User(rs.getInt("id"), rs.getString("firstname"), rs.getString("lastname"),rs.getString("email"),rs.getInt("phone_number"));
+
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(EvenementService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return user;
+    }
+    
+    
        public void DeleteEvent(int id) {
         String requete = "delete from `evenement` where id=?";
         try {
@@ -80,7 +147,7 @@ public class EvenementService {
             System.out.println("error in delete event " + ex.getMessage());
         }
     }
-       
+      
         public void EditEvent(Evenement e) {
         System.out.println(e);
         String requete = "update `evenement` set name_event=?,place_event=?,nb_participants=?,price_event=?,date_debut=?,date_fin=? where id=?" ;
@@ -103,4 +170,7 @@ public class EvenementService {
             ex.printStackTrace();
         }
     }
+
+    
+   
 }

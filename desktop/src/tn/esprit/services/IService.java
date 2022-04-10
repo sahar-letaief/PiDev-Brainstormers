@@ -7,14 +7,19 @@ package tn.esprit.services;
 
 import java.util.List;
 import tn.esprit.entities.Evenement;
+import tn.esprit.entities.Reservation;
 
 /**
  *
  * @author WIKI
  */
-public interface IService<Evenement> {
-     public void AddEvent(Evenement e);
-     public List<Evenement> FetchEvents();
+public interface IService<T> {
+     public void AddEvent(T e);
+     public List<T> FetchEvents();
      public void DeleteEvent(int id);
-     public void EditEvent(Evenement e) ;
+     public void EditEvent(T e) ;
+     
+      public void AddReservation(T r);
+       public List<T> FetchReservations();
+       public void DeleteReservation(int id);
 }

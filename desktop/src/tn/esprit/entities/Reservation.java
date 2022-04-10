@@ -4,16 +4,17 @@
  * and open the template in the editor.
  */
 package tn.esprit.entities;
+import java.util.List;
 import tn.esprit.entities.Evenement;
 /**
  *
  * @author WIKI
  */
-public class Reservation {
+public class Reservation extends Evenement {
     public int id;
-   public Evenement evenement;
-   public User user;
-   public String date_reservation;
+    public Evenement evenement;
+    public User user;
+    public String date_reservation;
     public int evenement_id;
     public int user_id;
     
@@ -22,13 +23,37 @@ public class Reservation {
     public Reservation() {
     }
 
-    public Reservation( int evenement_id, int user_id,String date_reservation) {
+    public Reservation(int id, Evenement evenement, User user,String date_reservation) {
+        this.id = id;
+        this.evenement = evenement;
+        this.user=user;
+        this.date_reservation = date_reservation;
+        
+    }
+
+   public Reservation( int id,  String date_reservation,int evenement_id, int user_id) {
+        this.id = id;
+        this.date_reservation= date_reservation;
+        this.evenement_id = evenement_id;
+        this.user_id = user_id;
+    }
+
+    public Reservation( int evenement_id, int user_id) {
+       // this.date_reservation = date_reservation;
+        this.evenement_id = evenement_id;
+        this.user_id = user_id;
+    }
+    
+    public Reservation( int id,int evenement_id, int user_id,String date_reservation) {
+        this.id=id;
         this.date_reservation = date_reservation;
         this.evenement_id = evenement_id;
         this.user_id = user_id;
     }
- public Reservation( int id,int evenement_id, int user_id,String date_reservation) {
-        this.id=id;
+
+    public Reservation(int id, Evenement evenement, String date_reservation, int evenement_id, int user_id) {
+        this.id = id;
+        this.evenement = evenement;
         this.date_reservation = date_reservation;
         this.evenement_id = evenement_id;
         this.user_id = user_id;
@@ -36,13 +61,7 @@ public class Reservation {
 
    
 
-    public Reservation(int id, Evenement evenement, User user, String date_reservation) {
-        this.id = id;
-        this.evenement = evenement;
-        this.user = user;
-        this.date_reservation = date_reservation;
-    }
-
+  
   
 
     
@@ -53,6 +72,8 @@ public class Reservation {
     public Evenement getEvenement() {
         return evenement;
     }
+
+  
 
     public User getUser() {
         return user;
@@ -70,21 +91,6 @@ public class Reservation {
         return user_id;
     }
 
-   
-
-   
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setEvenement_id(Evenement evenement) {
-        this.evenement = evenement;
-    }
-
-    public void setUser_id(User user) {
-        this.user = user;
-    }
-
     public void setEvenement(Evenement evenement) {
         this.evenement = evenement;
     }
@@ -93,6 +99,14 @@ public class Reservation {
         this.user = user;
     }
 
+   
+
+   
+    public void setId(int id) {
+        this.id = id;
+    }
+
+   
     public void setDate_reservation(String date_reservation) {
         this.date_reservation = date_reservation;
     }
@@ -107,7 +121,7 @@ public class Reservation {
 
     @Override
     public String toString() {
-        return "Reservation{" + "id=" + id + ", evenement=" + evenement_id + ", user=" + user_id + ", date_reservation=" + date_reservation + '}';
+        return "Reservation{" + "id=" + id + "," +evenement.toString() +" , "+ user.toString() + ", date_reservation=" + date_reservation + '}'+"\n";
     }
 
    

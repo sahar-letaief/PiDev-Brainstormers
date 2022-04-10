@@ -14,7 +14,7 @@ public class User {
     private int id;
     private String username;
     private String email;
-    private int telephone;
+    private int phone_number;
     public String firstname;
     public String lastname;
     private String nom;
@@ -22,11 +22,11 @@ public class User {
     private String motdepasse;
     private String role;
 
-    public User(int id, String username, String email, int telephone, String firstname, String lastname, String nom, String prenom, String motdepasse, String role) {
+    public User(int id, String username, String email, int phone_number, String firstname, String lastname, String nom, String prenom, String motdepasse, String role) {
         this.id = id;
         this.username = username;
         this.email = email;
-        this.telephone = telephone;
+        this.phone_number = phone_number;
         this.firstname = firstname;
         this.lastname = lastname;
         this.nom = nom;
@@ -37,12 +37,16 @@ public class User {
 
     
     ///constrcuteur mtaa reservation
-    public User( String firstname, String lastname,String email,int telephone) {
-        
+    public User( int id,String firstname, String lastname,String email,int phone_number) {
+        this.id=id;
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
-        this.telephone = telephone;
+        this.phone_number = phone_number;
+        
+    }
+
+    public User() {
         
     }
     public int getId() {
@@ -58,7 +62,7 @@ public class User {
     }
 
     public int getTelephone() {
-        return telephone;
+        return phone_number;
     }
 
     public String getFirstname() {
@@ -97,8 +101,8 @@ public class User {
         this.email = email;
     }
 
-    public void setTelephone(int telephone) {
-        this.telephone = telephone;
+    public void setTelephone(int phone_number) {
+        this.phone_number = phone_number;
     }
 
     public void setFirstname(String firstname) {
@@ -127,7 +131,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" + "id=" + id + ", username=" + username + ", email=" + email + ", telephone=" + telephone + ", firstname=" + firstname + ", lastname=" + lastname + ", nom=" + nom + ", prenom=" + prenom + ", motdepasse=" + motdepasse + ", role=" + role + '}';
+        return "User{" + "id=" + id + ", email=" + email + ", telephone=" + phone_number + ", firstname=" + firstname + ", lastname=" + lastname + '}';
     }
     
     

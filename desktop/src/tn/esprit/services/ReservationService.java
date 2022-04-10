@@ -35,20 +35,31 @@ public class ReservationService {
         cnx = (Connection) Datasource.getInstance().getCnx();
     }
      public void AddReservation(Reservation r) {
-         //Reservation r=new Reservation();
-         //String date_reservation = DateTimeFormatter.ofPattern("yyyy/MM/dd").format(LocalDateTime.now());
-         
-        //System.out.println("yyyy/MM/dd -> "+date_reservation.format(LocalDateTime.now()));
-        String requete = "INSERT INTO `reservation` (`date_reservation`,`evenement_id`,`user_id`) VALUES(? ,?,?) ;";
+         EvenementService es=new EvenementService();
+         Evenement e= new Evenement();
+         String date_reservation = DateTimeFormatter.ofPattern("yyyy/MM/dd").format(LocalDateTime.now());
+        String requete = "INSERT INTO `reservation` (`date_reservation`,`evenement_id` ,`user_id`) VALUES(? ,?,?) ;";
                
-        
         try {
+            
+            
+            Evenement tempEvent = es.FetchOneEvent(r.getEvenement_id());
+            System.out.println("before"+tempEvent);
+            tempEvent.setNbParticipants(tempEvent.getNbParticipants()-1);
+            es.updatePar(tempEvent);
+            int new_id=tempEvent.getId();
+            r.setEvenement(tempEvent);
+            System.out.println("after"+tempEvent);
+           
+            
            pst = (PreparedStatement) cnx.prepareStatement(requete);
-          pst.setString(1, r.getDate_reservation());
-           pst.setInt(2,r.getEvenement_id() );
+           pst.setString(1, date_reservation);
+           pst.setInt(2,r.getEvenement_id());
            pst.setInt(3, r.getUser_id());
+           
            pst.executeUpdate();
-            System.out.println("reservation with id event ="+r.getEvenement_id()+" is added successfully");
+           
+            System.out.println("reservation with id event = "+r.getEvenement_id()+" is added successfully");
         } catch (SQLException ex) {
             System.out.println("error in adding reservation");
             Logger.getLogger(ReservationService.class.getName()).log(Level.SEVERE, null, ex);
@@ -56,13 +67,18 @@ public class ReservationService {
     }
      public List<Reservation> FetchReservations(){
           List<Reservation> reservations = new ArrayList<>();
-        String requete = "SELECT * FROM `reservation`";
+           Evenement event=new Evenement();
+           User user=new User();
+           EvenementService es=new EvenementService();
+        String requete = "SELECT reservation.id,reservation.date_reservation,reservation.user_id as u_id, evenement.id as event_id FROM `reservation`,`evenement` WHERE reservation.evenement_id=evenement.id";
          try {
             ste = (Statement) cnx.createStatement();
             ResultSet rs =  ste.executeQuery(requete);
             
-            while(rs.next()){           
-                reservations.add(new Reservation(rs.getInt("id"), rs.getInt("evenement_id"), rs.getInt("user_id"),
+            while(rs.next()){
+                Evenement tempEvent = es.FetchOneEvent(rs.getInt("event_id"));
+                User tempUser=es.FetchOneUser(rs.getInt("u_id"));
+                reservations.add(new Reservation(rs.getInt("id"), tempEvent, tempUser,
                       rs.getString("date_reservation")));
             }
             
@@ -73,15 +89,52 @@ public class ReservationService {
         
         return reservations; 
      }
-      public void DeleteReservation(int id) {
-        String requete = "delete from reservation where id=?";
+      public Reservation FetchOneRes(int id){
+       Reservation r=new Reservation();
+        String requete = "SELECT * FROM `reservation` where id="+id;
+        
         try {
+            ste = (Statement) cnx.createStatement();
+            ResultSet rs =  ste.executeQuery(requete);
+            
+            while(rs.next()){           
+                 
+                r = new Reservation(rs.getInt("id"),rs.getString("date_reservation"),rs.getInt("evenement_id"),rs.getInt("user_id"));
+
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(EvenementService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return r;
+    }
+     
+      public void DeleteReservation(int id) {
+         EvenementService es=new EvenementService();
+         ReservationService rs=new ReservationService();
+         
+         Reservation r=rs.FetchOneRes(id);
+         
+        // System.out.println(r);
+        String requete = "delete from reservation where id="+id;
+        try {
+             Evenement tempEvent = es.FetchOneEvent(r.getEvenement_id());
+            System.out.println("before"+tempEvent);
+            tempEvent.setNbParticipants(tempEvent.getNbParticipants()+1);
+            es.updatePar(tempEvent);
+            
+          
+            System.out.println("after"+tempEvent);
            pst = (PreparedStatement) cnx.prepareStatement(requete);
-            pst.setInt(1, id);
+           //pst.setInt(1, id);
+           
             pst.executeUpdate();
             System.out.println("reservation with id="+id+" is deleted successfully");
         } catch (SQLException ex) {
             System.out.println("error in delete reservation " + ex.getMessage());
         }
     }
+
+    
 }

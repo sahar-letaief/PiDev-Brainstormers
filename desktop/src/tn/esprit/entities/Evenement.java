@@ -19,6 +19,8 @@ public class Evenement {
     public float PriceEvent;
     public String  DateDebut;
     public String DateFin;
+    public Reservation reservation;
+    
 
      public Evenement() {
        
@@ -73,6 +75,11 @@ public class Evenement {
         return DateFin;
     }
 
+    public Reservation getReservation() {
+        return reservation;
+    }
+    
+
     public void setId(int id) {
         this.id = id;
     }
@@ -100,6 +107,11 @@ public class Evenement {
     public void setDateFin(String DateFin) {
         this.DateFin = DateFin;
     }
+
+    public void setReservation(Reservation reservation) {
+        this.reservation = reservation;
+    }
+    
 
     @Override
     public String toString() {

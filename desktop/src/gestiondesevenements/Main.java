@@ -57,7 +57,7 @@ public class Main extends Application {
         ReservationService rs=new ReservationService();
         
         /**********affichage des evenements**********/
-       // System.out.println("Events list :"+es.FetchEvents());
+      // System.out.println("Events list :"+es.FetchEvents());
         
         /*********ajout d'un evenement***************/
        /* Evenement e = new Evenement("test1","kairouan",5,12,"2022-04-04","2002-04-07");
@@ -73,17 +73,16 @@ public class Main extends Application {
        
        
         /****** affichage reservations****/
-       // System.out.println("la liste des reservations"+rs.FetchReservations());
+      // System.out.println("la liste des reservations"+rs.FetchReservations());
        
        /******** ajout reservation*****/
      
-      /*String date_reservation = DateTimeFormatter.ofPattern("yyyy/MM/dd").format(LocalDateTime.now());
-      System.out.println(date_reservation);
-      Reservation r=new Reservation(24,1,date_reservation);
+      
+      /*Reservation r=new Reservation(18,1);
         rs.AddReservation(r);*/
         
         /***** suppression reservation *****/
-        rs.DeleteReservation(90);
+        rs.DeleteReservation(102);
        
        
       
