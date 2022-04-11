@@ -110,22 +110,14 @@ class User implements UserInterface
     private $isVerified = false;
 
     /**
-     * @ORM\OneToMany(targetEntity=Communication::class, mappedBy="sender", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=ImagesEvents::class, mappedBy="User", orphanRemoval=true)
      */
-    private $sent;
-
-    /**
-     * @ORM\OneToMany(targetEntity=Communication::class, mappedBy="recipient", orphanRemoval=true)
-     */
-    private $received;
-     /**
-     * @ORM\OneToMany(targetEntity=Commande::class, mappedBy="user")
-     */
-     private $command;
+    private $imagesEvents;
 
     public function __construct()
     {
         $this->userLoginDates = new ArrayCollection();
+        $this->imagesEvents = new ArrayCollection();
     }
 
     public function __toString()
@@ -353,121 +345,34 @@ class User implements UserInterface
 
         return $this;
     }
-    /**
-     * @return Collection<int, Communication>
-     */
-    public function getSent(): Collection
-    {
-        return $this->sent;
-    }
-
-    public function addSent(Communication $sent): self
-    {
-        if (!$this->sent->contains($sent)) {
-            $this->sent[] = $sent;
-            $sent->setSender($this);
-        }
-
-        return $this;
-    }
-
-    public function removeSent(Communication $sent): self
-    {
-        if ($this->sent->removeElement($sent)) {
-            // set the owning side to null (unless already changed)
-            if ($sent->getSender() === $this) {
-                $sent->setSender(null);
-            }
-        }
-
-        return $this;
-    }
 
     /**
-     * @return Collection<int, Communication>
+     * @return Collection<int, ImagesEvents>
      */
-    public function getReceived(): Collection
+    public function getImagesEvents(): Collection
     {
-        return $this->received;
+        return $this->imagesEvents;
     }
 
-    public function addReceived(Communication $received): self
+    public function addImagesEvent(ImagesEvents $imagesEvent): self
     {
-        if (!$this->received->contains($received)) {
-            $this->received[] = $received;
-            $received->setRecipient($this);
+        if (!$this->imagesEvents->contains($imagesEvent)) {
+            $this->imagesEvents[] = $imagesEvent;
+            $imagesEvent->setUser($this);
         }
 
         return $this;
     }
 
-    public function removeReceived(Communication $received): self
+    public function removeImagesEvent(ImagesEvents $imagesEvent): self
     {
-        if ($this->received->removeElement($received)) {
+        if ($this->imagesEvents->removeElement($imagesEvent)) {
             // set the owning side to null (unless already changed)
-            if ($received->getRecipient() === $this) {
-                $received->setRecipient(null);
+            if ($imagesEvent->getUser() === $this) {
+                $imagesEvent->setUser(null);
             }
         }
 
         return $this;
     }
-    /**
-     * @return Collection<int, Reclamation>
-     */
-    public function getReclamations(): Collection
-    {
-        return $this->reclamations;
-    }
-
-    public function addReclamation(Reclamation $reclamation): self
-    {
-        if (!$this->reclamations->contains($reclamation)) {
-            $this->reclamations[] = $reclamation;
-            $reclamation->setClients($this);
-        }
-
-        return $this;
-    }
-
-    public function removeReclamation(Reclamation $reclamation): self
-    {
-        if ($this->reclamations->removeElement($reclamation)) {
-            // set the owning side to null (unless already changed)
-            if ($reclamation->getClients() === $this) {
-                $reclamation->setClients(null);
-            }
-        }
-
-        return $this;
-    }
-       /**
-         * @return Collection<int, Commande>
-         */
-        public function getCommand(): Collection
-        {
-            return $this->command;
-        }
-
-        public function addCommand(Commande $command): self
-        {
-            if (!$this->command->contains($command)) {
-                $this->command[] = $command;
-                $command->setUser($this);
-            }
-
-            return $this;
-        }
-
-        public function removeCommand(Commande $command): self
-        {
-            if ($this->command->removeElement($command)) {
-                // set the owning side to null (unless already changed)
-                if ($command->getUser() === $this) {
-                    $command->setUser(null);
-                }
-            }
-
-            return $this;
-        }
 }

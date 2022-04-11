@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<title>ImagesEvents index</title>
+
+{% block body %}
+    <h1>ImagesEvents index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Image</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for images_event in images_events %}
+            <tr>
+                <td>{{ images_event.id }}</td>
+                <td>{{ images_event.image }}</td>
+                <td>
+                    <a href="{{ path('images_events_show', {'id': images_event.id}) }}">show</a>
+                    <a href="{{ path('images_events_edit', {'id': images_event.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('images_events_new') }}">Create new</a>
+{% endblock %}

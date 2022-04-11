@@ -93,6 +93,11 @@ class Evenement
      */
     private $DateFin;
 
+    /**
+     * @ORM\OneToMany(targetEntity=ImagesEvents::class, mappedBy="idEvent", orphanRemoval=true)
+     */
+    private $imagesEvents;
+
 
 
 
@@ -114,6 +119,7 @@ class Evenement
         $this->Reservations = new ArrayCollection();
         $this->events = new ArrayCollection();
         $this->reservations = new ArrayCollection();
+        $this->imagesEvents = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -239,6 +245,36 @@ class Evenement
     public function setDateFin(\DateTimeInterface $DateFin): self
     {
         $this->DateFin = $DateFin;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ImagesEvents>
+     */
+    public function getImagesEvents(): Collection
+    {
+        return $this->imagesEvents;
+    }
+
+    public function addImagesEvent(ImagesEvents $imagesEvent): self
+    {
+        if (!$this->imagesEvents->contains($imagesEvent)) {
+            $this->imagesEvents[] = $imagesEvent;
+            $imagesEvent->setIdEvent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImagesEvent(ImagesEvents $imagesEvent): self
+    {
+        if ($this->imagesEvents->removeElement($imagesEvent)) {
+            // set the owning side to null (unless already changed)
+            if ($imagesEvent->getIdEvent() === $this) {
+                $imagesEvent->setIdEvent(null);
+            }
+        }
 
         return $this;
     }

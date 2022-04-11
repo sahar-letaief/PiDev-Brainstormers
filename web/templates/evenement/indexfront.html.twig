@@ -1,6 +1,13 @@
 {% extends 'baseFront.html.twig' %}
 {% block body %}
     <style>
+        .alert {
+            position: relative;
+            padding: 1.75rem 28.25rem;
+            margin-bottom: 1rem;
+            border: 1px solid transparent;
+            border-radius: 0.25rem;
+        }
 
         .pagination{
             justify-content: center;
@@ -61,16 +68,19 @@
             </div>
         </div>
     </div>
+
+    {% for message in app.flashes('notice') %}
+     <div class="alert alert-success">
+         {{ message }}
+      </div>
+    {% endfor %}
+
+
 </div>
+
         {% for evenement in evenements %}
 <div class="anime-details spad">
     <div class="container">
-        <div class="container">
-            {% for message in app.flashes('notice') %}
-                <div class="alert alert-success">
-                    {{ message }}
-                </div>
-            {% endfor %}
         <div class="anime__details__content">
             <div class="row">
                 <div class="col-lg-3">
@@ -150,5 +160,4 @@
 
     </section>
         </div>
-    </div>
 {% endblock %}

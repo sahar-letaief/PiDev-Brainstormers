@@ -126,7 +126,7 @@ class ReservationController extends AbstractController
         if ($form->isSubmitted() ) {
 
             $resultat=$this->getDoctrine()->getRepository(Reservation::class)->findOneBy(['evenement'=>$evenement->getId(),'user'=>$this->getUser()->getId()]);
-           // dd($resultat);
+            // dd($resultat);
             if(empty($resultat)) {
                 $entityManager->persist($reservation);
                 $entityManager->flush();

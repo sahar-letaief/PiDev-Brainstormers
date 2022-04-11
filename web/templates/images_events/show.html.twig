@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<title>ImagesEvents</title>
+
+{% block body %}
+    <h1>ImagesEvents</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ images_event.id }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ images_event.image }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('images_events_index') }}">back to list</a>
+
+    <a href="{{ path('images_events_edit', {'id': images_event.id}) }}">edit</a>
+
+    {{ include('images_events/_delete_form.html.twig') }}
+{% endblock %}
