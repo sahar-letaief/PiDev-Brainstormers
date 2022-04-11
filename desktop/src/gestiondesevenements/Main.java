@@ -82,8 +82,8 @@ public class Main extends Application {
         rs.AddReservation(r);*/
         
         /***** suppression reservation *****/
-        rs.DeleteReservation(102);
-       
+       // rs.DeleteReservation(102);
+       es.GeneratePDF();
        
       
         

@@ -5,9 +5,26 @@
  */
 package tn.esprit.services;
 
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Font.FontFamily;
+import com.itextpdf.text.Image;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.Statement;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -19,15 +36,17 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import net.glxn.qrgen.QRCode;
 import net.glxn.qrgen.image.ImageType;
+
 import tn.esprit.entities.Reservation;
 import tn.esprit.entities.User;
-import java.io.ByteArrayOutputStream;
+/*import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import net.glxn.qrgen.QRCode;
-import net.glxn.qrgen.image.ImageType;
+import net.glxn.qrgen.image.ImageType;*/
+
 
 
 
@@ -242,7 +261,7 @@ public class EvenementService  {
         
         return events;
     }
-          public void GenerateQrEvent(Evenement event) throws FileNotFoundException, IOException{
+         public void GenerateQrEvent(Evenement event) throws FileNotFoundException, IOException{
         
               String eventName=event.getNameEvent()+"\n"+event.getPlaceEvent()+"\n"+event.getPriceEvent()+"\n";
               ByteArrayOutputStream out= QRCode.from(eventName).to(ImageType.JPG).stream();
@@ -252,6 +271,71 @@ public class EvenementService  {
                fos.write(out.toByteArray());
                fos.flush();
     }
+          public void GeneratePDF(){
+              EvenementService es=new EvenementService();
+              Evenement e=new Evenement();
+                List<Evenement> events = new ArrayList<>();
+                events=es.FetchEvents();
+                 Font bfBold12 = new Font(FontFamily.HELVETICA, 12, Font.BOLD, new BaseColor(168, 19, 19)); 
+              
+              try{
+                  String file_name="C:\\Users\\WIKI\\Desktop\\PI\\desktop\\src\\EventsList.pdf";
+                  Document document=new Document();
+                  PdfWriter.getInstance(document,new FileOutputStream(file_name));
+                  document.open();
+                  Paragraph para=new Paragraph("List of events:");
+                  document.add(para);
+                  document.add(new Paragraph(" "));
+                  document.add(new Paragraph(" "));
+              PdfPTable table= new PdfPTable(4);
+               table.setWidthPercentage(90f);
+              /*PdfPCell c1=new PdfPCell(new Phrase("Event name"));
+              table.addCell(c1);
+               PdfPCell c2=new PdfPCell(new Phrase("Event place"));
+              table.addCell(c2);
+              
+               PdfPCell c3=new PdfPCell(new Phrase("Begins at"));
+              table.addCell(c3);
+               PdfPCell c4=new PdfPCell(new Phrase("Ends at"));
+              table.addCell(c4);*/
+               insertCell(table, "Event name", Element.ALIGN_LEFT, 1, bfBold12);
+               insertCell(table, "Event place", Element.ALIGN_LEFT, 1, bfBold12);
+               insertCell(table, "Begins at", Element.ALIGN_LEFT, 1, bfBold12);
+               insertCell(table, "Ends at", Element.ALIGN_LEFT, 1, bfBold12);
+              table.setHeaderRows(1);
+              for(int i=0;i<events.size();i++){
+                  table.addCell(events.get(i).getNameEvent());
+                  table.addCell(events.get(i).getPlaceEvent());
+                  table.addCell(events.get(i).getDateDebut());
+                  table.addCell(events.get(i).getDateFin());
+              }
+              
+              document.add(table);
+              //generate image in the pdf
+              document.add(Image.getInstance("C:\\Users\\WIKI\\Desktop\\PI\\desktop\\src\\logo.png"));
+              
+              document.close();
+              System.out.println("pdf of list events is done");
+              }catch (Exception ex){
+                  System.err.println("pdf error"+ex);
+       
+              }
       
+          }
+          private void insertCell(PdfPTable table, String text, int align, int colspan, Font font){
    
+              //create a new cell with the specified Text and Font
+                PdfPCell cell = new PdfPCell(new Phrase(text.trim(), font));
+               //set the cell alignment
+                 cell.setHorizontalAlignment(align);
+                  //set the cell column span in case you want to merge two or more cells
+                cell.setColspan(colspan);
+                //in case there is no text and you wan to create an empty row
+                 if(text.trim().equalsIgnoreCase("")){
+                  cell.setMinimumHeight(10f);
+                }
+                   //add the call to the table
+                table.addCell(cell);
+   
+            }
 }
