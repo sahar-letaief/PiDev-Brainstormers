@@ -12,12 +12,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import tn.esprit.entities.Evenement;
 import tn.esprit.entities.Reservation;
 import tn.esprit.entities.User;
@@ -80,7 +84,21 @@ public class DisplayReservationFrontController implements Initializable {
 
     @FXML
     private void DisplayEventsFront(ActionEvent event) {
-        FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("DsplayEventsFronts.fxml"));
+        
+                 FXMLLoader Loader = new FXMLLoader(getClass().getResource("DsplayEventsFrontsDsplayEventsFronts.fxml"));
+
+        try {
+            Parent root = Loader.load();
+            DisplayEventsFrontController C = Loader.getController();
+          // C.initialize(location, resources);
+          /********************** ne9setni haja************/
+            Scene productDetailScene = new Scene(root);
+            Stage cineStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            cineStage.setScene(productDetailScene);
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
     }
-}
+    }
+

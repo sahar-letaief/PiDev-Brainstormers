@@ -8,11 +8,17 @@ package tn.esprit.gui;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import tn.esprit.entities.Evenement;
 import tn.esprit.entities.Reservation;
 import tn.esprit.entities.User;
@@ -61,5 +67,23 @@ public class DisplayReservationsController implements Initializable {
     
                   
                   }      
+
+    @FXML
+    private void EventsBack(ActionEvent event) {
+         FXMLLoader Loader = new FXMLLoader(getClass().getResource("DisplayEvents.fxml"));
+
+        try {
+            Parent root = Loader.load();
+            DisplayEventsController C = Loader.getController();
+            C.getEvents();
+            Scene productDetailScene = new Scene(root);
+            Stage cineStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            cineStage.setScene(productDetailScene);
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    }
     
-}
+

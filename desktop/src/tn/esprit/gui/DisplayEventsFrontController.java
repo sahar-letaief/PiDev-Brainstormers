@@ -15,6 +15,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -23,6 +26,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import tn.esprit.entities.Evenement;
 import tn.esprit.entities.Reservation;
 import tn.esprit.gui.MainEventsFront;
@@ -109,7 +113,7 @@ public class DisplayEventsFrontController implements Initializable {
         int column = 0;
         int row = 1;
         try {
-            for (int i = 0; i < events.size(); i++) {
+            for (int i = 0; i < events.size()-1; i++) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("EventItem.fxml"));
                 AnchorPane anchorPane = fxmlLoader.load();
@@ -157,8 +161,20 @@ public class DisplayEventsFrontController implements Initializable {
 
     @FXML
     private void DisplayReservationsFront(ActionEvent event) {
-        FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("DisplayReservationFront.fxml"));
+      
+       FXMLLoader Loader = new FXMLLoader(getClass().getResource("DisplayReservationFront.fxml"));
+
+        try {
+            Parent root = Loader.load();
+            DisplayReservationFrontController C = Loader.getController();
+            C.getRes();
+            Scene productDetailScene = new Scene(root);
+            Stage cineStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            cineStage.setScene(productDetailScene);
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
     }
     
 }

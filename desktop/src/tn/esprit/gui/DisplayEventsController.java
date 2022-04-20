@@ -22,6 +22,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -34,6 +37,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 import tn.esprit.entities.Evenement;
 import tn.esprit.services.EvenementService;
@@ -226,24 +230,24 @@ public class DisplayEventsController implements Initializable {
     @FXML
     private void ShowOneEvent(ActionEvent event) {
       
-        
         ObservableList<Evenement> ev=tableviewEvents.getSelectionModel().getSelectedItems();
-        try{
-        ev=es.FetchOneEventBack(ev.get(0).getId());
+        e= es.FetchOneEvent(ev.get(0).getId());
             System.out.println("hedha howa " +ev);
+        try{
+        
             
-     this.NameEventtf.setText(String.valueOf(ev.get(1).getNameEvent()));
-        System.out.println("haya"+ev.get(1).getNameEvent());
-       this.PlaceEventtf.setText(String.valueOf(ev.get(2).getPlaceEvent()));
-        System.out.println("haya"+ev.get(2).getPlaceEvent());
-       this.Participantstf.setText(String.valueOf(ev.get(3).getPriceEvent())+"");
-        System.out.println("haya"+ev.get(3).getPriceEvent());
-       this.PriceEventtf.setText(String.valueOf(ev.get(4).getNbParticipants())+"");
-        System.out.println("haya"+ev.get(4).getNbParticipants());
-       this.BeginsAtdate.setValue(LocalDate.parse(ev.get(5).getDateDebut()));
-        System.out.println("haya"+LocalDate.parse(ev.get(5).getDateDebut()));
-         this.EndsAtdate.setValue(LocalDate.parse(ev.get(6).getDateFin()));
-         System.out.println("haya"+LocalDate.parse(ev.get(6).getDateFin()));
+        this.NameEventtf.setText(String.valueOf(e.getNameEvent()));
+        System.out.println("haya"+e.getNameEvent());
+       this.PlaceEventtf.setText(String.valueOf(e.getPlaceEvent()));
+        System.out.println("haya"+e.getPlaceEvent());
+       this.Participantstf.setText(String.valueOf(e.getNbParticipants())+"");
+        System.out.println("haya"+e.getNbParticipants());
+       this.PriceEventtf.setText(String.valueOf(e.getPriceEvent())+"");
+        System.out.println("haya"+e.getPriceEvent());
+       this.BeginsAtdate.setValue(LocalDate.parse(e.getDateDebut()));
+        System.out.println("haya"+LocalDate.parse(e.getDateDebut()));
+         this.EndsAtdate.setValue(LocalDate.parse(e.getDateFin()));
+         System.out.println("haya"+LocalDate.parse(e.getDateFin()));
         } catch(Exception ex){
             System.out.println("fama ghalta");
         }
@@ -252,29 +256,48 @@ public class DisplayEventsController implements Initializable {
 
     @FXML
     private void UpdateEvent(ActionEvent event) {
-        Evenement upe=new Evenement();
+      //  Evenement upe=new Evenement();
         try{
-         upe.setNameEvent(NameEventtf.getText());
-      upe.setPlaceEvent(PlaceEventtf.getText());
-      upe.setNbParticipants(Integer.valueOf(Participantstf.getText()));
-       upe.setPriceEvent(Float.valueOf(PriceEventtf.getText()));
+         //upe.setNameEvent(NameEventtf.getText());
+     // upe.setPlaceEvent(PlaceEventtf.getText());
+     // upe.setNbParticipants(Integer.valueOf(Participantstf.getText()));
+      // upe.setPriceEvent(Float.valueOf(PriceEventtf.getText()));
   
           Date DateDebut = Date.valueOf(this.BeginsAtdate.getValue());
    Date DateFin = Date.valueOf(this.EndsAtdate.getValue());
-  upe.setDateDebut(String.valueOf(DateDebut));
-  upe.setDateFin(String.valueOf(DateFin));
-  es.EditEvent(upe);
+ // upe.setDateDebut(String.valueOf(DateDebut));
+  //upe.setDateFin(String.valueOf(DateFin));
+  Evenement up=new Evenement(this.NameEventtf.getText(),this.PlaceEventtf.getText(),Integer.valueOf(this.Participantstf.getText()),Float.valueOf(this.PriceEventtf.getText()),String.valueOf(DateDebut),String.valueOf(DateFin));
+  es.EditEvent(up);
    Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Information ");
             alert.setHeaderText("Event update");
             alert.setContentText("Event updated successfully!");
             alert.showAndWait();
-             events= es.FetchEvents();
-        System.out.println(events);
-        tableviewEvents.setItems(events); 
+            getEvents();
         } catch(Exception ex){
-            System.out.println("fama ghalta");
+            System.out.println("fama ghalta2");
         }
-  //getEvents();
+       
     }
+
+    @FXML
+    private void ShowResevationsBack(ActionEvent event) {
+         FXMLLoader Loader = new FXMLLoader(getClass().getResource("DisplayReservations.fxml"));
+
+        try {
+            Parent root = Loader.load();
+            DisplayReservationsController C = Loader.getController();
+           C.getRes();
+            Scene productDetailScene = new Scene(root);
+            Stage cineStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            cineStage.setScene(productDetailScene);
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+        
+        
+    
 } //class
