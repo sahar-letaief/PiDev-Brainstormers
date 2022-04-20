@@ -99,6 +99,8 @@ public class DisplayEventsController implements Initializable {
     private Label endError;
     @FXML
     private Label idLabel;
+    @FXML
+    private Button clear;
     /**
      * Initializes the controller class.
      */
@@ -305,6 +307,24 @@ public class DisplayEventsController implements Initializable {
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
+    }
+
+    @FXML
+    private void clearLabels(ActionEvent event) {
+         NameEventtf.clear();
+       PlaceEventtf.clear();
+       Participantstf.clear();
+       PriceEventtf.clear();
+       BeginsAtdate.setValue(null);
+       EndsAtdate.setValue(null);
+    }
+
+    @FXML
+    private void searchEvent(ActionEvent event) {
+        ObservableList<Evenement> ob=es.FindEventByName(this.SearchEvent.getText());
+        
+        System.out.println(ob);
+        tableviewEvents.setItems(ob); 
     }
         
         

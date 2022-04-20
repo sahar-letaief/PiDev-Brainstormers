@@ -14,6 +14,8 @@
         <group>
             <file>file:/C:/Users/WIKI/Desktop/PI/desktop/src/tn/esprit/services/EvenementService.java</file>
             <file>file:/C:/Users/WIKI/Desktop/PI/desktop/src/tn/esprit/gui/MainEventsBack.java</file>
+            <file>file:/C:/Users/WIKI/Desktop/PI/desktop/src/tn/esprit/gui/DisplayReservationFrontController.java</file>
+            <file>file:/C:/Users/WIKI/Desktop/PI/desktop/src/tn/esprit/gui/DisplayEventsFrontController.java</file>
             <file>file:/C:/Users/WIKI/Desktop/PI/desktop/src/tn/esprit/gui/DisplayEventsController.java</file>
         </group>
     </open-files>

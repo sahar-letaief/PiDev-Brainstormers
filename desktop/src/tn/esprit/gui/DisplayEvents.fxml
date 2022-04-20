@@ -14,11 +14,11 @@
    <children>
       <TableView fx:id="tableviewEvents" fixedCellSize="50.0" layoutX="239.0" layoutY="167.0" prefHeight="371.0" prefWidth="465.0">
         <columns>
-          <TableColumn fx:id="NameEvent" prefWidth="75.0" text="NameEvent" />
-          <TableColumn fx:id="PlaceEvent" prefWidth="81.0" text="PlaceEvent" />
-            <TableColumn fx:id="PriceEvent" prefWidth="69.0" text="PriceEvent" />
-            <TableColumn fx:id="Participants" prefWidth="75.0" text="Participants" />
-            <TableColumn fx:id="Begins" prefWidth="85.0" text="Begins at" />
+          <TableColumn fx:id="NameEvent" prefWidth="88.0" text="NameEvent" />
+          <TableColumn fx:id="PlaceEvent" prefWidth="74.0" text="PlaceEvent" />
+            <TableColumn fx:id="PriceEvent" prefWidth="73.0" text="PriceEvent" />
+            <TableColumn fx:id="Participants" prefWidth="73.0" text="Participants" />
+            <TableColumn fx:id="Begins" prefWidth="77.0" text="Begins at" />
             <TableColumn fx:id="Ends" prefWidth="78.0" text="Ends at" />
         </columns>
       </TableView>
@@ -69,7 +69,7 @@
          </children>
       </VBox>
       <Button layoutX="22.0" layoutY="547.0" mnemonicParsing="false" onAction="#AddEvent" prefHeight="25.0" prefWidth="56.0" text="Add" />
-      <Button layoutX="437.0" layoutY="125.0" mnemonicParsing="false" text="Search" />
+      <Button layoutX="437.0" layoutY="125.0" mnemonicParsing="false" onAction="#searchEvent" text="Search" />
       <TextField fx:id="SearchEvent" layoutX="239.0" layoutY="125.0" prefHeight="25.0" prefWidth="174.0" promptText="Search for an event" />
       <Button layoutX="642.0" layoutY="547.0" mnemonicParsing="false" onAction="#ShowOneEvent" prefHeight="25.0" prefWidth="51.0" text="Show" />
       <Button fx:id="deletebtn" layoutX="583.0" layoutY="547.0" mnemonicParsing="false" onAction="#DeleteEvent" text="Delete" />
@@ -81,5 +81,6 @@
          </font>
       </Label>
       <Label fx:id="idLabel" layoutX="36.0" layoutY="108.0" prefHeight="25.0" prefWidth="56.0" />
+      <Button fx:id="clear" layoutX="155.0" layoutY="547.0" mnemonicParsing="false" onAction="#clearLabels" text="CLEAR" />
    </children>
 </AnchorPane>

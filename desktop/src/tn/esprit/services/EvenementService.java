@@ -289,10 +289,10 @@ public class EvenementService  {
         
         return events;
     }
-         public List<Evenement> FindEventByName(String name){
-        List<Evenement> events = new ArrayList<>();
-        String requete = "SELECT * FROM `evenement` WHERE name_event LIKE %"+name+"%";
-        
+         public ObservableList<Evenement> FindEventByName(String name){
+        ObservableList<Evenement> events = FXCollections.observableArrayList();
+        String requete = "SELECT * FROM `evenement` WHERE name_event LIKE '%"+name+"%'";
+                
         try {
             ste = (Statement) cnx.createStatement();
             ResultSet rs =  ste.executeQuery(requete);
