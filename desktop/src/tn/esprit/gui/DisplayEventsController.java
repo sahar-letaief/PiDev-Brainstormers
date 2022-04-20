@@ -54,9 +54,9 @@ public class DisplayEventsController implements Initializable {
     @FXML
     private TextField Participantstf;
     @FXML
-    private DatePicker BeginsAtdate= new DatePicker();
+    private DatePicker BeginsAtdate;
     @FXML
-    private DatePicker EndsAtdate= new DatePicker();
+    private DatePicker EndsAtdate;
     @FXML
     private TextField SearchEvent;
     @FXML
@@ -227,32 +227,43 @@ public class DisplayEventsController implements Initializable {
     private void ShowOneEvent(ActionEvent event) {
       
         
-        ObservableList<Evenement> e=tableviewEvents.getSelectionModel().getSelectedItems();
-        es.FetchOneEvent(e.get(0).getId());
-            System.out.println("hedha howa " +e);
-
-      this.NameEventtf.setText(e.get(1).getNameEvent());
-       this.PlaceEventtf.setText(e.get(2).getPlaceEvent());
-       this.Participantstf.setText(e.get(3).getPriceEvent()+"");
-       this.PriceEventtf.setText(e.get(4).getNbParticipants()+"");
-       this.BeginsAtdate.setValue(LocalDate.parse(e.get(5).getDateDebut()));
-         this.EndsAtdate.setValue(LocalDate.parse(e.get(6).getDateFin()));
-         
+        ObservableList<Evenement> ev=tableviewEvents.getSelectionModel().getSelectedItems();
+        try{
+        ev=es.FetchOneEventBack(ev.get(0).getId());
+            System.out.println("hedha howa " +ev);
+            
+     this.NameEventtf.setText(String.valueOf(ev.get(1).getNameEvent()));
+        System.out.println("haya"+ev.get(1).getNameEvent());
+       this.PlaceEventtf.setText(String.valueOf(ev.get(2).getPlaceEvent()));
+        System.out.println("haya"+ev.get(2).getPlaceEvent());
+       this.Participantstf.setText(String.valueOf(ev.get(3).getPriceEvent())+"");
+        System.out.println("haya"+ev.get(3).getPriceEvent());
+       this.PriceEventtf.setText(String.valueOf(ev.get(4).getNbParticipants())+"");
+        System.out.println("haya"+ev.get(4).getNbParticipants());
+       this.BeginsAtdate.setValue(LocalDate.parse(ev.get(5).getDateDebut()));
+        System.out.println("haya"+LocalDate.parse(ev.get(5).getDateDebut()));
+         this.EndsAtdate.setValue(LocalDate.parse(ev.get(6).getDateFin()));
+         System.out.println("haya"+LocalDate.parse(ev.get(6).getDateFin()));
+        } catch(Exception ex){
+            System.out.println("fama ghalta");
+        }
        
     }
 
     @FXML
     private void UpdateEvent(ActionEvent event) {
-         e.setNameEvent(NameEventtf.getText());
-      e.setPlaceEvent(PlaceEventtf.getText());
-      e.setNbParticipants(Integer.valueOf(Participantstf.getText()));
-       e.setPriceEvent(Float.valueOf(PriceEventtf.getText()));
+        Evenement upe=new Evenement();
+        try{
+         upe.setNameEvent(NameEventtf.getText());
+      upe.setPlaceEvent(PlaceEventtf.getText());
+      upe.setNbParticipants(Integer.valueOf(Participantstf.getText()));
+       upe.setPriceEvent(Float.valueOf(PriceEventtf.getText()));
   
           Date DateDebut = Date.valueOf(this.BeginsAtdate.getValue());
    Date DateFin = Date.valueOf(this.EndsAtdate.getValue());
-  e.setDateDebut(String.valueOf(DateDebut));
-  e.setDateFin(String.valueOf(DateFin));
-  es.EditEvent(e);
+  upe.setDateDebut(String.valueOf(DateDebut));
+  upe.setDateFin(String.valueOf(DateFin));
+  es.EditEvent(upe);
    Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Information ");
             alert.setHeaderText("Event update");
@@ -261,6 +272,9 @@ public class DisplayEventsController implements Initializable {
              events= es.FetchEvents();
         System.out.println(events);
         tableviewEvents.setItems(events); 
+        } catch(Exception ex){
+            System.out.println("fama ghalta");
+        }
   //getEvents();
     }
 } //class

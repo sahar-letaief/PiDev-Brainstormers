@@ -14,12 +14,13 @@
             <Font name="Berlin Sans FB" size="25.0" />
          </font>
       </Label>
-      <Button fx:id="deleteReservation" layoutX="478.0" layoutY="338.0" mnemonicParsing="false" onAction="#deleteReservation" text="Delete" />
+      <Button fx:id="deleteReservation" layoutX="501.0" layoutY="338.0" mnemonicParsing="false" onAction="#deleteReservation" text="DELETE" />
       <TableView fx:id="tableviewResFRONT1" layoutX="58.0" layoutY="120.0" prefHeight="200.0" prefWidth="498.0">
          <columns>
             <TableColumn fx:id="NameEvent1" prefWidth="234.0" text="Name event" />
             <TableColumn fx:id="Reservation_date1" prefWidth="263.0" text="Reservation date" />
          </columns>
       </TableView>
+      <Button fx:id="eventsback" layoutX="58.0" layoutY="338.0" mnemonicParsing="false" onAction="#DisplayEventsFront" text="BACK TO EVENTS" />
    </children>
 </AnchorPane>

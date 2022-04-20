@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -39,6 +40,8 @@ public class DisplayReservationFrontController implements Initializable {
     private TableColumn<Reservation, String> Reservation_date1;
     @FXML
     private Button deleteReservation;
+    @FXML
+    private Button eventsback;
 
     /**
      * Initializes the controller class.
@@ -73,5 +76,11 @@ public class DisplayReservationFrontController implements Initializable {
             alert.setContentText("reservation deleted successfully!");
             alert.showAndWait();
          getRes();
+    }
+
+    @FXML
+    private void DisplayEventsFront(ActionEvent event) {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+                fxmlLoader.setLocation(getClass().getResource("DsplayEventsFronts.fxml"));
     }
 }

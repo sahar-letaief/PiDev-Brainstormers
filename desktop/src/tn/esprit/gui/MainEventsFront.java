@@ -25,7 +25,7 @@ import javafx.stage.Stage;
 public class MainEventsFront extends Application {
     
    
-     public static final String CURRENCY = "$";
+     public static final String CURRENCY = "DT";
      @Override
     public void start(Stage primaryStage) {
           try {
@@ -34,7 +34,7 @@ public class MainEventsFront extends Application {
            
             Scene scene = new Scene(root);
             
-            primaryStage.setTitle("Display reservations back");
+            primaryStage.setTitle("Display events front");
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException ex) {

@@ -62,14 +62,15 @@
                         <Insets left="50.0" right="50.0" />
                      </VBox.margin>
                      <children>
-                        <Label fx:id="EventNameLablel" prefHeight="48.0" prefWidth="276.0" textFill="#cd6262">
+                        <HBox prefHeight="62.0" prefWidth="335.0" />
+                        <Label fx:id="EventNameLablel" alignment="CENTER" contentDisplay="CENTER" prefHeight="57.0" prefWidth="337.0" textAlignment="CENTER" textFill="#cd6262">
                            <font>
-                              <Font name="Cambria" size="36.0" />
+                              <Font name="Berlin Sans FB" size="36.0" />
                            </font>
                         </Label>
                         <HBox prefHeight="60.0" prefWidth="335.0">
                            <children>
-                              <Label fx:id="EventPriceLabel" prefHeight="57.0" prefWidth="171.0">
+                              <Label fx:id="EventPriceLabel" alignment="CENTER" prefHeight="55.0" prefWidth="324.0">
                                  <font>
                                     <Font name="Cambria" size="36.0" />
                                  </font>
@@ -97,7 +98,7 @@
                            </VBox.margin>
                            <children>
                               <Separator prefHeight="0.0" prefWidth="118.0" />
-                              <Label alignment="CENTER" prefHeight="45.0" prefWidth="196.0" text="Participants left">
+                              <Label alignment="CENTER" prefHeight="41.0" prefWidth="242.0" text="Participants left !!">
                                  <font>
                                     <Font name="Berlin Sans FB" size="24.0" />
                                  </font>
@@ -107,11 +108,48 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="53.0" prefWidth="335.0">
                            <children>
-                              <Label fx:id="NbParticipants" prefHeight="53.0" prefWidth="167.0">
+                              <Label fx:id="NbParticipants" alignment="CENTER" contentDisplay="CENTER" prefHeight="31.0" prefWidth="91.0" textAlignment="CENTER" textFill="#dd4141">
                                  <font>
                                     <Font name="Berlin Sans FB" size="28.0" />
                                  </font>
                               </Label>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <VBox prefHeight="116.0" prefWidth="335.0">
+                                 <children>
+                                    <HBox prefHeight="50.0" prefWidth="335.0">
+                                       <children>
+                                          <Label prefHeight="40.0" prefWidth="173.0" text="   Begins at">
+                                             <font>
+                                                <Font name="Berlin Sans FB Demi Bold" size="17.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="DateDebutLabel" prefHeight="50.0" prefWidth="171.0">
+                                             <font>
+                                                <Font name="Berlin Sans FB" size="18.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <Separator prefHeight="12.0" prefWidth="335.0" />
+                                    <HBox prefHeight="56.0" prefWidth="335.0">
+                                       <children>
+                                          <Label prefHeight="44.0" prefWidth="165.0" text="    Ends at">
+                                             <font>
+                                                <Font name="Berlin Sans FB Demi Bold" size="17.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="DateFinLabel" prefHeight="51.0" prefWidth="171.0">
+                                             <font>
+                                                <Font name="Berlin Sans FB" size="18.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
                            </children>
                         </HBox>
                         <Button mnemonicParsing="false" onAction="#AddReservation" prefHeight="50.0" prefWidth="270.0" styleClass="add-btn" stylesheets="@../values/style.css" text="ADD RESERVATION" textFill="#828282">
@@ -148,13 +186,22 @@
                         <Pane prefHeight="84.0" prefWidth="96.0" />
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="380.0" styleClass="free-delivery-card" stylesheets="@../values/style.css">
                            <children>
-                              <VBox alignment="CENTER" prefHeight="100.0" prefWidth="214.0" />
+                              <VBox alignment="CENTER" prefHeight="100.0" prefWidth="214.0">
+                                 <children>
+                                    <Label fx:id="idLabel" prefHeight="41.0" prefWidth="73.0" />
+                                 </children></VBox>
+                              <VBox alignment="CENTER" layoutX="77.0" layoutY="10.0" prefHeight="100.0" prefWidth="214.0" />
                            </children>
                         </HBox>
                         <Pane prefHeight="84.0" prefWidth="96.0" HBox.hgrow="ALWAYS" />
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="336.0" styleClass="shopping-online-card" stylesheets="@../values/style.css">
                            <children>
                               <VBox alignment="CENTER" prefHeight="100.0" prefWidth="203.0" />
+                              <Button fx:id="MyReservations" mnemonicParsing="false" onAction="#DisplayReservationsFront" prefHeight="58.0" prefWidth="325.0" text="MY RESERVATIONS" textFill="#828282">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Button>
                            </children>
                         </HBox>
                         <Pane prefHeight="84.0" prefWidth="96.0" />
@@ -167,7 +214,7 @@
                      <children>
                         <ScrollPane fx:id="scroll" prefHeight="570.0" prefWidth="785.0" styleClass="transparent" stylesheets="@../values/style.css">
                            <content>
-                              <GridPane fx:id="grid" prefHeight="0.0" prefWidth="0.0">
+                              <GridPane fx:id="grid" prefHeight="9.0" prefWidth="17.0">
                                  <rowConstraints>
                                     <RowConstraints minHeight="10.0" prefHeight="30.0" />
                                  </rowConstraints>

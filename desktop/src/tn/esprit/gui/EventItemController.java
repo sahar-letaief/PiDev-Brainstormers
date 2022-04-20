@@ -23,10 +23,10 @@ public class EventItemController implements Initializable {
 
     @FXML
     private Label nameLabel;
+   
+  
     @FXML
-    private Label priceLable;
-    @FXML
-    private ImageView img;
+    private Label PlaceLabel;
 
     /**
      * Initializes the controller class.
@@ -48,7 +48,8 @@ public class EventItemController implements Initializable {
         this.e = e;
         this.myListener = myListener;
         nameLabel.setText(e.getNameEvent());
-        priceLable.setText(MainEventsFront.CURRENCY + e.getPriceEvent());
+       
+        PlaceLabel.setText(e.getPlaceEvent());
        
     }
 }

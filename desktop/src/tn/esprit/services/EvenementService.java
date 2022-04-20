@@ -144,6 +144,26 @@ public class EvenementService  {
         }
         return event;
     }
+    public ObservableList<Evenement> FetchOneEventBack(int id){
+      ObservableList<Evenement> event = FXCollections.observableArrayList();
+        String requete = "SELECT * FROM `evenement` where id="+id;
+        
+        try {
+            ste = (Statement) cnx.createStatement();
+            ResultSet rs =  ste.executeQuery(requete);
+            
+            while(rs.next()){           
+                 
+                event.add( new Evenement(rs.getInt("id"), rs.getString("name_event"), rs.getString("place_event"),rs.getInt("nb_participants"),rs.getFloat("price_event"),rs.getString("date_debut"),rs.getString("date_fin")));
+
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(EvenementService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return event;
+    }
     public void updatePar(Evenement e){
               String requete = "update `evenement` set name_event=?,place_event=?,nb_participants=?,price_event=?,date_debut=?,date_fin=? where id=?" ;
         try {

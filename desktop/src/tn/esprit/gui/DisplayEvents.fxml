@@ -11,14 +11,14 @@
 
 <AnchorPane id="AnchorPane" prefHeight="603.0" prefWidth="716.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.DisplayEventsController">
    <children>
-      <TableView fx:id="tableviewEvents" fixedCellSize="50.0" layoutX="251.0" layoutY="167.0" prefHeight="371.0" prefWidth="443.0">
+      <TableView fx:id="tableviewEvents" fixedCellSize="50.0" layoutX="239.0" layoutY="167.0" prefHeight="371.0" prefWidth="465.0">
         <columns>
           <TableColumn fx:id="NameEvent" prefWidth="75.0" text="NameEvent" />
-          <TableColumn fx:id="PlaceEvent" prefWidth="75.0" text="PlaceEvent" />
-            <TableColumn fx:id="PriceEvent" prefWidth="75.0" text="PriceEvent" />
+          <TableColumn fx:id="PlaceEvent" prefWidth="81.0" text="PlaceEvent" />
+            <TableColumn fx:id="PriceEvent" prefWidth="69.0" text="PriceEvent" />
             <TableColumn fx:id="Participants" prefWidth="75.0" text="Participants" />
-            <TableColumn fx:id="Begins" prefWidth="75.0" text="Begins at" />
-            <TableColumn fx:id="Ends" prefWidth="75.0" text="Ends at" />
+            <TableColumn fx:id="Begins" prefWidth="85.0" text="Begins at" />
+            <TableColumn fx:id="Ends" prefWidth="78.0" text="Ends at" />
         </columns>
       </TableView>
       <VBox layoutX="22.0" layoutY="167.0" prefHeight="321.0" prefWidth="213.0">
