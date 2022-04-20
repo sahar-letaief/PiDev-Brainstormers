@@ -16,8 +16,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.ObservableList;
 import tn.esprit.entities.User;
+import tn.esprit.entities.UserStaticSession;
 import tn.esprit.utils.Datasource;
-
 /**
  *
  * @author Yassine
@@ -58,7 +58,16 @@ public class UserServices implements IService<User> {
 
             while (rs.next()) {
                 if (rs.getString("email").equals(p.getEmail()) && rs.getString("password").equals(p.getPassword())) {
-                    return p.getEmail();
+                    UserStaticSession user = new UserStaticSession(rs.getInt("id"),
+                            rs.getString("email"),
+                            rs.getString("usertag"),
+                            rs.getString("firstname"),
+                            rs.getString("lastname"),
+                            rs.getInt("phone_number"),
+                            rs.getString("password"),
+                            rs.getString("roles").substring(7, rs.getString("roles").length() - 2));
+
+                    return "success";
                 }
             }
         } catch (SQLException ex) {
@@ -202,5 +211,62 @@ public class UserServices implements IService<User> {
             System.out.println("error in delete user " + ex.getMessage());
         }
         return false;
+    }
+
+    public List<User> test() {
+        List<User> users = new ArrayList<>();
+        String requete = "SELECT * FROM `user`";
+
+        try {
+            ste = cnx.createStatement();
+            ResultSet rs = ste.executeQuery(requete);
+
+            while (rs.next()) {
+                User user = new User();
+                user.setId(rs.getInt("id"));
+                user.setEmail(rs.getString("email"));
+                user.setUsername(rs.getString("usertag"));
+                user.setPhonenumber(rs.getInt("phone_number"));
+                user.setFirstname(rs.getString("firstname"));
+                user.setLastname(rs.getString("lastname"));
+                user.setPassword("Crypted");
+                user.setRoles(rs.getString("roles").substring(7, rs.getString("roles").length() - 2));
+                user.setLastlogindate(rs.getString("last_login_date"));
+                users.add(user);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserServices.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return users;
+    }
+
+    public User getOneUser(int id) {
+        String requete = "SELECT * FROM `user` where id=" + id;
+
+        try {
+            ste = cnx.createStatement();
+            ResultSet rs = ste.executeQuery(requete);
+
+            while (rs.next()) {
+                User user = new User();
+                user.setId(rs.getInt("id"));
+                user.setEmail(rs.getString("email"));
+                user.setUsername(rs.getString("usertag"));
+                user.setPhonenumber(rs.getInt("phone_number"));
+                user.setFirstname(rs.getString("firstname"));
+                user.setLastname(rs.getString("lastname"));
+                user.setPassword("Crypted");
+                user.setRoles(rs.getString("roles").substring(7, rs.getString("roles").length() - 2));
+                user.setLastlogindate(rs.getString("last_login_date"));
+                return user;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserServices.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+
     }
 }

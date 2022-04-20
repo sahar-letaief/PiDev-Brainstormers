@@ -74,5 +74,10 @@ public class SignInController implements Initializable {
             Logger.getLogger(SignUpController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    @FXML
+    private void onSignUp(ActionEvent event) {
+        
+    }
     
 }

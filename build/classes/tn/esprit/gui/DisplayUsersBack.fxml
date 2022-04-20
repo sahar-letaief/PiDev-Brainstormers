@@ -1,13 +1,184 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="694.0" prefWidth="1098.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.DisplayUsersBackController">
+<AnchorPane id="AnchorPane" prefHeight="694.0" prefWidth="1098.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.DisplayUsersBackController">
    <children>
-      <TableView fx:id="UsersTable" layoutX="218.0" layoutY="279.0" prefHeight="360.0" prefWidth="855.0">
+      <VBox fx:id="EditUserbox" alignment="CENTER" layoutX="237.0" layoutY="58.0" prefHeight="661.0" prefWidth="856.0" style="-fx-border-color: #7a8eff;" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="237.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="58.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="107.0" prefWidth="856.0" style="-fx-border-color: #7A8EFF;">
+               <children>
+                  <Label prefHeight="65.0" prefWidth="177.0" text="Edit User" textAlignment="CENTER" textFill="RED" underline="true">
+                     <font>
+                        <Font size="44.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="50.0" />
+               </VBox.margin>
+            </HBox>
+            <VBox alignment="CENTER" prefHeight="297.0" prefWidth="854.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="25.0" prefWidth="846.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="First Name :" wrappingWidth="127.13671875">
+                           <HBox.margin>
+                              <Insets top="5.0" />
+                           </HBox.margin>
+                        </Text>
+                        <TextField fx:id="FirstNameText" prefHeight="15.0" prefWidth="312.0" />
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="10.0" top="30.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="28.0" prefWidth="488.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name :" wrappingWidth="127.13671875">
+                           <HBox.margin>
+                              <Insets top="5.0" />
+                           </HBox.margin>
+                        </Text>
+                        <TextField fx:id="LastNameText" prefHeight="15.0" prefWidth="312.0" />
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="28.0" prefWidth="488.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="User Name :" wrappingWidth="127.13671875">
+                           <HBox.margin>
+                              <Insets top="5.0" />
+                           </HBox.margin>
+                        </Text>
+                        <TextField fx:id="UserNameText" prefHeight="15.0" prefWidth="312.0" />
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="28.0" prefWidth="488.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Email :" wrappingWidth="127.13671875">
+                           <HBox.margin>
+                              <Insets top="5.0" />
+                           </HBox.margin>
+                        </Text>
+                        <TextField fx:id="Emailtext" prefHeight="15.0" prefWidth="312.0" />
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="28.0" prefWidth="488.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Phone Number :" wrappingWidth="127.13671875">
+                           <HBox.margin>
+                              <Insets top="5.0" />
+                           </HBox.margin>
+                        </Text>
+                        <TextField fx:id="PhoneNumberText" prefHeight="15.0" prefWidth="312.0" />
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="28.0" prefWidth="449.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Role" wrappingWidth="127.13671875">
+                           <HBox.margin>
+                              <Insets top="5.0" />
+                           </HBox.margin>
+                        </Text>
+                        <ComboBox fx:id="roles" accessibleRoleDescription="PLAYER" accessibleText="USER" pickOnBounds="false" prefHeight="28.0" prefWidth="315.0" promptText="Select Role" visibleRowCount="3" />
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="612.0">
+                     <children>
+                        <Button fx:id="UpdateButton" alignment="CENTER" mnemonicParsing="false" onAction="#onEditUser" prefHeight="29.0" prefWidth="77.0" style="-fx-background-color: #7a8eff;" text="Save" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="BackButton" alignment="CENTER" mnemonicParsing="false" onAction="#onCloseEdit" prefHeight="28.0" prefWidth="78.0" style="-fx-background-color: #7a8eff;" text="Back" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </VBox>
+      <VBox fx:id="ListUsers" alignment="CENTER" layoutX="235.0" layoutY="15.0" prefHeight="703.0" prefWidth="856.0" visible="false">
+         <children>
+            <HBox alignment="CENTER" prefHeight="62.0" prefWidth="856.0" style="-fx-border-color: #6E84FF;">
+               <children>
+                  <Label lineSpacing="1.0" prefHeight="46.0" prefWidth="400.0" text="Users Admin Panel Interface" textFill="#e53637" underline="true">
+                     <font>
+                        <Font name="Verdana" size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="40.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="46.0" prefWidth="856.0" style="-fx-border-color: #6E84FF;">
+               <children>
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="77.0" text="Full name">
+                     <HBox.margin>
+                        <Insets left="60.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="77.0" text="Email">
+                     <HBox.margin>
+                        <Insets left="99.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="77.0" text="Password">
+                     <HBox.margin>
+                        <Insets left="75.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="77.0" text="Username">
+                     <HBox.margin>
+                        <Insets left="85.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="40.0" />
+               </VBox.margin>
+            </HBox>
+            <VBox fx:id="pnItems" prefHeight="455.0" prefWidth="856.0" style="-fx-border-color: #6E84FF;" />
+         </children>
+      </VBox>
+      <TableView fx:id="UsersTable" layoutX="226.0" layoutY="295.0" prefHeight="392.0" prefWidth="872.0" visible="false">
         <columns>
           <TableColumn fx:id="fullNameCol" prefWidth="112.0" text="FULL NAME" />
             <TableColumn fx:id="emailCol" prefWidth="131.0" text="EMAIL" />
@@ -19,6 +190,146 @@
             <TableColumn fx:id="editCol" prefWidth="121.0" text="ACTIONS" />
         </columns>
       </TableView>
-      <VBox prefHeight="694.0" prefWidth="215.0" />
+      <VBox alignment="CENTER" prefHeight="694.0" prefWidth="224.0" style="-fx-background-color: #7A8EFF;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fitHeight="190.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/yassine-modified.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </ImageView>
+            <Button fx:id="UsersBack" alignment="BASELINE_LEFT" graphicTextGap="25.0" mnemonicParsing="false" onAction="#onUsersBack" prefHeight="46.0" prefWidth="226.0" style="-fx-background-color: #6E84FF; -fx-background-radius: 5px;" text="Users" textFill="WHITE">
+               <font>
+                  <Font name="Cooper Black" size="15.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="27.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/usericon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets bottom="20.0" top="20.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets left="40.0" />
+               </padding>
+            </Button>
+            <Button fx:id="Profile" alignment="BASELINE_LEFT" graphicTextGap="25.0" layoutX="10.0" layoutY="273.0" mnemonicParsing="false" onAction="#onProfileVisit" prefHeight="46.0" prefWidth="228.0" style="-fx-background-color: #6E84FF;" text="Profile" textFill="WHITE">
+               <font>
+                  <Font name="Cooper Black" size="15.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="27.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/usericon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets bottom="20.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets left="40.0" />
+               </padding>
+            </Button>
+            <Button alignment="BASELINE_LEFT" graphicTextGap="25.0" layoutX="10.0" layoutY="359.0" mnemonicParsing="false" onAction="#onSignOut" prefHeight="46.0" prefWidth="224.0" style="-fx-background-color: #6E84FF;" text="Sign Out" textFill="WHITE">
+               <font>
+                  <Font name="Cooper Black" size="15.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="27.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/usericon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets bottom="20.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets left="40.0" />
+               </padding>
+            </Button>
+         </children></VBox>
+      <VBox fx:id="ProfileInterface" layoutX="234.0" layoutY="51.0" prefHeight="633.0" prefWidth="856.0" visible="false">
+         <children>
+            <HBox alignment="CENTER" prefHeight="107.0" prefWidth="856.0" style="-fx-border-color: #7A8EFF;">
+               <children>
+                  <Label prefHeight="60.0" prefWidth="126.0" text="Profile" textAlignment="CENTER" textFill="RED" underline="true">
+                     <font>
+                        <Font size="44.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <VBox prefHeight="451.0" prefWidth="856.0" style="-fx-border-color: #7A8EFF;">
+               <VBox.margin>
+                  <Insets top="80.0" />
+               </VBox.margin>
+               <children>
+                  <HBox alignment="CENTER" prefHeight="49.0" prefWidth="856.0">
+                     <children>
+                        <Label prefHeight="35.0" prefWidth="98.0" text="First Name :" />
+                        <TextField fx:id="FirstNameProfile" prefHeight="36.0" prefWidth="513.0" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="49.0" prefWidth="856.0">
+                     <children>
+                        <Label prefHeight="35.0" prefWidth="98.0" text="Last Name :" />
+                        <TextField fx:id="LastNameProfile" prefHeight="36.0" prefWidth="513.0" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="49.0" prefWidth="856.0">
+                     <children>
+                        <Label prefHeight="35.0" prefWidth="98.0" text="Email :" />
+                        <TextField fx:id="EmailProfile" prefHeight="36.0" prefWidth="513.0" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="49.0" prefWidth="856.0">
+                     <children>
+                        <Label prefHeight="35.0" prefWidth="98.0" text="User name :" />
+                        <TextField fx:id="UserNameProfile" prefHeight="36.0" prefWidth="513.0" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="49.0" prefWidth="856.0">
+                     <children>
+                        <Label prefHeight="35.0" prefWidth="98.0" text="Phone Number :" />
+                        <TextField fx:id="PhoneNumberProfile" prefHeight="36.0" prefWidth="513.0" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="49.0" prefWidth="856.0">
+                     <children>
+                        <Label prefHeight="35.0" prefWidth="98.0" text="Password :" />
+                        <TextField fx:id="PasswordProfile" prefHeight="36.0" prefWidth="513.0" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="49.0" prefWidth="856.0">
+                     <children>
+                        <Label prefHeight="35.0" prefWidth="98.0" text="Role :" />
+                        <ComboBox fx:id="Roleprofile" prefHeight="36.0" prefWidth="512.0" promptText="Select Your Role" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="70.0" prefWidth="856.0">
+                     <children>
+                        <RadioButton fx:id="EditProfileRadioButton" mnemonicParsing="false" onAction="#onSelectRadioButton" text="Edit Informations">
+                           <HBox.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </HBox.margin>
+                        </RadioButton>
+                        <Button fx:id="SaveEditProfile" mnemonicParsing="false" onAction="#onEditProfileAction" prefHeight="23.0" prefWidth="133.0" style="-fx-background-color: #7A8EFF;" text="Save" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>
