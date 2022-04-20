@@ -101,6 +101,8 @@ public class DisplayEventsController implements Initializable {
     private Label idLabel;
     @FXML
     private Button clear;
+    @FXML
+    private Button print;
     /**
      * Initializes the controller class.
      */
@@ -261,20 +263,13 @@ public class DisplayEventsController implements Initializable {
 
     @FXML
     private void UpdateEvent(ActionEvent event) {
-      //  Evenement upe=new Evenement();
         try{
-         //upe.setNameEvent(NameEventtf.getText());
-     // upe.setPlaceEvent(PlaceEventtf.getText());
-     // upe.setNbParticipants(Integer.valueOf(Participantstf.getText()));
-      // upe.setPriceEvent(Float.valueOf(PriceEventtf.getText()));
-  
-          Date DateDebut = Date.valueOf(this.BeginsAtdate.getValue());
-   Date DateFin = Date.valueOf(this.EndsAtdate.getValue());
- // upe.setDateDebut(String.valueOf(DateDebut));
-  //upe.setDateFin(String.valueOf(DateFin));
-  Evenement up=new Evenement(Integer.valueOf(this.idLabel.getText()),this.NameEventtf.getText(),this.PlaceEventtf.getText(),Integer.valueOf(this.Participantstf.getText()),Float.valueOf(this.PriceEventtf.getText()),String.valueOf(DateDebut),String.valueOf(DateFin));
-  es.EditEvent(up);
-   Alert alert = new Alert(AlertType.INFORMATION);
+     
+         Date DateDebut = Date.valueOf(this.BeginsAtdate.getValue());
+         Date DateFin = Date.valueOf(this.EndsAtdate.getValue());
+         Evenement up=new Evenement(Integer.valueOf(this.idLabel.getText()),this.NameEventtf.getText(),this.PlaceEventtf.getText(),Integer.valueOf(this.Participantstf.getText()),Float.valueOf(this.PriceEventtf.getText()),String.valueOf(DateDebut),String.valueOf(DateFin));
+         es.EditEvent(up);
+            Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Information ");
             alert.setHeaderText("Event update");
             alert.setContentText("Event updated successfully!");
@@ -325,6 +320,16 @@ public class DisplayEventsController implements Initializable {
         
         System.out.println(ob);
         tableviewEvents.setItems(ob); 
+    }
+
+    @FXML
+    private void printEvents(ActionEvent event) {
+        es.GeneratePDF();
+        Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Information ");
+            alert.setHeaderText("Events pdf");
+            alert.setContentText("Check for the pdf !!");
+            alert.showAndWait();
     }
         
         

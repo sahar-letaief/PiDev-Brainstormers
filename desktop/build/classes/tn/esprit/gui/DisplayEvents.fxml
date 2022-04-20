@@ -82,5 +82,6 @@
       </Label>
       <Label fx:id="idLabel" layoutX="36.0" layoutY="108.0" prefHeight="25.0" prefWidth="56.0" />
       <Button fx:id="clear" layoutX="155.0" layoutY="547.0" mnemonicParsing="false" onAction="#clearLabels" text="CLEAR" />
+      <Button fx:id="print" layoutX="502.0" layoutY="125.0" mnemonicParsing="false" onAction="#printEvents" text="PRINT" />
    </children>
 </AnchorPane>
