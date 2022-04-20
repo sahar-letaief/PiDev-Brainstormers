@@ -26,6 +26,10 @@ public class Evenement {
        
     }
 
+    public Evenement(String NameEvent) {
+        this.NameEvent = NameEvent;
+    }
+
      
     public Evenement(int id, String NameEvent, String PlaceEvent, int NbParticipants, float PriceEvent, String DateDebut, String DateFin) {
         this.id = id;
@@ -111,7 +115,7 @@ public class Evenement {
 
     @Override
     public String toString() {
-        return "Evenement{" + "id=" + id + ", NameEvent=" + NameEvent + ", PlaceEvent=" + PlaceEvent + ", NbParticipants=" + NbParticipants + ", PriceEvent=" + PriceEvent + ", DateDebut=" + DateDebut + ", DateFin=" + DateFin + '}';
+        return   NameEvent ;
     }
     
     

@@ -34,6 +34,8 @@ import tn.esprit.entities.Evenement;
 import tn.esprit.utils.Datasource;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import net.glxn.qrgen.QRCode;
 import net.glxn.qrgen.image.ImageType;
 
@@ -76,13 +78,33 @@ public class EvenementService  {
             pst.setString(5, e.getDateDebut());
             pst.setString(6, e.getDateFin());
             pst.executeUpdate();
-            System.out.println("event"+e.getNameEvent()+" added successfully");
+            System.out.println("event "+e.getNameEvent()+" added successfully");
         } catch (SQLException ex) {
             Logger.getLogger(EvenementService.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
-    public List<Evenement> FetchEvents(){
+    public ObservableList<Evenement> FetchEvents(){
+       ObservableList<Evenement> events = FXCollections.observableArrayList();
+        String requete = "SELECT * FROM `evenement`";
+        
+        try {
+            ste = (Statement) cnx.createStatement();
+            ResultSet rs =  ste.executeQuery(requete);
+            
+            while(rs.next()){           
+                events.add(new Evenement(rs.getInt("id"),rs.getString("name_event"), rs.getString("place_event"),
+                      rs.getInt("nb_participants"),rs.getFloat("price_event"),rs.getString("date_debut"),rs.getString("date_fin")));
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(EvenementService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return events;
+    }
+        public List<Evenement> FetchEventsFront(){
         List<Evenement> events = new ArrayList<>();
         String requete = "SELECT * FROM `evenement`";
         

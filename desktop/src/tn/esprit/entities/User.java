@@ -35,6 +35,10 @@ public class User {
         this.role = role;
     }
 
+    public User(String firstname) {
+        this.firstname = firstname;
+    }
+
     
     ///constrcuteur mtaa reservation
     public User( int id,String firstname, String lastname,String email,int phone_number) {
@@ -131,7 +135,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" + "id=" + id + ", email=" + email + ", telephone=" + phone_number + ", firstname=" + firstname + ", lastname=" + lastname + '}';
+        return  "FIRST NAME : " + firstname + ", LAST NAME: " + lastname +", EMAIL: "+email ;
     }
     
     

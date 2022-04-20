@@ -21,6 +21,8 @@ import tn.esprit.utils.Datasource;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -65,12 +67,36 @@ public class ReservationService {
             Logger.getLogger(ReservationService.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-     public List<Reservation> FetchReservations(){
-          List<Reservation> reservations = new ArrayList<>();
+     public ObservableList<Reservation> FetchReservations(){
+          ObservableList<Reservation> reservations = FXCollections.observableArrayList();
            Evenement event=new Evenement();
            User user=new User();
            EvenementService es=new EvenementService();
         String requete = "SELECT reservation.id,reservation.date_reservation,reservation.user_id as u_id, evenement.id as event_id FROM `reservation`,`evenement` WHERE reservation.evenement_id=evenement.id";
+         try {
+            ste = (Statement) cnx.createStatement();
+            ResultSet rs =  ste.executeQuery(requete);
+            
+            while(rs.next()){
+                Evenement tempEvent = es.FetchOneEvent(rs.getInt("event_id"));
+                User tempUser=es.FetchOneUser(rs.getInt("u_id"));
+                reservations.add(new Reservation(rs.getInt("id"), tempEvent, tempUser,
+                      rs.getString("date_reservation")));
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ReservationService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return reservations; 
+     }
+     public ObservableList<Reservation> FetchReservationsFront(int id){
+          ObservableList<Reservation> reservations = FXCollections.observableArrayList();
+           Evenement event=new Evenement();
+           User user=new User();
+           EvenementService es=new EvenementService();
+        String requete = "SELECT reservation.id,reservation.date_reservation,reservation.user_id as u_id, evenement.id as event_id FROM `reservation`,`evenement` WHERE reservation.evenement_id=evenement.id and reservation.user_id="+id;
          try {
             ste = (Statement) cnx.createStatement();
             ResultSet rs =  ste.executeQuery(requete);
