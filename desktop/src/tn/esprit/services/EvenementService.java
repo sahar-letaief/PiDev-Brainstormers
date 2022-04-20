@@ -221,22 +221,28 @@ public class EvenementService  {
     }
       
         public void EditEvent(Evenement e) {
-        System.out.println(e);
-        String requete = "update `evenement` set name_event=?,place_event=?,nb_participants=?,price_event=?,date_debut=?,date_fin=? where id=?" ;
+        System.out.println("dkhal requete "+e);
+        String requete = "update `evenement` set name_event=?,place_event=?,nb_participants=?,price_event=?,date_debut=?,date_fin=? where id="+e.getId() ;
         try {
             
             pst = (PreparedStatement) cnx.prepareStatement(requete);
 //            java.sql.PreparedStatement pst = cnx.prepareStatement(requete);
             
             pst.setString(1, e.getNameEvent());
+            System.out.println("loula "+e.getNameEvent());
             pst.setString(2, e.getPlaceEvent());
+             System.out.println("loula "+e.getPlaceEvent());
             pst.setInt(3, e.getNbParticipants());
+              System.out.println("loula "+e.getNbParticipants());
             pst.setFloat(4, e.getPriceEvent());
+              System.out.println("loula "+e.getPriceEvent());
             pst.setString(5, e.getDateDebut());
+              System.out.println("loula "+e.getDateDebut());
             pst.setString(6, e.getDateFin());
-            pst.setInt(7, e.getId());
+              System.out.println("loula "+e.getDateFin());
+            //pst.setInt(7, e.getId());
             pst.executeUpdate();    
-            System.out.println("event "+e.getNameEvent()+" is updated successfully");
+            System.out.println("event "+e.getNameEvent()+"with id="+e.getId()+" is updated successfully");
 
         } catch (SQLException ex) {
             ex.printStackTrace();

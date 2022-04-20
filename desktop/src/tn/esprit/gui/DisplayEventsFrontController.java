@@ -71,7 +71,7 @@ public class DisplayEventsFrontController implements Initializable {
      * Initializes the controller class.
      */
     
-    private List<Evenement> getData() {
+    public List<Evenement> getData() {
         List<Evenement> data = new ArrayList<>();
         data=es.FetchEventsFront();
         System.out.println("hedhi"+data);

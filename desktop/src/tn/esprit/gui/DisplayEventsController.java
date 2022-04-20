@@ -97,6 +97,8 @@ public class DisplayEventsController implements Initializable {
     private Label beginsError;
     @FXML
     private Label endError;
+    @FXML
+    private Label idLabel;
     /**
      * Initializes the controller class.
      */
@@ -104,6 +106,7 @@ public class DisplayEventsController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         tableviewEvents.setFocusTraversable(false);
         getEvents();
+        idLabel.setVisible(false);
        // BeginsAtdate.setValue(LocalDate.now());
     }    
     public void getEvents(){
@@ -235,7 +238,7 @@ public class DisplayEventsController implements Initializable {
             System.out.println("hedha howa " +ev);
         try{
         
-            
+        this.idLabel.setText(String.valueOf(e.getId()));
         this.NameEventtf.setText(String.valueOf(e.getNameEvent()));
         System.out.println("haya"+e.getNameEvent());
        this.PlaceEventtf.setText(String.valueOf(e.getPlaceEvent()));
@@ -267,7 +270,7 @@ public class DisplayEventsController implements Initializable {
    Date DateFin = Date.valueOf(this.EndsAtdate.getValue());
  // upe.setDateDebut(String.valueOf(DateDebut));
   //upe.setDateFin(String.valueOf(DateFin));
-  Evenement up=new Evenement(this.NameEventtf.getText(),this.PlaceEventtf.getText(),Integer.valueOf(this.Participantstf.getText()),Float.valueOf(this.PriceEventtf.getText()),String.valueOf(DateDebut),String.valueOf(DateFin));
+  Evenement up=new Evenement(Integer.valueOf(this.idLabel.getText()),this.NameEventtf.getText(),this.PlaceEventtf.getText(),Integer.valueOf(this.Participantstf.getText()),Float.valueOf(this.PriceEventtf.getText()),String.valueOf(DateDebut),String.valueOf(DateFin));
   es.EditEvent(up);
    Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("Information ");
@@ -278,6 +281,12 @@ public class DisplayEventsController implements Initializable {
         } catch(Exception ex){
             System.out.println("fama ghalta2");
         }
+       NameEventtf.clear();
+       PlaceEventtf.clear();
+       Participantstf.clear();
+       PriceEventtf.clear();
+       BeginsAtdate.setValue(null);
+       EndsAtdate.setValue(null);
        
     }
 

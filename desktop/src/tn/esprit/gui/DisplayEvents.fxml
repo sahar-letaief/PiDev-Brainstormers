@@ -80,5 +80,6 @@
             <Font name="Berlin Sans FB" size="34.0" />
          </font>
       </Label>
+      <Label fx:id="idLabel" layoutX="36.0" layoutY="108.0" prefHeight="25.0" prefWidth="56.0" />
    </children>
 </AnchorPane>

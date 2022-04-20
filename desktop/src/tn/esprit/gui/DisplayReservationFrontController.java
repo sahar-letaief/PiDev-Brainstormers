@@ -6,6 +6,8 @@
 package tn.esprit.gui;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -85,12 +87,13 @@ public class DisplayReservationFrontController implements Initializable {
     @FXML
     private void DisplayEventsFront(ActionEvent event) {
         
-                 FXMLLoader Loader = new FXMLLoader(getClass().getResource("DsplayEventsFrontsDsplayEventsFronts.fxml"));
+                 FXMLLoader Loader = new FXMLLoader(getClass().getResource("DisplayEventsFront.fxml"));
 
         try {
             Parent root = Loader.load();
             DisplayEventsFrontController C = Loader.getController();
-          // C.initialize(location, resources);
+            List<Evenement> data = new ArrayList<>();
+            data=C.getData();
           /********************** ne9setni haja************/
             Scene productDetailScene = new Scene(root);
             Stage cineStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
