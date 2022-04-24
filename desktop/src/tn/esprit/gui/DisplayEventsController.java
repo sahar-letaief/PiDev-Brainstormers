@@ -37,6 +37,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import tn.esprit.entities.Evenement;
@@ -80,9 +83,10 @@ public class DisplayEventsController implements Initializable {
     private TableColumn<Evenement, String> Begins ;
     @FXML
     private TableColumn<Evenement, String> Ends;
-    public TableColumn edit;
-    public TableColumn Delete;
+   
       ObservableList<Evenement> events ;
+      private boolean isLightMode =true;
+      
     @FXML
     private Button deletebtn;
     @FXML
@@ -103,9 +107,36 @@ public class DisplayEventsController implements Initializable {
     private Button clear;
     @FXML
     private Button print;
+    @FXML
+    private ImageView imgMode;
+    @FXML
+    private AnchorPane parent;
     /**
      * Initializes the controller class.
      */
+    
+    public void ChangeMode(ActionEvent event){
+        isLightMode=!isLightMode;
+        if(isLightMode){
+            setLightMode();
+        }else{
+            setDarkMode();
+        }
+    }
+    private void setLightMode(){
+        parent.getStylesheets().remove("tn/esprit/utils/styles/darkmode.css");
+        parent.getStylesheets().add("tn/esprit/utils/styles/lightmode.css");
+        Image image=new Image("tn/esprit/utils/img/dark-mode.png");
+        imgMode.setImage(image);
+    }
+     private void setDarkMode(){
+        parent.getStylesheets().remove("tn/esprit/utils/styles/lightmode.css");
+        parent.getStylesheets().add("tn/esprit/utils/styles/darkmode.css");
+        Image image=new Image("tn/esprit/utils/img/light-mode.png");
+        imgMode.setImage(image);
+    }
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         tableviewEvents.setFocusTraversable(false);

@@ -83,9 +83,11 @@ public class Main extends Application {
         
         /***** suppression reservation *****/
        // rs.DeleteReservation(102);
-       es.GeneratePDF();
-       
-      
+       //es.GeneratePDF();
+       Evenement e=new Evenement();
+     
+        System.out.println(es.FetchOneEvent(19));
+      es.FetchOneEvent(19);
         
     }
     

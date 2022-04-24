@@ -43,6 +43,11 @@ public class Reservation extends Evenement {
         this.evenement_id = evenement_id;
         this.user_id = user_id;
     }
+
+    public Reservation(int id, Evenement evenement) {
+        this.id = id;
+        this.evenement = evenement;
+    }
     
     public Reservation( int id,int evenement_id, int user_id,String date_reservation) {
         this.id=id;

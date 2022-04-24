@@ -59,8 +59,8 @@ public class DisplayReservationFrontController implements Initializable {
     }    
     public void getRes(){
        
-          
-        int id=2;
+        /*********************************/  
+        int id=1;
           NameEvent1.setCellValueFactory(new PropertyValueFactory<Reservation,Evenement>("evenement"));        
           Reservation_date1.setCellValueFactory(new PropertyValueFactory<Reservation,String>("date_reservation"));
           

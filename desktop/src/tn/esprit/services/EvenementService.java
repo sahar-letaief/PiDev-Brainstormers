@@ -309,16 +309,40 @@ public class EvenementService  {
         
         return events;
     }
-         public void GenerateQrEvent(Evenement event) throws FileNotFoundException, IOException{
+          public List<Evenement> FindEventByNameFront(String name){
+         List<Evenement> events = new ArrayList<>();
+        String requete = "SELECT * FROM `evenement` WHERE name_event LIKE '%"+name+"%'";
+                
+        try {
+            ste = (Statement) cnx.createStatement();
+            ResultSet rs =  ste.executeQuery(requete);
+            
+            while(rs.next()){           
+                events.add(new Evenement(rs.getInt("id"), rs.getString("name_event"), rs.getString("place_event"),
+                      rs.getInt("nb_participants"),rs.getFloat("price_event"),rs.getString("date_debut"),rs.getString("date_fin")));
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(EvenementService.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
-              String eventName=event.getNameEvent()+"\n"+event.getPlaceEvent()+"\n"+event.getPriceEvent()+"\n";
+        return events;
+    }
+         public String GenerateQrEvent(Evenement event) throws FileNotFoundException, IOException{
+        
+              String eventName="event name: "+event.getNameEvent()+"\n"+"event place: "+event.getPlaceEvent()+"\n"+"event price: "+event.getPriceEvent()+"\n";
               ByteArrayOutputStream out= QRCode.from(eventName).to(ImageType.JPG).stream();
-              String filename=eventName+".jpg";
-              File f=new File("C:\\Users\\WIKI\\Desktop\\PI\\desktop\\"+filename);
+              String filename=event.getNameEvent()+"_QrCode.jpg";
+              File f=new File("C:\\Users\\WIKI\\Desktop\\PI\\desktop\\src\\tn\\esprit\\utils\\img\\"+filename);
                FileOutputStream fos=new FileOutputStream(f);
                fos.write(out.toByteArray());
                fos.flush();
+               System.out.println("qr yemshi");
+               return filename;
     }
+         
+         
           public void GeneratePDF(){
               EvenementService es=new EvenementService();
               Evenement e=new Evenement();
