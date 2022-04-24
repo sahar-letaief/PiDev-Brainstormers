@@ -125,18 +125,20 @@ public class ReservationService {
             ResultSet rs =  ste.executeQuery(requete);
             
             while(rs.next()){
-                 tempEvent = es.FetchOneEvent(rs.getInt("event_id"));
-//                   e = new Evenement(rs.getInt("event_id"), rs.getString("name_event"), rs.getString("place_event"),rs.getInt("nb_participants"),rs.getFloat("price_event"),rs.getString("date_debut"),rs.getString("date_fin"));
-                 Reservation r=new Reservation(rs.getInt("id"),e);
+                 e = es.FetchOneEvent(rs.getInt("event_id"));
+//                e = new Evenement(rs.getInt("event_id"), rs.getString("name_event"), rs.getString("place_event"),rs.getInt("nb_participants"),rs.getFloat("price_event"),rs.getString("date_debut"),rs.getString("date_fin"));
+               //  Reservation r=new Reservation(rs.getInt("id"),e);
+                return e;
             }
+             
             
                        
         } catch (SQLException ex) {
             Logger.getLogger(ReservationService.class.getName()).log(Level.SEVERE, null, ex);
+          
         }
-        
-        return e;
-       
+         return null;
+
      }
       public Reservation FetchOneRes(int id){
        Reservation r=new Reservation();

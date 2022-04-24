@@ -124,15 +124,15 @@ public class DisplayEventsController implements Initializable {
         }
     }
     private void setLightMode(){
-        parent.getStylesheets().remove("tn/esprit/utils/styles/darkmode.css");
-        parent.getStylesheets().add("tn/esprit/utils/styles/lightmode.css");
+        parent.getStylesheets().remove("/tn/esprit/utils/styles/darkmode.css");
+        parent.getStylesheets().add("/tn/esprit/utils/styles/lightmode.css");
         Image image=new Image("tn/esprit/utils/img/dark-mode.png");
         imgMode.setImage(image);
     }
      private void setDarkMode(){
-        parent.getStylesheets().remove("tn/esprit/utils/styles/lightmode.css");
-        parent.getStylesheets().add("tn/esprit/utils/styles/darkmode.css");
-        Image image=new Image("tn/esprit/utils/img/light-mode.png");
+        parent.getStylesheets().remove("/tn/esprit/utils/styles/lightmode.css");
+        parent.getStylesheets().add("/tn/esprit/utils/styles/darkmode.css");
+        Image image=new Image("/tn/esprit/utils/img/light-mode.png");
         imgMode.setImage(image);
     }
     

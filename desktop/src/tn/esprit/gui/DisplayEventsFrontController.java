@@ -87,6 +87,8 @@ public class DisplayEventsFrontController implements Initializable {
     private Button sort;
     @FXML
     private TextField searchlabel;
+    @FXML
+    private Button addRes;
     
    
     
@@ -146,6 +148,12 @@ public class DisplayEventsFrontController implements Initializable {
         DateDebutLabel.setText(e.getDateDebut());
         DateFinLabel.setText(e.getDateFin());
         idLabel.setText(e.getId()+"");
+         if( NbParticipants.getText().equals("0")){
+            addRes.setVisible(false);
+        }
+         else{
+             addRes.setVisible(true);
+         }
         try{
             
         
@@ -157,6 +165,7 @@ public class DisplayEventsFrontController implements Initializable {
         } catch(Exception ex){
             System.out.println("mafamesh qr");
         }
+       
         chosenEventCard.setStyle("-fx-background-color: #DEEFBD" + ";\n" +
                 "    -fx-background-radius: 30;");
     }
@@ -223,25 +232,33 @@ public class DisplayEventsFrontController implements Initializable {
     @FXML
     private void AddReservation(ActionEvent event) {
         FXMLLoader fxmlLoader = new FXMLLoader();
-        ArrayList<Evenement> ev=new ArrayList<Evenement>();
-        es.FetchEventsFront();
+        List<Evenement> ev=new ArrayList<Evenement>();
+        ev=es.FetchEventsFront();
+        System.out.println("ev "+ev);
          Evenement e=new Evenement(Integer.valueOf(this.idLabel.getText()),this.EventNameLablel.getText(),this.EventPlaceLabel.getText(),Integer.parseInt(this.NbParticipants.getText()),Float.parseFloat(this.EventPriceLabel.getText().substring(0, 4)),this.DateDebutLabel.getText(),this.DateFinLabel.getText());
-       if(ev.contains(e)){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Information ");
-            alert.setHeaderText("Reservation error");
-            alert.setContentText("Reservation already done,check the list of reservations!");
-            alert.showAndWait();
+       if(rs.ReservationTest(e)==null){
+           System.out.println("reservation mawjouda");
+           Alert alert = new Alert(Alert.AlertType.ERROR);
+           alert.setTitle("Information ");
+           alert.setHeaderText("Reservation error");
+           alert.setContentText("Reservation already done,check the list of reservations!");
+           alert.showAndWait();
        }
        else{
-            Reservation r=new Reservation(e.getId(),1);
-        rs.AddReservation(r);
-          Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information ");
-            alert.setHeaderText("Reservation add");
-            alert.setContentText("Reservation added successfully!");
-            alert.showAndWait();   
+           
+           System.out.println("reservation moush mawjouda");
+           Reservation r=new Reservation(Integer.valueOf(this.idLabel.getText()),1);
+           rs.AddReservation(r);
+           Alert alert = new Alert(Alert.AlertType.INFORMATION);
+           alert.setTitle("Information ");
+           alert.setHeaderText("Reservation add");
+           alert.setContentText("Reservation added successfully!");
+           alert.showAndWait();
+           events.addAll(getData());
+           return;
        }
+      // grid.getChildren().clear();
+       
          /* for(int i=0;i<ev.size();i++){
             int x=0;
             while(x==0){

@@ -72,7 +72,7 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="53.0" prefWidth="335.0">
                            <children>
-                              <Label fx:id="EventPlaceLabel" prefHeight="53.0" prefWidth="167.0">
+                              <Label fx:id="EventPlaceLabel" alignment="CENTER" prefHeight="53.0" prefWidth="167.0">
                                  <font>
                                     <Font name="Berlin Sans FB Demi Bold" size="32.0" />
                                  </font>
@@ -142,7 +142,7 @@
                               </VBox>
                            </children>
                         </HBox>
-                        <Button mnemonicParsing="false" onAction="#AddReservation" prefHeight="50.0" prefWidth="270.0" styleClass="add-btn" text="ADD RESERVATION" textFill="#828282">
+                        <Button fx:id="addRes" mnemonicParsing="false" onAction="#AddReservation" prefHeight="50.0" prefWidth="270.0" styleClass="add-btn" text="ADD RESERVATION" textFill="#828282">
                            <VBox.margin>
                               <Insets bottom="20.0" top="30.0" />
                            </VBox.margin>
