@@ -249,7 +249,7 @@ public class DisplayEventsFrontController implements Initializable {
        }
        else{
            
-           System.out.println("reservation moush mawjouda");
+            System.out.println("reservation moush mawjouda");
           
            rs.AddReservation(r);
            Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -257,7 +257,10 @@ public class DisplayEventsFrontController implements Initializable {
            alert.setHeaderText("Reservation add");
            alert.setContentText("Reservation added successfully!");
            alert.showAndWait();
-           grid.getChildren().clear();
+           //grid.getChildren().clear();
+           int par=Integer.parseInt(this.NbParticipants.getText());
+           par=par-1;
+           this.NbParticipants.setText(String.valueOf(par));
            events.addAll(getData());
           
        }
