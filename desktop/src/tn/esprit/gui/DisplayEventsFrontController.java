@@ -234,9 +234,12 @@ public class DisplayEventsFrontController implements Initializable {
         FXMLLoader fxmlLoader = new FXMLLoader();
         List<Evenement> ev=new ArrayList<Evenement>();
         ev=es.FetchEventsFront();
+         Reservation r=new Reservation(Integer.valueOf(this.idLabel.getText()),1);
+         System.out.println("reservationnnn: "+r.getEvenement_id()+" "+r.getUser_id());
         System.out.println("ev "+ev);
          Evenement e=new Evenement(Integer.valueOf(this.idLabel.getText()),this.EventNameLablel.getText(),this.EventPlaceLabel.getText(),Integer.parseInt(this.NbParticipants.getText()),Float.parseFloat(this.EventPriceLabel.getText().substring(0, 4)),this.DateDebutLabel.getText(),this.DateFinLabel.getText());
-       if(rs.ReservationTest(e)==null){
+        System.out.println("idddd "+e.getId());
+         if(rs.ReservationTest(e.getId(),1)){
            System.out.println("reservation mawjouda");
            Alert alert = new Alert(Alert.AlertType.ERROR);
            alert.setTitle("Information ");
@@ -247,50 +250,18 @@ public class DisplayEventsFrontController implements Initializable {
        else{
            
            System.out.println("reservation moush mawjouda");
-           Reservation r=new Reservation(Integer.valueOf(this.idLabel.getText()),1);
+          
            rs.AddReservation(r);
            Alert alert = new Alert(Alert.AlertType.INFORMATION);
            alert.setTitle("Information ");
            alert.setHeaderText("Reservation add");
            alert.setContentText("Reservation added successfully!");
            alert.showAndWait();
+           grid.getChildren().clear();
            events.addAll(getData());
-           return;
+          
        }
-      // grid.getChildren().clear();
-       
-         /* for(int i=0;i<ev.size();i++){
-            int x=0;
-            while(x==0){
-             if(this.EventNameLablel.getText()==rs.ReservationTest(ev.get(i)).getNameEvent()) { //reservation deja existante
-            //System.out.println("event tawa "+e);
-             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Information ");
-            alert.setHeaderText("Reservation error");
-            alert.setContentText("Reservation already done,check the list of reservations!");
-            alert.showAndWait();
-            x++;
-             }
-            
-        
-        else {
      
-       System.out.println("event tawa 2 "+e);
-       Reservation r=new Reservation(e.getId(),1);
-        rs.AddReservation(r);
-           events.addAll(getData());
-           //System.out.println("apres modif"+events.get(4).getNbParticipants());
-         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Information ");
-            alert.setHeaderText("Reservation add");
-            alert.setContentText("Reservation added successfully!");
-            alert.showAndWait();
-        x++;
-                }
-        }
-        }
-        /*System.out.println("actuelllll "+e); 
-        System.out.println("eli hashti bihhhh "+rs.ReservationTest(ev));*/
            
        
     }

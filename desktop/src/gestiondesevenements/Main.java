@@ -84,11 +84,17 @@ public class Main extends Application {
         /***** suppression reservation *****/
        // rs.DeleteReservation(102);
        //es.GeneratePDF();
-       Evenement e=new Evenement();
+      /* Evenement e=new Evenement();
      
         System.out.println(es.FetchOneEvent(19));
-      es.FetchOneEvent(19);
+      es.FetchOneEvent(19);*/
         
+      if(rs.ReservationTest(19, 5)){
+          System.out.println("fama");
+      }
+      else 
+            System.out.println("le");
+      
     }
     
 }

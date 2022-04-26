@@ -115,29 +115,30 @@ public class ReservationService {
         
         return reservations; 
      }
-     public Evenement ReservationTest(Evenement e){
+     public boolean ReservationTest(int evenement_id,int user_id){
          EvenementService es=new EvenementService();
          Evenement tempEvent=new Evenement();
          //Reservation r=new Reservation();
-                 String requete = "SELECT reservation.id,evenement.id as event_id FROM `reservation`,`evenement` WHERE reservation.evenement_id=evenement.id ";
+                 String requete = "SELECT evenement_id , user_id FROM `reservation` WHERE evenement_id="+evenement_id+ " AND user_id="+user_id;
             try {
             ste = (Statement) cnx.createStatement();
             ResultSet rs =  ste.executeQuery(requete);
             
             while(rs.next()){
-                 e = es.FetchOneEvent(rs.getInt("event_id"));
+                 
 //                e = new Evenement(rs.getInt("event_id"), rs.getString("name_event"), rs.getString("place_event"),rs.getInt("nb_participants"),rs.getFloat("price_event"),rs.getString("date_debut"),rs.getString("date_fin"));
-               //  Reservation r=new Reservation(rs.getInt("id"),e);
-                return e;
+                Reservation r=new Reservation(rs.getInt("evenement_id"),rs.getInt("user_id"));
+                return true;
             }
              
             
                        
         } catch (SQLException ex) {
-            Logger.getLogger(ReservationService.class.getName()).log(Level.SEVERE, null, ex);
+           return false;
           
         }
-         return null;
+            return false;
+       
 
      }
       public Reservation FetchOneRes(int id){
