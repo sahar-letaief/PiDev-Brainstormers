@@ -262,6 +262,14 @@ public class DisplayEventsFrontController implements Initializable {
            par=par-1;
            this.NbParticipants.setText(String.valueOf(par));
            events.addAll(getData());
+           if( NbParticipants.getText().equals("0")){
+            addRes.setVisible(false);
+        }
+         else{
+             addRes.setVisible(true);
+         }
+          
+       }
           
        }
      
