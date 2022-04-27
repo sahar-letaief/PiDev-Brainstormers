@@ -213,9 +213,29 @@ public class UserServices implements IService<User> {
         return false;
     }
 
-    public List<User> test() {
+    public List<User> test(String SearchValue, String SearchKey , String SortKey) {
         List<User> users = new ArrayList<>();
-        String requete = "SELECT * FROM `user`";
+        String requete = "";
+        
+        if ( SearchValue.isEmpty() ){
+            
+            if ( SortKey.isEmpty()){
+                requete = "SELECT * FROM `user`";
+            }else if ( SortKey.equals("Email")) {
+                requete = "SELECT * FROM `user` ORDER BY email ASC";
+            }else if ( SortKey.equals("Full Name")) {
+                requete = "SELECT * FROM `user` ORDER BY firstname ASC ";
+            }else if ( SortKey.equals("Username")) {
+                requete = "SELECT * FROM `user` ORDER BY usertag ASC";
+            }
+            
+        }else if ( SearchKey.equals("Email") ) {
+            requete = "SELECT * FROM `user` WHERE email LIKE"  + "'%" + SearchValue + "%'";
+        }else if ( SearchKey.equals("Full Name") ){
+            requete = "SELECT * FROM `user` WHERE firstname LIKE"  + "'%" + SearchValue + "%'";
+        }else if ( SearchKey.equals("Username") ){
+            requete = "SELECT * FROM `user` WHERE usertag LIKE"  + "'%" + SearchValue + "%'";
+        }
 
         try {
             ste = cnx.createStatement();

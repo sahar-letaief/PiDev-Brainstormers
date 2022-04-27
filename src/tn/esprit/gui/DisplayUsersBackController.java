@@ -31,6 +31,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -41,6 +43,9 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Toggle;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
@@ -133,6 +138,22 @@ public class DisplayUsersBackController implements Initializable {
     private Button SaveEditProfile;
     @FXML
     private Button Profile;
+    @FXML
+    private TextField SearchField;
+    public static String SearchValue = "";
+    @FXML
+    private ComboBox<String> SearchComboBox;
+    ObservableList<String> SearchOptions = FXCollections.observableArrayList();
+    public static String SearchKey = "";
+    @FXML
+    private RadioButton SortFullName;
+    @FXML
+    private RadioButton SortEmail;
+    @FXML
+    private RadioButton SortUsername;
+    public static String SortKey = "";
+
+
 
     /**
      * Initializes the controller class.
@@ -141,6 +162,25 @@ public class DisplayUsersBackController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         // LoadUsers();
+        SearchOptions.add("Full Name");
+        SearchOptions.add("Email");
+        SearchOptions.add("Username");
+        SearchComboBox.setItems(SearchOptions);
+        
+        SortFullName.setUserData("Full Name");
+        SortEmail.setUserData("Email");
+        SortUsername.setUserData("Username");
+        
+        final ToggleGroup group = new ToggleGroup();
+        SortFullName.setToggleGroup(group);
+        SortEmail.setToggleGroup(group);
+        SortUsername.setToggleGroup(group);
+        
+        group.selectedToggleProperty().addListener((ObservableValue<? extends Toggle> ov, Toggle old_toggle, Toggle new_toggle) -> {
+            if (group.getSelectedToggle() != null) {
+                 SortKey = group.getSelectedToggle().getUserData().toString();
+            }
+        });
         this.ProfileInterface.setVisible(false);
         UserServices us = new UserServices();
         Timeline timeline = new Timeline(
@@ -183,19 +223,16 @@ public class DisplayUsersBackController implements Initializable {
 
         UserServices us = new UserServices();
         List<User> users = new ArrayList<>();
-        users = us.test();
+        users = us.test(SearchValue , SearchKey , SortKey);
         Node[] nodes = new Node[users.size()];
 
         for (int i = 0; i < users.size(); i++) {
             try {
-                ItemController item = new ItemController();
                 ItemController.fullname = users.get(i).getFirstname() + " " + users.get(i).getLastname();
                 ItemController.email = users.get(i).getEmail();
                 ItemController.username = users.get(i).getUsername();
                 ItemController.id = String.valueOf(users.get(i).getId());
-                /*  item.UpdateUser.setOnAction((ActionEvent event) -> {
-                System.err.println(item.UpdateUser.getId());
-                });*/
+ 
                 nodes[i] = (Node) FXMLLoader.load(getClass().getResource("item.fxml"));
 
                 pnItems.getChildren().add(nodes[i]);
@@ -440,6 +477,19 @@ public class DisplayUsersBackController implements Initializable {
             stage.show();
         } catch (IOException ex) {
             Logger.getLogger(SignUpController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void onSearchTyped(KeyEvent event) {
+        
+        SearchValue = SearchField.getText();
+        SearchKey = SearchComboBox.getSelectionModel().selectedItemProperty().getValue();
+        if ( SearchValue.isEmpty()){
+            SearchValue = "";
+        }else{
+            System.out.println(SearchValue + " " + SearchKey);
+
         }
     }
 

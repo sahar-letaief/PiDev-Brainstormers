@@ -3,13 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Yassine/Documents/NetBeansProjects/User/src/tn/esprit/services/UserServices.java</file>
             <file>file:/C:/Users/Yassine/Documents/NetBeansProjects/User/src/tn/esprit/gui/DisplayUsersBackController.java</file>
+            <file>file:/C:/Users/Yassine/Documents/NetBeansProjects/User/src/tn/esprit/services/UserServices.java</file>
             <file>file:/C:/Users/Yassine/Documents/NetBeansProjects/User/src/tn/esprit/gui/SignInController.java</file>
-            <file>file:/C:/Users/Yassine/Documents/NetBeansProjects/User/src/tn/esprit/gui/ItemController.java</file>
-            <file>file:/C:/Users/Yassine/Documents/NetBeansProjects/User/src/tn/esprit/entities/UserStaticSession.java</file>
-            <file>file:/C:/Users/Yassine/Documents/NetBeansProjects/User/src/tn/esprit/gui/FirstWindow.java</file>
+            <file>file:/C:/Users/Yassine/Documents/NetBeansProjects/User/src/tn/esprit/utils/Datasource.java</file>
+            <file>file:/C:/Users/Yassine/Documents/NetBeansProjects/User/src/tn/esprit/entities/User.java</file>
             <file>file:/C:/Users/Yassine/Documents/NetBeansProjects/User/src/tn/esprit/gui/SignUpController.java</file>
+            <file>file:/C:/Users/Yassine/Documents/NetBeansProjects/User/src/tn/esprit/services/IService.java</file>
         </group>
     </open-files>
 </project-private>

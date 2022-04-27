@@ -2,95 +2,263 @@
 
 <?import java.lang.String?>
 <?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="tn.esprit.gui.SignUpController">
+<AnchorPane id="AnchorPane" prefHeight="774.0" prefWidth="661.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.SignUpController">
     <children>
-      <Label layoutX="65.0" layoutY="70.0" text="first name :" textFill="RED">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Label layoutX="65.0" layoutY="150.0" text="last name :" textFill="RED">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Label layoutX="65.0" layoutY="228.0" text="email :" textFill="RED">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Label layoutX="65.0" layoutY="290.0" text="password :" textFill="RED">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Label layoutX="65.0" layoutY="360.0" text="phone number :" textFill="RED">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Label layoutX="65.0" layoutY="430.0" text="username :" textFill="RED">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Label layoutX="65.0" layoutY="500.0" text="ROLE :" textFill="RED">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <TextField fx:id="firstname" layoutX="246.0" layoutY="71.0">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="lastname" layoutX="246.0" layoutY="151.0">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="email" layoutX="246.0" layoutY="229.0">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="password" layoutX="246.0" layoutY="300">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="phonenumber" layoutX="246.0" layoutY="360">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </TextField>
-      <TextField fx:id="username" layoutX="246.0" layoutY="430">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </TextField>
-      <ComboBox fx:id="roles" layoutX="246.0" layoutY="504.0" prefHeight="35.0" prefWidth="298.0" promptText="choose">
-      <items>
-        <FXCollections fx:factory="observableArrayList">
-          <String fx:value="USER" />
-          <String fx:value="PLAYER" />
-        </FXCollections>
-      </items>
-    </ComboBox>
-      <Button layoutX="233.0" layoutY="595.0" mnemonicParsing="false" onAction="#onSave" text="Sign Up">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Button>
-      <Label fx:id="idError" layoutX="246.0" layoutY="125.0" text="Id sould be a number" textFill="#eb0000" visible="false" />
-      <Label fx:id="EmailError" layoutX="246.0" layoutY="280.0" text="an account with this email exists already" textFill="#eb0000" visible="false" />
+      <VBox layoutY="-2.0" prefHeight="728.0" prefWidth="661.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label prefHeight="63.0" prefWidth="116.0" text="Sign Up" textFill="#ff3f3f" underline="true">
+                     <font>
+                        <Font size="32.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </HBox>
+            <VBox alignment="CENTER" prefHeight="122.0" prefWidth="661.0">
+               <children>
+                  <Label fx:id="EmtptyError" alignment="CENTER" prefHeight="98.0" prefWidth="456.0" text="Error : Please Fill in All the informations." textAlignment="CENTER" textFill="#ff1c1c" underline="true" visible="false">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font>
+                  </Label>
+                  <HBox alignment="CENTER" prefHeight="61.0" prefWidth="600.0">
+                     <children>
+                        <Label text="first name :" textFill="RED">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <padding>
+                              <Insets right="70.0" />
+                           </padding>
+                        </Label>
+                        <TextField fx:id="firstname">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <Label fx:id="FirstNameError" prefHeight="27.0" prefWidth="231.0" text="FirstName must be at least 3 characters" textFill="#eb0000" visible="false">
+                     <VBox.margin>
+                        <Insets left="120.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="60.0" prefWidth="661.0">
+                     <children>
+                        <Label text="last name :" textFill="RED">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <padding>
+                              <Insets right="70.0" />
+                           </padding>
+                        </Label>
+                        <TextField fx:id="lastname">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <Label fx:id="LastNameError" prefHeight="27.0" prefWidth="231.0" text="LastName must be at least 3 characters" textFill="#eb0000" visible="false">
+                     <VBox.margin>
+                        <Insets left="120.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" layoutX="10.0" layoutY="165.0" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="61.0" prefWidth="661.0">
+                     <children>
+                        <Label text="email :" textFill="RED">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <padding>
+                              <Insets right="115.0" />
+                           </padding>
+                        </Label>
+                        <TextField fx:id="email">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <Label fx:id="EmailError" prefHeight="27.0" prefWidth="231.0" text="must be a valid email " textFill="#eb0000" visible="false">
+                     <VBox.margin>
+                        <Insets left="120.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" layoutX="10.0" layoutY="282.0" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="56.0" prefWidth="661.0">
+                     <children>
+                        <Label text="password :" textFill="RED">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <padding>
+                              <Insets right="70.0" />
+                           </padding>
+                        </Label>
+                        <TextField fx:id="password">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <Label fx:id="PasswordError" prefHeight="27.0" prefWidth="231.0" text="must be at least 8 characters" textFill="#eb0000" visible="false">
+                     <VBox.margin>
+                        <Insets left="120.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="54.0" prefWidth="661.0">
+                     <children>
+                        <Label text="phone number :" textFill="RED">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <padding>
+                              <Insets right="20.0" />
+                           </padding>
+                        </Label>
+                        <TextField fx:id="phonenumber">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <Label fx:id="PhoneNumberError" prefHeight="27.0" prefWidth="231.0" text="Phone NUmber must be 8 numbers" textFill="#eb0000" visible="false">
+                     <VBox.margin>
+                        <Insets left="120.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" layoutX="10.0" layoutY="447.0" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="55.0" prefWidth="661.0">
+                     <children>
+                        <Label text="username :" textFill="RED">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <padding>
+                              <Insets right="77.0" />
+                           </padding>
+                        </Label>
+                        <TextField fx:id="username">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <Label fx:id="UserNameError" prefHeight="27.0" prefWidth="231.0" text="userName must be at least 5 characters" textFill="#eb0000" visible="false">
+                     <VBox.margin>
+                        <Insets left="120.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+            <HBox alignment="CENTER" prefHeight="37.0" prefWidth="661.0">
+               <children>
+                  <Label text="ROLE :" textFill="RED">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <padding>
+                        <Insets right="130.0" />
+                     </padding>
+                  </Label>
+                  <ComboBox fx:id="roles" prefHeight="35.0" prefWidth="298.0" promptText="choose">
+                  <items>
+                    <FXCollections fx:factory="observableArrayList">
+                      <String fx:value="USER" />
+                      <String fx:value="PLAYER" />
+                    </FXCollections>
+                  </items>
+                </ComboBox>
+               </children>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="52.0" prefWidth="661.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#onSave" style="-fx-background-color: #7A8EFF;" text="Sign Up" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
 
    </children>
     

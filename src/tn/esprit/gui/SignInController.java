@@ -77,7 +77,18 @@ public class SignInController implements Initializable {
 
     @FXML
     private void onSignUp(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("SignUp.fxml"));
         
+        try {
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.centerOnScreen();
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(SignUpController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }
