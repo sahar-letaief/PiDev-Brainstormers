@@ -111,10 +111,13 @@ public class DisplayEventsController implements Initializable {
     private ImageView imgMode;
     @FXML
     private AnchorPane parent;
+    @FXML
+    private Button buttondarklight;
     /**
      * Initializes the controller class.
      */
     
+    @FXML
     public void ChangeMode(ActionEvent event){
         isLightMode=!isLightMode;
         if(isLightMode){
@@ -142,6 +145,8 @@ public class DisplayEventsController implements Initializable {
         tableviewEvents.setFocusTraversable(false);
         getEvents();
         idLabel.setVisible(false);
+        imgMode.setVisible(false);
+        buttondarklight.setVisible(false);
        // BeginsAtdate.setValue(LocalDate.now());
     }    
     public void getEvents(){

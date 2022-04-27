@@ -361,15 +361,7 @@ public class EvenementService  {
                   document.add(new Paragraph(" "));
               PdfPTable table= new PdfPTable(4);
                table.setWidthPercentage(90f);
-              /*PdfPCell c1=new PdfPCell(new Phrase("Event name"));
-              table.addCell(c1);
-               PdfPCell c2=new PdfPCell(new Phrase("Event place"));
-              table.addCell(c2);
               
-               PdfPCell c3=new PdfPCell(new Phrase("Begins at"));
-              table.addCell(c3);
-               PdfPCell c4=new PdfPCell(new Phrase("Ends at"));
-              table.addCell(c4);*/
                insertCell(table, "Event name", Element.ALIGN_LEFT, 1, bfBold12);
                insertCell(table, "Event place", Element.ALIGN_LEFT, 1, bfBold12);
                insertCell(table, "Begins at", Element.ALIGN_LEFT, 1, bfBold12);
@@ -384,7 +376,7 @@ public class EvenementService  {
               
               document.add(table);
               //generate image in the pdf
-              document.add(Image.getInstance("C:\\Users\\WIKI\\Desktop\\PI\\desktop\\src\\logo.png"));
+              //document.add(Image.getInstance("tn/esprit/utils/img/logo.png"));
               
               document.close();
               System.out.println("pdf of list events is done");

@@ -21,6 +21,7 @@ import tn.esprit.utils.Datasource;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.Map;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -152,6 +153,7 @@ public class ReservationService {
             while(rs.next()){           
                  
                 r = new Reservation(rs.getInt("id"),rs.getString("date_reservation"),rs.getInt("evenement_id"),rs.getInt("user_id"));
+                
 
             }
             
@@ -161,6 +163,53 @@ public class ReservationService {
         }
         return r;
     }
+       public int ResPie(int id){
+       Reservation r=new Reservation();
+       EvenementService es=new EvenementService();
+       Evenement ev=new Evenement();
+     //  Map<Evenement,Reservation> map = new Map<Evenement,Reservation>();
+        String requete = "SELECT * FROM `reservation` where evenement_id="+id;
+        int nb=0;
+        try {
+            ste = (Statement) cnx.createStatement();
+            ResultSet rs =  ste.executeQuery(requete);
+            
+            while(rs.next()){           
+                 
+                r = new Reservation(rs.getInt("id"),rs.getString("date_reservation"),rs.getInt("evenement_id"),rs.getInt("user_id"));
+                ev=es.FetchOneEvent(id);
+                nb++;
+
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(EvenementService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return nb;
+    }
+        public int idss(){
+       Reservation r=new Reservation();
+        String requete = "SELECT evenement_id FROM `reservation`";
+        int nb=0;
+        try {
+            ste = (Statement) cnx.createStatement();
+            ResultSet rs =  ste.executeQuery(requete);
+            
+            while(rs.next()){           
+                 
+                r = new Reservation(rs.getInt("id"),rs.getString("date_reservation"),rs.getInt("evenement_id"),rs.getInt("user_id"));
+                nb++;
+
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(EvenementService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return nb;
+    }
+     
      
       public void DeleteReservation(int id) {
          EvenementService es=new EvenementService();

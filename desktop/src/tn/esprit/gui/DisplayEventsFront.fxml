@@ -204,15 +204,19 @@
                                  </children></VBox>
                            </children>
                         </HBox>
-                        <Pane prefHeight="84.0" prefWidth="96.0" HBox.hgrow="ALWAYS" />
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="474.0" styleClass="shopping-online-card">
+                        <HBox alignment="CENTER" prefHeight="71.0" prefWidth="612.0" styleClass="shopping-online-card">
                            <children>
-                              <Button fx:id="sort" mnemonicParsing="false" onAction="#SortByPrice" prefHeight="58.0" prefWidth="303.0" text="SORT BY PRICE" textFill="#828282">
+                              <Button fx:id="Stat" mnemonicParsing="false" onAction="#Stat" prefHeight="58.0" prefWidth="110.0" text="Statistics" textFill="#828282">
                                  <font>
                                     <Font name="System Bold" size="18.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="MyReservations" mnemonicParsing="false" onAction="#DisplayReservationsFront" prefHeight="58.0" prefWidth="321.0" text="MY RESERVATIONS" textFill="#828282">
+                              <Button fx:id="sort" mnemonicParsing="false" onAction="#SortByPrice" prefHeight="58.0" prefWidth="159.0" text="SORT BY PRICE" textFill="#828282">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="MyReservations" mnemonicParsing="false" onAction="#DisplayReservationsFront" prefHeight="58.0" prefWidth="205.0" text="MY RESERVATIONS" textFill="#828282">
                                  <font>
                                     <Font name="System Bold" size="18.0" />
                                  </font>

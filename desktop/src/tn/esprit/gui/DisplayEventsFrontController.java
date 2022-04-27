@@ -12,6 +12,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,6 +22,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -28,6 +31,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
@@ -89,6 +93,8 @@ public class DisplayEventsFrontController implements Initializable {
     private TextField searchlabel;
     @FXML
     private Button addRes;
+    @FXML
+    private Button Stat;
     
    
     
@@ -96,6 +102,7 @@ public class DisplayEventsFrontController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    
     
     public List<Evenement> getData() {
         List<Evenement> data = new ArrayList<>();
@@ -141,6 +148,8 @@ public class DisplayEventsFrontController implements Initializable {
         return dataSearch;
     }
  private void setChosenEvent(Evenement e) throws IOException {
+     Evenement EventPie=new Evenement();
+     int nbPie=0;
         EventNameLablel.setText(e.getNameEvent());
         EventPriceLabel.setText(e.getPriceEvent()+MainEventsFront.CURRENCY );
         EventPlaceLabel.setText(e.getPlaceEvent());
@@ -148,6 +157,8 @@ public class DisplayEventsFrontController implements Initializable {
         DateDebutLabel.setText(e.getDateDebut());
         DateFinLabel.setText(e.getDateFin());
         idLabel.setText(e.getId()+"");
+         nbPie=rs.ResPie(e.getId());
+        System.out.println("event pie "+nbPie);
          if( NbParticipants.getText().equals("0")){
             addRes.setVisible(false);
         }
@@ -257,12 +268,11 @@ public class DisplayEventsFrontController implements Initializable {
            alert.setHeaderText("Reservation add");
            alert.setContentText("Reservation added successfully!");
            alert.showAndWait();
-           //grid.getChildren().clear();
            int par=Integer.parseInt(this.NbParticipants.getText());
            par=par-1;
            this.NbParticipants.setText(String.valueOf(par));
            events.addAll(getData());
-           if( NbParticipants.getText().equals("0")){
+            if( NbParticipants.getText().equals("0")){
             addRes.setVisible(false);
         }
          else{
@@ -270,20 +280,6 @@ public class DisplayEventsFrontController implements Initializable {
          }
           
        }
-          
-       }
-
-    @FXML
-    private void SearchEvent(ActionEvent event) {
-    }
-
-    @FXML
-    private void SortByPrice(ActionEvent event) {
-    }
-
-    @FXML
-    private void DisplayReservationsFront(ActionEvent event) {
-    }
      
            
        
@@ -431,6 +427,23 @@ public class DisplayEventsFrontController implements Initializable {
             }
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void Stat(ActionEvent event) {
+          FXMLLoader Loader = new FXMLLoader(getClass().getResource("DisplayReservationFront.fxml"));
+
+        try {
+            Parent root = Loader.load();
+            DisplayReservationFrontController C = Loader.getController();
+            C.getRes();
+            Scene productDetailScene = new Scene(root);
+            Stage cineStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            cineStage.setScene(productDetailScene);
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
         }
     }
     
