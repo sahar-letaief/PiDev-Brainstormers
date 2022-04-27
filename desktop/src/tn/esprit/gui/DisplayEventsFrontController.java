@@ -272,6 +272,18 @@ public class DisplayEventsFrontController implements Initializable {
        }
           
        }
+
+    @FXML
+    private void SearchEvent(ActionEvent event) {
+    }
+
+    @FXML
+    private void SortByPrice(ActionEvent event) {
+    }
+
+    @FXML
+    private void DisplayReservationsFront(ActionEvent event) {
+    }
      
            
        
