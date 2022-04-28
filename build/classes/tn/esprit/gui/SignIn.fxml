@@ -11,7 +11,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="481.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.SignInController">
      <children>
-      <VBox prefHeight="481.0" prefWidth="600.0" style="-fx-border-color: #ff5a5a;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox fx:id="SignInBox" prefHeight="481.0" prefWidth="600.0" style="-fx-border-color: #ff5a5a;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
@@ -43,23 +43,40 @@
                   <Insets top="30.0" />
                </VBox.margin>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+            <VBox alignment="CENTER" prefHeight="107.0" prefWidth="598.0">
                <children>
-                  <Label text="password :" textFill="RED">
+                  <HBox alignment="CENTER" prefHeight="81.0" prefWidth="598.0">
+                     <children>
+                        <Label text="password :" textFill="RED">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
+                        </Label>
+                        <TextField fx:id="password">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <Label fx:id="EmailError" prefHeight="30.0" prefWidth="152.0" text="invalid credentials" textFill="#eb0000" underline="true" visible="false">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
                      <font>
-                        <Font size="24.0" />
+                        <Font size="19.0" />
                      </font>
-                     <padding>
-                        <Insets right="10.0" />
-                     </padding>
                   </Label>
-                  <TextField fx:id="password">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </TextField>
+                  <Label fx:id="forgetPassword" onMouseClicked="#onforgotpasswordclicked" prefHeight="17.0" prefWidth="104.0" text="Forgot Password ?" textFill="#004bf5" underline="true">
+                     <VBox.margin>
+                        <Insets left="320.0" />
+                     </VBox.margin>
+                  </Label>
                </children>
-            </HBox>
+            </VBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onSignUp" style="-fx-background-color: #7A8EFF; -fx-background-radius: 15px;" text="Sign Up" textAlignment="CENTER" textFill="WHITE">
@@ -79,7 +96,190 @@
             </HBox>
          </children>
       </VBox>
-      <Label fx:id="EmailError" layoutX="246.0" layoutY="280.0" text="invalid credentials" textFill="#eb0000" visible="false" />
+      <VBox fx:id="ForgottenPasswordBox" alignment="CENTER" layoutX="3.0" prefHeight="481.0" prefWidth="600.0" style="-fx-border-color: #ff5a5a;" visible="false">
+         <children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="62.0" prefWidth="311.0" text="Reset Password" textFill="#ff5a5a" underline="true">
+                     <font>
+                        <Font size="42.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <Label fx:id="errorLabelForgotPassword" alignment="CENTER" prefHeight="27.0" prefWidth="233.0" text="Error : Please type in a valid email" textFill="#f50000" underline="true" visible="false">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER" prefHeight="56.0" prefWidth="598.0">
+               <children>
+                  <Label text="email :" textFill="RED">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <padding>
+                        <Insets right="50.0" />
+                     </padding>
+                  </Label>
+                  <TextField fx:id="emailForgotPassword" style="-fx-border-radius: 10px;">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </TextField>
+               </children>
+               <VBox.margin>
+                  <Insets top="13.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox fx:id="CodeHbox" alignment="CENTER" prefHeight="56.0" prefWidth="598.0" visible="false">
+               <children>
+                  <Label text="Code :" textFill="RED">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <padding>
+                        <Insets right="50.0" />
+                     </padding>
+                  </Label>
+                  <TextField fx:id="CodeForgotPassword1" onKeyTyped="#onCodeInertedChanged" style="-fx-border-radius: 10px;">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox fx:id="NewPasswordHbox" alignment="CENTER" prefHeight="56.0" prefWidth="598.0" visible="false">
+               <children>
+                  <Label prefHeight="35.0" prefWidth="222.0" text="New Password :" textFill="RED">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="NewPasswordUser" style="-fx-border-radius: 10px;">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="BackForgotPasswordToSignIn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onBackFromForgotPasswordToSignIn" style="-fx-background-color: #7A8EFF; -fx-background-radius: 15px;" text="Back" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="40.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="SendEmailForgotPassword" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onSendEmailForgotPassword" style="-fx-background-color: #7A8EFF; -fx-background-radius: 15px;" text="Send Email" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox fx:id="VerificationCodeHbox" alignment="CENTER" prefHeight="481.0" prefWidth="603.0" style="-fx-border-color: #ff5a5a;" visible="false">
+         <children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="62.0" prefWidth="311.0" text="Insert Code :" textFill="#ff5a5a" underline="true">
+                     <font>
+                        <Font size="42.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <Label fx:id="errorLabelForgotPassword1" alignment="CENTER" prefHeight="27.0" prefWidth="233.0" text="Error : Please type in a valid email" textFill="#f50000" underline="true" visible="false">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER" prefHeight="56.0" prefWidth="598.0">
+               <children>
+                  <Label text="Code :" textFill="RED">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <padding>
+                        <Insets right="50.0" />
+                     </padding>
+                  </Label>
+                  <TextField fx:id="PhoneCode" style="-fx-border-radius: 10px;">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </TextField>
+               </children>
+               <VBox.margin>
+                  <Insets top="13.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox fx:id="CodeHbox1" alignment="CENTER" prefHeight="56.0" prefWidth="598.0" visible="false">
+               <children>
+                  <Label text="Code :" textFill="RED">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <padding>
+                        <Insets right="50.0" />
+                     </padding>
+                  </Label>
+                  <TextField fx:id="CodeForgotPassword11" onKeyTyped="#onCodeInertedChanged" style="-fx-border-radius: 10px;">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox fx:id="NewPasswordHbox1" alignment="CENTER" prefHeight="56.0" prefWidth="598.0" visible="false">
+               <children>
+                  <Label prefHeight="35.0" prefWidth="222.0" text="New Password :" textFill="RED">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="NewPasswordUser1" style="-fx-border-radius: 10px;">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="SignOutCode" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onSignOutFromCode" style="-fx-background-color: #7A8EFF; -fx-background-radius: 15px;" text="Back" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="40.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="SubmitverificationCode" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onSubmitVerificationCode" style="-fx-background-color: #7A8EFF; -fx-background-radius: 15px;" text="Submit" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
 
    </children>
     
