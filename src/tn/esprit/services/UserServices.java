@@ -24,6 +24,9 @@ import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
 
+import de.mkammerer.argon2.Argon2;
+import de.mkammerer.argon2.Argon2Factory;
+
 /*
 import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
@@ -72,27 +75,31 @@ public class UserServices implements IService<User> {
 
     public String SignIn(User p) {
 
-        String getrequete = "SELECT * FROM `user` where email=" + "'" + p.getEmail() + "'" + " and password=" + "'" + p.getPassword() + "'";
+        String getrequete = "SELECT * FROM `user` where email=" + "'" + p.getEmail() + "'";
+        Argon2 argon2jvm = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id, 16, 32);
 
         try {
             ste = cnx.createStatement();
             ResultSet rs = ste.executeQuery(getrequete);
 
             while (rs.next()) {
-                if (rs.getString("email").equals(p.getEmail()) && rs.getString("password").equals(p.getPassword())) {
-                    UserStaticSession user = new UserStaticSession(rs.getInt("id"),
-                            rs.getString("email"),
-                            rs.getString("usertag"),
-                            rs.getString("firstname"),
-                            rs.getString("lastname"),
-                            rs.getInt("phone_number"),
-                            rs.getString("password"),
-                            rs.getString("roles").substring(7, rs.getString("roles").length() - 2));
+                if (rs.getString("email").equals(p.getEmail())) {
 
-                    if (rs.getString("verification_code") != null) {
-                        return rs.getString("verification_code");
-                    } else {
-                        return "empty";
+                    if (argon2jvm.verify(rs.getString("password"), p.getPassword())) {
+                        UserStaticSession user = new UserStaticSession(rs.getInt("id"),
+                                rs.getString("email"),
+                                rs.getString("usertag"),
+                                rs.getString("firstname"),
+                                rs.getString("lastname"),
+                                rs.getInt("phone_number"),
+                                rs.getString("password"),
+                                rs.getString("roles").substring(7, rs.getString("roles").length() - 2));
+
+                        if (rs.getString("verification_code") != null) {
+                            return rs.getString("verification_code");
+                        } else {
+                            return "empty";
+                        }
                     }
 
                 }
@@ -143,11 +150,12 @@ public class UserServices implements IService<User> {
                 code)
                 .create();
 
-        //System.out.println(message.getSid());
+        Argon2 argon2jvm = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id, 16, 32);
+        String arg2pwd = argon2jvm.hash(10, 65536, 1, p.getPassword());
         try {
             pst = cnx.prepareStatement(requete);
             pst.setString(1, p.getEmail());
-            pst.setString(2, p.getPassword());
+            pst.setString(2, arg2pwd);
             pst.setString(3, value);
             pst.setString(4, p.getFirstname());
             pst.setString(5, p.getLastname());
@@ -398,10 +406,11 @@ public class UserServices implements IService<User> {
     public void SetNewPasswordReset(String Password, String id) {
 
         String requete = "UPDATE `USER` set password=? where id=?;";
-
+        Argon2 argon2jvm = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id, 16, 32);
+        String arg2pwd = argon2jvm.hash(10, 65536, 1, Password );
         try {
             pst = cnx.prepareStatement(requete);
-            pst.setString(1, Password);
+            pst.setString(1, arg2pwd);
             pst.setString(2, id);
 
             pst.executeUpdate();

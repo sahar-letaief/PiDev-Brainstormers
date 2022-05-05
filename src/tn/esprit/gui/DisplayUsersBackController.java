@@ -245,7 +245,7 @@ public class DisplayUsersBackController implements Initializable {
 
     private void LoadUsers() {
 
-        UsersList.clear();
+        /*UsersList.clear();
         fullNameCol.setCellValueFactory(new PropertyValueFactory<>("firstname"));
         emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
         passwordCol.setCellValueFactory(new PropertyValueFactory<>("password"));
@@ -334,7 +334,7 @@ public class DisplayUsersBackController implements Initializable {
         editCol.setCellFactory(cellFoctory);
         UserServices us = new UserServices();
         UsersList = us.displayUsers(UsersList);
-        UsersTable.setItems(UsersList);
+        UsersTable.setItems(UsersList);*/
 
     }
 
