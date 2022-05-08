@@ -136,7 +136,7 @@ public class DisplayEventsFrontController implements Initializable {
       public List<Evenement> getDataSearch() {
         List<Evenement> dataSearch = new ArrayList<>();
         dataSearch=es.FindEventByNameFront(this.searchlabel.getText());
-        System.out.println("hedhi sorted"+dataSearch);
+        System.out.println("hedhi by name"+dataSearch);
         Evenement e=new Evenement();
         e.setId(e.getId());
         e.setNameEvent(e.getNameEvent());
@@ -157,8 +157,6 @@ public class DisplayEventsFrontController implements Initializable {
         DateDebutLabel.setText(e.getDateDebut());
         DateFinLabel.setText(e.getDateFin());
         idLabel.setText(e.getId()+"");
-         nbPie=rs.ResPie(e.getId());
-        System.out.println("event pie "+nbPie);
          if( NbParticipants.getText().equals("0")){
             addRes.setVisible(false);
         }
@@ -168,7 +166,7 @@ public class DisplayEventsFrontController implements Initializable {
         try{
             
         
-        String filename=es.GenerateQrEvent(e);
+       String filename=es.GenerateQrEvent(e);
         System.out.println("filename lenaaa "+filename);
         Image image=new Image(getClass().getResourceAsStream("/tn/esprit/utils/img/"+filename));
         QrCode.setImage(image);
@@ -176,9 +174,12 @@ public class DisplayEventsFrontController implements Initializable {
         } catch(Exception ex){
             System.out.println("mafamesh qr");
         }
+  
+       
        
         chosenEventCard.setStyle("-fx-background-color: #DEEFBD" + ";\n" +
                 "    -fx-background-radius: 30;");
+        scroll.setStyle("-fx-background-color: #DEEFBD" );
     }
    @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -313,7 +314,7 @@ public class DisplayEventsFrontController implements Initializable {
          //System.out.println("clear events "+events);
        events3.addAll(getDataSearch());
          System.out.println("search"+events3);
-       if(this.searchlabel.getText().equals("")){
+       if(this.searchlabel.getText()==" "){
            events.addAll(getData());
        }
        else{

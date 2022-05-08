@@ -334,7 +334,7 @@ public class EvenementService  {
               String eventName="event name: "+event.getNameEvent()+"\n"+"event place: "+event.getPlaceEvent()+"\n"+"event price: "+event.getPriceEvent()+"\n";
               ByteArrayOutputStream out= QRCode.from(eventName).to(ImageType.JPG).stream();
               String filename=event.getNameEvent()+"_QrCode.jpg";
-              File f=new File("C:\\Users\\WIKI\\Desktop\\PI\\desktop\\src\\tn\\esprit\\utils\\img\\"+filename);
+              File f=new File("src\\tn\\esprit\\utils\\img\\"+filename);
                FileOutputStream fos=new FileOutputStream(f);
                fos.write(out.toByteArray());
                fos.flush();

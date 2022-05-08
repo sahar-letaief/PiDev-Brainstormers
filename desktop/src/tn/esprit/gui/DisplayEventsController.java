@@ -108,36 +108,14 @@ public class DisplayEventsController implements Initializable {
     @FXML
     private Button print;
     @FXML
-    private ImageView imgMode;
-    @FXML
     private AnchorPane parent;
-    @FXML
-    private Button buttondarklight;
+
     /**
      * Initializes the controller class.
      */
     
-    @FXML
-    public void ChangeMode(ActionEvent event){
-        isLightMode=!isLightMode;
-        if(isLightMode){
-            setLightMode();
-        }else{
-            setDarkMode();
-        }
-    }
-    private void setLightMode(){
-        parent.getStylesheets().remove("/tn/esprit/utils/styles/darkmode.css");
-        parent.getStylesheets().add("/tn/esprit/utils/styles/lightmode.css");
-        Image image=new Image("tn/esprit/utils/img/dark-mode.png");
-        imgMode.setImage(image);
-    }
-     private void setDarkMode(){
-        parent.getStylesheets().remove("/tn/esprit/utils/styles/lightmode.css");
-        parent.getStylesheets().add("/tn/esprit/utils/styles/darkmode.css");
-        Image image=new Image("/tn/esprit/utils/img/light-mode.png");
-        imgMode.setImage(image);
-    }
+   
+   
     
     
     @Override
@@ -145,8 +123,8 @@ public class DisplayEventsController implements Initializable {
         tableviewEvents.setFocusTraversable(false);
         getEvents();
         idLabel.setVisible(false);
-        imgMode.setVisible(false);
-        buttondarklight.setVisible(false);
+       
+       
        // BeginsAtdate.setValue(LocalDate.now());
     }    
     public void getEvents(){
@@ -352,10 +330,11 @@ public class DisplayEventsController implements Initializable {
 
     @FXML
     private void searchEvent(ActionEvent event) {
-        ObservableList<Evenement> ob=es.FindEventByName(this.SearchEvent.getText());
-        
+        ObservableList<Evenement> ob=es.FindEventByName(this.SearchEvent.getText()); 
         System.out.println(ob);
         tableviewEvents.setItems(ob); 
+        
+     
     }
 
     @FXML
