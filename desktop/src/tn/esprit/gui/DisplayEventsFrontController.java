@@ -93,8 +93,6 @@ public class DisplayEventsFrontController implements Initializable {
     private TextField searchlabel;
     @FXML
     private Button addRes;
-    @FXML
-    private Button Stat;
     
    
     
@@ -431,14 +429,16 @@ public class DisplayEventsFrontController implements Initializable {
         }
     }
 
+    
+
     @FXML
-    private void Stat(ActionEvent event) {
-          FXMLLoader Loader = new FXMLLoader(getClass().getResource("DisplayReservationFront.fxml"));
+    private void showEventsFront(ActionEvent event) {
+         FXMLLoader Loader = new FXMLLoader(getClass().getResource("DisplayEventsFront.fxml"));
 
         try {
             Parent root = Loader.load();
-            DisplayReservationFrontController C = Loader.getController();
-            C.getRes();
+            DisplayEventsFrontController C = Loader.getController();
+            C.getData();
             Scene productDetailScene = new Scene(root);
             Stage cineStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             cineStage.setScene(productDetailScene);

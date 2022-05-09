@@ -346,6 +346,23 @@ public class DisplayEventsController implements Initializable {
             alert.setContentText("Check for the pdf !!");
             alert.showAndWait();
     }
+
+    @FXML
+    private void showEventsBack(ActionEvent event) {
+        FXMLLoader Loader = new FXMLLoader(getClass().getResource("DisplayEvents.fxml"));
+
+        try {
+            Parent root = Loader.load();
+            DisplayEventsController C = Loader.getController();
+           C.getEvents();
+            Scene productDetailScene = new Scene(root);
+            Stage cineStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            cineStage.setScene(productDetailScene);
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
         
         
     

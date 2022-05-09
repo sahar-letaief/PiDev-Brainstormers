@@ -46,8 +46,6 @@ public class DisplayReservationFrontController implements Initializable {
     private TableColumn<Reservation, String> Reservation_date1;
     @FXML
     private Button deleteReservation;
-    @FXML
-    private Button eventsback;
 
     /**
      * Initializes the controller class.
@@ -94,7 +92,7 @@ public class DisplayReservationFrontController implements Initializable {
             DisplayEventsFrontController C = Loader.getController();
             List<Evenement> data = new ArrayList<>();
             data=C.getData();
-          /********************** ne9setni haja************/
+          
             Scene productDetailScene = new Scene(root);
             Stage cineStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             cineStage.setScene(productDetailScene);

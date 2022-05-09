@@ -84,6 +84,7 @@ public class DisplayReservationsController implements Initializable {
             System.out.println(ex.getMessage());
         }
     }
-    }
+
+}
     
 
