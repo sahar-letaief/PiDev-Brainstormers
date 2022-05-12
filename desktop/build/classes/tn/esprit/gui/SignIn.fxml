@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="622.0" prefWidth="903.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.SignInController">
+     <children>
+      <HBox fx:id="SignInAnchor" prefHeight="642.0" prefWidth="913.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="516.0" prefWidth="398.0" style="-fx-background-color: #0b0c2a;">
+               <children>
+                  <ImageView fitHeight="166.0" fitWidth="398.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/unnamed%20(1)%20(1).png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </VBox>
+            <VBox fx:id="SignInBox" alignment="CENTER" prefHeight="642.0" prefWidth="516.0" style="-fx-border-color: #ff5a5a;">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="125.0" prefWidth="490.0">
+                     <children>
+                        <FontAwesomeIconView fill="#e53637" glyphName="USERS" size="50" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="34.0" prefWidth="234.0" text="User Login" textFill="#0598ff" underline="true">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="8.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <FontAwesomeIconView fill="#e53637" glyphName="USER" size="30">
+                           <HBox.margin>
+                              <Insets right="15.0" />
+                           </HBox.margin>
+                        </FontAwesomeIconView>
+                        <TextField fx:id="email" promptText="Email" style="-fx-border-color: #0598ff; -fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-radius: 5px;">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="50.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <VBox alignment="CENTER" prefHeight="107.0" prefWidth="598.0">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="81.0" prefWidth="598.0">
+                           <children>
+                              <FontAwesomeIconView fill="#e53637" glyphName="LOCK" size="30">
+                                 <HBox.margin>
+                                    <Insets right="15.0" />
+                                 </HBox.margin>
+                              </FontAwesomeIconView>
+                              <PasswordField fx:id="password" prefHeight="44.0" prefWidth="299.0" promptText="Password" style="-fx-border-color: #0598ff; -fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-radius: 5px;">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </PasswordField>
+                           </children>
+                        </HBox>
+                        <Label fx:id="EmailError" prefHeight="30.0" prefWidth="152.0" text="invalid credentials" textFill="#eb0000" underline="true" visible="false">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onSignUp" style="-fx-background-color: #e53637; -fx-background-radius: 15px;" text="Sign Up" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets right="40.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onLogin" style="-fx-background-color: #1C1E4F; -fx-background-radius: 15px;" text="Sign In" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <Label fx:id="forgetPassword" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#onforgotpasswordclicked" prefHeight="40.0" prefWidth="256.0" text="Forgot Your Password ?" textFill="#e53637">
+                     <VBox.margin>
+                        <Insets top="70.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox fx:id="ForgetPasswordAnchor" layoutX="-5.0" prefHeight="642.0" prefWidth="917.0" visible="false">
+         <children>
+            <VBox alignment="CENTER" prefHeight="632.0" prefWidth="377.0" style="-fx-background-color: #0b0c2a;">
+               <children>
+                  <ImageView fitHeight="166.0" fitWidth="398.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/unnamed%20(1)%20(1).png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </VBox>
+            <VBox fx:id="ForgottenPasswordBox" alignment="CENTER" prefHeight="642.0" prefWidth="529.0" style="-fx-border-color: #ff5a5a;">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="125.0" prefWidth="492.0">
+                     <children>
+                        <FontAwesomeIconView fill="#e53637" glyphName="KEY" size="50" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="34.0" prefWidth="234.0" text="Reset Password" textFill="#0598ff" underline="true">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="8.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </VBox>
+                  <Label fx:id="errorLabelForgotPassword" alignment="CENTER" prefHeight="27.0" prefWidth="233.0" text="Error : Please type in a valid email" textFill="#f50000" underline="true" visible="false">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <HBox fx:id="emailHboxResetPassword" alignment="CENTER" prefHeight="56.0" prefWidth="598.0">
+                     <children>
+                        <FontAwesomeIconView fill="#e53637" glyphName="USER" size="30">
+                           <HBox.margin>
+                              <Insets right="15.0" />
+                           </HBox.margin>
+                        </FontAwesomeIconView>
+                        <TextField fx:id="emailForgotPassword" promptText="Email" style="-fx-border-color: #0598ff; -fx-background-color: transparent; -fx-border-width: 0px 0px 2px 0px; -fx-border-radius: 5px;">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox fx:id="CodeHbox" alignment="CENTER" prefHeight="56.0" prefWidth="598.0" visible="false">
+                     <children>
+                        <FontAwesomeIconView fill="#e53637" glyphName="KEY" size="30">
+                           <HBox.margin>
+                              <Insets right="15.0" />
+                           </HBox.margin>
+                        </FontAwesomeIconView>
+                        <TextField fx:id="CodeForgotPassword1" onKeyTyped="#onCodeInertedChanged" promptText="Verification Code" style="-fx-border-radius: 5px; -fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox fx:id="NewPasswordHbox" alignment="CENTER" prefHeight="56.0" prefWidth="598.0" visible="false">
+                     <children>
+                        <FontAwesomeIconView fill="#e53637" glyphName="LOCK" size="30">
+                           <HBox.margin>
+                              <Insets right="15.0" />
+                           </HBox.margin>
+                        </FontAwesomeIconView>
+                        <PasswordField fx:id="NewPasswordUser" promptText="New Password" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-radius: 5px; -fx-border-width: 0px 0px 2px 0px;">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </PasswordField>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="30.0" top="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="BackForgotPasswordToSignIn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onBackFromForgotPasswordToSignIn" style="-fx-background-color: #e53637; -fx-background-radius: 15px;" text="Back" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets right="40.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="SendEmailForgotPassword" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onSendEmailForgotPassword" style="-fx-background-color: #1C1E4F; -fx-background-radius: 15px;" text="Send Email" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="50.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox fx:id="ResetPasswordAnchor" prefHeight="642.0" prefWidth="913.0" visible="false">
+         <children>
+            <VBox alignment="CENTER" prefHeight="622.0" prefWidth="812.0" style="-fx-background-color: #0b0c2a;">
+               <children>
+                  <ImageView fitHeight="166.0" fitWidth="398.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/unnamed%20(1)%20(1).png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </VBox>
+            <VBox fx:id="VerificationCodeHbox" alignment="CENTER" prefHeight="622.0" prefWidth="894.0" style="-fx-border-color: #ff5a5a;">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="125.0" prefWidth="490.0">
+                     <children>
+                        <FontAwesomeIconView fill="#e53637" glyphName="USERS" size="50" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="34.0" prefWidth="234.0" text="Activation Code" textFill="#0598ff" underline="true">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="8.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </VBox>
+                  <HBox alignment="CENTER" prefHeight="56.0" prefWidth="598.0">
+                     <children>
+                        <FontAwesomeIconView fill="#e53637" glyphName="KEY" size="30">
+                           <HBox.margin>
+                              <Insets right="15.0" />
+                           </HBox.margin>
+                        </FontAwesomeIconView>
+                        <TextField fx:id="PhoneCode" style="-fx-border-radius: 5px; -fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="13.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="SignOutCode" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onSignOutFromCode" style="-fx-background-color: #e53637; -fx-background-radius: 15px;" text="Back" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets right="40.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="SubmitverificationCode" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onSubmitVerificationCode" style="-fx-background-color: #1C1E4F; -fx-background-radius: 15px;" text="Submit" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox fx:id="ChoicePanel" prefHeight="642.0" prefWidth="913.0" visible="false">
+         <children>
+            <VBox alignment="CENTER" prefHeight="622.0" prefWidth="812.0" style="-fx-background-color: #0b0c2a;">
+               <children>
+                  <ImageView fitHeight="166.0" fitWidth="398.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/unnamed%20(1)%20(1).png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </VBox>
+            <VBox fx:id="VerificationCodeHbox1" alignment="CENTER" prefHeight="622.0" prefWidth="894.0" style="-fx-border-color: #ff5a5a;">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="125.0" prefWidth="490.0">
+                     <children>
+                        <FontAwesomeIconView fill="#e53637" glyphName="USERS" size="50" />
+                        <Label fx:id="displaylabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="34.0" prefWidth="234.0" text="WELCOME" textFill="#0598ff" underline="true">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="8.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </VBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="FrontPanelButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onFrontPanelButton" style="-fx-background-color: #e53637; -fx-background-radius: 15px;" text="Front Panel" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets right="40.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="BackPanelButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onBackPanelButton" style="-fx-background-color: #1C1E4F; -fx-background-radius: 15px;" text="Back Panel" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+
+   </children>
+    
+</AnchorPane>

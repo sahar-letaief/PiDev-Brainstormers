@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" fx:id="show" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #242424;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ListOfProductController">
+   <children>
+      <Text fill="#cd2323" layoutX="662.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="List Of Products" textAlignment="CENTER" wrappingWidth="255.69842529296875">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="28.0" />
+         </font>
+      </Text>
+      <Text layoutX="238.0" layoutY="364.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="124.5367431640625" />
+      <TableView fx:id="tableProd" layoutX="317.0" layoutY="283.0" opacity="0.73" prefHeight="356.0" prefWidth="945.0" style="-fx-background-color: white;">
+         <columns>
+            <TableColumn fx:id="refProd" prefWidth="146.3999900817871" text="Reference" />
+            <TableColumn fx:id="name" prefWidth="167.0" text="Product Name" />
+            <TableColumn fx:id="descProd" prefWidth="226.0" text="Description" />
+            <TableColumn fx:id="stockProd" prefWidth="111.0" text="Stock" />
+            <TableColumn fx:id="imgProd" prefWidth="172.0" text="Image" />
+            <TableColumn fx:id="priceProd" prefWidth="121.0" text="Price" />
+         </columns>
+      </TableView>
+      <Button fx:id="supp" layoutX="1039.0" layoutY="652.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="26.0" prefWidth="103.0" style="-fx-background-color: #E74856;" styleClass="add1-btn" text="Delete" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Button>
+      <Button fx:id="mod" layoutX="916.0" layoutY="653.0" mnemonicParsing="false" onAction="#modifier" prefHeight="26.0" prefWidth="103.0" style="-fx-background-color: orange;" styleClass="add1-btn" text="Edit" textFill="#fffefe">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Button>
+      <TextField fx:id="filterFieldProd" layoutX="317.0" layoutY="252.0" promptText="search" />
+      <Button fx:id="addProd" layoutX="1158.0" layoutY="653.0" mnemonicParsing="false" onAction="#btnAddProd" prefHeight="26.0" prefWidth="103.0" style="-fx-background-color: #00B294;" styleClass="add1-btn" text="Add" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Button>
+      <TextField fx:id="nbrProd" layoutX="1132.0" layoutY="252.0" prefHeight="20.0" prefWidth="130.0" />
+      <ImageView fx:id="pdf" fitHeight="62.0" fitWidth="57.0" layoutX="317.0" layoutY="651.0" onMouseClicked="#exportToPdf" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/pdf.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="MenuClosefront1" layoutX="1269.0" layoutY="446.0" mnemonicParsing="false" onAction="#btnFront" style="-fx-background-color: #b9caea;" text="Show" />
+      <VBox layoutX="-2.0" prefHeight="768.0" prefWidth="300.0" style="-fx-background-color: #0b0c2a;">
+         <children>
+            <ImageView fitHeight="103.0" fitWidth="267.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/unnamed%20(1)%20(1).png" />
+               </image>
+            </ImageView>
+            <HBox alignment="CENTER_LEFT" onMouseClicked="#goToList2" prefHeight="53.0" prefWidth="176.0" styleClass="sidebarItem">
+               <children>
+                  <ImageView fitHeight="56.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/panier.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="btnProducts" onMouseClicked="#goTOList" prefHeight="53.0" prefWidth="71.0" text="Products" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets left="30.0" top="10.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="5.0" top="5.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" onMouseClicked="#goListCat" prefHeight="53.0" prefWidth="176.0" styleClass="sidebarItem">
+               <children>
+                  <ImageView fitHeight="56.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/abo.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="goCat" onMouseClicked="#goListCat" prefHeight="53.0" prefWidth="73.0" text="Categories" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets left="30.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="5.0" top="5.0" />
+               </padding>
+            </HBox>
+            <HBox fx:id="UsersBack" alignment="CENTER_LEFT" onMouseClicked="#onUsersBack" prefHeight="53.0" prefWidth="176.0" styleClass="sidebarItem">
+               <children>
+                  <ImageView fitHeight="56.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/client.PNG" />
+                     </image>
+                  </ImageView>
+                  <Label prefHeight="56.0" prefWidth="43.0" text="User" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets left="30.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="5.0" top="5.0" />
+               </padding>
+            </HBox>
+            <HBox fx:id="order" alignment="CENTER_LEFT" onMouseClicked="#onorder" prefHeight="53.0" prefWidth="176.0" styleClass="sidebarItem">
+               <children>
+                  <ImageView fitHeight="56.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/client.PNG" />
+                     </image>
+                  </ImageView>
+                  <Label prefHeight="56.0" prefWidth="43.0" text="order" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" top="5.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets left="30.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox fx:id="commentsback" alignment="CENTER_LEFT" onMouseClicked="#oncomments" prefHeight="53.0" prefWidth="176.0" styleClass="sidebarItem">
+               <children>
+                  <ImageView fitHeight="56.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/client.PNG" />
+                     </image>
+                  </ImageView>
+                  <Label prefHeight="52.0" prefWidth="62.0" text="comments" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" top="5.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets left="30.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox fx:id="tagsback" alignment="CENTER_LEFT" onMouseClicked="#ontags" prefHeight="53.0" prefWidth="176.0" styleClass="sidebarItem">
+               <children>
+                  <ImageView fitHeight="56.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/client.PNG" />
+                     </image>
+                  </ImageView>
+                  <Label prefHeight="56.0" prefWidth="43.0" text="tags" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" top="5.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets left="30.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox fx:id="eventsback" alignment="CENTER_LEFT" onMouseClicked="#ontags" prefHeight="53.0" prefWidth="176.0" styleClass="sidebarItem">
+               <children>
+                  <ImageView fitHeight="56.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/client.PNG" />
+                     </image>
+                  </ImageView>
+                  <Label prefHeight="56.0" prefWidth="43.0" text="events" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" top="5.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets left="30.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox fx:id="reservationBack" alignment="CENTER_LEFT" onMouseClicked="#onreservation" prefHeight="53.0" prefWidth="176.0" styleClass="sidebarItem">
+               <children>
+                  <ImageView fitHeight="56.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/client.PNG" />
+                     </image>
+                  </ImageView>
+                  <Label prefHeight="52.0" prefWidth="73.0" text="reservations" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" top="5.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets left="30.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox fx:id="SignOutBack" alignment="CENTER_LEFT" onMouseClicked="#onSignOut" prefHeight="53.0" prefWidth="176.0" styleClass="sidebarItem">
+               <children>
+                  <ImageView fitHeight="56.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/client.PNG" />
+                     </image>
+                  </ImageView>
+                  <Label prefHeight="52.0" prefWidth="73.0" text="Sign out" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" top="5.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets left="30.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="10.0" top="10.0" />
+         </padding>
+      </VBox>
+   </children>
+</AnchorPane>

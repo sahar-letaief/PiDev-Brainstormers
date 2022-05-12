@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package tn.esprit.gui;
 
@@ -9,31 +8,24 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 /**
  *
- * @author WIKI
+ * @author sami
  */
 public class MainEventsFront extends Application {
-    
-   
-     public static final String CURRENCY = "DT";
-     @Override
+
+
+    @Override
     public void start(Stage primaryStage) {
-          try {
+        try {
             Parent root = FXMLLoader.load(getClass().getResource("DisplayEventsFront.fxml"));
-            
-           
             Scene scene = new Scene(root);
-            
             primaryStage.setTitle("Display events front");
             primaryStage.setScene(scene);
             primaryStage.show();
@@ -48,5 +40,5 @@ public class MainEventsFront extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+
 }

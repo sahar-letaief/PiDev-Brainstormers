@@ -8,6 +8,7 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -18,7 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" style="-fx-background-color: #242424;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.DisplayEventsFrontController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #242424;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.DisplayEventsFrontController">
    <children>
       <HBox alignment="CENTER" prefHeight="89.0" prefWidth="1315.0">
          <children>
@@ -39,134 +40,280 @@
       </HBox>
       <BorderPane layoutX="6.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <left>
-            <VBox prefHeight="200.0" prefWidth="435.0" styleClass="right-bar" BorderPane.alignment="CENTER">
+            <HBox BorderPane.alignment="CENTER_RIGHT">
                <children>
-                  <Pane prefHeight="57.0" prefWidth="435.0" VBox.vgrow="ALWAYS">
+                  <VBox prefHeight="768.0" prefWidth="300.0" style="-fx-background-color: #0b0c2a;">
                      <children>
-                        <Pane layoutX="-62.0" layoutY="24.0" prefHeight="65.0" prefWidth="393.0" />
-                     </children></Pane>
-                  <VBox fx:id="chosenEventCard" alignment="CENTER" prefHeight="548.0" prefWidth="335.0">
-                     <VBox.margin>
-                        <Insets left="50.0" right="50.0" />
-                     </VBox.margin>
+                        <ImageView fitHeight="103.0" fitWidth="267.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/unnamed%20(1)%20(1).png" />
+                           </image>
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                        </ImageView>
+                        <HBox fx:id="UsersBack" alignment="CENTER_LEFT" onMouseClicked="#onUsersBack" prefHeight="53.0" prefWidth="176.0" styleClass="sidebarItem">
+                           <children>
+                              <ImageView fitHeight="56.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/client.PNG" />
+                                 </image>
+                              </ImageView>
+                              <Label prefHeight="56.0" prefWidth="43.0" text="Profile" textFill="WHITE">
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                           <VBox.margin>
+                              <Insets left="30.0" />
+                           </VBox.margin>
+                           <padding>
+                              <Insets bottom="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" onMouseClicked="#goToList2" prefHeight="53.0" prefWidth="176.0" styleClass="sidebarItem">
+                           <children>
+                              <ImageView fitHeight="56.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/panier.png" />
+                                 </image>
+                              </ImageView>
+                              <Label fx:id="btnProducts" onMouseClicked="#goTOList" prefHeight="53.0" prefWidth="71.0" text="Products" textFill="WHITE">
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                           <VBox.margin>
+                              <Insets left="30.0" top="10.0" />
+                           </VBox.margin>
+                           <padding>
+                              <Insets bottom="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                        <HBox fx:id="order" alignment="CENTER_LEFT" onMouseClicked="#onorder" prefHeight="53.0" prefWidth="176.0" styleClass="sidebarItem">
+                           <children>
+                              <ImageView fitHeight="56.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/client.PNG" />
+                                 </image>
+                              </ImageView>
+                              <Label prefHeight="56.0" prefWidth="43.0" text="order" textFill="WHITE">
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" top="5.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets left="30.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox fx:id="eventsback" alignment="CENTER_LEFT" onMouseClicked="#onevents" prefHeight="53.0" prefWidth="176.0" styleClass="sidebarItem">
+                           <children>
+                              <ImageView fitHeight="56.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/client.PNG" />
+                                 </image>
+                              </ImageView>
+                              <Label prefHeight="56.0" prefWidth="43.0" text="events" textFill="WHITE">
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" top="5.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets left="30.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox fx:id="reservationBack" alignment="CENTER_LEFT" onMouseClicked="#onreservation" prefHeight="53.0" prefWidth="176.0" styleClass="sidebarItem">
+                           <children>
+                              <ImageView fitHeight="56.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/client.PNG" />
+                                 </image>
+                              </ImageView>
+                              <Label prefHeight="52.0" prefWidth="73.0" text="reservations" textFill="WHITE">
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" top="5.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets left="30.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox fx:id="SignOutBack" alignment="CENTER_LEFT" onMouseClicked="#onSignOut" prefHeight="53.0" prefWidth="176.0" styleClass="sidebarItem">
+                           <children>
+                              <ImageView fitHeight="56.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/client.PNG" />
+                                 </image>
+                              </ImageView>
+                              <Label prefHeight="52.0" prefWidth="73.0" text="Sign out" textFill="WHITE">
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" top="5.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets left="30.0" />
+                           </VBox.margin>
+                        </HBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" top="10.0" />
+                     </padding>
+                  </VBox>
+                  <VBox fillWidth="false" prefHeight="810.0" prefWidth="392.0" styleClass="right-bar">
                      <children>
-                        <VBox alignment="TOP_CENTER" prefHeight="268.0" prefWidth="335.0">
+                        <Pane prefHeight="57.0" prefWidth="435.0" VBox.vgrow="ALWAYS">
                            <children>
-                              <Label fx:id="EventNameLablel" alignment="CENTER" contentDisplay="CENTER" prefHeight="63.0" prefWidth="335.0" textAlignment="CENTER" textFill="#cd6262">
-                                 <font>
-                                    <Font name="Berlin Sans FB" size="36.0" />
-                                 </font>
-                              </Label>
-                              <Separator prefHeight="21.0" prefWidth="335.0" />
-                              <ImageView fx:id="QrCode" fitHeight="187.0" fitWidth="219.0" pickOnBounds="true" preserveRatio="true" x="50.0" y="50.0">
-                                 <viewport>
-                                    <Rectangle2D minX="50.0" width="200.0" />
-                                 </viewport></ImageView>
+                              <Pane layoutX="-62.0" layoutY="24.0" prefHeight="65.0" prefWidth="393.0" />
                            </children>
-                        </VBox>
-                        <HBox prefHeight="60.0" prefWidth="335.0">
-                           <children>
-                              <Label fx:id="EventPriceLabel" alignment="CENTER" prefHeight="55.0" prefWidth="324.0">
-                                 <font>
-                                    <Font name="Cambria" size="36.0" />
-                                 </font>
-                              </Label>
-                           </children>
+                        </Pane>
+                        <VBox fx:id="chosenEventCard" alignment="CENTER" prefHeight="548.0" prefWidth="335.0">
                            <VBox.margin>
-                              <Insets left="20.0" top="30.0" />
-                           </VBox.margin>
-                        </HBox>
-                        <HBox alignment="CENTER" prefHeight="53.0" prefWidth="335.0">
-                           <children>
-                              <Label fx:id="EventPlaceLabel" alignment="CENTER" prefHeight="53.0" prefWidth="167.0">
-                                 <font>
-                                    <Font name="Berlin Sans FB Demi Bold" size="32.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                           <VBox.margin>
-                              <Insets top="20.0" />
-                           </VBox.margin>
-                        </HBox>
-                        <HBox alignment="CENTER" prefHeight="45.0" prefWidth="200.0">
-                           <VBox.margin>
-                              <Insets bottom="20.0" top="20.0" />
+                              <Insets left="50.0" right="50.0" />
                            </VBox.margin>
                            <children>
-                              <Separator prefHeight="0.0" prefWidth="118.0" />
-                              <Label alignment="CENTER" prefHeight="41.0" prefWidth="242.0" text="Participants left !!">
-                                 <font>
-                                    <Font name="Berlin Sans FB" size="24.0" />
-                                 </font>
-                              </Label>
-                              <Separator prefHeight="0.0" prefWidth="118.0" />
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER" prefHeight="53.0" prefWidth="335.0">
-                           <children>
-                              <Label fx:id="NbParticipants" alignment="CENTER" contentDisplay="CENTER" prefHeight="31.0" prefWidth="91.0" textAlignment="CENTER" textFill="#dd4141">
-                                 <font>
-                                    <Font name="Berlin Sans FB" size="28.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
-                           <children>
-                              <VBox prefHeight="116.0" prefWidth="335.0">
+                              <VBox alignment="TOP_CENTER" prefHeight="268.0" prefWidth="335.0">
                                  <children>
-                                    <HBox prefHeight="50.0" prefWidth="335.0">
-                                       <children>
-                                          <Label alignment="CENTER" prefHeight="40.0" prefWidth="173.0" text="   Begins at">
-                                             <font>
-                                                <Font name="Berlin Sans FB Demi Bold" size="17.0" />
-                                             </font>
-                                          </Label>
-                                          <Label fx:id="DateDebutLabel" alignment="CENTER" prefHeight="50.0" prefWidth="171.0">
-                                             <font>
-                                                <Font name="Berlin Sans FB" size="18.0" />
-                                             </font>
-                                          </Label>
-                                       </children>
-                                    </HBox>
-                                    <Separator prefHeight="12.0" prefWidth="335.0" />
-                                    <HBox prefHeight="56.0" prefWidth="335.0">
-                                       <children>
-                                          <Label alignment="CENTER" prefHeight="44.0" prefWidth="165.0" text="  Ends at">
-                                             <font>
-                                                <Font name="Berlin Sans FB Demi Bold" size="17.0" />
-                                             </font>
-                                          </Label>
-                                          <Label fx:id="DateFinLabel" alignment="CENTER" prefHeight="51.0" prefWidth="171.0">
-                                             <font>
-                                                <Font name="Berlin Sans FB" size="18.0" />
-                                             </font>
-                                          </Label>
-                                       </children>
-                                    </HBox>
+                                    <Label fx:id="EventNameLablel" alignment="CENTER" contentDisplay="CENTER" prefHeight="63.0" prefWidth="335.0" textAlignment="CENTER" textFill="#cd6262">
+                                       <font>
+                                          <Font name="Berlin Sans FB" size="36.0" />
+                                       </font>
+                                    </Label>
+                                    <Separator prefHeight="21.0" prefWidth="335.0" />
+                                    <ImageView fx:id="QrCode" fitHeight="187.0" fitWidth="219.0" pickOnBounds="true" preserveRatio="true" x="50.0" y="50.0">
+                                       <viewport>
+                                          <Rectangle2D minX="50.0" width="200.0" />
+                                       </viewport>
+                                    </ImageView>
                                  </children>
                               </VBox>
+                              <HBox prefHeight="60.0" prefWidth="335.0">
+                                 <children>
+                                    <Label fx:id="EventPriceLabel" alignment="CENTER" prefHeight="55.0" prefWidth="324.0">
+                                       <font>
+                                          <Font name="Cambria" size="36.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets left="20.0" top="30.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="53.0" prefWidth="335.0">
+                                 <children>
+                                    <Label fx:id="EventPlaceLabel" alignment="CENTER" prefHeight="53.0" prefWidth="167.0">
+                                       <font>
+                                          <Font name="Berlin Sans FB Demi Bold" size="32.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="45.0" prefWidth="200.0">
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" top="20.0" />
+                                 </VBox.margin>
+                                 <children>
+                                    <Separator prefHeight="0.0" prefWidth="118.0" />
+                                    <Label alignment="CENTER" prefHeight="41.0" prefWidth="242.0" text="Participants left !!">
+                                       <font>
+                                          <Font name="Berlin Sans FB" size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <Separator prefHeight="0.0" prefWidth="118.0" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="53.0" prefWidth="335.0">
+                                 <children>
+                                    <Label fx:id="NbParticipants" alignment="CENTER" contentDisplay="CENTER" prefHeight="31.0" prefWidth="91.0" textAlignment="CENTER" textFill="#dd4141">
+                                       <font>
+                                          <Font name="Berlin Sans FB" size="28.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <VBox prefHeight="116.0" prefWidth="335.0">
+                                       <children>
+                                          <HBox prefHeight="50.0" prefWidth="335.0">
+                                             <children>
+                                                <Label alignment="CENTER" prefHeight="40.0" prefWidth="173.0" text="   Begins at">
+                                                   <font>
+                                                      <Font name="Berlin Sans FB Demi Bold" size="17.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="DateDebutLabel" alignment="CENTER" prefHeight="50.0" prefWidth="171.0">
+                                                   <font>
+                                                      <Font name="Berlin Sans FB" size="18.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <Separator prefHeight="12.0" prefWidth="335.0" />
+                                          <HBox prefHeight="56.0" prefWidth="335.0">
+                                             <children>
+                                                <Label alignment="CENTER" prefHeight="44.0" prefWidth="165.0" text="  Ends at">
+                                                   <font>
+                                                      <Font name="Berlin Sans FB Demi Bold" size="17.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="DateFinLabel" alignment="CENTER" prefHeight="51.0" prefWidth="171.0">
+                                                   <font>
+                                                      <Font name="Berlin Sans FB" size="18.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <Button fx:id="moreDetails" mnemonicParsing="false" onAction="#moreDetails" prefHeight="25.0" prefWidth="271.0" style="-fx-background-color: #02e888;" text="More Details">
+                                 <font>
+                                    <Font name="Cantarell Regular" size="17.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="addRes" mnemonicParsing="false" onAction="#AddReservation" prefHeight="50.0" prefWidth="270.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: #daaeeb;" styleClass="add-btn" text="ADD RESERVATION">
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" top="30.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Button>
                            </children>
-                        </HBox>
-                        <Button fx:id="addRes" mnemonicParsing="false" onAction="#AddReservation" prefHeight="50.0" prefWidth="270.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: #daaeeb;" styleClass="add-btn" text="ADD RESERVATION">
-                           <VBox.margin>
-                              <Insets bottom="20.0" top="30.0" />
-                           </VBox.margin>
-                           <font>
-                              <Font name="System Bold" size="18.0" />
-                           </font>
-                        </Button>
+                           <styleClass>
+                              <String fx:value="chosen-fruit-card" />
+                              <String fx:value="shadow" />
+                           </styleClass>
+                        </VBox>
                      </children>
-                     <styleClass>
-                        <String fx:value="chosen-fruit-card" />
-                        <String fx:value="shadow" />
-                     </styleClass>
                   </VBox>
                </children>
-            </VBox>
+            </HBox>
          </left>
          <center>
-            <VBox prefHeight="810.0" prefWidth="838.0" BorderPane.alignment="CENTER">
+            <VBox prefHeight="810.0" prefWidth="809.0" BorderPane.alignment="CENTER">
                <children>
                   <HBox alignment="CENTER" prefHeight="65.0" prefWidth="200.0">
                      <VBox.margin>
@@ -213,12 +360,12 @@
                            <children>
                               <Button fx:id="sort" mnemonicParsing="false" onAction="#SortByPrice" prefHeight="30.0" prefWidth="159.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: #FFA726;" text="SORT BY PRICE">
                                  <font>
-                                    <Font name="System Bold" size="18.0" />
+                                    <Font name="Arial" size="14.0" />
                                  </font>
                               </Button>
                               <Button fx:id="MyReservations" mnemonicParsing="false" onAction="#DisplayReservationsFront" prefHeight="36.0" prefWidth="225.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: #4DB6AC;" text="MY RESERVATIONS">
                                  <font>
-                                    <Font name="System Bold" size="18.0" />
+                                    <Font name="Arial" size="14.0" />
                                  </font>
                               </Button>
                            </children>
@@ -229,9 +376,9 @@
                         <Insets left="20.0" right="20.0" top="10.0" />
                      </VBox.margin>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="552.0" prefWidth="880.0" VBox.vgrow="ALWAYS">
+                  <HBox alignment="CENTER" prefHeight="635.0" prefWidth="945.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <ScrollPane fx:id="scroll" prefHeight="546.0" prefWidth="880.0" style="-fx-background-radius: 30; -fx-border-radius: 5;" styleClass="transparent">
+                        <ScrollPane fx:id="scroll" prefHeight="625.0" prefWidth="820.0" style="-fx-background-radius: 30; -fx-border-radius: 5;" styleClass="transparent">
                            <content>
                               <GridPane fx:id="grid" prefHeight="9.0" prefWidth="17.0">
                                  <rowConstraints>

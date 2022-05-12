@@ -1,36 +1,31 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package tn.esprit.entities;
 
-import java.util.Date;
-
 /**
  *
- * @author WIKI
+ * @author sami
  */
 public class Evenement {
+
     public int id;
     public String NameEvent;
     public String PlaceEvent;
     public int NbParticipants;
     public float PriceEvent;
-    public String  DateDebut;
+    public String DateDebut;
     public String DateFin;
-  
-    
 
-     public Evenement() {
-       
+    public Evenement() {
+
     }
 
     public Evenement(String NameEvent) {
         this.NameEvent = NameEvent;
     }
 
-     
     public Evenement(int id, String NameEvent, String PlaceEvent, int NbParticipants, float PriceEvent, String DateDebut, String DateFin) {
         this.id = id;
         this.NameEvent = NameEvent;
@@ -50,7 +45,6 @@ public class Evenement {
         this.DateFin = DateFin;
     }
 
-   
     public int getId() {
         return id;
     }
@@ -78,9 +72,6 @@ public class Evenement {
     public String getDateFin() {
         return DateFin;
     }
-
-  
-    
 
     public void setId(int id) {
         this.id = id;
@@ -110,14 +101,8 @@ public class Evenement {
         this.DateFin = DateFin;
     }
 
-    
-    
-
     @Override
     public String toString() {
-        return   NameEvent ;
+        return NameEvent;
     }
-    
-    
-    
 }

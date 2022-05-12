@@ -1,25 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
-        <file>
-            <url>src/tn/esprit/entities/Reservation.java</url>
-            <bookmark id="1">
-                <name/>
-                <line>25</line>
-                <key/>
-            </bookmark>
-        </file>
-    </editor-bookmarks>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/WIKI/Desktop/PIiii/desktop/src/tn/esprit/gui/DisplayEventsController.java</file>
-            <file>file:/C:/Users/WIKI/Desktop/PIiii/desktop/src/tn/esprit/gui/DisplayEventsFront.fxml</file>
-            <file>file:/C:/Users/WIKI/Desktop/PIiii/desktop/src/tn/esprit/gui/DisplayReservationsController.java</file>
-            <file>file:/C:/Users/WIKI/Desktop/PIiii/desktop/src/tn/esprit/gui/DisplayReservationFront.fxml</file>
-            <file>file:/C:/Users/WIKI/Desktop/PIiii/desktop/src/tn/esprit/services/ReservationService.java</file>
-            <file>file:/C:/Users/WIKI/Desktop/PIiii/desktop/src/tn/esprit/services/EvenementService.java</file>
-            <file>file:/C:/Users/WIKI/Desktop/PIiii/desktop/src/tn/esprit/gui/DisplayEventsFrontController.java</file>
-            <file>file:/C:/Users/WIKI/Desktop/PIiii/desktop/src/tn/esprit/gui/DisplayReservationFrontController.java</file>
+            <file>file:/C:/Users/Yassine/Documents/NetBeansProjects/User/src/tn/esprit/gui/DisplayReservationFrontController.java</file>
         </group>
     </open-files>
 </project-private>

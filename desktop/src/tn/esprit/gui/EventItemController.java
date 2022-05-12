@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
 package tn.esprit.gui;
 
@@ -10,21 +9,19 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import tn.esprit.entities.Evenement;
 
 /**
  * FXML Controller class
  *
- * @author WIKI
+ * @author sami
  */
 public class EventItemController implements Initializable {
 
     @FXML
     private Label nameLabel;
-   
-  
+
     @FXML
     private Label PlaceLabel;
 
@@ -34,9 +31,9 @@ public class EventItemController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
-   @FXML
+    @FXML
     private void click(MouseEvent mouseEvent) {
         myListener.onClickListener(e);
     }
@@ -47,9 +44,8 @@ public class EventItemController implements Initializable {
     public void setData(Evenement e, MyListener myListener) {
         this.e = e;
         this.myListener = myListener;
-        nameLabel.setText(e.getNameEvent());
-       
-        PlaceLabel.setText(e.getPlaceEvent());
-       
+        this.nameLabel.setText(e.getNameEvent());
+        this.PlaceLabel.setText(e.getPlaceEvent());
+
     }
 }
