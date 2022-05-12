@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="parent" prefHeight="603.0" prefWidth="1157.0" style="-fx-background-color: #242424;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.brainstormers.gui.DisplayEventsController">
+   <children>
+      <TableView fx:id="tableviewEvents" fixedCellSize="50.0" layoutX="594.0" layoutY="167.0" prefHeight="371.0" prefWidth="521.0">
+        <columns>
+          <TableColumn fx:id="NameEvent" prefWidth="100.0" text="NameEvent" />
+          <TableColumn fx:id="PlaceEvent" prefWidth="93.0" text="PlaceEvent" />
+            <TableColumn fx:id="PriceEvent" prefWidth="71.0" text="PriceEvent" />
+            <TableColumn fx:id="Participants" prefWidth="93.0" text="Participants" />
+            <TableColumn fx:id="Begins" prefWidth="86.0" text="Begins at" />
+            <TableColumn fx:id="Ends" prefWidth="77.0" text="Ends at" />
+        </columns>
+      </TableView>
+      <VBox layoutX="337.0" layoutY="167.0" prefHeight="349.0" prefWidth="234.0">
+         <children>
+            <VBox prefHeight="70.0" prefWidth="213.0">
+               <children>
+                  <Label prefHeight="17.0" prefWidth="118.0" text="Name event :" textFill="WHITE">
+                     <font>
+                        <Font name="Berlin Sans FB Demi Bold" size="15.0" />
+                     </font></Label>
+                  <TextField fx:id="NameEventtf" prefHeight="25.0" prefWidth="147.0" />
+                  <Label fx:id="nameError" prefHeight="17.0" prefWidth="208.0" text="Event name should begin with capital" textFill="#d61515">
+                     <font>
+                        <Font name="Berlin Sans FB Demi Bold" size="12.0" />
+                     </font></Label>
+               </children>
+            </VBox>
+            <VBox prefHeight="71.0" prefWidth="213.0">
+               <children>
+                  <Label prefHeight="17.0" prefWidth="99.0" text="Place Event:" textFill="WHITE">
+                     <font>
+                        <Font name="Berlin Sans FB Demi Bold" size="15.0" />
+                     </font></Label>
+                  <TextField fx:id="PlaceEventtf" />
+                  <Label fx:id="placeError" prefHeight="17.0" prefWidth="211.0" text="Event place should begin with capital" textFill="#d61515">
+                     <font>
+                        <Font name="Berlin Sans FB Demi Bold" size="12.0" />
+                     </font></Label>
+               </children>
+            </VBox>
+            <VBox prefHeight="70.0" prefWidth="213.0">
+               <children>
+                  <Label prefHeight="20.0" prefWidth="118.0" text="Price event :" textFill="WHITE">
+                     <font>
+                        <Font name="Berlin Sans FB Demi Bold" size="15.0" />
+                     </font></Label>
+                  <TextField fx:id="PriceEventtf" prefHeight="25.0" prefWidth="147.0" />
+                  <Label fx:id="priceError" prefHeight="17.0" prefWidth="243.0" text="Price must be a like XX.XX, not a 0 DT" textFill="#d61515">
+                     <font>
+                        <Font name="Berlin Sans FB Demi Bold" size="12.0" />
+                     </font></Label>
+               </children>
+            </VBox>
+            <VBox prefHeight="70.0" prefWidth="213.0">
+               <children>
+                  <Label prefHeight="21.0" prefWidth="101.0" text="Participants :" textFill="WHITE">
+                     <font>
+                        <Font name="Berlin Sans FB Demi Bold" size="15.0" />
+                     </font></Label>
+                  <TextField fx:id="Participantstf" prefHeight="25.0" prefWidth="147.0" />
+                  <Label fx:id="partError" prefHeight="17.0" prefWidth="217.0" text="Participants must be a number, not a 0" textFill="#d61515">
+                     <font>
+                        <Font name="Berlin Sans FB Demi Bold" size="12.0" />
+                     </font></Label>
+               </children>
+            </VBox>
+            <VBox prefHeight="70.0" prefWidth="213.0">
+               <children>
+                  <Label prefHeight="17.0" prefWidth="78.0" text="Begins at :" textFill="WHITE">
+                     <font>
+                        <Font name="Berlin Sans FB Demi Bold" size="15.0" />
+                     </font></Label>
+                  <DatePicker fx:id="BeginsAtdate" />
+                  <Label fx:id="beginsError" prefHeight="17.0" prefWidth="224.0" text="Should be greater than today" textFill="#d61515">
+                     <font>
+                        <Font name="Berlin Sans FB Demi Bold" size="15.0" />
+                     </font></Label>
+               </children>
+            </VBox>
+            <VBox prefHeight="70.0" prefWidth="213.0">
+               <children>
+                  <Label prefHeight="17.0" prefWidth="78.0" text="Ends at :" textFill="#fff8f8">
+                     <font>
+                        <Font name="Berlin Sans FB Demi Bold" size="15.0" />
+                     </font></Label>
+                  <DatePicker fx:id="EndsAtdate" />
+                  <Label fx:id="endError" prefHeight="20.0" prefWidth="242.0" text="End date should be greater than begin" textFill="#d61515">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+      <Button layoutX="360.0" layoutY="535.0" mnemonicParsing="false" onAction="#AddEvent" prefHeight="25.0" prefWidth="56.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: #13ad44;" styleClass="primary-color" text="Add" />
+      <Button layoutX="789.0" layoutY="125.0" mnemonicParsing="false" onAction="#searchEvent" style="-fx-border-radius: 5; -fx-background-radius: 5; -fx-background-color: #FFA726;" styleClass="primary-color" text="Search" />
+      <TextField fx:id="SearchEvent" layoutX="594.0" layoutY="125.0" prefHeight="25.0" prefWidth="174.0" promptText="Search for an event" />
+      <Button layoutX="1064.0" layoutY="547.0" mnemonicParsing="false" onAction="#ShowOneEvent" prefHeight="25.0" prefWidth="51.0" style="-fx-background-color: #4DB6AC; -fx-border-radius: 5; -fx-background-radius: 5;" styleClass="primary-color" text="Show" />
+      <Button fx:id="deletebtn" layoutX="996.0" layoutY="547.0" mnemonicParsing="false" onAction="#DeleteEvent" style="-fx-border-radius: 5; -fx-background-radius: 5; -fx-background-color: #EF5350;" styleClass="primary-color" text="Delete" />
+      <Button layoutX="427.0" layoutY="535.0" mnemonicParsing="false" onAction="#UpdateEvent" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: #FFA726;" styleClass="primary-color" text="Update" />
+      <Label layoutX="337.0" layoutY="46.0" prefHeight="38.0" prefWidth="234.0" text="List of events" textFill="WHITE">
+         <font>
+            <Font name="Berlin Sans FB" size="34.0" />
+         </font>
+      </Label>
+      <Label fx:id="idLabel" layoutX="36.0" layoutY="108.0" prefHeight="25.0" prefWidth="56.0" />
+      <Button fx:id="clear" layoutX="499.0" layoutY="535.0" mnemonicParsing="false" onAction="#clearLabels" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: #EF5350;" styleClass="primary-color" text="CLEAR" />
+      <Button fx:id="print" layoutX="1064.0" layoutY="125.0" mnemonicParsing="false" onAction="#printEvents" style="-fx-background-radius: 5; -fx-border-radius: 5;" styleClass="primary-color" text="PRINT" />
+      <Separator layoutX="263.0" layoutY="8.0" orientation="VERTICAL" prefHeight="595.0" prefWidth="0.0" />
+      <Separator layoutY="81.0" prefHeight="3.0" prefWidth="262.0" />
+      <Label layoutX="72.0" layoutY="25.0" text="GameX" textFill="#f5f5f5">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="36.0" />
+         </font>
+      </Label>
+      <Button layoutX="5.0" layoutY="240.0" mnemonicParsing="false" onAction="#showEventsBack" prefHeight="38.0" prefWidth="252.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: #a59fab;" text="Event  managment">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="22.0" />
+         </font>
+      </Button>
+      <Button layoutX="1.0" layoutY="302.0" mnemonicParsing="false" onAction="#ShowResevationsBack" prefHeight="43.0" prefWidth="262.0" style="-fx-background-color: #a59fab; -fx-background-radius: 5; -fx-border-radius: 5;" styleClass="primary-color" text="Reservation managment">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="21.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="Anchorpane" onMouseMoved="#handleinit" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #242424;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.brainstormers.gui.CommentsController">
+    <children>
+        <Label fx:id="commentlabel" alignment="TOP_LEFT" layoutX="728.0" layoutY="4.0" prefHeight="26.0" prefWidth="115.0" text="Comment:" textFill="#ff5656">
+            <font>
+                <Font name="Cantarell Regular" size="21.0" />
+            </font>
+        </Label>
+        <TextArea id="CommentInput" fx:id="CommentInput" layoutX="578.0" layoutY="71.0" prefHeight="103.0" prefWidth="408.0" wrapText="true">
+            <font>
+                <Font name="Cantarell Regular" size="14.0" />
+            </font>
+        </TextArea>
+        <Label fx:id="starslabel" layoutX="747.0" layoutY="174.0" text="Stars:" textFill="#ff5656">
+            <font>
+                <Font name="Cantarell Regular" size="21.0" />
+            </font>
+        </Label>
+        <Button id="Submit" fx:id="Submit" layoutX="693.0" layoutY="237.0" mnemonicParsing="false" onAction="#handleSubmit" prefHeight="31.0" prefWidth="166.0" style="-fx-border-radius: 5; -fx-background-radius: 5; -fx-background-color: #4DB6AC;" text="Submit" textAlignment="CENTER">
+            <font>
+                <Font name="Cantarell Regular" size="16.0" />
+            </font>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </Button>
+        <Label id="CommentErr" fx:id="CommentErr" layoutX="579.0" layoutY="73.0" nodeOrientation="LEFT_TO_RIGHT" text="• Comment is required" textFill="#ff5353" visible="false">
+            <font>
+                <Font name="Cantarell Regular" size="18.0" />
+            </font>
+            <effect>
+                <Glow level="0.42" />
+            </effect>
+        </Label>
+        <Label id="CommentErr" fx:id="CommentErr1" layoutX="579.0" layoutY="153.0" text="• Character limit surpassed" textFill="#ff5353" visible="false">
+            <font>
+                <Font name="Cantarell Regular" size="18.0" />
+            </font>
+            <effect>
+                <Glow level="0.42" />
+            </effect>
+         <opaqueInsets>
+            <Insets top="-50.0" />
+         </opaqueInsets>
+        </Label>
+        <Label id="star1" fx:id="Star1" layoutX="688.0" layoutY="186.0" onMouseClicked="#handlestar1" opacity="0.4" prefHeight="31.0" prefWidth="20.0" text="★" textFill="#eea20a">
+            <font>
+                <Font name="FreeMono" size="50.0" />
+            </font>
+        </Label>
+        <TextField id="tag1" fx:id="tag1" layoutX="579.0" layoutY="37.0" promptText="Tag 1" style="-fx-background-radius: 8;" />
+        <TextField id="tag2" fx:id="tag2" layoutX="726.0" layoutY="37.0" promptText="Tag 2" style="-fx-background-radius: 8;" />
+        <TextField id="tag3" fx:id="tag3" layoutX="872.0" layoutY="37.0" promptText="Tag 3" style="-fx-background-radius: 8;" />
+        <Label id="CommentErr" fx:id="CommentErr2" layoutX="833.0" layoutY="176.0" text="• Stars are required" textFill="#ff5353" visible="false">
+            <font>
+                <Font name="Cantarell Regular" size="18.0" />
+            </font>
+            <effect>
+                <Glow level="0.42" />
+            </effect>
+        </Label>
+        <Label id="CommentErr" fx:id="CommentErr3" layoutX="579.0" layoutY="129.0" nodeOrientation="LEFT_TO_RIGHT" text="• Profanity is not allowed" textFill="#ff5353" visible="false">
+            <font>
+                <Font name="Cantarell Regular" size="18.0" />
+            </font>
+            <effect>
+                <Glow level="0.42" />
+            </effect>
+        </Label>
+        <ListView id="commentsList" fx:id="commentsList" cacheShape="false" focusTraversable="false" layoutX="578.0" layoutY="274.0" onMouseClicked="#listeselect" prefHeight="332.0" prefWidth="416.0" scaleShape="false" style="-fx-background-radius: 10;" />
+        <Button id="Delete" fx:id="Delete" layoutX="794.0" layoutY="142.0" mnemonicParsing="false" onMouseClicked="#handleDelete" prefHeight="31.0" prefWidth="166.0" style="-fx-border-radius: 5; -fx-background-radius: 5; -fx-background-color: #EF5350;" text="Delete" textAlignment="CENTER">
+            <font>
+                <Font name="Cantarell Regular" size="16.0" />
+            </font>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </Button>
+        <Button id="Modify" fx:id="Modify" layoutX="603.0" layoutY="142.0" mnemonicParsing="false" onAction="#handleModify" prefHeight="31.0" prefWidth="166.0" style="-fx-border-radius: 5; -fx-background-radius: 5; -fx-background-color: #FFA726;" text="Modify" textAlignment="CENTER">
+            <font>
+                <Font name="Cantarell Regular" size="16.0" />
+            </font>
+            <cursor>
+                <Cursor fx:constant="HAND" />
+            </cursor>
+        </Button>
+      <Label id="star2" fx:id="Star2" layoutX="724.0" layoutY="186.0" onMouseClicked="#handlestar2" opacity="0.4" prefHeight="31.0" prefWidth="20.0" text="★" textFill="#eea20a">
+         <font>
+            <Font name="FreeMono" size="50.0" />
+         </font>
+      </Label>
+      <Label id="star4" fx:id="Star4" layoutX="797.0" layoutY="186.0" onMouseClicked="#handlestar4" opacity="0.4" prefHeight="31.0" prefWidth="20.0" text="★" textFill="#eea20a">
+         <font>
+            <Font name="FreeMono" size="50.0" />
+         </font>
+      </Label>
+      <Label id="star3" fx:id="Star3" layoutX="761.0" layoutY="186.0" onMouseClicked="#handlestar3" opacity="0.4" prefHeight="31.0" prefWidth="20.0" text="★" textFill="#eea20a">
+         <font>
+            <Font name="FreeMono" size="50.0" />
+         </font>
+      </Label>
+      <Label id="star5" fx:id="Star5" layoutX="833.0" layoutY="186.0" onMouseClicked="#handlestar5" opacity="0.4" prefHeight="31.0" prefWidth="20.0" text="★" textFill="#eea20a">
+         <font>
+            <Font name="FreeMono" size="50.0" />
+         </font>
+      </Label>
+      <Label id="commentsub" fx:id="commentsub" layoutX="593.0" layoutY="75.0" prefHeight="48.0" prefWidth="378.0" text="Comment Submitted ✓" textFill="#4ce07a" visible="false">
+         <font>
+            <Font name="Cantarell Regular" size="37.0" />
+         </font>
+         <opaqueInsets>
+            <Insets top="-6.0" />
+         </opaqueInsets>
+      </Label>
+      <Separator layoutX="568.0" orientation="VERTICAL" prefHeight="605.0" prefWidth="4.0" />
+      <Label fx:id="banlabel" layoutX="578.0" layoutY="210.0" prefHeight="110.0" prefWidth="416.0" text="You have been temporarily Banned." textAlignment="CENTER" textFill="#ff0036" visible="false" wrapText="true">
+         <font>
+            <Font name="Cantarell Regular" size="35.0" />
+         </font>
+         <effect>
+            <Glow level="0.85" />
+         </effect>
+      </Label>
+      <ImageView fx:id="imgview" fitHeight="220.0" fitWidth="253.0" layoutX="151.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="nameEventComment" layoutX="23.0" layoutY="291.0" prefHeight="48.0" prefWidth="527.0" textFill="WHITE">
+         <font>
+            <Font name="Cantarell Regular" size="22.0" />
+         </font>
+      </Label>
+      <Label fx:id="PrEv" layoutX="124.0" layoutY="352.0" prefHeight="63.0" prefWidth="112.0" textFill="#26e4a8" wrapText="true">
+         <font>
+            <Font name="Cantarell Regular" size="32.0" />
+         </font></Label>
+      <Label layoutX="23.0" layoutY="248.0" text="Event Name:" textFill="WHITE">
+         <font>
+            <Font name="Cantarell Regular" size="31.0" />
+         </font>
+      </Label>
+      <Label layoutX="23.0" layoutY="359.0" text="Price:" textFill="WHITE">
+         <font>
+            <Font name="Cantarell Regular" size="31.0" />
+         </font>
+      </Label>
+      <Label layoutX="23.0" layoutY="456.0" text="Event Place:" textFill="WHITE">
+         <font>
+            <Font name="Cantarell Regular" size="31.0" />
+         </font>
+      </Label>
+      <Label fx:id="evPlace" layoutX="23.0" layoutY="496.0" prefHeight="48.0" prefWidth="179.0" textFill="WHITE">
+         <font>
+            <Font name="Cantarell Regular" size="22.0" />
+         </font>
+      </Label>
+      <Button layoutX="14.0" layoutY="19.0" mnemonicParsing="false" onAction="#returnEv" style="-fx-background-color: #1babd7;" text="&lt;">
+         <font>
+            <Font name="Cantarell Regular" size="18.0" />
+         </font>
+      </Button>
+    </children>
+</AnchorPane>
