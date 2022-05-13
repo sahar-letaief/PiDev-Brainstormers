@@ -71,6 +71,8 @@ public class ProfileForm extends Form{
               //addAll(front);
                getToolbar().addCommandToSideMenu("Show events" , null ,ev -> {new ListEventsFormFront(previous).show();} );
                 getToolbar().addCommandToSideMenu("Show my reservations" , null ,ev -> {new ListReservationsFormFront(previous).show();} );
+                  getToolbar().addCommandToSideMenu("List Of Products" , null ,ev -> {new ListProdForm(previous).show();} );
+
               front.addActionListener(e -> 
         {   
             new HomeFormFront().show();

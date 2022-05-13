@@ -22,7 +22,7 @@ import com.mycompany.gui.SignInForm;
 public class MyApplication {
 
     private Form current;
-    private Resources theme;
+    public Resources theme;
 
     public void init(Object context) {
         // use two network threads instead of one

@@ -24,14 +24,16 @@ public class HomeFormBack extends Form{
         add(new Label("Select option"));
         Button btnEventDisplay = new Button("Show events ");
         Button bntReservationDisplay=new Button("Show reservations ");
+        Button btnAllProd=new Button("List of products");
     
         
         
         btnEventDisplay.addActionListener(e -> new ListEventsForm(current).show());
         bntReservationDisplay.addActionListener(e-> new ListReservationsForm(current).show());
+        btnAllProd.addActionListener(e -> new ListProdForm(current).show());
+
      
-     
-       addAll(btnEventDisplay,bntReservationDisplay);
+       addAll(btnEventDisplay,bntReservationDisplay,btnAllProd);
        
         
     }
