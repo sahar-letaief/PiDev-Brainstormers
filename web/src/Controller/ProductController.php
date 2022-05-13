@@ -6,6 +6,7 @@ use App\Entity\Product;
 use App\Form\ProductType;
 use App\Form\ProductSearchType;
 use App\Repository\ProductRepository;
+use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,7 +20,15 @@ use App\Form\CategorySearchType;
 use App\Entity\PriceSearch;
 use App\Form\PriceSearchType;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
+
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+
 
 
 
@@ -31,6 +40,132 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
  */
 class ProductController extends AbstractController
 {
+     /**
+     * @Route("/FrontProductJson", name="productFront_indexJson", methods={"GET"})
+     */
+    public function allProductFrontJson(Request $request, ProductRepository $productRepository, PaginatorInterface $paginator, NormalizerInterface $Normalizer): Response
+    {
+        $products=$productRepository->orderByPrix();
+        $prod = $paginator->paginate($products,$request->query->getInt('page', 1),9);
+
+        
+        $jsonContent=$Normalizer->normalize( $products,'json',['groups'=>'post:read']);
+        return new Response(json_encode($jsonContent));
+        dump($jsonContent);
+        die;
+    }
+
+    
+    /**
+     * @Route("/newJson", name="product_newJson", methods={"GET", "POST"})
+     */
+    public function newJson(Request $request, NormalizerInterface $Normalizer,CategoryRepository $repository )
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $prod = new Product();
+        $ag= $repository->find($request->get('Category'));
+        $prod->setProductName($request->get('ProductName'));
+        $prod->setDescription($request->get('Description'));
+        $prod->setPrice($request->get('Price'));
+        $prod->setStock($request->get('Stock'));
+        $prod->setReference($request->get('Reference'));
+        $prod->setCategory($ag);
+        $prod->setImage("d");
+        //$commande->setUser($request->get('user'));
+        $entityManager->persist($prod);
+        $entityManager->flush();
+    
+        $jsonContent=$Normalizer->normalize($prod,'json',['groups'=>'post:read']);
+        return new Response(json_encode($jsonContent));
+    }
+
+    /**
+    * @Route("/del", name="del")
+    * @Method("DELETE")
+    */
+
+    public function delJSON(Request $request) {
+        $id = $request->get("id");
+
+        $em = $this->getDoctrine()->getManager();
+        $agence = $em->getRepository(Product::class)->find($id);
+        if($agence!=null ) {
+            $em->remove($agence);
+            $em->flush();
+
+            $serialize = new Serializer([new ObjectNormalizer()]);
+            $formatted = $serialize->normalize("Agence a ete supprimee avec success.");
+            return new JsonResponse($formatted);
+
+        }else{
+            return new JsonResponse("id agence invalide.");}
+
+
+    }
+    /**
+     * @Route("/update", name="update")
+     * @Method("PUT")
+     */
+    public function updateJSON(Request $request) {
+        $em = $this->getDoctrine()->getManager();
+        $agence = $this->getDoctrine()->getManager()
+            ->getRepository(Product::class)
+            ->find($request->get("id"));
+
+        $agence->setProductName($request->get("ProductName"));
+        $agence->setDescription($request->get("Description"));
+        $agence->setPrice($request->get('Price'));
+        $agence->setStock($request->get('Stock'));
+
+
+        // $agence->setVideo($request->get("Video"));
+
+        $em->persist($agence);
+        $em->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($agence);
+        return new JsonResponse("Agence a ete modifiee avec success.");
+
+    }
+
+    /**
+     * @Route("/{id}/editJson", name="product_editJson", methods={"GET","POST"})
+     */
+    public function editJson(Request $request, Product $product, EntityManagerInterface $entityManager, $id,NormalizerInterface $Normalizer): Response
+    {
+        $em = $this->getDoctrine()->getManager();
+        $Product = $this->getDoctrine()->getRepository(Product::class)->find($id);
+        $Product->setProductName($request->get('ProductName'));
+        $Product->setDescription($request->get('Description'));
+        $Product->setPrice($request->get('Price'));
+        //$Product->setStock($request->get('Stock'));
+        //$Product->setReference($request->get('Reference'));
+        $Product->setImage("d");
+
+        //$Product->setDate($request->get('Date'));
+        $em->flush();
+        $jsonContent = $Normalizer->normalize($Product,'json',['groups'=>'post:read']);
+        return new Response("Update successfully".json_encode($jsonContent));
+    
+        
+    }
+    /**
+     * @Route("/{id}/deleteJson", name="product_deleteJson")
+     */
+    public function deleteJson(ProductRepository $set,$id,NormalizerInterface $Normalizer)
+    {
+        /*$product=$this->getDoctrine()->getRepository(Product::class)->find($id);
+        $em=$this->getDoctrine()->getManager();
+        $em->remove($product);
+        $em->flush();
+        return $this-> redirectToRoute('product_index');*/
+        $em = $this->getDoctrine()->getManager();
+        $Voyage = $this->getDoctrine()->getRepository(Product::class)->find($id);
+        $em->remove($Voyage);
+        $em->flush();
+        $jsonContent = $Normalizer->normalize($Voyage,'json',['groups'=>'post:read']);
+        return new Response("Delete successfully".json_encode($jsonContent));
+    }
        
     /**
      * @Route("/FrontProduct", name="productFront_index", methods={"GET","POST"})
@@ -264,6 +399,6 @@ class ProductController extends AbstractController
         return $this-> redirectToRoute('product_index');
     }
 
-    
+  
  
 }

@@ -6,6 +6,7 @@ use App\Repository\ProductRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 
 
@@ -21,6 +22,7 @@ class Product
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("post:read")
      * 
      */
     private $id;
@@ -28,6 +30,7 @@ class Product
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Nom requise")
+     * @Groups("post:read")
      * 
      */
     private $ProductName;
@@ -36,6 +39,7 @@ class Product
      * @ORM\Column(type="integer")
      * @Assert\Positive
      * @Assert\NotBlank(message="Prix requise")
+     * @Groups("post:read")
      */
     private $Price;
 
@@ -44,17 +48,20 @@ class Product
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Description requise")
+     * @Groups("post:read")
      */
     private $Description;
 
     /**
      * @ORM\Column(type="integer")
      * @Assert\NotBlank(message="Stock requise")
+     * @Groups("post:read")
      */
     private $Stock;
 
     /**
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="products")
+     * @Groups("post:read")
      */
     private $Category;
 
@@ -62,6 +69,7 @@ class Product
      * @var string
      *
      * @ORM\Column(name="image", type="string", length=255, nullable=false)
+     * @Groups("post:read")
      * 
      */
     private $image;
@@ -69,6 +77,7 @@ class Product
     /**
      * @ORM\Column(type="string", length=255, unique=true)
      * @Assert\NotBlank(message="Reference requise")
+     * @Groups("post:read")
      * 
      */
     private $Reference;
