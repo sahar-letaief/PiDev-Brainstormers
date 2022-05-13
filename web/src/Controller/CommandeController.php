@@ -23,6 +23,13 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 
 
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+
+
+
 /**
  * @Route("/commande")
  */
@@ -55,6 +62,36 @@ class CommandeController extends AbstractController
             'form' => $form->createView()
             ]);    
     }
+
+    
+    /**
+     * @Route("/AllComande", name="commande_index", methods={"GET"})
+     */
+
+    public function AllComande(NormalizerInterface $Normalizer )
+    {
+    //Nous utilisons la Repository pour récupérer les objets que nous avons dans la base de données
+    $repository =$this->getDoctrine()->getRepository(Commande::class);
+    $comandes=$repository->FindAll();
+    //Nous utilisons la fonction normalize qui transforme en format JSON nos donnée qui sont
+    //en tableau d'objet Students
+    $jsonContent=$Normalizer->normalize($comandes,'json',['groups'=>'post:read']);
+    
+    
+    
+    return new Response(json_encode($jsonContent));
+    dump($jsonContent);
+    die;
+}
+
+
+
+
+
+
+
+
+
 
         /**
      * @Route("/admin/utilisateur/search", name="utilsearch")
@@ -324,61 +361,34 @@ class CommandeController extends AbstractController
     return new Response(json_encode($jsonContent));
 
     }
-    /** 
-     * @Route("/AddCommande/new", name="AddCommande")
-     */
-
-    public function new_cmde(Request $request,ProductRepository $ProductRepository,SessionInterface $session, EntityManagerInterface $entityManager): Response
-    {   
-        // user id
-        //$userId = $user->getId();
-        $userId = 1;
-        //dd($userId); 
-        $pannier = $session->get('pannier', []);
-        $pannierxithData = [];  
-        $commande = new Commande();
-        $form = $this->createForm(CommandeType::class, $commande);
-        $form->handleRequest($request);
-        $a=array();
-        foreach ($pannier as $id => $quantity) {
-            $pannierxithData[] = [
-                'product' => $ProductRepository->find($id),
-                'quantity' => $quantity,
-            ];
-        }
-        for ($x = 0; $x<=count($pannierxithData)-1; $x++) {
-             $a[$x]['quantity'] = $pannierxithData[$x]['quantity'];           
-             $a[$x]['ProductName'] = $pannierxithData[$x]['product']->getName();
-             $a[$x]['quantity'] = $pannierxithData[$x]['quantity'];           
-             $a[$x]['ProductName'] = $pannierxithData[$x]['product']->getName();
-            }
-            //dd($a);
-        
-        if ($form->isSubmitted() && $form->isValid()) {
-            $commande->setProd($a);
-            // $commande->setUser($userId);
-              
-
-            $entityManager->persist($commande);            
-            $entityManager->flush();
-
-            return $this->redirectToRoute('commande_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->render('commande_Front/new.html.twig', [
-            'commande' => $commande,
-            'form' => $form->createView(),
-        ]);
-         $jsonContent=$Normalizer->normalize($commandes,'json',['groups'=>'post:read']);
     
- 
+
+     /**
+     * @Route("/AddCommande/new", name="AddCommande/new")
+    */
+    public function Addcmde(Request $request, NormalizerInterface $Normalizer )
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $commande = new Commande();
+        $commande->setRefCmde($request->get('ref_cmde'));
+        $commande->setEtatCmde($request->get('etat_cmde'));
+        $commande->setProd($request->get('prod'));
+        $commande->setPays($request->get('Pays'));
+        $commande->setRegion($request->get('Region'));
+        $commande->setCodePostal($request->get('code_postal'));
+        $commande->setTel($request->get('tel'));
+        //$commande->setUser($request->get('user'));
+        $entityManager->persist($commande);
+        $entityManager->flush();
+    
+        $jsonContent=$Normalizer->normalize($commande,'json',['groups'=>'post:read']);
         return new Response(json_encode($jsonContent));
     }
 
-/**
+     /**
      * @Route("/AllComande", name="AllComande")
      */
-    public function AllComande(NormalizerInterface $Normalizer )
+    public function AllComandes(NormalizerInterface $Normalizer )
     {
     //Nous utilisons la Repository pour récupérer les objets que nous avons dans la base de données
     $repository =$this->getDoctrine()->getRepository(Commande::class);
@@ -395,6 +405,27 @@ class CommandeController extends AbstractController
 }
     
 
+  /**
+     * @Route("/editcmde/{id}", name="commande_edit")
+     * @Method("PUT")
+     */
+    public function editcmde(Request $request, NormalizerInterface $Normalizer,$id)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $commande = $entityManager->getRepository(Commande::class)->find($id);
+        $commande->setRefCmde($request->get('ref_cmde'));
+        $commande->setEtatCmde($request->get('etat_cmde'));
+        $commande->setProd($request->get('prod'));
+        $commande->setPays($request->get('Pays'));
+        $commande->setRegion($request->get('Region'));
+        $commande->setCodePostal($request->get('code_postal'));
+        $commande->setTel($request->get('tel'));
+        //$commande->setUser($request->get('user'));
+        $entityManager->flush();
+
+        $jsonContent=$Normalizer->normalize($commande,'json',['groups'=>'post:read']);
+        return new Response("commande updated".json_encode($jsonContent));
+    }
 
 
 
