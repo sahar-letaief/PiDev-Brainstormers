@@ -1,0 +1,77 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}Product{% endblock %}
+
+{% block body %}
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="page-header">
+
+            <h5 class="page-title">Admin<code>/{% trans %} View {% endtrans %} </code></h5>
+            <nav aria-label="breadcrumb">
+            {% for locale in locales %}
+                {% if locale != app.request.locale %}
+                <ol class="breadcrumb">
+                    <a  href="{{ path('change_locale', {'locale': locale}) }}"><img src="{{ asset('back/assets/images/'~locale~'.png') }}" alt="{{locale}}" width="80px" height="50px" /></a>
+                {% endif %}
+            {% endfor %}
+                </ol>
+            </nav>
+        </div>
+                    <div class="table-responsive">
+                      
+                         <h1>{% trans %}Product{% endtrans %}</h1>
+
+                <table class="table">
+                  <tbody>
+                  <tr class="table table-dark">
+                         <th>Reference</th>
+                         <td>{{ product.Reference }}</td>
+                    </tr>
+                    
+                    <tr class="table table-dark">
+                         <th>Name</th>
+                         <td>{{ product.ProductName }}</td>
+                    </tr>
+                <tr class="table table-dark">
+                <th>Price</th>
+                <td>{{ product.Price }}</td>
+            </tr>
+            <tr class="table table-dark">
+                <th>Stock</th>
+                <td>{{ product.Stock }}</td>
+            </tr>
+            <tr class="table table-dark">
+                <th>Description</th>
+                <td>{{ product.Description }}</td>
+            </tr>
+            <tr class="table table-dark">
+                <th>Image</th>
+                <td><img src="{{ asset('uploads/') ~product.image}}" alt="" class="img-fluid"></td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    <div class="card-footer">
+    <div class="row">
+    
+      
+          <a class="nav-link btn btn-warning create-new-button" href="{{ path('product_edit', {'id': product.id}) }}">{% trans %}Edit{% endtrans %}</a>
+
+            <a class="nav-link btn btn-primary create-new-button" href="{{ path('product_index') }}">{% trans %}Back{% endtrans %}</a>
+            
+            <a class="nav-link btn btn-danger create-new-button" href="{{ path('product_delete', {'id': product.id}) }}">{% trans %}Delete{% endtrans %}</a>
+
+
+    </div>
+     
+    </div>
+   
+    
+{% endblock %}
+
+    
+    
+    
+

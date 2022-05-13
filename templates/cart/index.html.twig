@@ -1,0 +1,130 @@
+{% extends 'baseFront.html.twig' %}
+ {% block title %}Panier {%endblock %}
+{% block body %}
+<!-- Breadcrumb Begin -->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb__links">
+                        <a href="#"><i class="fa fa-home"></i> Homepage</a>
+                        <a href="{{ path('cart') }}">Cart</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    <!-- Breadcrumb End -->
+         <section class="normal-breadcrumb set-bg" data-setbg="{{ asset('Front/img/normal-breadcrumb.jpg') }}" >
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="normal__breadcrumb__text">
+                        <h2>WELCOME TO YOUR CART</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section class="anime-details spad">
+        <div class="container">
+            <div class="anime__details__content">
+            {% if items |length > 0 %}
+              <div class="product__page__title">
+                            <div class="row">
+                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                    <div class="section-title">
+                                        <h4>Products</h4>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-6">
+                                    <div class="anime__details__btn">
+                                        <a href="{{ path('commande_new') }}" class="watch-btn"><span>Command</span> <i
+                                    class="fa fa-angle-right"></i></a>
+                                    </div>
+                                    
+                                </div>
+                                
+                            </div>
+                            
+                        </div>
+                        <div class="blog__details__comment__item__text">
+                            <a href="{{ path('cart_remove_all') }}">Delete all products</a>
+                        </div>
+                        <br><br><br>
+                <div class="row">
+                    
+                  {% for item in items %}
+                    <div class="col-lg-3">
+                        <div class="product__sidebar__view__item set-bg" data-setbg="{{ asset('Front/img/sidebar/tv-1.jpg') }}" >
+                    </div>
+                    </div>
+                    <div class="col-lg-9">
+                        <div class="anime__details__text">
+                            <div class="anime__details__widget">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6">
+                                      
+                                        <ul>
+                                            <li><span>Product:</span> {{ item.product.ProductName}}</li>
+                                            <li><span>Price:</span>{{ item.product.Price}}</li>
+                                            <li><span>Quantity:</span> {{ item.quantity }}</li>
+                                            <li><span>total:</span> {{ item.product.price * item.quantity }}</li>
+                                        </ul>
+                                         <div class="blog__details__comment__item__text">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                </br> </br> </br> </br>
+                            </div>
+                            
+                        </div>
+                         {% endfor %}
+                    </div>
+                </div>
+                <div class="product__page__title">
+                            <div class="row">
+                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                    <div class="anime__details__btn">
+                                       <a href="{{ path('productFront_index') }}" class="watch-btn"><span>continue shopping</span> <i
+                                    class="fa fa-angle-right"></i></a>
+                                    </div>
+                                </div>
+                            <div class="col-lg-4 col-md-4 col-sm-6">
+                                    <div class="section-title">
+                                        <h4>Total : {{ total }}</h4>
+                                    </div>
+                            </div>
+                </div>
+            </div>
+        </div>
+                
+</div>
+{% else %}
+            <div class="row d-flex justify-content-center">
+                <div class="col-lg-8">
+                    <div class="blog__details__title">
+                        <h2>Your basket is empty !</h2>
+                        <h6></span></h6>
+                        <div class="anime__details__btn">
+                            <a href="{{ path('product_index') }}" class="watch-btn"><span>Go to shopping</span> <i class="fa fa-angle-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+</div>
+{% endif %}
+</section>
+
+
+
+
+
+
+
+   
+
+
+
+ {% endblock %}

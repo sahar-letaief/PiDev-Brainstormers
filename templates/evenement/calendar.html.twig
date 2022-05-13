@@ -1,0 +1,66 @@
+{% extends 'evenement/basecalendar.html.twig '%}
+{% block title %}Calendrier {% endblock %}
+{% block stylesheets %}
+    <style>
+        #calendrier{
+            width: 80%;
+            margin: auto;
+
+        }
+
+
+    </style>
+
+
+{% endblock %}
+
+{% block body %}
+<div id="calendrier" >
+
+</div>
+    <div>
+         <a href="{{ path('evenement_index') }}">Back to event list</a>
+    </div>
+{% endblock %}
+{% block javascripts %}
+
+
+
+
+    <script>
+        window.onload=()=> {
+            let calendarElt = document.querySelector("#calendrier");
+            let calendar = new FullCalendar.Calendar(calendarElt, {
+                initialView: 'timeGridWeek',
+                locale: 'ang',
+                timeZone: 'Europe/Paris',
+                headerToolbar: {
+                    start: 'prev,next today',
+                    center: 'title',
+                    end: 'dayGridMonth timeGridWeek'
+                },
+                events:{{ data|raw }} ,
+                /*editable:true,
+                eventResizableFromStart: true*/
+            })
+            //console.log(calendar.eventsEnabled);
+
+            /*calendar.on('eventChange',(e)=>{
+                let url=`api/${e.event.id}/edit`
+                let donnees={
+
+                    "start":e.event.start,
+                    "end":e.event.end,
+
+                }
+                console.log(donnees)
+
+                let xhr=new XMLHttpRequest
+                xhr.open("PUT",url)
+                xhr.send(JSON.stringify({"start": e.event.start,"end":e.event.end}));
+            })*/
+            calendar.render();
+        }
+    </script>
+
+{% endblock %}

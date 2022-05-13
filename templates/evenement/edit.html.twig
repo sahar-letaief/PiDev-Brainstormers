@@ -1,0 +1,48 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}Edit Evenement{% endblock %}
+
+{% block body %}
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="page-header">
+            <h3 class="page-title"> Form events </h3>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Events management</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Edit event</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="row">
+            <div class="col-md-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4>Edit Event</h4>
+ {{ form_start(form) }}
+                        {{ form_widget(form.NameEvent , {'attr' : {'class' : ' form-control' , 'placeholder' : 'Event name'}}) }}
+                        {{ form_errors(form.NameEvent) }}
+                        {{ form_widget(form.PlaceEvent , {'attr' : {'class' : ' form-control' , 'placeholder' : 'Place event'}}) }}
+                        {{ form_errors(form.PlaceEvent) }}
+                        {{ form_label(form.DateDebut,'Begins at') }}
+                        {{ form_widget(form.DateDebut , {'attr' : {'class' : ' date' , 'placeholder' : 'Begins at'}}) }}
+                        {{ form_errors(form.DateDebut) }}
+                        {{ form_label(form.DateDebut,'Ends at') }}
+                        {{ form_widget(form.DateFin , {'attr' : {'class' : ' date' , 'placeholder' : 'Ends at'}}) }}
+                        {{ form_errors(form.DateFin) }}
+                        {{ form_label(form.NbParticipants,'Participants number') }}
+                        {{ form_widget(form.NbParticipants , {'attr' : {'class' : ' form-control' , 'placeholder' : 'Participants number'}}) }}
+                        {{ form_errors(form.NbParticipants) }}
+                        {{ form_end(form) }}
+
+   <div></div>
+                        <div class="badge badge-outline-warning"><a href="{{ path('evenement_index') }}">Back to list</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

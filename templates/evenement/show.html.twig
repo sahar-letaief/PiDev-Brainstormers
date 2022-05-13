@@ -1,0 +1,111 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}Evenement{% endblock %}
+{% block style %}
+<style>
+    #map {
+        width: 100vw;
+        height: 100vh;
+    }
+</style>
+{% endblock %}
+{% block body %}
+    <h1>Evenement</h1>
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="page-header">
+            <h3 class="page-title"> Show events </h3>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Events management</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Show events</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="row" style="margin-right: -23.75rem;">
+            <div class="col-md-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Show event</h4>
+       <table class="table">
+        <tbody>
+
+            <tr>
+                <th>Event name</th>
+                <td>{{ evenement.NameEvent }}</td>
+            </tr>
+
+            <tr>
+                <th>Event place</th>
+                <td>{{ evenement.PlaceEvent }}</td>
+            </tr>
+            <tr>
+                <th>Event begins at</th>
+                <td>{{ evenement.DateDebut ? evenement.DateDebut|date('Y-m-d ') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Event ends at</th>
+                <td>{{ evenement.DateFin ? evenement.DateFin|date('Y-m-d ') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Price event</th>
+                <td>{{ evenement.PriceEvent }}</td>
+            </tr>
+            <tr>
+                <th>Number of participants</th>
+                <td>{{ evenement.NbParticipants }}</td>
+            </tr>
+
+        </tbody>
+    </table>
+
+                       {#  <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.6.0/maps/maps.css'/>
+                        <script src='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.6.0/maps/maps-web.min.js'></script>
+                        <div id='map' style="height: 50vh; width: 50vw;"></div>
+                    <script>
+                        var centerm = [{{ evenement.lng }},{{ evenement.lat }}];
+
+                        var map = tt.map({
+                            container: 'map',
+                            key: 'AIzaSyDW0mYvRysMjT-qGLPXbC1yTZqQXRr117I',
+                            center: centerm,
+                            zoom: 6
+                        });
+
+                        var marker = new tt.Marker().setLngLat(centerm).addTo(map);
+                        var popupOffsets = {
+                            top: [0, 0],
+                            bottom: [0, -70],
+                            'bottom-right': [0, -70],
+                            'bottom-left': [0, -70],
+                            left: [25, -35],
+                            right: [-25, -35]
+                        }
+
+                        var customPopup = '<p style="display:inline">' +
+
+                            '<div style="width:100%; height:100%; padding-top:10px"><span style="font:14px Gotham">{{ evenement.NameEvent }}</span></br>' +
+                            '<div style="width:100%; height:100%; padding-top:10px"><span style="font:14px Gotham">{{ evenement.PlaceEvent }}</span></br>' +
+
+                            '</div></p>';
+
+                        var popup = new tt.Popup({offset: popupOffsets}).setHTML(customPopup);
+                        marker.setPopup(popup).togglePopup();
+
+                    </script>
+                    #}
+                        <div class="badge badge-outline-warning"><a href="{{ path('evenement_index') }}">Back to list</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <a href="{{ path('evenement_edit', {'id': evenement.id}) }}">edit</a>
+
+{% endblock%}
+

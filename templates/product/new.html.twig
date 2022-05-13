@@ -1,0 +1,99 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}New Product{% endblock %}
+{% block body %}
+
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="page-header">
+            
+            <nav aria-label="breadcrumb">
+            {% for locale in locales %}
+                {% if locale != app.request.locale %}
+                <ol class="breadcrumb">
+                    <a  href="{{ path('change_locale', {'locale': locale}) }}"><img src="{{ asset('back/assets/images/'~locale~'.png') }}" alt="{{locale}}" width="80px" height="50px" /></a>
+                {% endif %}
+            {% endfor %}
+                </ol>
+            </nav>
+        </div>
+        <div class="row">
+            <div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">{% trans %}Add Product{% endtrans %}</h4>
+                        <p class="card-description">{% trans %} Please Add Product{% endtrans %}</p>
+
+                            {{ form_start(form,{'attr': {'novalidate': 'novalidate'}})}}
+
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">{% trans %}Reference{% endtrans %}</label>
+                                {{ form_widget(form.Reference , {'attr' : {'class' : 'form-control'  }}  ) }}
+                                
+                                {{ form_errors(form.Reference) }}
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">{% trans %}Name{% endtrans %}</label>
+                                {{ form_widget(form.ProductName , {'attr' : {'class' : 'form-control'  }}  ) }}
+                                
+                                {{ form_errors(form.ProductName) }}
+
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleTextarea1">{% trans %}Desciprtion{% endtrans %}</label>
+                                {{ form_widget(form.Description , {'attr' : {'class' : 'form-control' }}  ) }}
+                                
+                                {{ form_errors(form.Description) }}
+                            </div>
+                            
+                        
+                        
+                      
+                            
+                            <div class="form-group">
+                            <label for="exampleSelectCategory">{% trans %}Category{% endtrans %}</label>
+                            {{ form_widget(form.Category, {'attr' : {'class' : 'form-control' }}  ) }}
+
+                            {{ form_errors(form.Category) }}
+                            
+                           </div>
+                           
+                          <div class="form-group">
+                                <label for="exampleTextarea1">{% trans %}Price{% endtrans %}</label>
+                                {{ form_widget(form.Price , {'attr' : {'class' : 'form-control' }}  ) }}
+                                
+                                {{ form_errors(form.Price) }}
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">{% trans %}Stock{% endtrans %}</label>
+                                {{ form_widget(form.Stock , {'attr' : {'class' : 'form-control' }}  ) }}
+                                
+                                {{ form_errors(form.Stock) }}
+                            </div>
+                           <div class="form-group">
+                                 <label for="exampleSelectCategory">{% trans %}Image{% endtrans %}</label>
+                                 {{ form_widget(form.image,{'attr' : {'class' : 'form-control' }}  ) }}
+                                
+                            </div>
+                         
+                        <button class="btn btn-primary mr-2">{{ button_label|default('Save') }}</button>
+                        
+                        <button type="reset" class="btn  btn-danger"><i class="fa fa-ban"></i> {% trans %}Cancel{% endtrans %}</button>               
+                            {{ form_end(form) }}
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+                      
+                         
+
+{% endblock %}
+

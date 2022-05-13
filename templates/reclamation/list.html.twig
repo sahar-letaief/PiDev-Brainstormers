@@ -1,0 +1,61 @@
+{% extends 'baseFront.html.twig' %}
+
+{% block title %}reclamation index{% endblock %}
+
+{% block body %}
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+
+                <h4 class="card-title">Reclamation Lists </h4>
+                <p class="card-description">
+                </p>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>référence</th>
+                            <th>Titre</th>
+                            <th>Description</th>
+                            <td>Status</td>
+                            <th>Action</th>
+                            <th>Contact</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for rec in reclamation %}
+                            <tr>
+                                <td>{{rec.reference}}</td>
+                                <td>{{rec.Title}}</td>
+                                <td>{{ rec.Description}}</td>
+                                <td><a class="site-btn" style="background: orange;border: none">
+                                        {% if rec.status!='refus' and rec.status!='accept'  %}
+                                    En cours
+                                    {% else %}
+
+                                        {{ rec.status }}
+
+                                    {% endif %}
+                                </a></td>
+                                <td> {% if rec.status!='refus' and rec.status!='accept'  %}
+                                    <a class="btn btn-outline-primary btn-fw" href="{{path('reclamation_edit',{'id':rec.id})}}">edit</a>
+                                    <a class="btn btn-outline-primary btn-fw" href="{{path('reclamation_delete',{'id':rec.id})}}"{#  ,class="mdi mdi-delete"#}>delete</a>
+
+                                    {% else %}
+
+                                {% endif %}
+                                </td>
+                                <td> <a class="btn btn-outline-primary btn-fw"  href="{{path('communication_front')}}">Contact</a>
+                                </td>
+
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

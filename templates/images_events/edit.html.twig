@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+
+<title>Edit ImagesEvents</title>
+
+{% block body %}
+    <h1>Edit ImagesEvents</h1>
+
+    {{ include('images_events/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('images_events_index') }}">back to list</a>
+
+    {{ include('images_events/_delete_form.html.twig') }}
+{% endblock %}

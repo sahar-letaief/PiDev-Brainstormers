@@ -1,0 +1,75 @@
+{% extends 'baseFront.html.twig' %}
+{% block body %}
+<section class="product-page spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="product__page__content">
+                        <div class="product__page__title">
+                            <div class="row">
+                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                    <div class="section-title">
+                                        <h4>GameX</h4>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-6">
+                                    <div class="product__page__filter">
+                                        <p>Order by:</p>
+                                        <select>
+                                            <option value="">A-Z</option>
+                                            <option value="">1-10</option>
+                                            <option value="">10-50</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+<div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Produits Informatiques</h4>
+                    <p class="card-description">Produits<code>/Liste des Produits </code>
+                    </p>
+                    <div class="table-responsive">
+                      <table class="table table-dark">
+                        <thead>
+                         <tr>
+                             
+                             <th>Nom</th>
+                             <th>categorie</th>
+                             <th>Prix</th>
+                             <th>Stock</th>
+                             <th>Description</th>
+                             <th>Image</th>
+                         </tr>
+                      </thead>
+                        <tbody>
+        {% for product in products %}
+            <tr>
+                
+                <td>{{ product.ProductName }}</td>
+                <td>{{ product.Category }}</td>
+                <td>{{ product.Price }}</td>
+                <td>{{ product.Stock }}</td>
+                <td>{{ product.Description }}</td>
+                <td><img src="{{ asset('uploads/') ~product.image}}" alt="" class="img-fluid"></td>
+                
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+</div>
+</div>
+</div>
+</div>
+</section>
+{% endblock %}

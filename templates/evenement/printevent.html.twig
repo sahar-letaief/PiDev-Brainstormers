@@ -1,0 +1,69 @@
+
+
+{% block body %}
+<style>
+    body{
+        font:normal 12px/20PX "Liberation sans", Arial, Helvetica, sans-serif;
+        color:#585858;
+    }
+    img{
+        height: 100px;
+        width: 100px;
+        alignment: center;
+    }
+</style>
+<img src='data:image;base64,<?= {{ logobase64}};?>' />
+
+<div class="main-panel">
+    <div class="content-wrapper">
+
+        <div class="row ">
+            <div class="col-12 grid-margin">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Event list</h5>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-9"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+
+                                <th>Event name</th>
+                                <th>Place</th>
+                                <th>Begins at</th>
+                                <th>Ends at</th>
+                                <th>Price</th>
+                                <th>Participants</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for evenement in evenements %}
+                                <tr>
+
+                                    <td>{{ evenement.NameEvent }}</td>
+                                    <td>{{ evenement.PlaceEvent }}</td>
+                                    <td>{{ evenement.DateDebut ? evenement.DateDebut|date('Y-m-d ') : '' }}</td>
+                                    <td>{{ evenement.DateFin ? evenement.DateFin|date('Y-m-d ') : '' }}</td>                                    <td>{{ evenement.PriceEvent }} DT</td>
+                                    <td>{{ evenement.NbParticipants }}</td>
+                                </tr>
+                            {% else %}
+                                <td colspan="7">no records found</td>
+                            {% endfor %}
+
+                            </tbody>
+
+                        </table>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    {% endblock %}

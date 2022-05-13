@@ -1,0 +1,160 @@
+{% extends 'baseFront.html.twig' %}
+{% block title%} Liste des Articles par Catégorie{% endblock %}
+
+{% block body %}
+
+
+
+
+
+
+ {{ form_start(form) }}
+
+<div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="product__page__content">
+                        
+                            <div class="row">
+                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                    <div class="col">
+                                    <div class="form-row align-items-end" >
+                                    <div class="col">
+                                     {{ form_row(form.minPrice) }}
+                                        </div>
+                                    <div class="col">
+                                      {{ form_row(form.maxPrice) }}
+                                </div>
+
+                                <div class="col">
+                                     <div class="form-group">
+                                         <button type="submit" class="btn btn-success">Search</button>
+                                      </div>
+                                </div>
+                            </div>
+                            {{ form_end(form) }}
+
+
+                    </div>
+                </div>
+            </div>
+         </div>
+     </div>
+    </div>
+ </div>
+
+
+<section class="product-page spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="product__page__content">
+                        <div class="product__page__title">
+                            <div class="row">
+                                <div class="col-lg-8 col-md-8 col-sm-6">
+                                    <div class="section-title">
+                                        <h4>Products</h4>
+                                    </div>
+                                </div>
+         
+                            <div class="col-lg-4 col-md-4 col-sm-4">
+                                <div class="btn__all">
+                                    <a href="{{ path('productFront_index')}}" class="primary-btn">View All <span class="arrow_right"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        </div>
+                        <div class="row">
+
+ {% if products %}
+   
+     
+        {% for product in products %}
+         
+        
+      
+
+
+
+
+    <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__pic set-bg" data-setbg="{{ asset('uploads/') ~product.image}}">
+                                        <div class="">{% if product.stock > 2 %}
+                                        <span class="badge badge-success">
+                                          Available </span>
+                            
+                                         {% else %}
+                                         <span class="badge badge-danger">
+                                          Sold-out!</span>
+                                        {% endif %}</div>
+                                        <div class="comment"><i class="fa fa-comments"></i> 11</div>
+                                        <div class="view"><i class="fa fa-eye"></i> 9141</div>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <ul>
+                                            <li>{{ product.Reference}}</li>
+                                            
+                                        </ul>
+                                        <h5><a href="{{ path('product_show_front', {'id': product.id}) }}">{{ product.ProductName}}</a></h5>
+                                        <h6><a href="#">{{ product.Price}}TND</a></h6>
+                                        <span class="badge badge-warning">{{ product.category.Name }}</span>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+  {% else %}
+  {% for product in products %}
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__pic set-bg" data-setbg="{{ asset('uploads/') ~product.image}}">
+                                        <div class="">{% if product.stock > 10 %}
+                                        <span class="badge badge-success">
+                                          Available </span>
+                            
+                                         {% else %}
+                                         <span class="badge badge-danger">
+                                          Sold-out!</span>
+                                        {% endif %}</div>
+                                         <div class="view"><i class="fa fa-shopping-cart"></i> </div>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <ul>
+                                            <li>{{ product.Reference}}</li>
+                                            
+                                        </ul>
+                                        <h5><a href="{{ path('product_show_front', {'id': product.id}) }}">{{ product.ProductName}}</a></h5>
+                                        <h6><a href="#">{{ product.Price}}TND</a></h6>
+                                        
+                                        
+                                    </div>
+                                    
+                                    
+                                </div>
+                                
+
+                            </div>
+                    {% else %}
+            
+                         <h6 colspan="8" class="badge badge-danger" >{% trans %}No records found{% endtrans %}</h6>
+            
+       
+                                                  
+                                                     
+                        
+  {% endfor %}
+
+  {% endif %} 
+  
+  </div>
+
+                       
+                    </div>
+                </div>
+        
+        
+  
+    </section>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'baseBack.html.twig' %}
+
+{% block title %}Edit Category{% endblock %}
+
+{% block body %}
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="page-header">
+
+            <h5 class="page-title">Admin<code>/{% trans %} Catecory {% endtrans %} </code></h5>
+            <nav aria-label="breadcrumb">
+            {% for locale in locales %}
+                {% if locale != app.request.locale %}
+                <ol class="breadcrumb">
+                    <a  href="{{ path('change_locale', {'locale': locale}) }}"><img src="{{ asset('back/assets/images/'~locale~'.png') }}" alt="{{locale}}" width="80px" height="50px" /></a>
+                {% endif %}
+            {% endfor %}
+                </ol>
+            </nav>
+        </div>
+    
+    
+    <strong>{% trans %} Edit Category{% endtrans %} </strong>
+
+    {{ include('category/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <div class="card-footer">
+                  <div class="row">
+                    
+                    
+            <a class="nav-link btn btn-warning create-new-button" href="{{ path('category_edit', {'id': category.id}) }}">{% trans %}Edit{% endtrans %}</a>
+
+            <a class="nav-link btn btn-primary create-new-button" href="{{ path('category_index') }}">{% trans %}Back{% endtrans %}</a>
+            
+            <a class="nav-link btn btn-danger create-new-button" href="{{ path('category_delete', {'id': category.id}) }}">{% trans %}Delete{% endtrans %}</a>
+
+                  </div>
+      </div>
+                        
+    </di>
+    </div>
+    </div>
+{% endblock %}
