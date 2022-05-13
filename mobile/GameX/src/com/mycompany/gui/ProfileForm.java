@@ -40,6 +40,8 @@ public class ProfileForm extends Form{
             //addAll(front);
              getToolbar().addCommandToSideMenu("Show events" , null ,ev -> {new ListEventsFormFront(previous).show();} );
                 getToolbar().addCommandToSideMenu("Show my reservations" , null ,ev -> {new ListReservationsFormFront(previous).show();} );
+                            getToolbar().addCommandToSideMenu("List Of Products" , null ,ev -> {new HomeForm().show();} );
+
               front.addActionListener(e -> 
         {   
             new HomeFormFront().show();
@@ -55,6 +57,11 @@ public class ProfileForm extends Form{
            getToolbar().addCommandToSideMenu("Show all users" , null ,ev -> {new DisplayUsersBackForm(0, res).show();} );
             getToolbar().addCommandToSideMenu("Show events" , null ,ev -> {new ListEventsForm(previous).show();} );
             getToolbar().addCommandToSideMenu("Show reservations" , null ,ev -> {new ListReservationsForm(previous).show();} );
+            getToolbar().addCommandToSideMenu("List Of Products" , null ,ev -> {new HomeForm().show();} );
+               /*getToolbar().addCommandToSideMenu("Add Product" , null ,ev -> {new AddProductForm(previous).show();} );
+               getToolbar().addCommandToSideMenu("List Of Categories" , null ,ev -> {new ListCatForm(previous).show();} );
+               getToolbar().addCommandToSideMenu("Add Category" , null ,ev -> {new AddCategoryForm(previous).show();} );
+               getToolbar().addCommandToSideMenu("Statistics" , null ,ev -> {new statForm(previous).show();} );*/
             
               front.addActionListener(e -> 
         {   
@@ -70,8 +77,12 @@ public class ProfileForm extends Form{
              Button front = new Button("Visit us");
               //addAll(front);
                getToolbar().addCommandToSideMenu("Show events" , null ,ev -> {new ListEventsFormFront(previous).show();} );
-                getToolbar().addCommandToSideMenu("Show my reservations" , null ,ev -> {new ListReservationsFormFront(previous).show();} );
-                  getToolbar().addCommandToSideMenu("List Of Products" , null ,ev -> {new ListProdForm(previous).show();} );
+               getToolbar().addCommandToSideMenu("Show my reservations" , null ,ev -> {new ListReservationsFormFront(previous).show();} );
+               getToolbar().addCommandToSideMenu("List Of Products" , null ,ev -> {new HomeForm().show();} );
+               
+
+
+
 
               front.addActionListener(e -> 
         {   
