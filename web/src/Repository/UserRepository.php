@@ -5,7 +5,6 @@ namespace App\Repository;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
-use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -37,9 +36,9 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->_em->flush();
     }
 
-    /**
-     * @return User[] Returns an array of User objects
-     */
+     /**
+      * @return User[] Returns an array of User objects
+      */
 
     public function findByFirstName($value)
     {
@@ -48,7 +47,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
             ->setParameter('val', '%'.$value.'%')
             ->getQuery()
             ->getResult()
-            ;
+        ;
     }
 
     public function findByLastName($value)
