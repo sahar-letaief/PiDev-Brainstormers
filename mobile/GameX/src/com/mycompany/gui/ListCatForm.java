@@ -55,7 +55,7 @@ public class ListCatForm extends Form{
                        Button trie =new Button("Actualiser");
 
        
-        trie.addActionListener(e-> new ListProdForm(current).show());
+        trie.addActionListener(e-> new ListCatForm(current).show());
         add(trie);
 
                         List<Category> listerec = sp.getAllCategories();
