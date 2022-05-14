@@ -19,25 +19,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #242424;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.DisplayEventsFrontController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.DisplayEventsFrontController">
    <children>
-      <HBox alignment="CENTER" prefHeight="89.0" prefWidth="1315.0">
-         <children>
-            <Label prefHeight="49.0" prefWidth="147.0" text="GameX" textFill="WHITE">
-               <font>
-                  <Font name="Berlin Sans FB Demi Bold" size="40.0" />
-               </font>
-            </Label>
-            <Separator prefHeight="0.0" prefWidth="992.0" />
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="227.0" text="My products" />
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="178.0" />
-            <Button mnemonicParsing="false" onAction="#showEventsFront" prefHeight="47.0" prefWidth="286.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: #9e9370;" text="My events">
-               <font>
-                  <Font name="Berlin Sans FB Demi Bold" size="25.0" />
-               </font>
-            </Button>
-         </children>
-      </HBox>
       <BorderPane layoutX="6.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <left>
             <HBox BorderPane.alignment="CENTER_RIGHT">
@@ -114,9 +97,9 @@
                         </HBox>
                         <HBox fx:id="eventsback" alignment="CENTER_LEFT" onMouseClicked="#onevents" prefHeight="53.0" prefWidth="176.0" styleClass="sidebarItem">
                            <children>
-                              <ImageView fitHeight="56.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="56.0" fitWidth="127.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../img/client.PNG" />
+                                    <Image url="@../img/event.jpg" />
                                  </image>
                               </ImageView>
                               <Label prefHeight="56.0" prefWidth="43.0" text="events" textFill="WHITE">
@@ -136,7 +119,7 @@
                            <children>
                               <ImageView fitHeight="56.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../img/client.PNG" />
+                                    <Image url="@../img/reservation.jpg" />
                                  </image>
                               </ImageView>
                               <Label prefHeight="52.0" prefWidth="73.0" text="reservations" textFill="WHITE">
@@ -290,7 +273,7 @@
                               </HBox>
                               <Button fx:id="moreDetails" mnemonicParsing="false" onAction="#moreDetails" prefHeight="25.0" prefWidth="271.0" style="-fx-background-color: #02e888;" text="More Details">
                                  <font>
-                                    <Font name="Cantarell Regular" size="17.0" />
+                                    <Font name="Berlin Sans FB Demi Bold" size="23.0" />
                                  </font>
                               </Button>
                               <Button fx:id="addRes" mnemonicParsing="false" onAction="#AddReservation" prefHeight="50.0" prefWidth="270.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: #daaeeb;" styleClass="add-btn" text="ADD RESERVATION">
@@ -328,14 +311,14 @@
                            </children></Pane>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="380.0" styleClass="free-delivery-card">
                            <children>
-                              <VBox alignment="CENTER" prefHeight="100.0" prefWidth="339.0">
+                              <VBox alignment="CENTER" prefHeight="86.0" prefWidth="285.0">
                                  <children>
-                                    <HBox alignment="CENTER" prefHeight="58.0" prefWidth="276.0" VBox.vgrow="NEVER">
+                                    <HBox alignment="CENTER" prefHeight="86.0" prefWidth="203.0" VBox.vgrow="NEVER">
                                        <VBox.margin>
                                           <Insets left="30.0" right="30.0" />
                                        </VBox.margin>
                                        <children>
-                                          <TextField fx:id="searchlabel" prefHeight="40.0" prefWidth="222.0" promptText="Event search" styleClass="transparent">
+                                          <TextField fx:id="searchlabel" prefHeight="40.0" prefWidth="175.0" promptText="Event search" styleClass="transparent">
                                              <HBox.margin>
                                                 <Insets left="20.0" />
                                              </HBox.margin>
@@ -343,7 +326,7 @@
                                                 <Font name="Cambria" size="18.0" />
                                              </font>
                                           </TextField>
-                                          <Button fx:id="Search" mnemonicParsing="false" onAction="#SearchEvent" prefHeight="40.0" prefWidth="140.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: #FFA726;" styleClass="search-button" text="SEARCH">
+                                          <Button fx:id="Search" mnemonicParsing="false" onAction="#SearchEvent" prefHeight="40.0" prefWidth="116.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: #FFA726;" styleClass="search-button" text="SEARCH">
                                              <font>
                                                 <Font name="System Bold" size="12.0" />
                                              </font></Button>
@@ -356,11 +339,11 @@
                                  </children></VBox>
                            </children>
                         </HBox>
-                        <HBox alignment="CENTER" prefHeight="71.0" prefWidth="612.0" styleClass="shopping-online-card">
+                        <HBox alignment="CENTER" prefHeight="86.0" prefWidth="387.0" styleClass="shopping-online-card">
                            <children>
-                              <Button fx:id="sort" mnemonicParsing="false" onAction="#SortByPrice" prefHeight="30.0" prefWidth="159.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: #FFA726;" text="SORT BY PRICE">
+                              <Button fx:id="sort" mnemonicParsing="false" onAction="#SortByPrice" prefHeight="37.0" prefWidth="159.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: #FFA726;" text="SORT BY PRICE">
                                  <font>
-                                    <Font name="Arial" size="14.0" />
+                                    <Font name="Arial" size="11.0" />
                                  </font>
                               </Button>
                               <Button fx:id="MyReservations" mnemonicParsing="false" onAction="#DisplayReservationsFront" prefHeight="36.0" prefWidth="225.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: #4DB6AC;" text="MY RESERVATIONS">

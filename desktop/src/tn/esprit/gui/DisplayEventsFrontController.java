@@ -527,21 +527,7 @@ public class DisplayEventsFrontController implements Initializable {
         }
     }
 
-    @FXML
-    private void onreservation(MouseEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("DisplayReservationFront.fxml"));
-
-        try {
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.centerOnScreen();
-            stage.show();
-        } catch (IOException ex) {
-            Logger.getLogger(SignUpController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+    
 
     @FXML
     private void onSignOut(MouseEvent event) {
@@ -559,14 +545,30 @@ public class DisplayEventsFrontController implements Initializable {
         }
     }
     
-       @FXML
+     @FXML
     private void onevents(MouseEvent event) {
         FXMLLoader Loader = new FXMLLoader(getClass().getResource("DisplayEventsFront.fxml"));
 
         try {
             Parent root = Loader.load();
             DisplayEventsFrontController C = Loader.getController();
+            C.getData();
+            Scene productDetailScene = new Scene(root);
+            Stage cineStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            cineStage.setScene(productDetailScene);
 
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+  @FXML
+    private void onreservation(MouseEvent event) {
+       FXMLLoader Loader = new FXMLLoader(getClass().getResource("DisplayReservationFront.fxml"));
+
+        try {
+            Parent root = Loader.load();
+            DisplayReservationFrontController C = Loader.getController();
+            C.getRes();
             Scene productDetailScene = new Scene(root);
             Stage cineStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             cineStage.setScene(productDetailScene);

@@ -269,7 +269,23 @@ public class ProfileController implements Initializable {
         try {
             Parent root = Loader.load();
             DisplayEventsFrontController C = Loader.getController();
+            C.getData();
+            Scene productDetailScene = new Scene(root);
+            Stage cineStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            cineStage.setScene(productDetailScene);
 
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+     @FXML
+    private void reservationBack(MouseEvent event) {
+        FXMLLoader Loader = new FXMLLoader(getClass().getResource("DisplayReservationFront.fxml"));
+
+        try {
+            Parent root = Loader.load();
+            DisplayReservationFrontController C = Loader.getController();
+            C.getRes();
             Scene productDetailScene = new Scene(root);
             Stage cineStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             cineStage.setScene(productDetailScene);
