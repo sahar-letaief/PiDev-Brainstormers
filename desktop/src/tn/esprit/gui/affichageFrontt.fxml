@@ -5,32 +5,47 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="show" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #242424;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ListOfCategoryController">
+<AnchorPane id="AnchorPane" prefHeight="726.0" prefWidth="1169.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.affichageFronttController">
    <children>
-      <Text fill="#ff2e2e" layoutX="638.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="List Of Categories" textAlignment="CENTER" wrappingWidth="261.69842529296875">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="28.0" />
-         </font>
-      </Text>
-      <Text layoutX="238.0" layoutY="364.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="124.5367431640625" />
-      <AnchorPane fx:id="slider" prefHeight="768.0" prefWidth="267.0" style="-fx-background-color: #4682B4;">
+      <HBox layoutY="-3.0" prefHeight="726.0" prefWidth="1169.0">
          <children>
-            <VBox prefHeight="768.0" prefWidth="300.0" style="-fx-background-color: #0b0c2a;">
+            <VBox prefHeight="751.0" prefWidth="295.0" style="-fx-background-color: #0b0c2a;">
                <children>
                   <ImageView fitHeight="103.0" fitWidth="267.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@images/unnamed%20(1)%20(1).png" />
                      </image>
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
                   </ImageView>
+                  <HBox fx:id="UsersBack" alignment="CENTER_LEFT" onMouseClicked="#onUsersBack" prefHeight="53.0" prefWidth="176.0" styleClass="sidebarItem">
+                     <children>
+                        <ImageView fitHeight="56.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/client.PNG" />
+                           </image>
+                        </ImageView>
+                        <Label prefHeight="56.0" prefWidth="43.0" text="Profile" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="30.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="5.0" top="5.0" />
+                     </padding>
+                  </HBox>
                   <HBox alignment="CENTER_LEFT" onMouseClicked="#goToList2" prefHeight="53.0" prefWidth="176.0" styleClass="sidebarItem">
                      <children>
                         <ImageView fitHeight="56.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
@@ -47,40 +62,9 @@
                      <VBox.margin>
                         <Insets left="30.0" top="10.0" />
                      </VBox.margin>
-                  </HBox>
-                  <HBox alignment="CENTER_LEFT" onMouseClicked="#goListCat" prefHeight="53.0" prefWidth="176.0" styleClass="sidebarItem">
-                     <children>
-                        <ImageView fitHeight="56.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/abo.png" />
-                           </image>
-                        </ImageView>
-                        <Label fx:id="goCat" onMouseClicked="#goListCat" prefHeight="53.0" prefWidth="73.0" text="Categories" textFill="WHITE">
-                           <HBox.margin>
-                              <Insets left="20.0" />
-                           </HBox.margin>
-                        </Label>
-                     </children>
-                     <VBox.margin>
-                        <Insets left="30.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox fx:id="UsersBack" alignment="CENTER_LEFT" onMouseClicked="#onUsersBack" prefHeight="53.0" prefWidth="176.0" styleClass="sidebarItem">
-                     <children>
-                        <ImageView fitHeight="56.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/client.PNG" />
-                           </image>
-                        </ImageView>
-                        <Label prefHeight="56.0" prefWidth="43.0" text="User" textFill="WHITE">
-                           <HBox.margin>
-                              <Insets left="20.0" />
-                           </HBox.margin>
-                        </Label>
-                     </children>
-                     <VBox.margin>
-                        <Insets left="30.0" />
-                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="5.0" top="5.0" />
+                     </padding>
                   </HBox>
                   <HBox fx:id="order" alignment="CENTER_LEFT" onMouseClicked="#onorder" prefHeight="53.0" prefWidth="176.0" styleClass="sidebarItem">
                      <children>
@@ -95,40 +79,9 @@
                            </HBox.margin>
                         </Label>
                      </children>
-                     <VBox.margin>
-                        <Insets left="30.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox fx:id="commentsback" alignment="CENTER_LEFT" onMouseClicked="#oncomments" prefHeight="53.0" prefWidth="176.0" styleClass="sidebarItem">
-                     <children>
-                        <ImageView fitHeight="56.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/client.PNG" />
-                           </image>
-                        </ImageView>
-                        <Label prefHeight="52.0" prefWidth="62.0" text="comments" textFill="WHITE">
-                           <HBox.margin>
-                              <Insets left="20.0" />
-                           </HBox.margin>
-                        </Label>
-                     </children>
-                     <VBox.margin>
-                        <Insets left="30.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox fx:id="tagsback" alignment="CENTER_LEFT" onMouseClicked="#ontags" prefHeight="53.0" prefWidth="176.0" styleClass="sidebarItem">
-                     <children>
-                        <ImageView fitHeight="56.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/client.PNG" />
-                           </image>
-                        </ImageView>
-                        <Label prefHeight="56.0" prefWidth="43.0" text="tags" textFill="WHITE">
-                           <HBox.margin>
-                              <Insets left="20.0" />
-                           </HBox.margin>
-                        </Label>
-                     </children>
+                     <padding>
+                        <Insets bottom="5.0" top="5.0" />
+                     </padding>
                      <VBox.margin>
                         <Insets left="30.0" />
                      </VBox.margin>
@@ -146,6 +99,9 @@
                            </HBox.margin>
                         </Label>
                      </children>
+                     <padding>
+                        <Insets bottom="5.0" top="5.0" />
+                     </padding>
                      <VBox.margin>
                         <Insets left="30.0" />
                      </VBox.margin>
@@ -157,54 +113,63 @@
                               <Image url="@../../../img/reservation.jpg" />
                            </image>
                         </ImageView>
-                        <Label prefHeight="52.0" prefWidth="132.0" text="reservations" textFill="WHITE">
+                        <Label prefHeight="52.0" prefWidth="140.0" text="reservations" textFill="WHITE">
                            <HBox.margin>
                               <Insets left="20.0" />
                            </HBox.margin>
                         </Label>
                      </children>
+                     <padding>
+                        <Insets bottom="5.0" top="5.0" />
+                     </padding>
                      <VBox.margin>
                         <Insets left="30.0" />
                      </VBox.margin>
                   </HBox>
-                  <HBox fx:id="ReclamBack" alignment="CENTER_LEFT" onMouseClicked="#OnReclamation" prefHeight="53.0" prefWidth="176.0" styleClass="sidebarItem">
+                  <HBox fx:id="clicReclamation" alignment="CENTER_LEFT" onMouseClicked="#onReclamtionFront" prefHeight="53.0" prefWidth="176.0" styleClass="sidebarItem">
                      <children>
                         <ImageView fitHeight="56.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../img/client.PNG" />
                            </image>
                         </ImageView>
-                        <Label prefHeight="52.0" prefWidth="169.0" text="Reclamations" textFill="WHITE">
+                        <Label prefHeight="52.0" prefWidth="145.0" text="Reclamation" textFill="WHITE">
                            <HBox.margin>
                               <Insets left="20.0" />
                            </HBox.margin>
                         </Label>
                      </children>
+                     <padding>
+                        <Insets bottom="5.0" top="5.0" />
+                     </padding>
                      <VBox.margin>
                         <Insets left="30.0" />
                      </VBox.margin>
                   </HBox>
-                  <HBox fx:id="backCom" alignment="CENTER_LEFT" onMouseClicked="#OnCommunication" prefHeight="53.0" prefWidth="176.0" styleClass="sidebarItem">
+                  <HBox fx:id="clicCommunication" alignment="CENTER_LEFT" onMouseClicked="#onCommunication" prefHeight="53.0" prefWidth="176.0" styleClass="sidebarItem">
                      <children>
                         <ImageView fitHeight="56.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../img/client.PNG" />
                            </image>
-                           <HBox.margin>
-                              <Insets left="30.0" />
-                           </HBox.margin>
                         </ImageView>
-                        <Label prefHeight="52.0" prefWidth="136.0" text="Communications" textFill="WHITE">
+                        <Label prefHeight="52.0" prefWidth="159.0" text="Communication" textFill="WHITE">
                            <HBox.margin>
                               <Insets left="20.0" />
                            </HBox.margin>
                         </Label>
                      </children>
-                  </HBox>
-                  <HBox fx:id="SignOutBack" alignment="CENTER_LEFT" onMouseClicked="#onSignOut" prefHeight="60.0" prefWidth="270.0" styleClass="sidebarItem">
+                     <padding>
+                        <Insets bottom="5.0" top="5.0" />
+                     </padding>
+                     <opaqueInsets>
+                        <Insets left="30.0" />
+                     </opaqueInsets>
                      <VBox.margin>
                         <Insets left="30.0" />
                      </VBox.margin>
+                  </HBox>
+                  <HBox fx:id="SignOutBack2" alignment="CENTER_LEFT" onMouseClicked="#onSignOut" prefHeight="53.0" prefWidth="176.0" styleClass="sidebarItem">
                      <children>
                         <ImageView fitHeight="56.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -217,6 +182,12 @@
                            </HBox.margin>
                         </Label>
                      </children>
+                     <padding>
+                        <Insets bottom="5.0" top="5.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets left="30.0" />
+                     </VBox.margin>
                   </HBox>
                </children>
                <padding>
@@ -224,29 +195,31 @@
                </padding>
             </VBox>
          </children>
-      </AnchorPane>
-      <Button fx:id="supp" layoutX="1100.0" layoutY="619.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="26.0" prefWidth="103.0" style="-fx-background-color: #E74856;" styleClass="add1-btn" text="Delete" textFill="WHITE">
+      </HBox>
+      <Button fx:id="supp" layoutX="553.0" layoutY="543.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="26.0" prefWidth="103.0" style="-fx-background-color: #d00f0f;" styleClass="add1-btn" stylesheets="@../../../../../../../../Documents/NetBeansProjects/PiDevJavaa/src/style/style.css" text="delete" textFill="#1b1a1a">
          <font>
-            <Font name="System Bold" size="17.0" />
+            <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="mod" layoutX="978.0" layoutY="618.0" mnemonicParsing="false" onAction="#modifier" prefHeight="26.0" prefWidth="103.0" style="-fx-background-color: orange;" styleClass="add1-btn" text="Edit" textFill="#fffefe">
+      <Button fx:id="mod" layoutX="721.0" layoutY="543.0" mnemonicParsing="false" onAction="#modifier" prefHeight="26.0" prefWidth="103.0" style="-fx-background-color: #d00f0f;" styleClass="add1-btn" stylesheets="@../../../../../../../../Documents/NetBeansProjects/PiDevJavaa/src/style/style.css" text="Modify" textFill="#171717">
          <font>
-            <Font name="System Bold" size="17.0" />
+            <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <TextField fx:id="filterFieldCat" layoutX="379.0" layoutY="240.0" promptText="Search" />
-      <Button fx:id="addCat" layoutX="854.0" layoutY="618.0" mnemonicParsing="false" onAction="#btnAddCat" prefHeight="26.0" prefWidth="103.0" style="-fx-background-color: #00B294;" styleClass="add1-btn" text="Add" textFill="WHITE">
+      <Button fx:id="refresh" layoutX="642.0" layoutY="582.0" mnemonicParsing="false" onAction="#Refresh" prefHeight="26.0" prefWidth="103.0" style="-fx-background-color: #d00f0f;" styleClass="add1-btn" stylesheets="@../../../../../../../../Documents/NetBeansProjects/PiDevJavaa/src/style/style.css" text="Refresh" textFill="#111111">
          <font>
-            <Font name="System Bold" size="17.0" />
+            <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <TableView fx:id="tableCat" layoutX="379.0" layoutY="278.0" prefHeight="331.0" prefWidth="824.0">
-        <columns>
-          <TableColumn fx:id="nameCat" prefWidth="231.0" text="Name" />
-          <TableColumn fx:id="descCat" prefWidth="592.0" text="Description" />
-        </columns>
+      <TableView fx:id="tb_rec1" layoutX="326.0" layoutY="209.0" opacity="0.73" prefHeight="302.0" prefWidth="831.0">
+         <columns>
+            <TableColumn fx:id="titrefr" prefWidth="203.0" text="Title" />
+            <TableColumn fx:id="descriptionfr" prefWidth="498.0" text="Description" />
+            <TableColumn fx:id="statusfr" prefWidth="127.0" text="Status" />
+         </columns>
+         <opaqueInsets>
+            <Insets bottom="30.0" left="30.0" right="30.0" />
+         </opaqueInsets>
       </TableView>
-      <TextField fx:id="nbrProd" layoutX="1073.0" layoutY="240.0" prefHeight="20.0" prefWidth="130.0" />
    </children>
 </AnchorPane>

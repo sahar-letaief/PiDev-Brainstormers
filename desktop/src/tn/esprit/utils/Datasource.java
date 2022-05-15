@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  */
 public class Datasource {
     
-    private String url = "jdbc:mysql://localhost:3306/gamex";
+    private String url = "jdbc:mysql://localhost:3307/gamex2";
     private String username = "root";
     private String password = "";
     

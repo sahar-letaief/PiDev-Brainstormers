@@ -4,17 +4,18 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="726.0" prefWidth="1169.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.ProfileController">
+<AnchorPane id="AnchorPane" prefHeight="726.0" prefWidth="1169.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EditReclamationController">
    <children>
       <HBox prefHeight="726.0" prefWidth="1169.0">
          <children>
@@ -92,7 +93,7 @@
                      <children>
                         <ImageView fitHeight="56.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/client.PNG" />
+                              <Image url="@../../../img/event.jpg" />
                            </image>
                         </ImageView>
                         <Label prefHeight="56.0" prefWidth="43.0" text="events" textFill="WHITE">
@@ -112,10 +113,10 @@
                      <children>
                         <ImageView fitHeight="56.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/client.PNG" />
+                              <Image url="@../../../img/reservation.jpg" />
                            </image>
                         </ImageView>
-                        <Label prefHeight="52.0" prefWidth="133.0" text="reservations" textFill="WHITE">
+                        <Label prefHeight="52.0" prefWidth="73.0" text="reservations" textFill="WHITE">
                            <HBox.margin>
                               <Insets left="20.0" />
                            </HBox.margin>
@@ -196,85 +197,53 @@
                   <Insets bottom="10.0" top="10.0" />
                </padding>
             </VBox>
-            <VBox fx:id="ProfileInterface" alignment="CENTER" prefHeight="726.0" prefWidth="749.0">
+            <Pane fx:id="pane1" prefHeight="666.0" prefWidth="595.0" style="-fx-background-color: #eeecec;">
                <children>
-                  <HBox alignment="CENTER" prefHeight="107.0" prefWidth="856.0" style="-fx-border-color: #7A8EFF;">
-                     <children>
-                        <Label prefHeight="60.0" prefWidth="126.0" text="Profile" textAlignment="CENTER" textFill="RED" underline="true">
-                           <font>
-                              <Font size="44.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <VBox prefHeight="451.0" prefWidth="856.0" style="-fx-border-color: #7A8EFF;">
-                     <VBox.margin>
-                        <Insets top="80.0" />
-                     </VBox.margin>
-                     <children>
-                        <HBox alignment="CENTER" prefHeight="49.0" prefWidth="856.0">
-                           <children>
-                              <Label prefHeight="35.0" prefWidth="98.0" text="First Name :" />
-                              <TextField fx:id="FirstNameProfile" prefHeight="36.0" prefWidth="513.0" />
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER" prefHeight="49.0" prefWidth="856.0">
-                           <children>
-                              <Label prefHeight="35.0" prefWidth="98.0" text="Last Name :" />
-                              <TextField fx:id="LastNameProfile" prefHeight="36.0" prefWidth="513.0" />
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER" prefHeight="49.0" prefWidth="856.0">
-                           <children>
-                              <Label prefHeight="35.0" prefWidth="98.0" text="Email :" />
-                              <TextField fx:id="EmailProfile" prefHeight="36.0" prefWidth="513.0" />
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER" prefHeight="49.0" prefWidth="856.0">
-                           <children>
-                              <Label prefHeight="35.0" prefWidth="98.0" text="User name :" />
-                              <TextField fx:id="UserNameProfile" prefHeight="36.0" prefWidth="513.0" />
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER" prefHeight="49.0" prefWidth="856.0">
-                           <children>
-                              <Label prefHeight="35.0" prefWidth="98.0" text="Phone Number :" />
-                              <TextField fx:id="PhoneNumberProfile" prefHeight="36.0" prefWidth="513.0" />
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER" prefHeight="49.0" prefWidth="856.0">
-                           <children>
-                              <Label prefHeight="35.0" prefWidth="98.0" text="Password :" />
-                              <PasswordField fx:id="PasswordProfile" prefHeight="35.0" prefWidth="512.0" />
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER" prefHeight="49.0" prefWidth="856.0">
-                           <children>
-                              <Label prefHeight="35.0" prefWidth="98.0" text="Role :" />
-                              <ComboBox fx:id="Roleprofile" prefHeight="36.0" prefWidth="512.0" promptText="Select Your Role" />
-                           </children>
-                        </HBox>
-                        <HBox alignment="CENTER" prefHeight="70.0" prefWidth="856.0">
-                           <children>
-                              <RadioButton fx:id="EditProfileRadioButton" mnemonicParsing="false" onAction="#onSelectRadioButton" text="Edit Informations">
-                                 <HBox.margin>
-                                    <Insets left="20.0" right="20.0" />
-                                 </HBox.margin>
-                              </RadioButton>
-                              <Button fx:id="SaveEditProfile" mnemonicParsing="false" onAction="#onEditProfileAction" prefHeight="23.0" prefWidth="133.0" style="-fx-background-color: #7A8EFF;" text="Save" textFill="WHITE">
-                                 <HBox.margin>
-                                    <Insets left="20.0" right="20.0" />
-                                 </HBox.margin>
-                              </Button>
-                           </children>
-                        </HBox>
-                     </children>
-                  </VBox>
+                  <ImageView fx:id="myImageView" fitHeight="82.0" fitWidth="125.0" layoutX="46.0" layoutY="491.0" pickOnBounds="true" preserveRatio="true" />
+                  <Text fill="#d00f0f" layoutX="200.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Reclamation" textAlignment="CENTER" wrappingWidth="213.69842529296875">
+                     <font>
+                        <Font name="Arial Bold Italic" size="24.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="ftTitle" fill="#111010" layoutX="102.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title" textAlignment="CENTER">
+                     <font>
+                        <Font name="Arial Bold Italic" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="ftDescription" fill="#111010" layoutX="93.0" layoutY="295.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" textAlignment="CENTER">
+                     <font>
+                        <Font name="Arial Bold Italic" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="ftcmde_ref" fill="#111010" layoutX="91.0" layoutY="499.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Command Reference " textAlignment="CENTER">
+                     <font>
+                        <Font name="Arial Bold Italic" size="18.0" />
+                     </font>
+                  </Text>
+                  <Button fx:id="consulter" layoutX="419.0" layoutY="548.0" mnemonicParsing="false" onAction="#modifierRec" prefHeight="25.0" prefWidth="75.0" style="-fx-background-color: #d00f0f;" styleClass="add1-btn" stylesheets="@../../../../../../../../Documents/NetBeansProjects/PiDevJavaa/src/style/style.css" text="Modifier ">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <TextField id="prenomText" fx:id="nom" layoutX="307.0" layoutY="187.0" promptText="Enter your Title" style="-fx-background-color: transparent; -fx-border-color: #111010; -fx-border-width: 0px 0px 2px 0px;" />
+                  <TextArea fx:id="des" layoutX="307.0" layoutY="262.0" prefHeight="200.0" prefWidth="200.0" promptText="Enter your Description" />
+                  <Button fx:id="back" layoutX="332.0" layoutY="548.0" mnemonicParsing="false" onAction="#BackToList" prefHeight="25.0" prefWidth="75.0" style="-fx-background-color: #d00f0f;" styleClass="add1-btn" stylesheets="@../../../../../../../../Documents/NetBeansProjects/PiDevJavaa/src/style/style.css" text="Back">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <ComboBox fx:id="fgg" layoutX="307.0" layoutY="488.0" prefHeight="31.0" prefWidth="200.0" />
                </children>
+               <opaqueInsets>
+                  <Insets left="30.0" />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="30.0" top="30.0" />
+               </padding>
                <HBox.margin>
-                  <Insets left="40.0" />
+                  <Insets bottom="30.0" left="200.0" right="30.0" top="30.0" />
                </HBox.margin>
-            </VBox>
+            </Pane>
          </children>
       </HBox>
    </children>

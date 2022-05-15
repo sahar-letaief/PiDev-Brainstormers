@@ -11,13 +11,13 @@ import tn.esprit.utils.MailService;
  *
  * @author Nidhal
  */
-public class MailerService {
+public class MailerService1 {
     public void replyMail(String mail ,String Username , String Description) {
-        String from = "maryem.benmohamed@esprit.tn";
+        String from = "rihab.aljene@esprit.tn";
         String pass = "";
         String[] to = {"" + mail}; // list of recipient email addresses
         String subject = "GameX";
-        String body = Description;
+        String body = Description ;
         MailService serv = new MailService();
         serv.sendFromGMail(from,pass,to,subject,body);
     }

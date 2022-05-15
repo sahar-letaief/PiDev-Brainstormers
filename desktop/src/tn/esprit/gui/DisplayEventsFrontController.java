@@ -100,6 +100,10 @@ public class DisplayEventsFrontController implements Initializable {
     private HBox reservationBack;
     @FXML
     private HBox SignOutBack;
+    @FXML
+    private HBox clicReclamation;
+    @FXML
+    private HBox clicCommunication;
 
     /**
      * Initializes the controller class.
@@ -284,7 +288,7 @@ public class DisplayEventsFrontController implements Initializable {
     @FXML
     private void DisplayReservationsFront(ActionEvent event) {
 
-        FXMLLoader Loader = new FXMLLoader(getClass().getResource("DisplayReservationFront.fxml"));
+        FXMLLoader Loader = new FXMLLoader(getClass().getResource("/tn/esprit/gui/DisplayReservationFront.fxml"));
 
         try {
             Parent root = Loader.load();
@@ -335,7 +339,7 @@ public class DisplayEventsFrontController implements Initializable {
             try {
                 for (int i = 0; i < events3.size() - 1; i++) {
                     FXMLLoader fxmlLoader = new FXMLLoader();
-                    fxmlLoader.setLocation(getClass().getResource("EventItem.fxml"));
+                    fxmlLoader.setLocation(getClass().getResource("/tn/esprit/gui/EventItem.fxml"));
                     AnchorPane anchorPane = fxmlLoader.load();
 
                     EventItemController EIC = fxmlLoader.getController();
@@ -396,7 +400,7 @@ public class DisplayEventsFrontController implements Initializable {
         try {
             for (int i = 0; i < events.size() - 1; i++) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("EventItem.fxml"));
+                fxmlLoader.setLocation(getClass().getResource("/tn/esprit/gui/EventItem.fxml"));
                 AnchorPane anchorPane = fxmlLoader.load();
 
                 EventItemController EIC = fxmlLoader.getController();
@@ -427,7 +431,7 @@ public class DisplayEventsFrontController implements Initializable {
 
     @FXML
     private void showEventsFront(ActionEvent event) {
-        FXMLLoader Loader = new FXMLLoader(getClass().getResource("DisplayEventsFront.fxml"));
+        FXMLLoader Loader = new FXMLLoader(getClass().getResource("/tn/esprit/gui/DisplayEventsFront.fxml"));
 
         try {
             Parent root = Loader.load();
@@ -545,9 +549,45 @@ public class DisplayEventsFrontController implements Initializable {
         }
     }
     
-     @FXML
+
+    @FXML
+    private void onReclamtionFront(MouseEvent event) {
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn/esprit/gui/ajouter_reclamation.fxml"));
+        
+        try {
+            javafx.scene.Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.centerOnScreen();
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(SignUpController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+       
+       
+    }
+
+    @FXML
+    private void onCommunication(MouseEvent event) {
+          FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn/esprit/gui/ajouter_message.fxml"));
+        
+        try {
+            javafx.scene.Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.centerOnScreen();
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(SignUpController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+@FXML
     private void onevents(MouseEvent event) {
-        FXMLLoader Loader = new FXMLLoader(getClass().getResource("DisplayEventsFront.fxml"));
+        FXMLLoader Loader = new FXMLLoader(getClass().getResource("/tn/esprit/gui/DisplayEventsFront.fxml"));
 
         try {
             Parent root = Loader.load();
@@ -563,7 +603,7 @@ public class DisplayEventsFrontController implements Initializable {
     }
   @FXML
     private void onreservation(MouseEvent event) {
-       FXMLLoader Loader = new FXMLLoader(getClass().getResource("DisplayReservationFront.fxml"));
+       FXMLLoader Loader = new FXMLLoader(getClass().getResource("/tn/esprit/gui/DisplayReservationFront.fxml"));
 
         try {
             Parent root = Loader.load();
@@ -577,5 +617,4 @@ public class DisplayEventsFrontController implements Initializable {
             System.out.println(ex.getMessage());
         }
     }
-
 }

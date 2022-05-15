@@ -78,9 +78,6 @@
                <VBox.margin>
                   <Insets left="30.0" top="10.0" />
                </VBox.margin>
-               <padding>
-                  <Insets bottom="5.0" top="5.0" />
-               </padding>
             </HBox>
             <HBox alignment="CENTER_LEFT" onMouseClicked="#goListCat" prefHeight="53.0" prefWidth="176.0" styleClass="sidebarItem">
                <children>
@@ -98,9 +95,6 @@
                <VBox.margin>
                   <Insets left="30.0" />
                </VBox.margin>
-               <padding>
-                  <Insets bottom="5.0" top="5.0" />
-               </padding>
             </HBox>
             <HBox fx:id="UsersBack" alignment="CENTER_LEFT" onMouseClicked="#onUsersBack" prefHeight="53.0" prefWidth="176.0" styleClass="sidebarItem">
                <children>
@@ -135,9 +129,6 @@
                      </HBox.margin>
                   </Label>
                </children>
-               <padding>
-                  <Insets bottom="5.0" top="5.0" />
-               </padding>
                <VBox.margin>
                   <Insets left="30.0" />
                </VBox.margin>
@@ -149,15 +140,12 @@
                         <Image url="@../img/client.PNG" />
                      </image>
                   </ImageView>
-                  <Label prefHeight="52.0" prefWidth="62.0" text="comments" textFill="WHITE">
+                  <Label prefHeight="52.0" prefWidth="146.0" text="comments" textFill="WHITE">
                      <HBox.margin>
                         <Insets left="20.0" />
                      </HBox.margin>
                   </Label>
                </children>
-               <padding>
-                  <Insets bottom="5.0" top="5.0" />
-               </padding>
                <VBox.margin>
                   <Insets left="30.0" />
                </VBox.margin>
@@ -175,18 +163,15 @@
                      </HBox.margin>
                   </Label>
                </children>
-               <padding>
-                  <Insets bottom="5.0" top="5.0" />
-               </padding>
                <VBox.margin>
                   <Insets left="30.0" />
                </VBox.margin>
             </HBox>
-            <HBox fx:id="eventsback" alignment="CENTER_LEFT" onMouseClicked="#ontags" prefHeight="53.0" prefWidth="176.0" styleClass="sidebarItem">
+            <HBox fx:id="eventsback" alignment="CENTER_LEFT" onMouseClicked="#onevents" prefHeight="53.0" prefWidth="176.0" styleClass="sidebarItem">
                <children>
                   <ImageView fitHeight="56.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../img/client.PNG" />
+                        <Image url="@../../../img/event.jpg" />
                      </image>
                   </ImageView>
                   <Label prefHeight="56.0" prefWidth="43.0" text="events" textFill="WHITE">
@@ -195,9 +180,6 @@
                      </HBox.margin>
                   </Label>
                </children>
-               <padding>
-                  <Insets bottom="5.0" top="5.0" />
-               </padding>
                <VBox.margin>
                   <Insets left="30.0" />
                </VBox.margin>
@@ -206,18 +188,49 @@
                <children>
                   <ImageView fitHeight="56.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../img/client.PNG" />
+                        <Image url="@../../../img/reservation.jpg" />
                      </image>
                   </ImageView>
-                  <Label prefHeight="52.0" prefWidth="73.0" text="reservations" textFill="WHITE">
+                  <Label prefHeight="52.0" prefWidth="174.0" text="reservations" textFill="WHITE">
                      <HBox.margin>
                         <Insets left="20.0" />
                      </HBox.margin>
                   </Label>
                </children>
-               <padding>
-                  <Insets bottom="5.0" top="5.0" />
-               </padding>
+               <VBox.margin>
+                  <Insets left="30.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox fx:id="ReclamBack" alignment="CENTER_LEFT" onMouseClicked="#OnReclamation" prefHeight="65.0" prefWidth="270.0" styleClass="sidebarItem">
+               <children>
+                  <ImageView fitHeight="56.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/client.PNG" />
+                     </image>
+                  </ImageView>
+                  <Label prefHeight="23.0" prefWidth="169.0" text="Reclamations" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets left="30.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox fx:id="backCom" alignment="CENTER_LEFT" onMouseClicked="#OnCommunication" prefHeight="36.0" prefWidth="270.0" styleClass="sidebarItem">
+               <children>
+                  <ImageView fitHeight="56.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/client.PNG" />
+                     </image>
+                  </ImageView>
+                  <Label prefHeight="52.0" prefWidth="169.0" text="Communications" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
                <VBox.margin>
                   <Insets left="30.0" />
                </VBox.margin>
@@ -235,9 +248,6 @@
                      </HBox.margin>
                   </Label>
                </children>
-               <padding>
-                  <Insets bottom="5.0" top="5.0" />
-               </padding>
                <VBox.margin>
                   <Insets left="30.0" />
                </VBox.margin>
@@ -247,5 +257,10 @@
             <Insets bottom="10.0" top="10.0" />
          </padding>
       </VBox>
+      <HBox fx:id="ReclamBack1" alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" onMouseClicked="#OnReclamation" prefHeight="83.0" prefWidth="300.0" styleClass="sidebarItem">
+         <padding>
+            <Insets bottom="5.0" top="5.0" />
+         </padding>
+      </HBox>
    </children>
 </AnchorPane>

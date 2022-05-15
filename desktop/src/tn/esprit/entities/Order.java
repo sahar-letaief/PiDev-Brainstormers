@@ -113,6 +113,11 @@ public class Order {
     public Order() {
         
     }
+
+    public Order(String ref_cmde) {
+        this.ref_cmde = ref_cmde;
+    }
+    
     
     public int getId() {
         return id;
