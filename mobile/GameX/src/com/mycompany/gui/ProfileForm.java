@@ -42,6 +42,7 @@ public class ProfileForm extends Form{
                 getToolbar().addCommandToSideMenu("Show my reservations" , null ,ev -> {new ListReservationsFormFront(previous).show();} );
                             getToolbar().addCommandToSideMenu("Products" , null ,ev -> {new HomeForm().show();} );
                             getToolbar().addCommandToSideMenu("products of cart" , null ,ev -> {new HomeForm_1().show();} );
+                            getToolbar().addCommandToSideMenu("Reclamations" , null ,ev -> {new Home().show();} );
 
               front.addActionListener(e -> 
         {   
@@ -81,6 +82,7 @@ public class ProfileForm extends Form{
                getToolbar().addCommandToSideMenu("Show my reservations" , null ,ev -> {new ListReservationsFormFront(previous).show();} );
                getToolbar().addCommandToSideMenu("List Of Products" , null ,ev -> {new HomeForm().show();} );
                getToolbar().addCommandToSideMenu("products of cart" , null ,ev -> {new HomeForm_1().show();} );
+               getToolbar().addCommandToSideMenu("Reclamations" , null ,ev -> {new Home().show();} );
                
 
 
