@@ -37,7 +37,7 @@ class CommandeController extends AbstractController
 {
     /**
      * @IsGranted("ROLE_USER")
-     * @Route("/", name="commande_index", methods={"GET","POST"})
+     * @Route("/AllComande", name="commande_index", methods={"GET","POST"})
      */
     public function index(Request $request, CommandeRepository $commandeRepository, ProductRepository $productRepository , PaginatorInterface $paginator): Response
     {   
@@ -53,7 +53,8 @@ class CommandeController extends AbstractController
             }
         else
             {
-               $allcommande= $commandeRepository->findAll(); 
+               $allcommande= $commandeRepository->commandeforuser($this->getUser()->getId()); 
+               //dd($allcommande);
             }
         $commandes=$paginator->paginate($allcommande,$request->query->getInt('page',1),2);
         return $this->render('commande_Front/index.html.twig',[
@@ -65,7 +66,7 @@ class CommandeController extends AbstractController
 
     
     /**
-     * @Route("/AllComande", name="commande_index", methods={"GET"})
+     * @Route("/AllComande", name="commande_indexu", methods={"GET"})
      */
 
     public function AllComande(NormalizerInterface $Normalizer )
@@ -84,7 +85,34 @@ class CommandeController extends AbstractController
     die;
 }
 
+  /**
+         * @Route("/Search", name="demo_create")
+         * @return Response|JsonResponse 
+         * 
+        */
+        public function index3(Request $request,CommandeRepository $commandeRepository,PaginatorInterface $paginator) : Response
+        {
+            // $tab=  ["éa ","d"];
+            $emailValue = $request->get('search');
+            //dd($emailValue);
+            $allcommande= $commandeRepository->search($emailValue);
+            $arr = (object) $allcommande;
 
+            $commandes=$paginator->paginate($allcommande,$request->query->getInt('page',1),2);
+            if($request->get('path')){
+            return new JsonResponse([
+                'content' => $this->renderView('commande_Front/contentajax.html.twig', ["commandes" => $commandes])
+            ]);
+        }
+            return new JsonResponse([
+               "html" => $this->renderView("commande_Front/index.html.twig", ["commandes" => $commandes]),
+            ]);
+            return Response::json($allcommande);
+            // $response = new JsonResponse();
+            // $response->setStatusCode(200);
+            return $response->setData(['search' => $allcommande ]);
+
+        }
 
 
 
@@ -166,7 +194,7 @@ class CommandeController extends AbstractController
             {
                $allcommande= $commandeRepository->findAll(); 
             }
-        $commandes=$paginator->paginate($allcommande,$request->query->getInt('page',1),2);
+        $commandes=$paginator->paginate($allcommande,$request->query->getInt('page',1),4);
         //dd($commandes);
         return $this->render('commande_Back/indexback.html.twig', [
             'commandes' => $commandes,
@@ -250,7 +278,7 @@ class CommandeController extends AbstractController
 
     /**
      * @IsGranted("ROLE_USER")
-     * @Route("/{id}/edit", name="commande_edit", methods={"GET", "POST"})
+     * @Route("/front/{id}/edit", name="commande_edit", methods={"GET", "POST"})
      */
     public function edit(Request $request, Commande $commande, EntityManagerInterface $entityManager): Response
     {
@@ -283,7 +311,7 @@ class CommandeController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('commande_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('commande_Back', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('commande_Back/editback.html.twig', [
@@ -388,6 +416,7 @@ class CommandeController extends AbstractController
      /**
      * @Route("/AllComande", name="AllComande")
      */
+    /*
     public function AllComandes(NormalizerInterface $Normalizer )
     {
     //Nous utilisons la Repository pour récupérer les objets que nous avons dans la base de données
@@ -403,7 +432,7 @@ class CommandeController extends AbstractController
     dump($jsonContent);
     die;
 }
-    
+    /*
 
   /**
      * @Route("/editcmde/{id}", name="commande_edit")

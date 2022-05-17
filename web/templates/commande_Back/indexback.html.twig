@@ -67,11 +67,7 @@
                     <div class="blog__details__comment__item__text">
                         <a href="{{ path('commande_show_back', {'id': commande.id}) }}">show</a>
                         <a href="{{ path('commande_edit_back', {'id': commande.id}) }}">edit</a>
-                        {% if not (commande.etatCmde) %}
-                            <a href="{{ path('confirmer_commande', {'id': commande.id}) }}">enable</a>
-                            <a href="{{ path('annuler_commande', {'id': commande.id}) }}">disable</a>
-                        {% else%}
-                        {% endif %}
+                       
                     </div>                   
                 </td>
             </tr>

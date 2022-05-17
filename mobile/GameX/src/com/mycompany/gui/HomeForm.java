@@ -63,6 +63,14 @@ private Resources theme;
         Button map=new Button("map");  
         Button btnListCategories = new Button("List Of Categories");
         Button btnAddCat = new Button("Add Category");
+        this.getToolbar().addCommandToSideMenu("list of orders",
+                null, (evt) -> {
+                    new ListOrderForm(this).show();
+                });
+        this.getToolbar().addCommandToSideMenu("Cart",
+                null, (evt) -> {
+                    new FormListeBD(this).show();
+                });
           
        
         map.addActionListener(e-> new MapForm_1(theme,current));  

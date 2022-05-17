@@ -24,6 +24,7 @@
                 <link rel="stylesheet" href="{{ asset('Front/css/owl.carousel.min.css') }}" type="text/css">
                 <link rel="stylesheet" href="{{ asset('Front/css/slicknav.min.css') }}" type="text/css">
                 <link rel="stylesheet" href="{{ asset('Front/css/style.css') }}" type="text/css">
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         {% endblock %}
 
 </head>
@@ -129,7 +130,31 @@
         <script src="{{ asset('Front/js/owl.carousel.min.js') }}"></script>
         <script src="{{ asset('Front/js/main.js') }}"></script>
 
+
 {% endblock %}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+      function greeting() {
+        let searchlinput = document.getElementById("searchinput")
+        const searchValue = searchlinput.value;
+        console.log('searchValue',searchValue);
+        $.ajax({
+            type: "POST",
+            url: "{{ path('demo_create')}}",
+            data:{ search: searchValue, path:'ajax' },
+            success: function (msg) {
+                const content = document.querySelector("#commandeSection");
+               content.innerHTML = msg.content;
+               searchValue.value = searchValue
+                           }
+        });
+    }
+
+        $(document).ready(function(){
+            $("#searchinput").keyup(greeting);
+        });
+    </script>
 
 
 </html>

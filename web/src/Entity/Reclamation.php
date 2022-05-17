@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\ReclamationRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 
 /**
@@ -16,12 +17,14 @@ class Reclamation
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("post:read")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Nom requise")
+     * @Groups("post:read")
      */
     private $Title;
 
@@ -32,12 +35,14 @@ class Reclamation
 
     /**
      * @ORM\Column(type="date",nullable=true)
+
      */
     private $create_resolution;
 
     /**
      * @ORM\Column(type="text")
      * @Assert\NotBlank(message="Nom requise")
+     * @Groups("post:read")
      */
     private $Description;
 

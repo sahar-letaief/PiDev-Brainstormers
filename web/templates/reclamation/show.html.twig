@@ -34,7 +34,7 @@
                         <tbody>
                         {% for reclamation in reclamations %}
                             <tr>
-                                <td></td>
+                                <td>{{reclamation.clients.firstname ~ reclamation.clients.lastname }}</td>
                                 <td>{{reclamation.reference }}</td>
                                 <td>{{reclamation.Title }}</td>
                                 <td>
@@ -65,7 +65,7 @@
 
                                 </td>
                                 <td>
-                                <form href="{{ path('communication')}}">
+                                <form action="{{ path('communication')}}">
                                     <button style="background: transparent;border: none" type="submit" ><a  class="mdi mdi-comment-multiple-outline" ></a></button>
                                 </form>
                                 </td>

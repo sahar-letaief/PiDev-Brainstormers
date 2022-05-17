@@ -181,7 +181,7 @@ class ProductController extends AbstractController
         ]);
     }
     /**
-     * @IsGranted("ROLE_PRODUCT")
+     * @IsGranted("ROLE_USER")
      * @Route("/FrontProduct/{categoryid}", name="product_index_front", methods={"GET"})
      */
     public function frontProduct($categoryid ,ProductRepository $productRepository): Response
@@ -257,7 +257,7 @@ class ProductController extends AbstractController
 
 
     /**
-     * @IsGranted("ROLE_PRODUCT")
+     * @IsGranted("ROLE_ADMIN")
      * @Route("/", name="product_index", methods={"GET","POST"})
      */
     public function index(Request $request, PaginatorInterface $paginator, ProductRepository $ProductRepository, TranslatorInterface $translator): Response
@@ -287,7 +287,7 @@ class ProductController extends AbstractController
 
 
     /**
-     * @IsGranted("ROLE_PRODUCT")
+     * @IsGranted("ROLE_ADMIN")
      * @Route("/new", name="product_new", methods={"GET", "POST"})
      */
     public function new(Request $request, EntityManagerInterface $entityManager, TranslatorInterface $translator): Response
@@ -329,7 +329,7 @@ class ProductController extends AbstractController
     }
 
     /**
-     * @IsGranted("ROLE_PRODUCT")
+     * @IsGranted("ROLE_ADMIN")
      * @Route("/{id}", name="product_show", methods={"GET"})
      */
     public function show(Product $product, TranslatorInterface $translator): Response
@@ -339,6 +339,7 @@ class ProductController extends AbstractController
         ]);
     }
     /**
+     * @IsGranted("ROLE_USER")
      * @Route("/Front/{id}", name="product_show_front", methods={"GET"})
      */
     public function showFront(Product $product): Response
@@ -350,7 +351,7 @@ class ProductController extends AbstractController
     
 
     /**
-     * @IsGranted("ROLE_PRODUCT")
+     * @IsGranted("ROLE_ADMIN")
      * @Route("/{id}/edit", name="product_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Product $product, EntityManagerInterface $entityManager, TranslatorInterface $translator): Response
@@ -387,7 +388,7 @@ class ProductController extends AbstractController
 
     
     /**
-     * @IsGranted("ROLE_PRODUCT")
+     * @IsGranted("ROLE_ADMIN")
      * @Route("/{id}/delete", name="product_delete", methods={"GET","POST"})
      */
     public function delete(ProductRepository $set,$id): Response

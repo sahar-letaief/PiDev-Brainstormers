@@ -19,7 +19,7 @@ class ReclamationType extends AbstractType
     {
         $builder
             ->add('reference',EntityType::class,[
-                "class"=>Commande::class,
+                "class"=> Commande::class,
                 "choice_label"=>"ref_cmde",
                 "attr"=>[
         "class"=>"form-control "

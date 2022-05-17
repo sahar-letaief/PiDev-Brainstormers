@@ -1,0 +1,77 @@
+
+   <table class="table table-dark" id='commandeSection'>
+
+        <thead>
+            <tr class="table-dark">
+                <th>Reference</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total</th>
+                <th>Bill</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        
+        <tbody id="tableac" name="tableac">
+        {% for commande in commandes %}
+            <tr>
+                <td>{{ commande.refCmde }}</td>
+                  <td>
+                    {{ commande.User.firstname  }} {{ commande.User.lastname  }}
+                </td>
+                    <td>
+                    {{ commande.User.email  }}
+
+                </td>
+                <td>
+                    {% if commande.etatCmde is same as (null) %}
+                    In progress {{ commande.etatCmde }}
+                    {% endif %}
+                    {% if commande.etatCmde is same as(false) %}
+                         Canceled {{ commande.etatCmde }}
+                    {% endif %}
+                    {% if commande.etatCmde == 1 %}
+                         Confirmed
+                    {% endif %} 
+                </td> 
+                <td>{% for prod in commande.prod %}
+                    {{ prod['ProductName'] }}  <br>
+                    {% endfor %}
+                </td>
+                <td>{% for prod in commande.prod %}
+                    {{ prod['quantity'] }} <br>
+                    {% endfor %}
+                </td>
+                <td>{% for prod in commande.prod %}
+                    {{ prod['ProductPrice'] }} TND<br>
+                    {% endfor %}
+                </td>
+                <td>{% for prod in commande.prod %}
+                    {{ prod['quantity'] * prod['ProductPrice'] }}  TND<br>
+                    {% endfor %}
+                </td>
+                 <td>  
+                    <div class="blog__details__comment__item__text">
+                        <a href="{{ path('commande_liste', {'id': commande.id}) }}">Print</a>
+                    </div>                   
+                </td><br>
+                <td>  
+                    <div class="blog__details__comment__item__text">
+                        <a href="{{ path('commande_show', {'id': commande.id}) }}">show</a><hr>
+                        <a href="{{ path('commande_edit', {'id': commande.id}) }}">edit</a>
+                    </div>                   
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">No order</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        
+
+    </table>

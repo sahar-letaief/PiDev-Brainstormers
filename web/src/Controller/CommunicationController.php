@@ -98,7 +98,7 @@ class CommunicationController extends AbstractController
 
     //front
     /**
-     * @IsGranted("ROLE_RECLAMATION")
+     * @IsGranted("ROLE_USER")
      * @Route("/communication_front", name="communication_front")
      */
     public function indexFront(): Response
@@ -108,7 +108,7 @@ class CommunicationController extends AbstractController
         ]);
     }
     /**
-     * @IsGranted("ROLE_RECLAMATION")
+     * @IsGranted("ROLE_USER")
      * @Route("/send_front", name="send_front")
      */
     public function sendFront(Request $request): Response
@@ -134,7 +134,7 @@ class CommunicationController extends AbstractController
         ]);
     }
     /**
-     * @IsGranted("ROLE_RECLAMATION")
+     * @IsGranted("ROLE_USER")
      * @Route("/received_front", name="received_front")
      */
     public function receivedFront(): Response
@@ -144,7 +144,7 @@ class CommunicationController extends AbstractController
 
 
     /**
-     * @IsGranted("ROLE_RECLAMATION")
+     * @IsGranted("ROLE_USER")
      * @Route("/sent_front", name="sent_front")
      */
     public function sentFront(): Response
@@ -153,7 +153,7 @@ class CommunicationController extends AbstractController
     }
 
     /**
-     * @IsGranted("ROLE_RECLAMATION")
+     * @IsGranted("ROLE_USER")
      * @Route("/read_front/{id}", name="read_front")
      */
     public function readFront(Communication $message): Response
@@ -167,7 +167,7 @@ class CommunicationController extends AbstractController
     }
 
     /**
-     * @IsGranted("ROLE_RECLAMATION")
+     * @IsGranted("ROLE_USER")
      * @Route("/drop_front/{id}", name="drop_front")
      */
     public function dropCommunicationFront (Communication $message): Response
