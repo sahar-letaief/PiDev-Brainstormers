@@ -29,6 +29,7 @@ class EvenementController extends AbstractController
 {
 
 
+
     /**
      * @IsGranted("ROLE_EVENT")
      * @Route("/", name="evenement_index", methods={"GET","POST"})
@@ -97,14 +98,104 @@ class EvenementController extends AbstractController
         return $this->render('evenement/index.html.twig',array('evenements'=>$evenements, 'back'=>$back));
     }
     /**
-     * @Route("/api", name="evenement_index_api")
+     * @Route("/newApi", name="evenement_new_api")
+     */
+    public function newjson(Request $request,NormalizerInterface $normalizer){
+        $em=$this->getDoctrine()->getManager();
+        $e=new Evenement();
 
-    public function indexjson(NormalizerInterface $Normalizer){
+        $e->setNameEvent($request->get('NameEvent'));
+        $e->setPlaceEvent($request->get('PlaceEvent'));
+        $e->setPriceEvent($request->get('PriceEvent'));
+        $e->setNbParticipants($request->get('NbParticipants'));
+        $e->setDateDebut(new \DateTime($request->get('DateDebut')));
+        $e->setDateFin(new \DateTime($request->get('DateFin')));
+        //dd($e);
+        $em->persist($e);
+        $em->flush();
+        $jsonContent=$normalizer->normalize($e,'json',['groups'=>'post:read']);
+        return new Response(json_encode($jsonContent));
 
+    }
+
+    /**
+     * @Route("/apiDisplay", name="evenement_index_api")
+     */
+    public function indexjson(NormalizerInterface $Normalizer) : Response
+    {
         $evenements=$this->getDoctrine()->getRepository(Evenement::class)->findAll();
         $jsonContent=$Normalizer->normalize($evenements,'json',['groups'=>'post:read']);
         return new Response(json_encode($jsonContent));
-    }*/
+    }
+    /**
+     * @Route("/apiSortPrice", name="evenement_sortprice_api")
+     */
+    public function sortjsonPrice(NormalizerInterface $Normalizer) : Response
+    {
+        $evenements=$this->getDoctrine()->getRepository(Evenement::class)->SortByPriceEvent();
+        $jsonContent=$Normalizer->normalize($evenements,'json',['groups'=>'post:read']);
+        return new Response(json_encode($jsonContent));
+    }
+    /**
+     * @Route("/apiSortPart", name="evenement_sortpart_api")
+     */
+    public function sortjsonPart(NormalizerInterface $Normalizer) : Response
+    {
+        $evenements=$this->getDoctrine()->getRepository(Evenement::class)->SortByParticipants();
+        $jsonContent=$Normalizer->normalize($evenements,'json',['groups'=>'post:read']);
+        return new Response(json_encode($jsonContent));
+    }
+    /**
+     * @Route("/apiSortName", name="evenement_sortname_api")
+     */
+    public function sortjsonName(NormalizerInterface $Normalizer) : Response
+    {
+        $evenements=$this->getDoctrine()->getRepository(Evenement::class)->SortByParticipants();
+        $jsonContent=$Normalizer->normalize($evenements,'json',['groups'=>'post:read']);
+        return new Response(json_encode($jsonContent));
+    }
+
+    /**
+     * @Route("/deleteApi/{id}", name="evenement_delete_api")
+     */
+    public function deletejson(Request $request, $id,NormalizerInterface $normalizer)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $event=$em->getRepository(Evenement::class)->find($id);
+        $em->remove($event);
+        $em->flush();
+        $jsonContent=$normalizer->normalize($event,'json',['groups'=>'post:read']);
+        return new Response("Deleted successfully".json_encode($jsonContent));
+    }
+    /**
+     * @Route("/editApi/{id}", name="evenement_edit_api")
+     */
+    public function editjson(Request $request, $id,NormalizerInterface $normalizer)
+    {
+       $em=$this->getDoctrine()->getManager();
+       $e=$em->getRepository(Evenement::class)->find($id);
+       $e->setNameEvent($request->get('NameEvent'));
+       $e->setPlaceEvent($request->get('PlaceEvent'));
+       $e->setPriceEvent($request->get('PriceEvent'));
+       $e->setNbParticipants($request->get('NbParticipants'));
+       $e->setDateDebut(new \DateTime($request->get('DateDebut')));
+       $e->setDateFin(new \DateTime($request->get('DateFin')));
+       $em->flush();
+        $jsonContent=$normalizer->normalize($e,'json',['groups'=>'post:read']);
+        return new Response("update successfully".json_encode($jsonContent));
+
+
+    }
+    /**
+     * @Route("/showApi/{id}", name="evenement_show_api")
+     */
+    public function showjson(Request $request,$id,NormalizerInterface $normalizer){
+    $em=$this->getDoctrine()->getManager();
+    $event=$em->getRepository(Evenement::class)->find($id);
+        $jsonContent=$normalizer->normalize($event,'json',['groups'=>'post:read']);
+        return new Response(json_encode($jsonContent));
+
+    }
 
 
     /**
@@ -151,7 +242,6 @@ class EvenementController extends AbstractController
     }
 
     /**
-     * @IsGranted("ROLE_PLAYER")
      * @Route("/front", name="evenement_index2", methods={"GET"})
      */
     public function front(PaginatorInterface $paginator,Request $request)
@@ -213,6 +303,7 @@ class EvenementController extends AbstractController
         //dd($data);
         return $this->render('evenement/calendar.html.twig',compact('data'));
     }
+
 
     /**
      * @IsGranted("ROLE_EVENT")

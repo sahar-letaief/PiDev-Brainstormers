@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Evenement;
 use App\Entity\Reservation;
+use App\Entity\User;
 use App\Form\ReservationType;
 use App\Repository\EvenementRepository;
 use App\Repository\ReservationRepository;
@@ -16,6 +17,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
 
 
 /**
@@ -23,6 +26,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
  */
 class ReservationController extends AbstractController
 {
+
 
     /**
      * @IsGranted("ROLE_EVENT")
@@ -69,6 +73,34 @@ class ReservationController extends AbstractController
 
     }
     /**
+     * @Route("/apiDisplay/{idu}", name="reservation_index2_api2")
+     */
+    public function indexfrontjsonfront(ReservationRepository $reservationRepository,Request $request,NormalizerInterface $Normalizer,$idu)
+    {
+        $user=$this->getUser();
+        $user=$this->getDoctrine()->getRepository(User::class)->findOneBy(['id'=>$idu]);
+        $reservations=$this->getDoctrine()->getRepository(Reservation::class)->findby(['user'=>$user]);
+        //dd($reservations);
+        $jsonContent=$Normalizer->normalize($reservations,'json',['groups'=>'post:read']);
+       // dd($jsonContent);
+        return new Response(json_encode($jsonContent));
+
+    }
+    /**
+     * @Route("/apiDisplay", name="reservation_index2_api")
+     */
+    public function indexfrontjson(ReservationRepository $reservationRepository,Request $request,NormalizerInterface $Normalizer)
+    {
+        $user=$this->getUser();
+
+        $reservations=$this->getDoctrine()->getRepository(Reservation::class)->findAll();
+       //dd($reservations);
+        $jsonContent=$Normalizer->normalize($reservations,'json',['groups'=>'post:read']);
+        //dd($jsonContent);
+       return new Response(json_encode($jsonContent));
+
+    }
+    /**
      * @IsGranted("ROLE_PLAYER")
      * @Route("/front", name="reservation_index2", methods={"GET"})
      */
@@ -100,46 +132,23 @@ class ReservationController extends AbstractController
     public function new_front(Request $request, EntityManagerInterface $entityManager,$id): Response
     {
         $DateReservation = date('d-m-y , h:m');
-
-
         $user=$this->getUser();
         $evenement=$this->getDoctrine()->getRepository(Evenement::class)->findOneBy(['id'=>$id]);
         $evenement->setNbParticipants($evenement->getNbParticipants()-1);
         $NameEvent=$evenement->getNameEvent();
-
-        if ( !$evenement){
-            $this->addFlash("Event does not exist");
-            return $this->redirectToRoute('evenement_index2', [], Response::HTTP_SEE_OTHER);
-        }
         $reservation = new Reservation();
         $reservation->setDateReservation(new \DateTime('now'));
         $ev=$evenement->setNameEvent($NameEvent);
         $reservation->setEvenement($ev);
-
-        //dd($reservation);
         $DateReservation=$reservation->getDateReservation();
-        //dd($DateReservation);
         $reservation->setUser($user);
-        //dd($reservation);
         $form = $this->createForm(ReservationType::class, $reservation);
         $form->handleRequest($request);
         if ($form->isSubmitted() ) {
-
-            $resultat=$this->getDoctrine()->getRepository(Reservation::class)->findOneBy(['evenement'=>$evenement->getId(),'user'=>$this->getUser()->getId()]);
-            // dd($resultat);
-            if(empty($resultat)) {
-                $entityManager->persist($reservation);
-                $entityManager->flush();
-                $this->addFlash('notice','Reservation added successfully!');
-
-                return $this->redirectToRoute('evenement_index2', [], Response::HTTP_SEE_OTHER);
-            }
-            else{
-                //$this->get('session')->getFlashBag()->add();
-                $this->addFlash('Notice','Reservation already existing!');
-                return $this->redirectToRoute('reservation_index2', [], Response::HTTP_SEE_OTHER);
-            }
-
+            $entityManager->persist($reservation);
+            $entityManager->flush();
+            $this->get('session')->getFlashBag()->add('notice','Reservation added successfully');
+            return $this->redirectToRoute('evenement_index2', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('reservation/new.html.twig', [
@@ -151,6 +160,30 @@ class ReservationController extends AbstractController
             'DateReservation'=>$DateReservation,
             'form' => $form->createView(),
         ]);
+    }
+    /**
+     * @Route("/new/api/{id}/{idu}", name="reservation_new_front_api")
+     */
+    public function new_frontjson(Request $request, EntityManagerInterface $entityManager,NormalizerInterface $Normalizer,$id,$idu): Response
+    {
+        $DateReservation = date('d-m-y , h:m');
+       // $user=$this->getUser();
+        $user=$this->getDoctrine()->getRepository(User::class)->findOneBy(['id'=>$idu]);
+        $evenement=$this->getDoctrine()->getRepository(Evenement::class)->findOneBy(['id'=>$id]);
+        $evenement->setNbParticipants($evenement->getNbParticipants()-1);
+        $NameEvent=$evenement->getNameEvent();
+        $reservation = new Reservation();
+        $reservation->setDateReservation(new \DateTime('now'));
+        $ev=$evenement->setNameEvent($NameEvent);
+        $reservation->setEvenement($ev);
+        $DateReservation=$reservation->getDateReservation();
+        $reservation->setUser($user);
+        //dd($reservation);
+        $entityManager->persist($reservation);
+        $entityManager->flush();
+        $jsonContent=$Normalizer->normalize($reservation,'json',['groups'=>'post:read']);
+        //dd($jsonContent);
+        return new Response("reservation added successfully".json_encode($jsonContent));
     }
 
 
@@ -171,25 +204,7 @@ class ReservationController extends AbstractController
     }
 
 
-    /**
-     * @Route("/{id}/edit", name="reservation_edit", methods={"GET", "POST"})
 
-    public function edit(Request $request, Reservation $reservation, EntityManagerInterface $entityManager): Response
-    {
-        $form = $this->createForm(ReservationType::class, $reservation);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
-
-            return $this->redirectToRoute('reservation_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->render('Back/reservation/edit.html.twig', [
-            'reservation' => $reservation,
-            'form' => $form->createView(),
-        ]);
-    }*/
 
     /**
      * @IsGranted("ROLE_PLAYER")
@@ -203,6 +218,22 @@ class ReservationController extends AbstractController
         $em->flush();
 
         return $this->redirectToRoute('reservation_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    /**
+     * @Route("/deleteApi/{idR}", name="reservation_delete_api")
+     */
+    public function deletejson(ReservationRepository $repo,$idR,NormalizerInterface $Normalizer)
+    {
+        $res = $repo->find($idR);
+        $res->getEvenement()->setNbParticipants($res->getEvenement()->getNbParticipants()+1);
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($res);
+        $em->flush();
+        $jsonContent=$Normalizer->normalize($em,'json',['groups'=>'post:read']);
+        return new Response("reservation deleted successfully".json_encode($jsonContent));
+
+
     }
     /**
      * @IsGranted("ROLE_PLAYER")
