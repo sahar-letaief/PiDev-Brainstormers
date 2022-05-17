@@ -42,7 +42,7 @@ public class EditReclamation extends Form {
         Quelque soit l'interface faisant appel à AddAgence, on peut y revenir
         en utilisant le bouton back
         */
-        setTitle("Modifier réclamation "+t.getTitle()+"");
+        setTitle("edit reclamation "+t.getTitle()+"");
         setLayout(BoxLayout.y());
         
            //try {
@@ -58,7 +58,7 @@ public class EditReclamation extends Form {
         TextField tfDescription = new TextField(t.getDescription());
         
         
-        Button btnValider = new Button("Modifier");
+        Button btnValider = new Button("Modified");
         
         
         
@@ -174,7 +174,7 @@ logos.addActionListener((ActionEvent e) -> {
                    
                     if(ReclamationService.getInstance().editReclamation(t)){
                         iDialog.dispose();
-                        Dialog.show("Success","agence modifié",new Command("OK"));
+                        Dialog.show("Success","reclamation modified",new Command("OK"));
                         previous.showBack();}
                     else{
                         iDialog.dispose();

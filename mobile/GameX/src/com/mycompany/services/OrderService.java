@@ -111,7 +111,7 @@ public class OrderService {
 
 
     public ArrayList<Order> getAllOrders() {
-        String url = Statics.BASE_URL + "/commande/AllComande";
+        String url = Statics.BASE_URL + "/commande/AllComandes";
         req.setUrl(url);
         req.setPost(false);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -127,7 +127,7 @@ public class OrderService {
     }
 
     public ArrayList<Order> getAllOrdersTri() {
-        String url = Statics.BASE_URL + "/commande/AllComande";
+        String url = Statics.BASE_URL + "/commande/AllComandes";
         req.setUrl(url);
         req.setPost(false);
         req.addResponseListener(new ActionListener<NetworkEvent>() {

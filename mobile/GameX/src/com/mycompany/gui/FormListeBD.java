@@ -1,14 +1,5 @@
 package com.mycompany.gui;
 
-<<<<<<< HEAD
-import com.codename1.db.Cursor;
-import com.codename1.db.Row;
-import com.codename1.payment.Product;
-import com.codename1.ui.*;
-import com.codename1.ui.layouts.BoxLayout;
-import com.mycompany.myapp1.MyApplication;
-import com.mycompany.myapp1.entities.Product;
-=======
 import com.codename1.components.ImageViewer;
 import com.codename1.components.MultiButton;
 import com.codename1.db.Cursor;
@@ -17,13 +8,10 @@ import com.codename1.ui.*;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
->>>>>>> 2d41be1da1c734ed304286664a247b417d4827d2
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-<<<<<<< HEAD
-=======
         import com.codename1.ui.Container;
         import com.codename1.ui.Dialog;
         import com.codename1.ui.Form;
@@ -34,7 +22,6 @@ import java.util.List;
 import com.mycompany.myapp.MyApplication;
 import com.mycompany.entities.Product;
 import com.mycompany.services.ServiceProduct;
->>>>>>> 2d41be1da1c734ed304286664a247b417d4827d2
 
 
 public class FormListeBD extends Form {

@@ -6,26 +6,14 @@
 package com.mycompany.gui;
 import com.codename1.db.Cursor;
 import com.codename1.db.Row;
-<<<<<<< HEAD
-import com.codename1.payment.Product;
-=======
->>>>>>> 2d41be1da1c734ed304286664a247b417d4827d2
 import com.codename1.ui.*;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
-<<<<<<< HEAD
-import com.mycompany.entities.Order;
-import com.mycompany.myapp1.MyApplication;
-import com.mycompany.myapp1.entities.Order;
-import com.mycompany.entities.Product;
-import com.mycompany.myapp1.services.OrderService;
-=======
 import com.mycompany.myapp.MyApplication;
 import com.mycompany.entities.Order;
 import com.mycompany.entities.Product;
 import com.mycompany.services.OrderService;
->>>>>>> 2d41be1da1c734ed304286664a247b417d4827d2
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -62,11 +50,7 @@ public class AddOrderForm extends Form {
                 else
                 {
                     try{
-<<<<<<< HEAD
-                        Order F =new Order(Integer.parseInt(Ffid.getText()),Integer.parseInt(Fftel.getText()),Integer.parseInt(Ffcode_postal.getText()),Ffref_cmde.getText(),FfPays.getText(),FfRegion.getText(),Ffetat_cmde.getText());
-=======
                         Order F =new Order (Integer.parseInt(Ffid.getText()),Integer.parseInt(Fftel.getText()),Integer.parseInt(Ffcode_postal.getText()),Ffref_cmde.getText(),FfPays.getText(),FfRegion.getText(),Ffetat_cmde.getText());
->>>>>>> 2d41be1da1c734ed304286664a247b417d4827d2
                         if (new OrderService().addOrder(F))
                             Dialog.show("Success", "Connection accepted", new Command("OK"));
                         else
