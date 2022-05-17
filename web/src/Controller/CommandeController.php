@@ -35,6 +35,33 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
  */
 class CommandeController extends AbstractController
 {
+
+         /**
+     * @Route("/AllComandes", name="AllComande")
+     */
+    
+    public function AllComandes(NormalizerInterface $Normalizer )
+    {
+    //Nous utilisons la Repository pour récupérer les objets que nous avons dans la base de données
+    $repository =$this->getDoctrine()->getRepository(Commande::class);
+    $comandes=$repository->FindAll();
+    //Nous utilisons la fonction normalize qui transforme en format JSON nos donnée qui sont
+    //en tableau d'objet Students
+    $jsonContent=$Normalizer->normalize($comandes,'json',['groups'=>'post:read']);
+    
+    
+    
+    return new Response(json_encode($jsonContent));
+    dump($jsonContent);
+    die;
+}
+
+
+
+
+
+
+
     /**
      * @IsGranted("ROLE_USER")
      * @Route("/AllComande", name="commande_index", methods={"GET","POST"})
@@ -413,26 +440,8 @@ class CommandeController extends AbstractController
         return new Response(json_encode($jsonContent));
     }
 
-     /**
-     * @Route("/AllComande", name="AllComande")
-     */
-    /*
-    public function AllComandes(NormalizerInterface $Normalizer )
-    {
-    //Nous utilisons la Repository pour récupérer les objets que nous avons dans la base de données
-    $repository =$this->getDoctrine()->getRepository(Commande::class);
-    $comandes=$repository->FindAll();
-    //Nous utilisons la fonction normalize qui transforme en format JSON nos donnée qui sont
-    //en tableau d'objet Students
-    $jsonContent=$Normalizer->normalize($comandes,'json',['groups'=>'post:read']);
+
     
-    
-    
-    return new Response(json_encode($jsonContent));
-    dump($jsonContent);
-    die;
-}
-    /*
 
   /**
      * @Route("/editcmde/{id}", name="commande_edit")
