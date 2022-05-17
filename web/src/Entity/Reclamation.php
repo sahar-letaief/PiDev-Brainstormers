@@ -60,7 +60,7 @@ class Reclamation
     protected $captchaCode;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="reclamations")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="reclamations", nullable=true)
      */
     private $clients;
 

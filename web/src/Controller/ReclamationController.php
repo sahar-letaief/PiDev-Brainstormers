@@ -21,6 +21,14 @@ use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Knp\Component\Pager\PaginatorInterface;
 
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+
+
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+
 
 class ReclamationController extends AbstractController
 {
@@ -69,7 +77,6 @@ class ReclamationController extends AbstractController
 
     }
 // front
-/**                               Json Mobile     affichage                         */ 
     /**
      * @Route("/frontlistjson", name="frontlistjson", methods={"GET"})
      */
