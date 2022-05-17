@@ -14,7 +14,7 @@ import tn.esprit.utils.MailService;
 public class MailerService {
     public void replyMail(String mail ,String Username , String Description) {
         String from = "maryem.benmohamed@esprit.tn";
-        String pass = "213JFT4126";
+        String pass = "";
         String[] to = {"" + mail}; // list of recipient email addresses
         String subject = "GameX";
         String body = Description;

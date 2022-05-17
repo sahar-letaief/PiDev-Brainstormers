@@ -133,6 +133,10 @@ public class AfficherOrderController implements Initializable {
     private HBox reservationBack;
     @FXML
     private HBox SignOutBack;
+    @FXML
+    private HBox clicReclamation;
+    @FXML
+    private HBox clicCommunication;
 
     /**
      * Initializes the controller class.
@@ -617,6 +621,42 @@ public class AfficherOrderController implements Initializable {
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
+    }
+
+    @FXML
+    private void onReclamtionFront(MouseEvent event) {
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn/esprit/gui/ajouter_reclamation.fxml"));
+        
+        try {
+            javafx.scene.Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.centerOnScreen();
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(SignUpController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+       
+       
+    }
+
+    @FXML
+    private void onCommunication(MouseEvent event) {
+          FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn/esprit/gui/ajouter_message.fxml"));
+        
+        try {
+            javafx.scene.Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.centerOnScreen();
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(SignUpController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
     
 

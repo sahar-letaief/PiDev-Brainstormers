@@ -1,6 +1,7 @@
 package com.mycompany.myapp;
 
 
+import com.codename1.db.Database;
 import static com.codename1.ui.CN.*;
 import com.codename1.ui.Display;
 import com.codename1.ui.Form;
@@ -23,12 +24,26 @@ public class MyApplication {
 
     private Form current;
     public Resources theme;
+     public static Database myDataBase;
 
     public void init(Object context) {
         // use two network threads instead of one
         updateNetworkThreadCount(2);
 
         theme = UIManager.initFirstTheme("/theme");
+        
+        
+        
+          try {
+            myDataBase = Database.openOrCreate("esprit.db");
+            System.out.println(myDataBase);
+            System.out.println("test database");
+            myDataBase.execute("CREATE TABLE IF NOT EXISTS Product (id INTEGER AUTO INCREMENT PRIMARY KEY, "
+                    + "ProductName TEXT, Description TEXT, image TEXT ,Reference TEXT,Price INTEGER,Stock INTEGER) ");
+            System.out.println("test after database");
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
 
         // Enable Toolbar on all Forms by default
         Toolbar.setGlobalToolbar(true);

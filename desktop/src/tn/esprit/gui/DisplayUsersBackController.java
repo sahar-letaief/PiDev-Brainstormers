@@ -53,6 +53,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
+import tn.esprit.entities.Reclamation;
 import tn.esprit.entities.UserStaticSession;
 
 /**
@@ -108,10 +109,6 @@ public class DisplayUsersBackController implements Initializable {
     private ComboBox<String> roles;
     ObservableList<String> ROLES = FXCollections.observableArrayList();
 
-    @FXML
-    private Button UpdateButton;
-    @FXML
-    private Button BackButton;
 
     public static boolean test = false;
     public static boolean notProfile = false;
@@ -135,8 +132,6 @@ public class DisplayUsersBackController implements Initializable {
     private ComboBox<String> Roleprofile;
     @FXML
     private RadioButton EditProfileRadioButton;
-    @FXML
-    private Button SaveEditProfile;
     @FXML
     private TextField SearchField;
     public static String SearchValue = "";
@@ -166,7 +161,19 @@ public class DisplayUsersBackController implements Initializable {
     @FXML
     private HBox reservationBack;
     @FXML
-    private HBox SignOutBack;
+    private HBox ReclamBack;
+    @FXML
+    private HBox backCom;
+    @FXML
+    private HBox SignOutBack1;
+    @FXML
+    private HBox reservationBack1;
+    @FXML
+    private Button UpdateButton;
+    @FXML
+    private Button BackButton;
+    @FXML
+    private Button SaveEditProfile;
 
 
 
@@ -578,24 +585,38 @@ public class DisplayUsersBackController implements Initializable {
     }
 
     @FXML
-    private void onreservation(javafx.scene.input.MouseEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("DisplayReservations.fxml"));
-        
+     private void onevents(MouseEvent event) {
+        FXMLLoader Loader = new FXMLLoader(getClass().getResource("/tn/esprit/gui/DisplayEvents.fxml"));
+
         try {
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.centerOnScreen();
-            stage.show();
-        } catch (IOException ex) {
-            Logger.getLogger(SignUpController.class.getName()).log(Level.SEVERE, null, ex);
+            Parent root = Loader.load();
+            DisplayEventsController C = Loader.getController();
+            C.getEvents();
+            Scene productDetailScene = new Scene(root);
+            Stage cineStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            cineStage.setScene(productDetailScene);
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+    @FXML
+    private void onreservation(MouseEvent event) {
+       FXMLLoader Loader = new FXMLLoader(getClass().getResource("/tn/esprit/gui/DisplayReservations.fxml"));
+
+        try {
+            Parent root = Loader.load();
+            DisplayReservationsController C = Loader.getController();
+            C.getRes();
+            Scene productDetailScene = new Scene(root);
+            Stage cineStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            cineStage.setScene(productDetailScene);
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
         }
     }
 
-    @FXML
-    private void form(javafx.scene.input.MouseEvent event) {
-    }
 
     @FXML
     private void goListCat(javafx.scene.input.MouseEvent event) {
@@ -628,6 +649,40 @@ public class DisplayUsersBackController implements Initializable {
             Logger.getLogger(SignUpController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    @FXML
+    private void OnReclamation(javafx.scene.input.MouseEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn/esprit/gui/AffichageBack.fxml"));
+        
+        try {
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.centerOnScreen();
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(SignUpController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void OnCommunication(javafx.scene.input.MouseEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn/esprit/gui/ListMessage.fxml"));
+        
+        try {
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.centerOnScreen();
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(SignUpController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    }
+    
    
 
    
@@ -636,4 +691,4 @@ public class DisplayUsersBackController implements Initializable {
 
     
 
-}
+

@@ -1,10 +1,25 @@
 package com.mycompany.gui;
 
 import com.codename1.components.InfiniteProgress;
+<<<<<<< HEAD
 import com.codename1.ui.*;
 import com.codename1.ui.layouts.BoxLayout;
 import com.mycompany.myapp1.entities.Order;
 import com.mycompany.myapp1.services.OrderService;
+=======
+import com.codename1.l10n.ParseException;
+import com.codename1.ui.*;
+import com.codename1.ui.events.ActionEvent;
+import com.codename1.ui.events.ActionListener;
+import com.codename1.ui.layouts.BoxLayout;
+import com.codename1.ui.util.Resources;
+import com.mycompany.entities.Order;
+import com.mycompany.services.OrderService;
+
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+>>>>>>> 2d41be1da1c734ed304286664a247b417d4827d2
 
 public class EditOrderForm extends Form{
     OrderService os = new OrderService();

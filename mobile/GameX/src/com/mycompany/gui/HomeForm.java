@@ -14,6 +14,7 @@ import com.codename1.ui.Button;
 import static com.codename1.ui.Component.BOTTOM;
 import com.codename1.ui.Dialog;
 import com.codename1.ui.Display;
+import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
 import com.codename1.ui.Image;
 import com.codename1.ui.Label;
@@ -32,14 +33,19 @@ public class HomeForm extends Form{
 Form current;
 private Resources theme;
     public HomeForm() {
+        Button trie =new Button("Back");
+
+       
+        trie.addActionListener(e-> new ProfileForm(theme).show());
+        add(trie);
         
         Resources res=UIManager.initFirstTheme("/theme");
         current=this; //Back 
         setTitle("Home");
         setLayout(BoxLayout.y());
-         //Image  img = res.getImage("logo 9.png");
+         Image  img = res.getImage("logo9.png");
           
-        /*if(img.getHeight() > Display.getInstance().getDisplayHeight() / 3) {
+        if(img.getHeight() > Display.getInstance().getDisplayHeight() / 3) {
             img = img.scaledHeight(Display.getInstance().getDisplayHeight() / 3);
         }
         ScaleImageLabel sl = new ScaleImageLabel(img);
@@ -54,7 +60,7 @@ private Resources theme;
         add(LayeredLayout.encloseIn(
                 sl
 
-        ));*/
+        ));
         
         add(new Label("Choose an option"));
         Button btnListProducts = new Button("List Of Products");
@@ -90,10 +96,11 @@ private Resources theme;
 
 
         addAll(btnListProducts, btnStat, btnAdd,map,btnListCategories,btnAddCat);
-        Dialog.show("Welcome", "To Our Cross-plateform", "Go", null);
+        Dialog.show("Visit", " Our Products", "Go", null);
+
        
         
-        
+
         
         
     }

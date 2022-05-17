@@ -66,6 +66,10 @@ public class DisplayReservationsController implements Initializable {
     private HBox reservationBack;
     @FXML
     private HBox SignOutBack;
+    @FXML
+    private HBox backCom;
+    @FXML
+    private HBox ReclamBack;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -221,21 +225,8 @@ public class DisplayReservationsController implements Initializable {
         }
     }
 
-    @FXML
-    private void onreservation(javafx.scene.input.MouseEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn/esprit/gui/DisplayReservations.fxml"));
-        
-        try {
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.centerOnScreen();
-            stage.show();
-        } catch (IOException ex) {
-            Logger.getLogger(SignUpController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+   
+  
 
 
     @FXML
@@ -251,6 +242,71 @@ public class DisplayReservationsController implements Initializable {
             stage.show();
         } catch (IOException ex) {
             Logger.getLogger(SignUpController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+     @FXML
+    private void OnReclamation(javafx.scene.input.MouseEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn/esprit/gui/AffichageBack.fxml"));
+        
+        try {
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.centerOnScreen();
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(SignUpController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void OnCommunication(javafx.scene.input.MouseEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn/esprit/gui/ListMessage.fxml"));
+        
+        try {
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.centerOnScreen();
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(SignUpController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @FXML
+     private void onevents(MouseEvent event) {
+        FXMLLoader Loader = new FXMLLoader(getClass().getResource("/tn/esprit/gui/DisplayEvents.fxml"));
+
+        try {
+            Parent root = Loader.load();
+            DisplayEventsController C = Loader.getController();
+            C.getEvents();
+            Scene productDetailScene = new Scene(root);
+            Stage cineStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            cineStage.setScene(productDetailScene);
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+  @FXML
+    private void onreservation(MouseEvent event) {
+       FXMLLoader Loader = new FXMLLoader(getClass().getResource("/tn/esprit/gui/DisplayReservations.fxml"));
+
+        try {
+            Parent root = Loader.load();
+            DisplayReservationsController C = Loader.getController();
+            C.getRes();
+            Scene productDetailScene = new Scene(root);
+            Stage cineStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            cineStage.setScene(productDetailScene);
+
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
         }
     }
 

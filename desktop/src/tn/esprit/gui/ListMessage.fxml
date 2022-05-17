@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #242424;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ListMessageController">
+   <children>
+      <VBox fx:id="EditUserbox" alignment="CENTER" layoutX="237.0" layoutY="58.0" prefHeight="661.0" prefWidth="856.0" style="-fx-border-color: #7a8eff;" visible="false" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="237.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="58.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="107.0" prefWidth="856.0" style="-fx-border-color: #7A8EFF;">
+               <children>
+                  <Label prefHeight="65.0" prefWidth="177.0" text="Edit User" textAlignment="CENTER" textFill="RED" underline="true">
+                     <font>
+                        <Font size="44.0" />
+                     </font>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="50.0" />
+               </VBox.margin>
+            </HBox>
+            <VBox alignment="CENTER" prefHeight="297.0" prefWidth="854.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="25.0" prefWidth="846.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="First Name :" wrappingWidth="127.13671875">
+                           <HBox.margin>
+                              <Insets top="5.0" />
+                           </HBox.margin>
+                        </Text>
+                        <TextField fx:id="FirstNameText" prefHeight="15.0" prefWidth="312.0" />
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="10.0" top="30.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="28.0" prefWidth="488.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name :" wrappingWidth="127.13671875">
+                           <HBox.margin>
+                              <Insets top="5.0" />
+                           </HBox.margin>
+                        </Text>
+                        <TextField fx:id="LastNameText" prefHeight="15.0" prefWidth="312.0" />
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="28.0" prefWidth="488.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="User Name :" wrappingWidth="127.13671875">
+                           <HBox.margin>
+                              <Insets top="5.0" />
+                           </HBox.margin>
+                        </Text>
+                        <TextField fx:id="UserNameText" prefHeight="15.0" prefWidth="312.0" />
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="28.0" prefWidth="488.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Email :" wrappingWidth="127.13671875">
+                           <HBox.margin>
+                              <Insets top="5.0" />
+                           </HBox.margin>
+                        </Text>
+                        <TextField fx:id="Emailtext" prefHeight="15.0" prefWidth="312.0" />
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="28.0" prefWidth="488.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Phone Number :" wrappingWidth="127.13671875">
+                           <HBox.margin>
+                              <Insets top="5.0" />
+                           </HBox.margin>
+                        </Text>
+                        <TextField fx:id="PhoneNumberText" prefHeight="15.0" prefWidth="312.0" />
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="28.0" prefWidth="449.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Role" wrappingWidth="127.13671875">
+                           <HBox.margin>
+                              <Insets top="5.0" />
+                           </HBox.margin>
+                        </Text>
+                        <ComboBox fx:id="roles" accessibleRoleDescription="PLAYER" accessibleText="USER" pickOnBounds="false" prefHeight="28.0" prefWidth="315.0" promptText="Select Role" visibleRowCount="3" />
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="612.0">
+                     <children>
+                        <Button fx:id="UpdateButton" alignment="CENTER" mnemonicParsing="false" onAction="#onEditUser" prefHeight="29.0" prefWidth="77.0" style="-fx-background-color: #7a8eff;" text="Save" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="BackButton" alignment="CENTER" mnemonicParsing="false" onAction="#onCloseEdit" prefHeight="28.0" prefWidth="78.0" style="-fx-background-color: #7a8eff;" text="Back" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </VBox>
+      <TableView fx:id="UsersTable" layoutX="226.0" layoutY="295.0" prefHeight="392.0" prefWidth="872.0" visible="false">
+        <columns>
+          <TableColumn fx:id="fullNameCol" prefWidth="112.0" text="FULL NAME" />
+            <TableColumn fx:id="emailCol" prefWidth="131.0" text="EMAIL" />
+            <TableColumn fx:id="passwordCol" prefWidth="82.0" text="PASSWORD" />
+            <TableColumn fx:id="roleCol" prefWidth="67.0" text="ROLE" />
+            <TableColumn fx:id="dateCol" prefWidth="129.0" text="LAST LOGIN DATE" />
+            <TableColumn fx:id="phoneNumberCol" prefWidth="115.0" text="PHONE NUMBER" />
+            <TableColumn fx:id="usernameCol" prefWidth="95.0" text="USERNAME" />
+            <TableColumn fx:id="editCol" prefWidth="121.0" text="ACTIONS" />
+        </columns>
+      </TableView>
+      <VBox prefHeight="768.0" prefWidth="300.0" style="-fx-background-color: #0b0c2a;">
+         <children>
+            <ImageView fitHeight="105.0" fitWidth="233.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/unnamed%20(1)%20(1).png" />
+               </image>
+            </ImageView>
+            <HBox alignment="CENTER_LEFT" onMouseClicked="#goTOList" prefHeight="53.0" prefWidth="176.0" styleClass="sidebarItem">
+               <children>
+                  <ImageView fitHeight="56.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/panier.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="btnProducts" prefHeight="53.0" prefWidth="71.0" text="Products" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets left="30.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="5.0" top="5.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" onMouseClicked="#goListCat" prefHeight="53.0" prefWidth="176.0" styleClass="sidebarItem">
+               <children>
+                  <ImageView fitHeight="56.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/abo.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="goCat" prefHeight="53.0" prefWidth="73.0" text="Categories" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets left="30.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="5.0" top="5.0" />
+               </padding>
+            </HBox>
+            <HBox fx:id="UsersBack" alignment="CENTER_LEFT" onMouseClicked="#onUsersBack" prefHeight="53.0" prefWidth="176.0" styleClass="sidebarItem">
+               <children>
+                  <ImageView fitHeight="56.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/client.PNG" />
+                     </image>
+                  </ImageView>
+                  <Label prefHeight="56.0" prefWidth="43.0" text="User" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets left="30.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="5.0" top="5.0" />
+               </padding>
+            </HBox>
+            <HBox fx:id="order" alignment="CENTER_LEFT" onMouseClicked="#onorder" prefHeight="53.0" prefWidth="176.0" styleClass="sidebarItem">
+               <children>
+                  <ImageView fitHeight="56.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/client.PNG" />
+                     </image>
+                  </ImageView>
+                  <Label prefHeight="56.0" prefWidth="43.0" text="Order" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" top="5.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets left="30.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox fx:id="commentsback" alignment="CENTER_LEFT" onMouseClicked="#oncomments" prefHeight="53.0" prefWidth="176.0" styleClass="sidebarItem">
+               <children>
+                  <ImageView fitHeight="56.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/client.PNG" />
+                     </image>
+                  </ImageView>
+                  <Label prefHeight="52.0" prefWidth="109.0" text="Comments" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" top="5.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets left="30.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox fx:id="tagsback" alignment="CENTER_LEFT" onMouseClicked="#ontags" prefHeight="53.0" prefWidth="176.0" styleClass="sidebarItem">
+               <children>
+                  <ImageView fitHeight="56.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/client.PNG" />
+                     </image>
+                  </ImageView>
+                  <Label prefHeight="52.0" prefWidth="131.0" text="Tags" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" top="5.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets left="30.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox fx:id="eventsback" alignment="CENTER_LEFT" onMouseClicked="#onevents" prefHeight="53.0" prefWidth="176.0" styleClass="sidebarItem">
+               <children>
+                  <ImageView fitHeight="56.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../img/event.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label prefHeight="52.0" prefWidth="141.0" text="Events" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" top="5.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets left="30.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox fx:id="reservationBack" alignment="CENTER_LEFT" onMouseClicked="#onreservation" prefHeight="53.0" prefWidth="176.0" styleClass="sidebarItem">
+               <children>
+                  <ImageView fitHeight="56.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../img/reservation.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label prefHeight="52.0" prefWidth="136.0" text="Reservations" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" top="5.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets left="30.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox fx:id="reback" alignment="CENTER_LEFT" onMouseClicked="#OnReclamation" prefHeight="53.0" prefWidth="176.0" styleClass="sidebarItem">
+               <children>
+                  <ImageView fitHeight="56.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/client.PNG" />
+                     </image>
+                  </ImageView>
+                  <Label prefHeight="52.0" prefWidth="169.0" text="Reclamations" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" top="5.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets left="30.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox fx:id="comback" alignment="CENTER_LEFT" onMouseClicked="#OnCommunication" prefHeight="53.0" prefWidth="176.0" styleClass="sidebarItem">
+               <children>
+                  <ImageView fitHeight="56.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/client.PNG" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="30.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label prefHeight="52.0" prefWidth="136.0" text="Communications" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" top="5.0" />
+               </padding>
+            </HBox>
+            <HBox fx:id="SignOutBack1" alignment="CENTER_LEFT" onMouseClicked="#onSignOut" prefHeight="53.0" prefWidth="176.0" styleClass="sidebarItem">
+               <padding>
+                  <Insets bottom="5.0" top="5.0" />
+               </padding>
+               <children>
+                  <ImageView fitHeight="56.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/client.PNG" />
+                     </image>
+                  </ImageView>
+                  <Label prefHeight="52.0" prefWidth="73.0" text="Sign out" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets left="30.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="10.0" top="10.0" />
+         </padding>
+      </VBox>
+      <VBox fx:id="ProfileInterface" layoutX="234.0" layoutY="23.0" prefHeight="633.0" prefWidth="856.0" visible="false">
+         <children>
+            <HBox alignment="CENTER" prefHeight="107.0" prefWidth="856.0" style="-fx-border-color: #7A8EFF;">
+               <children>
+                  <Label prefHeight="60.0" prefWidth="126.0" text="Profile" textAlignment="CENTER" textFill="RED" underline="true">
+                     <font>
+                        <Font size="44.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <VBox prefHeight="451.0" prefWidth="856.0" style="-fx-border-color: #7A8EFF;">
+               <VBox.margin>
+                  <Insets top="80.0" />
+               </VBox.margin>
+               <children>
+                  <HBox alignment="CENTER" prefHeight="49.0" prefWidth="856.0">
+                     <children>
+                        <Label prefHeight="35.0" prefWidth="98.0" text="First Name :" />
+                        <TextField fx:id="FirstNameProfile" prefHeight="36.0" prefWidth="513.0" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="49.0" prefWidth="856.0">
+                     <children>
+                        <Label prefHeight="35.0" prefWidth="98.0" text="Last Name :" />
+                        <TextField fx:id="LastNameProfile" prefHeight="36.0" prefWidth="513.0" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="49.0" prefWidth="856.0">
+                     <children>
+                        <Label prefHeight="35.0" prefWidth="98.0" text="Email :" />
+                        <TextField fx:id="EmailProfile" prefHeight="36.0" prefWidth="513.0" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="49.0" prefWidth="856.0">
+                     <children>
+                        <Label prefHeight="35.0" prefWidth="98.0" text="User name :" />
+                        <TextField fx:id="UserNameProfile" prefHeight="36.0" prefWidth="513.0" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="49.0" prefWidth="856.0">
+                     <children>
+                        <Label prefHeight="35.0" prefWidth="98.0" text="Phone Number :" />
+                        <TextField fx:id="PhoneNumberProfile" prefHeight="36.0" prefWidth="513.0" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="49.0" prefWidth="856.0">
+                     <children>
+                        <Label prefHeight="35.0" prefWidth="98.0" text="Password :" />
+                        <TextField fx:id="PasswordProfile" prefHeight="36.0" prefWidth="513.0" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="49.0" prefWidth="856.0">
+                     <children>
+                        <Label prefHeight="35.0" prefWidth="98.0" text="Role :" />
+                        <ComboBox fx:id="Roleprofile" prefHeight="36.0" prefWidth="512.0" promptText="Select Your Role" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="70.0" prefWidth="856.0">
+                     <children>
+                        <RadioButton fx:id="EditProfileRadioButton" mnemonicParsing="false" onAction="#onSelectRadioButton" text="Edit Informations">
+                           <HBox.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </HBox.margin>
+                        </RadioButton>
+                        <Button fx:id="SaveEditProfile" mnemonicParsing="false" onAction="#onEditProfileAction" prefHeight="23.0" prefWidth="133.0" style="-fx-background-color: #7A8EFF;" text="Save" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+      <HBox fx:id="reservationBack1" alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" onMouseClicked="#onreservation" prefHeight="53.0" prefWidth="176.0" styleClass="sidebarItem">
+         <padding>
+            <Insets bottom="5.0" top="5.0" />
+         </padding>
+      </HBox>
+      <TableView fx:id="tbl_communication" layoutX="405.0" layoutY="217.0" opacity="0.73" prefHeight="302.0" prefWidth="965.0">
+         <columns>
+            <TableColumn fx:id="mail" minWidth="-Infinity" prefWidth="242.00003051757812" text="Clients" />
+            <TableColumn fx:id="titr" prefWidth="210.0" text="Title" />
+            <TableColumn fx:id="message" prefWidth="511.0" text="Message" />
+         </columns>
+      </TableView>
+      <Label layoutX="719.0" layoutY="96.0" prefHeight="29.0" prefWidth="212.0" text="List Messages" textFill="#d00f0f">
+         <font>
+            <Font name="Arial Bold Italic" size="24.0" />
+         </font>
+      </Label>
+      <Button fx:id="deletec" layoutX="1049.0" layoutY="581.0" mnemonicParsing="false" onAction="#deleteMessage" prefHeight="26.0" prefWidth="103.0" style="-fx-background-color: #d00f0f;" styleClass="add1-btn" stylesheets="@../../../../../../../../Documents/NetBeansProjects/PiDevJavaa/src/style/style.css" text="Delete" textFill="#141414">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="modc" layoutX="1181.0" layoutY="581.0" mnemonicParsing="false" onAction="#RespondMessage" prefHeight="26.0" prefWidth="103.0" style="-fx-background-color: #d00f0f;" styleClass="add1-btn" stylesheets="@../../../../../../../../Documents/NetBeansProjects/PiDevJavaa/src/style/style.css" text="Respond" textFill="#0a0a0a">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="refresh" layoutX="1130.0" layoutY="630.0" mnemonicParsing="false" onAction="#refreshList" prefHeight="26.0" prefWidth="103.0" style="-fx-background-color: #d00f0f;" styleClass="add1-btn" stylesheets="@../../../../../../../../Documents/NetBeansProjects/PiDevJavaa/src/style/style.css" text="refresh" textFill="#141414">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

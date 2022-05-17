@@ -51,8 +51,6 @@ public class ProfileController implements Initializable {
     @FXML
     private HBox reservationBack;
     @FXML
-    private HBox SignOutBack;
-    @FXML
     private VBox ProfileInterface;
     @FXML
     private TextField FirstNameProfile;
@@ -74,6 +72,12 @@ public class ProfileController implements Initializable {
     private Button SaveEditProfile;
     ObservableList<String> ROLES = FXCollections.observableArrayList();
     private static boolean visitedprofile = false;
+    @FXML
+    private HBox clicReclamation;
+    @FXML
+    private HBox clicCommunication;
+    @FXML
+    private HBox SignOutBack2;
 
     /**
      * Initializes the controller class.
@@ -147,6 +151,18 @@ public class ProfileController implements Initializable {
 
     @FXML
     private void onUsersBack(MouseEvent event) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Profile.fxml"));
+
+        try {
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.centerOnScreen();
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(SignUpController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
 
@@ -277,5 +293,41 @@ public class ProfileController implements Initializable {
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
+    }
+
+    @FXML
+    private void onReclamtionFront(MouseEvent event) {
+         FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn/esprit/gui/ajouter_reclamation.fxml"));
+        
+        try {
+            javafx.scene.Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.centerOnScreen();
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(SignUpController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+       
+       
+    }
+
+    @FXML
+    private void onCommunication(MouseEvent event) {
+          FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn/esprit/gui/ajouter_message.fxml"));
+        
+        try {
+            javafx.scene.Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.centerOnScreen();
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(SignUpController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
 }
