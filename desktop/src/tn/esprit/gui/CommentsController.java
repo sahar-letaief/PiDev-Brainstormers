@@ -1,7 +1,5 @@
 package tn.esprit.gui;
 
-import com.sun.speech.freetts.Voice;
-import com.sun.speech.freetts.VoiceManager;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -11,31 +9,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Timer;
-import tn.esprit.entities.UserStaticSession;
 import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
 import tn.esprit.entities.Comment;
 import tn.esprit.entities.Evenement;
 import tn.esprit.entities.Tags;
-import tn.esprit.gui.DisplayEventsFrontController;
+import tn.esprit.entities.UserStaticSession;
 import static tn.esprit.gui.DisplayEventsFrontController.idToComment;
 import tn.esprit.services.CommentService;
 import tn.esprit.services.EvenementService;
@@ -523,7 +503,7 @@ public class CommentsController implements Initializable {
                 stringComment = results.getString("comment");
                 idUser = results.getInt("id_user");
                 starsNum = results.getInt("stars");
-                commentsList.getItems().add(idUser + " : " + stringComment + "          " + starsNum + " Stars");
+                commentsList.getItems().add(stringComment + "          " + starsNum + " Stars");
             }
 
         } catch (SQLException ex) {
