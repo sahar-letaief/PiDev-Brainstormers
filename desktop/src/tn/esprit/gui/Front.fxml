@@ -15,18 +15,18 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FrontController">
+<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #242424;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FrontController">
    
     <children>
-      <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #242424;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
-            <AnchorPane prefHeight="65.0" prefWidth="1328.0" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="65.0" prefWidth="1328.0" style="-fx-background-color: #242424;" BorderPane.alignment="CENTER">
                <children>
-                  <AnchorPane prefHeight="65.0" prefWidth="976.0">
+                  <AnchorPane prefHeight="65.0" prefWidth="976.0" style="-fx-background-color: #242424;">
                      <children>
-                        <AnchorPane prefHeight="70.0" prefWidth="1311.0" style="-fx-background-color: white;">
+                        <AnchorPane prefHeight="70.0" prefWidth="1311.0" style="-fx-background-color: #242424;">
                            <children>
-                              <Pane layoutX="181.0" layoutY="20.0" prefHeight="66.0" prefWidth="1372.0" style="-fx-background-color: #0A115A;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-61.0" AnchorPane.topAnchor="0.0">
+                              <Pane layoutX="181.0" layoutY="20.0" prefHeight="66.0" prefWidth="1372.0" style="-fx-background-color: #242424;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-61.0" AnchorPane.topAnchor="0.0">
                                  <children>
                                     <Label layoutX="611.0" layoutY="10.0" text="Products" textFill="WHITE">
                                        <font>
@@ -42,7 +42,7 @@
             </AnchorPane>
          </top>
          <left>
-            <AnchorPane prefHeight="1086.0" prefWidth="366.0" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="1086.0" prefWidth="366.0" style="-fx-background-color: #242424;" BorderPane.alignment="CENTER">
                <children>
                   <ImageView fitHeight="150.0" fitWidth="200.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -57,7 +57,7 @@
                <children>
                   <Pane layoutX="-108.0" layoutY="140.0" prefHeight="403.0" prefWidth="896.0">
                      <children>
-                        <Label fx:id="label" layoutX="524.0" layoutY="179.0" minHeight="16" minWidth="69" text="product" />
+                        <Label fx:id="label" layoutX="554.0" layoutY="179.0" minHeight="16" minWidth="69" text="product" />
                         <Button fx:id="button" layoutX="726.0" layoutY="336.0" onAction="#handleButtonAction" prefHeight="32.0" prefWidth="137.0" styleClass="add1-btn" text="Add To Cart" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="12.0" />
@@ -76,15 +76,15 @@
                               <Rectangle2D />
                            </viewport>
                         </ImageView>
-                        <Label fx:id="fxprix" layoutX="524.0" layoutY="267.0" text="price" />
-                        <Label layoutX="565.0" layoutY="267.0" text="TND" />
+                        <Label fx:id="fxprix" layoutX="554.0" layoutY="267.0" text="price" />
+                        <Label layoutX="595.0" layoutY="267.0" text="TND" />
                         <Label layoutX="383.0" layoutY="263.0" text="Price " textFill="#2b2297">
                            <font>
                               <Font size="20.0" />
                            </font></Label>
-                        <Label fx:id="desc" layoutX="525.0" layoutY="224.0" text="desc" />
-                        <Label fx:id="ref" layoutX="524.0" layoutY="130.0" text="ref" />
-                        <Label fx:id="stock" layoutX="524.0" layoutY="310.0" text="stock" />
+                        <Label fx:id="desc" layoutX="555.0" layoutY="224.0" text="desc" />
+                        <Label fx:id="ref" layoutX="554.0" layoutY="130.0" text="ref" />
+                        <Label fx:id="stock" layoutX="554.0" layoutY="310.0" text="stock" />
                         <Label layoutX="381.0" layoutY="175.0" text="Product Name" textFill="#2b2297">
                            <font>
                               <Font size="20.0" />

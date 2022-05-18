@@ -13,24 +13,24 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="Anchorpane" onMouseMoved="#handleinit" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #242424;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.CommentsController">
+<AnchorPane id="AnchorPane" fx:id="Anchorpane" onMouseMoved="#handleinit" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #242424;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.CommentsController">
     <children>
-        <Label fx:id="commentlabel" alignment="TOP_LEFT" layoutX="732.0" layoutY="4.0" prefHeight="26.0" prefWidth="115.0" text="Comment:" textFill="#ff5656">
+        <Label fx:id="commentlabel" alignment="TOP_LEFT" layoutX="997.0" prefHeight="26.0" prefWidth="115.0" text="Comment:" textFill="#ff5656">
             <font>
                 <Font name="Arial" size="21.0" />
             </font>
         </Label>
-        <TextArea id="CommentInput" fx:id="CommentInput" layoutX="578.0" layoutY="71.0" prefHeight="103.0" prefWidth="431.0" wrapText="true">
+        <TextArea id="CommentInput" fx:id="CommentInput" layoutX="757.0" layoutY="71.0" prefHeight="103.0" prefWidth="567.0" wrapText="true">
             <font>
                 <Font name="Arial" size="14.0" />
             </font>
         </TextArea>
-        <Label fx:id="starslabel" layoutX="751.0" layoutY="179.0" text="Stars:" textFill="#ff5656">
+        <Label fx:id="starslabel" layoutX="1041.0" layoutY="179.0" opacity="0.0" text="Stars:" textFill="#ff5656">
             <font>
                 <Font name="Arial" size="21.0" />
             </font>
         </Label>
-        <Button id="Submit" fx:id="Submit" layoutX="693.0" layoutY="237.0" mnemonicParsing="false" onAction="#handleSubmit" prefHeight="31.0" prefWidth="166.0" style="-fx-border-radius: 5; -fx-background-radius: 5; -fx-background-color: #4DB6AC;" text="Submit" textAlignment="CENTER">
+        <Button id="Submit" fx:id="Submit" layoutX="961.0" layoutY="237.0" mnemonicParsing="false" onAction="#handleSubmit" prefHeight="31.0" prefWidth="166.0" style="-fx-border-radius: 5; -fx-background-radius: 5; -fx-background-color: #4DB6AC;" text="Submit" textAlignment="CENTER">
             <font>
                 <Font name="Arial" size="16.0" />
             </font>
@@ -38,7 +38,7 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
         </Button>
-        <Label id="CommentErr" fx:id="CommentErr" layoutX="579.0" layoutY="73.0" nodeOrientation="LEFT_TO_RIGHT" text="• Comment is required" textFill="#ff5353" visible="false">
+        <Label id="CommentErr" fx:id="CommentErr" layoutX="773.0" layoutY="73.0" nodeOrientation="LEFT_TO_RIGHT" text="• Comment is required" textFill="#ff5353" visible="false">
             <font>
                 <Font name="Cantarell Regular" size="18.0" />
             </font>
@@ -46,7 +46,7 @@
                 <Glow level="0.42" />
             </effect>
         </Label>
-        <Label id="CommentErr" fx:id="CommentErr1" layoutX="579.0" layoutY="153.0" text="• Character limit surpassed" textFill="#ff5353" visible="false">
+        <Label id="CommentErr" fx:id="CommentErr1" layoutX="771.0" layoutY="153.0" text="• Character limit surpassed" textFill="#ff5353" visible="false">
             <font>
                 <Font name="Cantarell Regular" size="18.0" />
             </font>
@@ -57,24 +57,24 @@
             <Insets top="-50.0" />
          </opaqueInsets>
         </Label>
-        <Label id="star1" fx:id="Star1" layoutX="698.0" layoutY="201.0" onMouseClicked="#handlestar1" opacity="0.4" prefHeight="31.0" prefWidth="20.0" text="★" textFill="#eea20a">
+        <Label id="star1" fx:id="Star1" layoutX="965.0" layoutY="201.0" onMouseClicked="#handlestar1" opacity="0.4" prefHeight="31.0" prefWidth="20.0" text="★" textFill="#eea20a">
             <font>
                 <Font name="Arial" size="20.0" />
             </font>
         </Label>
-        <TextField id="tag1" fx:id="tag1" layoutX="579.0" layoutY="37.0" prefHeight="25.0" prefWidth="137.0" promptText="Tag 1" style="-fx-background-radius: 8;">
+        <TextField id="tag1" fx:id="tag1" layoutX="760.0" layoutY="37.0" prefHeight="25.0" prefWidth="137.0" promptText="Tag 1" style="-fx-background-radius: 8;">
          <font>
             <Font name="Arial" size="12.0" />
          </font></TextField>
-        <TextField id="tag2" fx:id="tag2" layoutX="726.0" layoutY="37.0" prefHeight="25.0" prefWidth="137.0" promptText="Tag 2" style="-fx-background-radius: 8;">
+        <TextField id="tag2" fx:id="tag2" layoutX="976.0" layoutY="37.0" prefHeight="25.0" prefWidth="137.0" promptText="Tag 2" style="-fx-background-radius: 8;">
          <font>
             <Font name="Arial" size="12.0" />
          </font></TextField>
-        <TextField id="tag3" fx:id="tag3" layoutX="872.0" layoutY="37.0" prefHeight="25.0" prefWidth="137.0" promptText="Tag 3" style="-fx-background-radius: 8;">
+        <TextField id="tag3" fx:id="tag3" layoutX="1188.0" layoutY="37.0" prefHeight="25.0" prefWidth="137.0" promptText="Tag 3" style="-fx-background-radius: 8;">
          <font>
             <Font name="Arial" size="12.0" />
          </font></TextField>
-        <Label id="CommentErr" fx:id="CommentErr2" layoutX="833.0" layoutY="176.0" text="• Stars are required" textFill="#ff5353" visible="false">
+        <Label id="CommentErr" fx:id="CommentErr2" layoutX="1161.0" layoutY="205.0" text="• Stars are required" textFill="#ff5353" visible="false">
             <font>
                 <Font name="Cantarell Regular" size="18.0" />
             </font>
@@ -82,7 +82,7 @@
                 <Glow level="0.42" />
             </effect>
         </Label>
-        <Label id="CommentErr" fx:id="CommentErr3" layoutX="579.0" layoutY="129.0" nodeOrientation="LEFT_TO_RIGHT" text="• Profanity is not allowed" textFill="#ff5353" visible="false">
+        <Label id="CommentErr" fx:id="CommentErr3" layoutX="771.0" layoutY="128.0" nodeOrientation="LEFT_TO_RIGHT" text="• Profanity is not allowed" textFill="#ff5353" visible="false">
             <font>
                 <Font name="Cantarell Regular" size="18.0" />
             </font>
@@ -90,8 +90,8 @@
                 <Glow level="0.42" />
             </effect>
         </Label>
-        <ListView id="commentsList" fx:id="commentsList" cacheShape="false" focusTraversable="false" layoutX="572.0" layoutY="274.0" onMouseClicked="#listeselect" prefHeight="332.0" prefWidth="445.0" scaleShape="false" style="-fx-background-radius: 10;" />
-        <Button id="Delete" fx:id="Delete" layoutX="794.0" layoutY="142.0" mnemonicParsing="false" onMouseClicked="#handleDelete" prefHeight="31.0" prefWidth="166.0" style="-fx-border-radius: 5; -fx-background-radius: 5; -fx-background-color: #EF5350;" text="Delete" textAlignment="CENTER">
+        <ListView id="commentsList" fx:id="commentsList" cacheShape="false" focusTraversable="false" layoutX="733.0" layoutY="274.0" onMouseClicked="#listeselect" prefHeight="481.0" prefWidth="618.0" scaleShape="false" style="-fx-background-radius: 10;" />
+        <Button id="Delete" fx:id="Delete" layoutX="1056.0" layoutY="142.0" mnemonicParsing="false" onMouseClicked="#handleDelete" prefHeight="31.0" prefWidth="166.0" style="-fx-border-radius: 5; -fx-background-radius: 5; -fx-background-color: #EF5350;" text="Delete" textAlignment="CENTER">
             <font>
                 <Font name="Arial" size="16.0" />
             </font>
@@ -99,7 +99,7 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
         </Button>
-        <Button id="Modify" fx:id="Modify" layoutX="603.0" layoutY="142.0" mnemonicParsing="false" onAction="#handleModify" prefHeight="31.0" prefWidth="166.0" style="-fx-border-radius: 5; -fx-background-radius: 5; -fx-background-color: #FFA726;" text="Modify" textAlignment="CENTER">
+        <Button id="Modify" fx:id="Modify" layoutX="845.0" layoutY="142.0" mnemonicParsing="false" onAction="#handleModify" prefHeight="31.0" prefWidth="166.0" style="-fx-border-radius: 5; -fx-background-radius: 5; -fx-background-color: #FFA726;" text="Modify" textAlignment="CENTER">
             <font>
                 <Font name="Arial" size="16.0" />
             </font>
@@ -107,27 +107,27 @@
                 <Cursor fx:constant="HAND" />
             </cursor>
         </Button>
-      <Label id="star2" fx:id="Star2" layoutX="734.0" layoutY="201.0" onMouseClicked="#handlestar2" opacity="0.4" prefHeight="31.0" prefWidth="20.0" text="★" textFill="#eea20a">
+      <Label id="star2" fx:id="Star2" layoutX="1001.0" layoutY="201.0" onMouseClicked="#handlestar2" opacity="0.4" prefHeight="31.0" prefWidth="20.0" text="★" textFill="#eea20a">
          <font>
             <Font name="Arial" size="20.0" />
          </font>
       </Label>
-      <Label id="star4" fx:id="Star4" layoutX="807.0" layoutY="201.0" onMouseClicked="#handlestar4" opacity="0.4" prefHeight="31.0" prefWidth="20.0" text="★" textFill="#eea20a">
+      <Label id="star4" fx:id="Star4" layoutX="1074.0" layoutY="201.0" onMouseClicked="#handlestar4" opacity="0.4" prefHeight="31.0" prefWidth="20.0" text="★" textFill="#eea20a">
          <font>
             <Font name="Arial" size="20.0" />
          </font>
       </Label>
-      <Label id="star3" fx:id="Star3" layoutX="771.0" layoutY="201.0" onMouseClicked="#handlestar3" opacity="0.4" prefHeight="31.0" prefWidth="20.0" text="★" textFill="#eea20a">
+      <Label id="star3" fx:id="Star3" layoutX="1038.0" layoutY="201.0" onMouseClicked="#handlestar3" opacity="0.4" prefHeight="31.0" prefWidth="20.0" text="★" textFill="#eea20a">
          <font>
             <Font name="Arial" size="20.0" />
          </font>
       </Label>
-      <Label id="star5" fx:id="Star5" layoutX="843.0" layoutY="201.0" onMouseClicked="#handlestar5" opacity="0.4" prefHeight="31.0" prefWidth="20.0" text="★" textFill="#eea20a">
+      <Label id="star5" fx:id="Star5" layoutX="1110.0" layoutY="201.0" onMouseClicked="#handlestar5" opacity="0.4" prefHeight="31.0" prefWidth="20.0" text="★" textFill="#eea20a">
          <font>
             <Font name="Arial" size="20.0" />
          </font>
       </Label>
-      <Label id="commentsub" fx:id="commentsub" layoutX="593.0" layoutY="75.0" prefHeight="48.0" prefWidth="378.0" text="Comment Submitted ✓" textFill="#4ce07a" visible="false">
+      <Label id="commentsub" fx:id="commentsub" layoutX="868.0" layoutY="82.0" prefHeight="48.0" prefWidth="378.0" text="Comment Submitted ✓" textFill="#4ce07a" visible="false">
          <font>
             <Font name="Cantarell Regular" size="37.0" />
          </font>
@@ -135,10 +135,10 @@
             <Insets top="-6.0" />
          </opaqueInsets>
       </Label>
-      <Separator layoutX="568.0" orientation="VERTICAL" prefHeight="605.0" prefWidth="4.0" />
-      <Label fx:id="banlabel" layoutX="578.0" layoutY="210.0" prefHeight="110.0" prefWidth="416.0" text="You have been temporarily Banned." textAlignment="CENTER" textFill="#ff0036" visible="false" wrapText="true">
+      <Separator layoutX="718.0" orientation="VERTICAL" prefHeight="768.0" prefWidth="0.0" />
+      <Label fx:id="banlabel" layoutX="838.0" layoutY="270.0" prefHeight="250.0" prefWidth="416.0" text="You have been temporarily Banned." textAlignment="CENTER" textFill="#ff0036" visible="false" wrapText="true">
          <font>
-            <Font name="Cantarell Regular" size="35.0" />
+            <Font name="Cantarell Regular" size="60.0" />
          </font>
          <effect>
             <Glow level="0.85" />

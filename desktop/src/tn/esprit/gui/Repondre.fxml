@@ -17,7 +17,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #242424;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RepondreController">
+<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #242424;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RepondreController">
    <children>
       <VBox fx:id="EditUserbox" alignment="CENTER" layoutX="237.0" layoutY="58.0" prefHeight="661.0" prefWidth="856.0" style="-fx-border-color: #7a8eff;" visible="false" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="237.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="58.0">
          <children>
@@ -462,44 +462,44 @@
       <Text layoutX="248.0" layoutY="374.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="124.5367431640625" />
       <Label layoutX="530.0" layoutY="368.0" />
       <Text fill="#3e6fae" layoutX="732.0" layoutY="527.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" />
-      <Text fill="WHITE" layoutX="365.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reclamation Respond" textAlignment="CENTER" wrappingWidth="302.99998611211777">
+      <Text fill="#fc5b5b" layoutX="650.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Respond to Reclamation" textAlignment="CENTER" wrappingWidth="353.99998611211777">
          <font>
             <Font name="Arial Rounded MT Bold" size="24.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="431.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title" textAlignment="CENTER">
+      <Text fill="WHITE" layoutX="325.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title:" textAlignment="CENTER">
          <font>
             <Font name="Arial Bold Italic" size="18.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="421.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" textAlignment="CENTER">
+      <Text fill="WHITE" layoutX="325.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description:" textAlignment="CENTER">
          <font>
             <Font name="Arial Bold Italic" size="18.0" />
          </font>
       </Text>
-      <Button fx:id="envoyer" layoutX="838.0" layoutY="593.0" mnemonicParsing="false" onAction="#envoyer" prefHeight="25.0" prefWidth="75.0" style="-fx-background-color: #d00f0f;" styleClass="add1-btn" stylesheets="@../../../../../../../../Documents/NetBeansProjects/PiDevJavaa/src/style/style.css" text="envoyer" textFill="#101010">
+      <Button fx:id="envoyer" layoutX="682.0" layoutY="634.0" mnemonicParsing="false" onAction="#envoyer" prefHeight="34.0" prefWidth="100.0" style="-fx-background-color: #4DB6AC;" styleClass="add1-btn" stylesheets="@../../../../../../../../Documents/NetBeansProjects/PiDevJavaa/src/style/style.css" text="Send" textFill="#101010">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="17.0" />
          </font>
       </Button>
       <Label layoutX="703.0" layoutY="364.0" />
-      <ComboBox fx:id="BoxC" layoutX="659.0" layoutY="536.0" prefHeight="32.0" prefWidth="206.0" />
-      <Text fill="WHITE" layoutX="395.0" layoutY="498.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Command's Reference" textAlignment="CENTER">
+      <ComboBox fx:id="BoxC" layoutX="590.0" layoutY="556.0" prefHeight="32.0" prefWidth="206.0" />
+      <Text fill="WHITE" layoutX="325.0" layoutY="508.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Command's Reference:" textAlignment="CENTER">
          <font>
             <Font name="Arial Bold Italic" size="18.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="422.0" layoutY="565.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status" textAlignment="CENTER">
+      <Text fill="WHITE" layoutX="325.0" layoutY="575.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status:" textAlignment="CENTER">
          <font>
             <Font name="Arial Bold Italic" size="18.0" />
          </font>
       </Text>
-      <TextArea fx:id="labelDes" layoutX="660.0" layoutY="264.0" prefHeight="200.0" prefWidth="200.0" />
-      <TextField layoutX="657.0" layoutY="477.0" prefHeight="31.0" prefWidth="206.0" />
-      <TextField fx:id="labelttle" layoutX="657.0" layoutY="206.0" prefHeight="31.0" prefWidth="206.0" />
-      <Button fx:id="list" layoutX="749.0" layoutY="593.0" mnemonicParsing="false" onAction="#Affiche" prefHeight="25.0" prefWidth="75.0" style="-fx-background-color: #d00f0f;" styleClass="add1-btn" stylesheets="@../../../../../../../../Documents/NetBeansProjects/PiDevJavaa/src/style/style.css" text="List" textFill="#101010">
+      <TextArea fx:id="labelDes" layoutX="590.0" layoutY="264.0" prefHeight="200.0" prefWidth="377.0" />
+      <TextField layoutX="590.0" layoutY="487.0" prefHeight="30.0" prefWidth="98.0" />
+      <TextField fx:id="labelttle" layoutX="590.0" layoutY="206.0" prefHeight="30.0" prefWidth="377.0" />
+      <Button fx:id="list" layoutX="801.0" layoutY="633.0" mnemonicParsing="false" onAction="#Affiche" prefHeight="34.0" prefWidth="100.0" style="-fx-background-color: #FFA726;" styleClass="add1-btn" stylesheets="@../../../../../../../../Documents/NetBeansProjects/PiDevJavaa/src/style/style.css" text="List" textFill="#101010">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="17.0" />
          </font>
       </Button>
    </children>

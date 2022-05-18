@@ -19,7 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.DisplayEventsFrontController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #242424;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.DisplayEventsFrontController">
    <children>
       <HBox alignment="CENTER" prefHeight="89.0" prefWidth="1315.0" />
       <BorderPane layoutX="6.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -362,15 +362,15 @@
                                           <Insets left="30.0" right="30.0" />
                                        </VBox.margin>
                                        <children>
-                                          <TextField fx:id="searchlabel" prefHeight="40.0" prefWidth="267.0" promptText="Event search" styleClass="transparent">
+                                          <TextField fx:id="searchlabel" minHeight="-Infinity" prefHeight="34.0" prefWidth="300.0" promptText="Event search" styleClass="transparent">
                                              <HBox.margin>
                                                 <Insets left="20.0" />
                                              </HBox.margin>
                                              <font>
-                                                <Font name="Cambria" size="18.0" />
+                                                <Font size="14.0" />
                                              </font>
                                           </TextField>
-                                          <Button fx:id="Search" mnemonicParsing="false" onAction="#SearchEvent" prefHeight="40.0" prefWidth="227.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: #FFA726;" styleClass="search-button" text="SEARCH">
+                                          <Button fx:id="Search" mnemonicParsing="false" onAction="#SearchEvent" prefHeight="34.0" prefWidth="227.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: #FFA726;" styleClass="search-button" text="SEARCH">
                                              <font>
                                                 <Font name="System Bold" size="12.0" />
                                              </font></Button>
@@ -385,12 +385,12 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="86.0" prefWidth="406.0" styleClass="shopping-online-card">
                            <children>
-                              <Button fx:id="sort" mnemonicParsing="false" onAction="#SortByPrice" prefHeight="30.0" prefWidth="194.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: #FFA726;" text="SORT BY PRICE">
+                              <Button fx:id="sort" mnemonicParsing="false" onAction="#SortByPrice" prefHeight="34.0" prefWidth="194.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: #FFA726;" text="SORT BY PRICE">
                                  <font>
                                     <Font name="Arial" size="14.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="MyReservations" mnemonicParsing="false" onAction="#DisplayReservationsFront" prefHeight="36.0" prefWidth="225.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: #4DB6AC;" text="MY RESERVATIONS">
+                              <Button fx:id="MyReservations" mnemonicParsing="false" onAction="#DisplayReservationsFront" prefHeight="34.0" prefWidth="225.0" style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-background-color: #4DB6AC;" text="MY RESERVATIONS">
                                  <font>
                                     <Font name="Arial" size="14.0" />
                                  </font>
@@ -405,7 +405,7 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="635.0" prefWidth="945.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <ScrollPane fx:id="scroll" prefHeight="625.0" prefWidth="820.0" style="-fx-background-radius: 30; -fx-border-radius: 5;" styleClass="transparent">
+                        <ScrollPane fx:id="scroll" prefHeight="611.0" prefWidth="695.0" style="-fx-background-radius: 30; -fx-border-radius: 5;" styleClass="transparent">
                            <content>
                               <GridPane fx:id="grid" prefHeight="9.0" prefWidth="17.0">
                                  <rowConstraints>
