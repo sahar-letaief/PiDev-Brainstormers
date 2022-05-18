@@ -11,16 +11,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.DisplayReservationsController">
+<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #242424;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.DisplayReservationsController">
    <children>
-      <TableView fx:id="tableviewRes" layoutX="323.0" layoutY="186.0" prefHeight="345.0" prefWidth="650.0">
+      <TableView fx:id="tableviewRes" layoutX="317.0" layoutY="208.0" prefHeight="430.0" prefWidth="945.0">
         <columns>
           <TableColumn fx:id="NameEvent" prefWidth="120.0" text="Name Event" />
             <TableColumn fx:id="firstname" prefWidth="402.0" text="Player" />
             <TableColumn fx:id="reservationdate" prefWidth="127.0" text="Reservation date" />
         </columns>
       </TableView>
-      <Label layoutX="328.0" layoutY="116.0" prefHeight="52.0" prefWidth="228.0" text="List of reservations" textFill="#464242">
+      <Label layoutX="662.0" layoutY="118.0" prefHeight="52.0" prefWidth="393.0" text="Reservations" textFill="#ff9292">
          <font>
             <Font name="Berlin Sans FB" size="29.0" />
          </font>

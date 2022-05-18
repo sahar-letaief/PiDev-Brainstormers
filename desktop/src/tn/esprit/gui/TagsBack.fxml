@@ -14,19 +14,19 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="comanchor" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #242424;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.TagsBackController">
+<AnchorPane id="AnchorPane" fx:id="comanchor" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #242424;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.TagsBackController">
    <children>
       <Pane fx:id="pain" layoutX="51.0" layoutY="101.0" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: white;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <TextField id="dysearch" fx:id="dysearch" layoutX="386.0" layoutY="101.0" onKeyTyped="#dynamicsearch" prefHeight="27.0" prefWidth="187.0" style="-fx-border-radius: 8; -fx-background-radius: 8;" />
-      <ListView fx:id="commentsList" layoutX="386.0" layoutY="139.0" onMouseClicked="#listselect" prefHeight="551.0" prefWidth="856.0" />
-      <Label fx:id="filtlabel" layoutX="386.0" layoutY="59.0" text="Filter:" textFill="#0effc3">
+      <TextField id="dysearch" fx:id="dysearch" layoutX="317.0" layoutY="162.0" onKeyTyped="#dynamicsearch" prefHeight="25.0" prefWidth="150.0" />
+      <ListView fx:id="commentsList" layoutX="317.0" layoutY="208.0" onMouseClicked="#listselect" prefHeight="430.0" prefWidth="945.0" />
+      <Label fx:id="filtlabel" layoutX="317.0" layoutY="112.0" text="Filter:" textFill="#0effc3">
          <font>
             <Font name="Cantarell Regular" size="30.0" />
          </font>
       </Label>
-      <Button fx:id="turnofftts" layoutX="1127.0" layoutY="90.0" mnemonicParsing="false" onMouseClicked="#turnoff" prefHeight="45.0" prefWidth="115.0" style="-fx-background-color: #EF5350;" text="Turn off TTS" textFill="WHITE">
+      <Button fx:id="turnofftts" layoutX="1161.0" layoutY="149.0" mnemonicParsing="false" onMouseClicked="#turnoff" prefHeight="34.0" prefWidth="100.0" style="-fx-background-color: #EF5350;" text="TTS OFF" textFill="WHITE">
          <font>
-            <Font name="Cantarell Regular" size="17.0" />
+            <Font size="17.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
@@ -40,9 +40,9 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="delete" layoutX="1017.0" layoutY="90.0" mnemonicParsing="false" onMouseClicked="#justdel" prefHeight="34.0" prefWidth="90.0" style="-fx-background-color: #E53935;" text="Delete" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="delete" layoutX="1171.0" layoutY="653.0" mnemonicParsing="false" onMouseClicked="#justdel" prefHeight="34.0" prefWidth="90.0" style="-fx-background-color: #EF5350;" text="Delete" textAlignment="CENTER" textFill="WHITE">
          <font>
-            <Font name="Cantarell Regular" size="21.0" />
+            <Font size="17.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />

@@ -14,9 +14,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="show" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #242424;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ListOfCategoryController">
+<AnchorPane id="AnchorPane" fx:id="show" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #242424;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ListOfCategoryController">
    <children>
-      <Text fill="#ff2e2e" layoutX="638.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="List Of Categories" textAlignment="CENTER" wrappingWidth="261.69842529296875">
+      <Text fill="#c34e4e" layoutX="638.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Categories" textAlignment="CENTER" wrappingWidth="261.69842529296875">
          <font>
             <Font name="Arial Rounded MT Bold" size="28.0" />
          </font>
@@ -225,28 +225,28 @@
             </VBox>
          </children>
       </AnchorPane>
-      <Button fx:id="supp" layoutX="1100.0" layoutY="619.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="26.0" prefWidth="103.0" style="-fx-background-color: #E74856;" styleClass="add1-btn" text="Delete" textFill="WHITE">
+      <Button fx:id="supp" layoutX="1040.0" layoutY="653.0" mnemonicParsing="false" onAction="#supprimer" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #E74856;" styleClass="add1-btn" text="Delete" textFill="WHITE">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
       </Button>
-      <Button fx:id="mod" layoutX="978.0" layoutY="618.0" mnemonicParsing="false" onAction="#modifier" prefHeight="26.0" prefWidth="103.0" style="-fx-background-color: orange;" styleClass="add1-btn" text="Edit" textFill="#fffefe">
+      <Button fx:id="mod" layoutX="916.0" layoutY="653.0" mnemonicParsing="false" onAction="#modifier" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: orange;" styleClass="add1-btn" text="Edit" textFill="#fffefe">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
       </Button>
-      <TextField fx:id="filterFieldCat" layoutX="379.0" layoutY="240.0" promptText="Search" />
-      <Button fx:id="addCat" layoutX="854.0" layoutY="618.0" mnemonicParsing="false" onAction="#btnAddCat" prefHeight="26.0" prefWidth="103.0" style="-fx-background-color: #00B294;" styleClass="add1-btn" text="Add" textFill="WHITE">
+      <TextField fx:id="filterFieldCat" layoutX="317.0" layoutY="162.0" prefHeight="25.0" prefWidth="150.0" promptText="Search" />
+      <Button fx:id="addCat" layoutX="1162.0" layoutY="653.0" mnemonicParsing="false" onAction="#btnAddCat" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #00B294;" styleClass="add1-btn" text="Add" textFill="WHITE">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
       </Button>
-      <TableView fx:id="tableCat" layoutX="379.0" layoutY="278.0" prefHeight="331.0" prefWidth="824.0">
+      <TableView fx:id="tableCat" layoutX="317.0" layoutY="208.0" prefHeight="430.0" prefWidth="945.0">
         <columns>
           <TableColumn fx:id="nameCat" prefWidth="231.0" text="Name" />
           <TableColumn fx:id="descCat" prefWidth="592.0" text="Description" />
         </columns>
       </TableView>
-      <TextField fx:id="nbrProd" layoutX="1073.0" layoutY="240.0" prefHeight="20.0" prefWidth="130.0" />
+      <TextField fx:id="nbrProd" layoutX="1111.0" layoutY="169.0" prefHeight="25.0" prefWidth="150.0" />
    </children>
 </AnchorPane>
