@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="438.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18">
+<AnchorPane id="AnchorPane" prefHeight="438.0" prefWidth="600.0" style="-fx-background-color: #242424;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="243.0" layoutY="14.0" text="Add Product" textFill="#ea4343">
          <font>
@@ -37,7 +36,7 @@
       </Label>
       <TextField fx:id="txtReference" layoutX="225.0" layoutY="71.0" />
       <TextField fx:id="txtName" layoutX="225.0" layoutY="111.0" />
-      <Button fx:id="btnSave" layoutX="496.0" layoutY="374.0" mnemonicParsing="false" onAction="#saveProduct" style="-fx-background-color: Blue;" text="Save" textFill="#fefeff">
+      <Button fx:id="btnSave" layoutX="496.0" layoutY="374.0" mnemonicParsing="false" onAction="#saveProduct" style="-fx-background-color: #7A8EFF;" text="Save" textFill="WHITE">
          <font>
             <Font name="Arial Black" size="17.0" />
          </font>

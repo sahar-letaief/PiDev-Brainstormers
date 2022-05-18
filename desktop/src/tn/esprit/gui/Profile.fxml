@@ -14,11 +14,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="726.0" prefWidth="1169.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.ProfileController">
+<AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #242424;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.gui.ProfileController">
    <children>
       <HBox prefHeight="726.0" prefWidth="1169.0">
          <children>
-            <VBox prefHeight="751.0" prefWidth="295.0" style="-fx-background-color: #0b0c2a;">
+            <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="295.0" style="-fx-background-color: #0b0c2a;">
                <children>
                   <ImageView fitHeight="103.0" fitWidth="267.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -198,9 +198,9 @@
             </VBox>
             <VBox fx:id="ProfileInterface" alignment="CENTER" prefHeight="726.0" prefWidth="749.0">
                <children>
-                  <HBox alignment="CENTER" prefHeight="107.0" prefWidth="856.0" style="-fx-border-color: #7A8EFF;">
+                  <HBox alignment="CENTER" prefHeight="107.0" prefWidth="846.0" style="-fx-border-color: #7A8EFF;">
                      <children>
-                        <Label prefHeight="60.0" prefWidth="126.0" text="Profile" textAlignment="CENTER" textFill="RED" underline="true">
+                        <Label prefHeight="60.0" prefWidth="203.0" text="Profile" textAlignment="CENTER" textFill="#ff5c5c">
                            <font>
                               <Font size="44.0" />
                            </font>
@@ -214,57 +214,84 @@
                      <children>
                         <HBox alignment="CENTER" prefHeight="49.0" prefWidth="856.0">
                            <children>
-                              <Label prefHeight="35.0" prefWidth="98.0" text="First Name :" />
+                              <Label prefHeight="35.0" prefWidth="135.0" text="First Name   :" textFill="WHITE">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></Label>
                               <TextField fx:id="FirstNameProfile" prefHeight="36.0" prefWidth="513.0" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="49.0" prefWidth="856.0">
                            <children>
-                              <Label prefHeight="35.0" prefWidth="98.0" text="Last Name :" />
+                              <Label prefHeight="35.0" prefWidth="135.0" text="Last Name    :" textFill="WHITE">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></Label>
                               <TextField fx:id="LastNameProfile" prefHeight="36.0" prefWidth="513.0" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="49.0" prefWidth="856.0">
                            <children>
-                              <Label prefHeight="35.0" prefWidth="98.0" text="Email :" />
+                              <Label prefHeight="35.0" prefWidth="134.0" text="Email        :" textFill="WHITE">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></Label>
                               <TextField fx:id="EmailProfile" prefHeight="36.0" prefWidth="513.0" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="49.0" prefWidth="856.0">
                            <children>
-                              <Label prefHeight="35.0" prefWidth="98.0" text="User name :" />
+                              <Label prefHeight="35.0" prefWidth="135.0" text="User name    :" textFill="WHITE">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></Label>
                               <TextField fx:id="UserNameProfile" prefHeight="36.0" prefWidth="513.0" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="49.0" prefWidth="856.0">
                            <children>
-                              <Label prefHeight="35.0" prefWidth="98.0" text="Phone Number :" />
+                              <Label prefHeight="35.0" prefWidth="135.0" text="Phone Number :" textFill="WHITE">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></Label>
                               <TextField fx:id="PhoneNumberProfile" prefHeight="36.0" prefWidth="513.0" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="49.0" prefWidth="856.0">
                            <children>
-                              <Label prefHeight="35.0" prefWidth="98.0" text="Password :" />
+                              <Label prefHeight="35.0" prefWidth="135.0" text="Password     :" textFill="WHITE">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></Label>
                               <PasswordField fx:id="PasswordProfile" prefHeight="35.0" prefWidth="512.0" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="49.0" prefWidth="856.0">
                            <children>
-                              <Label prefHeight="35.0" prefWidth="98.0" text="Role :" />
+                              <Label prefHeight="35.0" prefWidth="135.0" text="Role         :" textFill="WHITE">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></Label>
                               <ComboBox fx:id="Roleprofile" prefHeight="36.0" prefWidth="512.0" promptText="Select Your Role" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="70.0" prefWidth="856.0">
                            <children>
-                              <RadioButton fx:id="EditProfileRadioButton" mnemonicParsing="false" onAction="#onSelectRadioButton" text="Edit Informations">
+                              <RadioButton fx:id="EditProfileRadioButton" mnemonicParsing="false" onAction="#onSelectRadioButton" text="Edit Information" textFill="#68eda7">
                                  <HBox.margin>
                                     <Insets left="20.0" right="20.0" />
                                  </HBox.margin>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
                               </RadioButton>
                               <Button fx:id="SaveEditProfile" mnemonicParsing="false" onAction="#onEditProfileAction" prefHeight="23.0" prefWidth="133.0" style="-fx-background-color: #7A8EFF;" text="Save" textFill="WHITE">
                                  <HBox.margin>
                                     <Insets left="20.0" right="20.0" />
                                  </HBox.margin>
+                                 <font>
+                                    <Font size="17.0" />
+                                 </font>
                               </Button>
                            </children>
                         </HBox>

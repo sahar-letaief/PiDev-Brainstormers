@@ -12,33 +12,33 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="show" prefHeight="600.0" prefWidth="1070.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Edit_OrderController">
+<AnchorPane id="AnchorPane" fx:id="show" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #242424;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Edit_OrderController">
    <children>
-      <TextField fx:id="reffe" layoutX="560.0" layoutY="279.0" prefHeight="38.0" prefWidth="338.0" />
-      <TextField fx:id="numero" layoutX="560.0" layoutY="329.0" prefHeight="38.0" prefWidth="338.0" />
-      <TextField fx:id="regio" layoutX="559.0" layoutY="430.0" prefHeight="38.0" prefWidth="338.0" />
-      <Text fx:id="reff" fill="#0a115a" layoutX="412.0" layoutY="294.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reference" textAlignment="CENTER">
+      <TextField fx:id="reffe" layoutX="560.0" layoutY="201.0" prefHeight="30.0" prefWidth="330.0" />
+      <TextField fx:id="numero" layoutX="560.0" layoutY="286.0" prefHeight="30.0" prefWidth="330.0" />
+      <TextField fx:id="regio" layoutX="559.0" layoutY="439.0" prefHeight="30.0" prefWidth="330.0" />
+      <Text fx:id="reff" fill="WHITE" layoutX="350.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reference" textAlignment="CENTER">
          <font>
-            <Font name="Arial Rounded MT Bold" size="14.0" />
+            <Font size="17.0" />
          </font></Text>
-      <Text fx:id="tel" fill="#0a115a" layoutX="416.0" layoutY="346.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone number" textAlignment="CENTER">
+      <Text fx:id="tel" fill="WHITE" layoutX="350.0" layoutY="307.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone number" textAlignment="CENTER">
          <font>
-            <Font name="Arial Rounded MT Bold" size="14.0" />
+            <Font size="17.0" />
          </font></Text>
-      <Text fx:id="pays" fill="#0a115a" layoutX="416.0" layoutY="397.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Country" textAlignment="CENTER">
+      <Text fx:id="pays" fill="WHITE" layoutX="350.0" layoutY="392.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Country" textAlignment="CENTER">
          <font>
-            <Font name="Arial Rounded MT Bold" size="14.0" />
+            <Font size="17.0" />
          </font></Text>
-      <Text fx:id="region" fill="#0a115a" layoutX="419.0" layoutY="447.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Region" textAlignment="CENTER">
+      <Text fx:id="region" fill="WHITE" layoutX="350.0" layoutY="459.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Region" textAlignment="CENTER">
          <font>
-            <Font name="Arial Rounded MT Bold" size="14.0" />
+            <Font size="17.0" />
          </font></Text>
-      <Button fx:id="update" layoutX="898.0" layoutY="212.0" mnemonicParsing="false" onAction="#update_order2" prefHeight="25.0" prefWidth="75.0" style="-fx-background-color: #0a115a;" styleClass="add1-btn" stylesheets="@../style/style.css" text="update" textFill="WHITE">
+      <Button fx:id="update" layoutX="619.0" layoutY="652.0" mnemonicParsing="false" onAction="#update_order2" prefHeight="34.0" prefWidth="100.0" style="-fx-background-color: orange;" styleClass="add1-btn" stylesheets="@../style/style.css" text="Edit" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="17.0" />
          </font></Button>
       <Text layoutX="238.0" layoutY="364.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="124.5367431640625" />
-      <AnchorPane prefHeight="70.0" prefWidth="1366.0">
+      <AnchorPane prefHeight="70.0" prefWidth="1366.0" visible="false">
          <children>
             <AnchorPane prefHeight="70.0" prefWidth="1359.0" style="-fx-background-color: white;">
                <children>
@@ -64,19 +64,19 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <Text fx:id="etat" fill="#0a115a" layoutX="416.0" layoutY="496.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status" textAlignment="CENTER">
+      <Text fx:id="etat" fill="WHITE" layoutX="350.0" layoutY="525.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status" textAlignment="CENTER">
          <font>
-            <Font name="Arial Rounded MT Bold" size="14.0" />
+            <Font size="17.0" />
          </font></Text>
-      <TextField fx:id="codepostal" layoutX="560.0" layoutY="525.0" prefHeight="38.0" prefWidth="338.0" />
-      <Text fx:id="etat1" fill="#0a115a" layoutX="416.0" layoutY="542.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PostCod" textAlignment="CENTER">
+      <TextField fx:id="codepostal" layoutX="560.0" layoutY="577.0" prefHeight="30.0" prefWidth="330.0" />
+      <Text fx:id="etat1" fill="WHITE" layoutX="350.0" layoutY="600.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PostCod" textAlignment="CENTER">
          <font>
-            <Font name="Arial Rounded MT Bold" size="14.0" />
+            <Font size="17.0" />
          </font></Text>
-      <AnchorPane fx:id="slider11" layoutX="-1.0" layoutY="744.0" prefHeight="27.0" prefWidth="1758.0" style="-fx-background-color: #242B6E;" />
-      <ComboBox fx:id="comboxL" layoutX="560.0" layoutY="387.0" prefHeight="26.0" prefWidth="338.0" />
-      <ComboBox fx:id="comboxS" layoutX="560.0" layoutY="486.0" prefHeight="26.0" prefWidth="338.0" />
-      <AnchorPane layoutY="20.0" prefHeight="72.0" prefWidth="1762.0" style="-fx-background-color: white;">
+      <AnchorPane fx:id="slider11" layoutX="-1.0" layoutY="744.0" prefHeight="27.0" prefWidth="1234.0" style="-fx-background-color: #242424;" visible="false" />
+      <ComboBox fx:id="comboxL" layoutX="560.0" layoutY="367.0" prefHeight="30.0" prefWidth="330.0" />
+      <ComboBox fx:id="comboxS" layoutX="560.0" layoutY="507.0" prefHeight="30.0" prefWidth="330.0" />
+      <AnchorPane layoutY="20.0" prefHeight="72.0" prefWidth="1762.0" style="-fx-background-color: #242424;" visible="false">
          <children>
             <Pane layoutX="-8.0" layoutY="-21.0" prefHeight="31.0" prefWidth="2020.0" style="-fx-background-color: #0A115A;" AnchorPane.leftAnchor="-8.0" AnchorPane.rightAnchor="-254.0" AnchorPane.topAnchor="-21.0">
                <children>
@@ -154,6 +154,11 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <Pane layoutX="83.0" layoutY="92.0" prefHeight="3.0" prefWidth="1606.0" style="-fx-background-color: #0A115A;" />
+      <Pane layoutX="83.0" layoutY="85.0" prefHeight="10.0" prefWidth="1171.0" style="-fx-background-color: #242424;" visible="false" />
+      <Label layoutX="627.0" layoutY="85.0" text="Edit order" textFill="#dd5e5e">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

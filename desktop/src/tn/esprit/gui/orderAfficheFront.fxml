@@ -143,26 +143,6 @@
                                                 <Insets left="30.0" />
                                              </VBox.margin>
                                           </HBox>
-                                          <HBox fx:id="SignOutBack" alignment="CENTER_LEFT" onMouseClicked="#onSignOut" prefHeight="53.0" prefWidth="176.0" styleClass="sidebarItem">
-                                             <children>
-                                                <ImageView fitHeight="56.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@../img/client.PNG" />
-                                                   </image>
-                                                </ImageView>
-                                                <Label prefHeight="52.0" prefWidth="73.0" text="Sign out" textFill="WHITE">
-                                                   <HBox.margin>
-                                                      <Insets left="20.0" />
-                                                   </HBox.margin>
-                                                </Label>
-                                             </children>
-                                             <padding>
-                                                <Insets bottom="5.0" top="5.0" />
-                                             </padding>
-                                             <VBox.margin>
-                                                <Insets left="30.0" />
-                                             </VBox.margin>
-                                          </HBox>
                                           <HBox fx:id="clicReclamation" alignment="CENTER_LEFT" onMouseClicked="#onReclamtionFront" prefHeight="53.0" prefWidth="176.0" styleClass="sidebarItem">
                                              <children>
                                                 <ImageView fitHeight="56.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
@@ -202,6 +182,26 @@
                                              <padding>
                                                 <Insets bottom="5.0" top="5.0" />
                                              </padding>
+                                          </HBox>
+                                          <HBox fx:id="SignOutBack" alignment="CENTER_LEFT" onMouseClicked="#onSignOut" prefHeight="53.0" prefWidth="176.0" styleClass="sidebarItem">
+                                             <children>
+                                                <ImageView fitHeight="56.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../img/client.PNG" />
+                                                   </image>
+                                                </ImageView>
+                                                <Label prefHeight="52.0" prefWidth="73.0" text="Sign out" textFill="WHITE">
+                                                   <HBox.margin>
+                                                      <Insets left="20.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                             </children>
+                                             <padding>
+                                                <Insets bottom="5.0" top="5.0" />
+                                             </padding>
+                                             <VBox.margin>
+                                                <Insets left="30.0" />
+                                             </VBox.margin>
                                           </HBox>
                                        </children>
                                        <padding>

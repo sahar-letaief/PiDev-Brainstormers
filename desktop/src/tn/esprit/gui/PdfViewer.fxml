@@ -8,12 +8,11 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="show" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #E6E6FA;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PDFController">
+<AnchorPane id="AnchorPane" fx:id="show" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #242424;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PDFController">
    <children>
       <Text layoutX="238.0" layoutY="364.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="124.5367431640625" />
       <AnchorPane fx:id="slider" layoutY="68.0" prefHeight="700.0" prefWidth="229.0" style="-fx-background-color: #4682B4;">
@@ -66,23 +65,12 @@
       </AnchorPane>
       <AnchorPane prefHeight="70.0" prefWidth="1366.0">
          <children>
-            <AnchorPane prefHeight="70.0" prefWidth="1359.0" style="-fx-background-color: white;">
+            <AnchorPane prefHeight="70.0" prefWidth="1359.0" style="-fx-background-color: #242424;">
                <children>
-                  <Pane layoutX="181.0" layoutY="20.0" prefHeight="25.0" prefWidth="1311.0" style="-fx-background-color: #4682B4;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                   <HBox layoutX="200.0" layoutY="-17.0" prefHeight="40.0" prefWidth="1087.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
                      <children>
                         <HBox prefHeight="40.0" prefWidth="1132.0">
                            <children>
-                              <HBox onMouseClicked="#form" prefHeight="45.0" prefWidth="283.0" styleClass="menuItem" stylesheets="@../style/style.css">
-                                 <children>
-                                    <ImageView fitHeight="45.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../img/dash1.png" />
-                                       </image>
-                                    </ImageView>
-                                    <Label prefHeight="60.0" prefWidth="95.0" text="Accueil" />
-                                 </children>
-                              </HBox>
                               <HBox prefHeight="45.0" prefWidth="283.0" styleClass="menuItem" stylesheets="@../style/style.css">
                                  <children>
                                     <ImageView fx:id="iconProd" fitHeight="45.0" fitWidth="47.0" onMouseClicked="#iconGoProd" pickOnBounds="true" preserveRatio="true">
@@ -90,7 +78,6 @@
                                           <Image url="@../img/panier2.png" />
                                        </image>
                                     </ImageView>
-                                    <Label prefHeight="45.0" prefWidth="160.0" text="Products" />
                                  </children>
                               </HBox>
                               <HBox onMouseClicked="#abon" prefHeight="45.0" prefWidth="283.0" styleClass="menuItem" stylesheets="@../style/style.css">
@@ -139,7 +126,7 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <TableView fx:id="tableProd" layoutX="312.0" layoutY="180.0" opacity="0.73" prefHeight="356.0" prefWidth="945.0">
+      <TableView fx:id="tableProd" layoutX="317.0" layoutY="208.0" prefHeight="430.0" prefWidth="945.0">
          <columns>
             <TableColumn fx:id="refProd" prefWidth="114.0" text="Reference" />
             <TableColumn fx:id="nameProd" prefWidth="223.0" text="Product Name" />
@@ -148,7 +135,7 @@
             <TableColumn fx:id="priceProd" prefWidth="130.0" text="Price" />
          </columns>
       </TableView>
-      <Button fx:id="fxidPdf" layoutX="699.0" layoutY="568.0" mnemonicParsing="false" onAction="#btnPDF" onMouseClicked="#calculer" prefHeight="45.0" prefWidth="184.0" text="Generate PDF" textFill="#dc1212">
+      <Button fx:id="fxidPdf" layoutX="699.0" layoutY="658.0" mnemonicParsing="false" onAction="#btnPDF" onMouseClicked="#calculer" prefHeight="45.0" prefWidth="184.0" style="-fx-background-color: #fc5252;" text="Generate PDF" textFill="WHITE">
          <font>
             <Font name="System Bold Italic" size="17.0" />
          </font>
