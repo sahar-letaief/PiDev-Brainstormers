@@ -16,7 +16,7 @@
 
 <AnchorPane id="AnchorPane" fx:id="show" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #242424;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ListOfCategoryController">
    <children>
-      <Text fill="#c34e4e" layoutX="638.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Categories" textAlignment="CENTER" wrappingWidth="261.69842529296875">
+      <Text fill="#c34e4e" layoutX="662.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Categories" textAlignment="CENTER" wrappingWidth="261.69842529296875">
          <font>
             <Font name="Arial Rounded MT Bold" size="28.0" />
          </font>
@@ -24,7 +24,7 @@
       <Text layoutX="238.0" layoutY="364.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="124.5367431640625" />
       <AnchorPane fx:id="slider" prefHeight="768.0" prefWidth="267.0" style="-fx-background-color: #4682B4;">
          <children>
-            <VBox prefHeight="768.0" prefWidth="300.0" style="-fx-background-color: #0b0c2a;">
+            <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="300.0" style="-fx-background-color: #0b0c2a;">
                <children>
                   <ImageView fitHeight="103.0" fitWidth="267.0" pickOnBounds="true" preserveRatio="true">
                      <image>
